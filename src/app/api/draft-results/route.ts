@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
     const topperPlayerIds = new Set(topperData.map(t => t.player_id))
 
     // Get trade counts for all players in this season
-    let tradeCountMap = {}
+    const tradeCountMap: Record<number, number> = {}
     if (seasonId) {
       const { data: tradesData, error: tradesError } = await supabase
         .from('trades')

@@ -43,7 +43,7 @@ interface TopperResult {
   id: number
   managers: Manager
   seasons: Season
-  [key: string]: any
+  [key: string]: unknown
 }
 
 interface LSLResult {
@@ -51,7 +51,7 @@ interface LSLResult {
   year: number
   original_managers: Manager
   draft_managers: Manager
-  [key: string]: any
+  [key: string]: unknown
 }
 
 interface PlayerHistory {
