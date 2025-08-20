@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
 
     // Add draft prices, keeper status, and calculated keeper costs to roster data
     const rostersWithPrices = (rosters as RosterData[])?.map(roster => {
-      const playerId = roster.players[0]?.id
+      const playerId = roster.players[0]?.id || 0
       const draftPrice = draftInfoMap[playerId]?.draft_price || null
       const isKeeper = draftInfoMap[playerId]?.is_keeper || false
       const tradeCount = tradeCountMap[playerId] || 0
@@ -117,8 +117,8 @@ export async function GET(request: NextRequest) {
       
       return {
         ...roster,
-        players: roster.players[0],
-        managers: roster.managers[0],
+        players: roster.players[0] || { id: 0, name: 'Unknown Player' },
+        managers: roster.managers[0] || { id: 0, manager_name: 'Unknown Manager' },
         draft_price: draftPrice,
         is_keeper: isKeeper,
         trade_count: tradeCount,
