@@ -5,6 +5,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  const supabase = createServerSupabaseClient()
   try {
     const tradeId = parseInt(params.id)
 

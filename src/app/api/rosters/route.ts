@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '../../../../lib/supabase'
+import { createServerSupabaseClient } from '../../../../lib/supabase'
 import { calculateKeeperCost } from '../../../../lib/keeper-utils'
 
 export async function GET(request: NextRequest) {
   try {
+    const supabase = createServerSupabaseClient()
     const { searchParams } = new URL(request.url)
     const seasonId = searchParams.get('season_id')
 

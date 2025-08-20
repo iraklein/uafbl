@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '../../../../../lib/supabase'
 
 export async function POST(request: NextRequest) {
+  const supabase = createServerSupabaseClient()
   try {
     const { season_id, player_id, notes } = await request.json()
 
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  const supabase = createServerSupabaseClient()
   try {
     const { searchParams } = new URL(request.url)
     const seasonId = searchParams.get('season_id')
