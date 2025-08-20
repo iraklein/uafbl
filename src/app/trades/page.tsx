@@ -133,18 +133,16 @@ export default function Trades() {
             <Navigation />
           </div>
           
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Player Trades</h2>
-          
-          {/* Season Selector */}
-          <div className="mb-6">
-            <label htmlFor="season-select" className="block text-sm font-medium text-gray-700 mb-2">
-              Select Season:
-            </label>
+          {/* Header with inline season selector */}
+          <div className="flex items-center space-x-6 mb-4">
+            <h2 className="text-2xl font-semibold text-gray-800">Player Trades</h2>
+            
+            {/* Season Selector */}
             <select
               id="season-select"
               value={selectedSeason}
               onChange={(e) => setSelectedSeason(e.target.value)}
-              className="block w-64 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+              className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-sm"
               disabled={loading}
             >
               <option value="">Choose a season...</option>

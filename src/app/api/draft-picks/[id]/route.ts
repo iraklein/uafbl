@@ -22,16 +22,23 @@ export async function PUT(
     }
 
     const body = await request.json()
-    const { manager_id, draft_price, is_keeper, is_topper, topper_manager_ids } = body
+    const { player_id, manager_id, draft_price, is_keeper, is_topper, topper_manager_ids } = body
 
     // Update the draft result
+    const updateData: any = {
+      manager_id,
+      draft_price,
+      is_keeper: is_keeper || false
+    }
+
+    // Only update player_id if provided (optional field)
+    if (player_id !== undefined) {
+      updateData.player_id = player_id
+    }
+
     const { error: draftError } = await supabase
       .from('draft_results')
-      .update({
-        manager_id,
-        draft_price,
-        is_keeper: is_keeper || false
-      })
+      .update(updateData)
       .eq('id', draftPickId)
 
     if (draftError) {

@@ -55,6 +55,11 @@ export default function DraftPage() {
   // Edit states
   const [editingPickId, setEditingPickId] = useState<number | null>(null)
   const [editingPick, setEditingPick] = useState<Partial<DraftPick> | null>(null)
+  
+  // Player search states for editing
+  const [editPlayerSearchQuery, setEditPlayerSearchQuery] = useState('')
+  const [editPlayerSuggestions, setEditPlayerSuggestions] = useState<Player[]>([])
+  const [showEditPlayerSuggestions, setShowEditPlayerSuggestions] = useState(false)
 
   // Fetch managers
   useEffect(() => {
@@ -253,12 +258,60 @@ export default function DraftPage() {
       ...pick,
       topper_managers: pick.topper_managers || []
     })
+    setEditPlayerSearchQuery(pick.player_name)
   }
 
   // Cancel editing
   const handleCancelEdit = () => {
     setEditingPickId(null)
     setEditingPick(null)
+    setEditPlayerSearchQuery('')
+    setEditPlayerSuggestions([])
+    setShowEditPlayerSuggestions(false)
+  }
+
+  // Search players for editing
+  const searchPlayersForEdit = async (query: string) => {
+    if (query.length < 2) {
+      setEditPlayerSuggestions([])
+      return
+    }
+
+    try {
+      const response = await fetch(`/api/players/search?q=${encodeURIComponent(query)}`)
+      if (!response.ok) throw new Error('Failed to search players')
+      
+      const data = await response.json()
+      setEditPlayerSuggestions(data)
+    } catch (error) {
+      console.error('Error searching players:', error)
+      setEditPlayerSuggestions([])
+    }
+  }
+
+  // Handle player search input change for editing
+  const handleEditPlayerSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value
+    setEditPlayerSearchQuery(query)
+    
+    if (query.trim().length >= 2) {
+      searchPlayersForEdit(query.trim())
+      setShowEditPlayerSuggestions(true)
+    } else {
+      setShowEditPlayerSuggestions(false)
+      setEditPlayerSuggestions([])
+    }
+  }
+
+  // Handle player selection for editing
+  const handleEditPlayerSelect = (player: Player) => {
+    setEditPlayerSearchQuery(player.name)
+    setShowEditPlayerSuggestions(false)
+    setEditingPick(prev => ({
+      ...prev!,
+      player_id: player.id,
+      player_name: player.name
+    }))
   }
 
   // Save edited draft pick
@@ -270,6 +323,7 @@ export default function DraftPage() {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          player_id: editingPick.player_id,
           manager_id: editingPick.manager_id,
           draft_price: editingPick.draft_price,
           is_keeper: editingPick.is_keeper,
@@ -519,10 +573,41 @@ export default function DraftPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {draftPicks.length - index}
                       </td>
+                      {/* Player Column */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {pick.player_name}
-                        {pick.is_keeper && <span className="ml-2 px-1.5 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
-                        {pick.is_topper && <span className="ml-1">🎩</span>}
+                        {isEditing ? (
+                          <div className="relative">
+                            <input
+                              type="text"
+                              value={editPlayerSearchQuery}
+                              onChange={handleEditPlayerSearchChange}
+                              onFocus={() => editPlayerSearchQuery.length >= 2 && setShowEditPlayerSuggestions(true)}
+                              onBlur={() => setTimeout(() => setShowEditPlayerSuggestions(false), 150)}
+                              placeholder="Search player..."
+                              className="block w-full px-2 py-1 border border-gray-300 rounded text-sm"
+                            />
+                            {showEditPlayerSuggestions && editPlayerSuggestions.length > 0 && (
+                              <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-40 overflow-y-auto mt-1">
+                                {editPlayerSuggestions.map((player) => (
+                                  <button
+                                    key={player.id}
+                                    type="button"
+                                    onClick={() => handleEditPlayerSelect(player)}
+                                    className="w-full text-left px-3 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none text-gray-900 text-sm"
+                                  >
+                                    {player.name}
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <>
+                            {pick.player_name}
+                            {pick.is_keeper && <span className="ml-2 px-1.5 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
+                            {pick.is_topper && <span className="ml-1">🎩</span>}
+                          </>
+                        )}
                       </td>
                       
                       {/* Manager Column */}

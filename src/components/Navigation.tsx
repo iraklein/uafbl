@@ -8,7 +8,12 @@ export default function Navigation() {
   const pathname = usePathname()
   const { isAdmin } = useAuth()
   
-  console.log('Navigation: isAdmin =', isAdmin)
+  console.log('🧭 Navigation render:', { 
+    isAdmin, 
+    pathname,
+    type: typeof isAdmin,
+    willShowAdminTab: isAdmin === true
+  })
 
   const navItems = [
     { href: '/rosters', label: 'Rosters' },

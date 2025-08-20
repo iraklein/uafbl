@@ -41,20 +41,25 @@ export async function GET(request: NextRequest) {
     const tradeCount = tradeData?.length || 0
     const consecutiveKeeps = rosterData?.consecutive_keeps || 0
     
-    // Get the last draft price for this player
+    // Get the draft price from the PREVIOUS season for this player
     const { data: draftData, error: draftError } = await supabase
       .from('draft_results')
-      .select('draft_price')
+      .select(`
+        draft_price,
+        seasons!inner (
+          id
+        )
+      `)
       .eq('player_id', playerId)
-      .order('id', { ascending: false })
-      .limit(1)
+      .eq('seasons.id', previousSeasonId)
       .single()
 
     if (draftError && draftError.code !== 'PGRST116') {
       return NextResponse.json({ error: draftError.message }, { status: 500 })
     }
 
-    const lastDraftPrice = (draftData?.draft_price as number) || 1
+    // If player was undrafted in previous season, draft price should be null (becomes $0 + $10 = $10)
+    const previousSeasonDraftPrice = (draftData?.draft_price as number) || null
     
     // Calculate keeper cost using same logic as rosters API
     let keeperEscalationYear = 0; // Default for non-keepers (first time keep = +$10)
@@ -64,12 +69,12 @@ export async function GET(request: NextRequest) {
       keeperEscalationYear = (rosterData.consecutive_keeps as number) + 1;
     }
     
-    const keeperPrice = calculateKeeperCost(lastDraftPrice, keeperEscalationYear, tradeCount)
+    const keeperPrice = calculateKeeperCost(previousSeasonDraftPrice, keeperEscalationYear, tradeCount)
 
     return NextResponse.json({
       keeper_price: keeperPrice,
       consecutive_keeps: consecutiveKeeps,
-      last_draft_price: lastDraftPrice,
+      last_draft_price: previousSeasonDraftPrice,
       trade_count: tradeCount
     })
   } catch (error) {

@@ -13,6 +13,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [isAdmin, setIsAdmin] = useState(false)
+  const [isSigningOut, setIsSigningOut] = useState(false)
   
   // Login form states
   const [email, setEmail] = useState('')
@@ -28,7 +29,9 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const [passwordSetupError, setPasswordSetupError] = useState('')
 
   const checkAdminStatus = async (userEmail: string) => {
-    console.log('Checking admin status for:', userEmail)
+    console.log('👑 Checking admin status for:', userEmail)
+    const adminStart = performance.now()
+    
     try {
       const { data, error } = await supabase
         .from('managers')
@@ -36,37 +39,65 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
         .eq('email', userEmail)
         .single()
 
-      console.log('Admin check result:', { data, error, userEmail })
+      const adminTime = performance.now() - adminStart
+      console.log(`📊 Admin check took ${adminTime.toFixed(2)}ms`, { 
+        data, 
+        error: error?.message, 
+        userEmail,
+        hasData: !!data,
+        isAdmin: data?.is_admin,
+        dataType: typeof data?.is_admin 
+      })
 
-      if (!error && data) {
-        console.log('Setting admin status to:', data.is_admin)
-        setIsAdmin(data.is_admin === true) // Explicitly check for true
+      if (!error && data && data.is_admin === true) {
+        console.log('✅ User is admin - showing admin tab')
+        setIsAdmin(true)
       } else {
-        console.log('No admin data found or error:', error)
+        console.log('❌ User is not admin or error occurred:', error?.message || 'No admin rights')
         setIsAdmin(false)
       }
     } catch (error) {
-      console.error('Error checking admin status:', error)
+      const adminTime = performance.now() - adminStart
+      console.error(`❌ Admin check exception after ${adminTime.toFixed(2)}ms:`, error)
       setIsAdmin(false)
     }
   }
 
   useEffect(() => {
-    // More generous timeout to prevent premature signouts
+    // Quick timeout to avoid infinite loading
     const timeoutId = setTimeout(() => {
       console.warn('Auth check timeout, setting loading to false')
       setLoading(false)
-      // Don't automatically set user to null - let the auth state listener handle it
-    }, 10000) // 10 second timeout instead of 2
+      setUser(null)
+    }, 2000) // 2 second timeout
 
     // Check for invitation/recovery tokens in URL and existing session
     const checkAuthTokens = async () => {
       try {
-        console.log('Checking auth state...')
+        console.log('⚡ Auth check starting...')
         
-        // First, always check for existing session
+        // Always check for existing session first (most common case)
+        const sessionStart = performance.now()
         const { data: { session }, error: sessionError } = await supabase.auth.getSession()
-        console.log('Existing session check:', { user: !!session?.user, error: sessionError })
+        const sessionTime = performance.now() - sessionStart
+        console.log(`📊 Session check took ${sessionTime.toFixed(2)}ms`, { 
+          hasUser: !!session?.user, 
+          userEmail: session?.user?.email,
+          error: sessionError?.message 
+        })
+        
+        // If we have a valid session, use it immediately
+        if (session?.user && !sessionError) {
+          console.log('✅ Valid session found, processing immediately')
+          setUser(session.user)
+          if (session.user.email) {
+            // Don't await admin check - let it run in background
+            checkAdminStatus(session.user.email).catch(console.error)
+          }
+          setLoading(false)
+          clearTimeout(timeoutId)
+          return
+        }
         
         // Check URL parameters for tokens
         const hashParams = new URLSearchParams(window.location.hash.substring(1))
@@ -106,9 +137,6 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           
           if (data.user) {
             setUser(data.user)
-            if (data.user.email) {
-              await checkAdminStatus(data.user.email)
-            }
             
             // Show password setup for first-time logins
             const hasSetPassword = localStorage.getItem('password_setup_complete') || 
@@ -120,28 +148,23 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
             setLoading(false)
             window.history.replaceState(null, '', window.location.pathname)
             clearTimeout(timeoutId)
+            
+            // Run admin check in background after UI updates
+            if (data.user.email) {
+              checkAdminStatus(data.user.email).catch(console.error)
+            }
             return
           }
         }
         
-        // If we have an existing session (from refresh), use it
-        if (session?.user) {
-          console.log('Using existing session for user:', session.user.email)
-          setUser(session.user)
-          if (session.user.email) {
-            await checkAdminStatus(session.user.email)
-          }
-          setLoading(false)
-          clearTimeout(timeoutId)
-          return
-        }
-        
-        // No session found, but don't immediately show login - let the auth state listener handle the final decision
-        console.log('No session found in initial check')
-        // The auth state change listener will handle setting loading to false
+        // No session or tokens found - show login
+        console.log('❌ No session or valid tokens found - showing login')
+        setLoading(false)
+        setUser(null)
+        clearTimeout(timeoutId)
         
       } catch (error) {
-        console.error('Error in auth check:', error)
+        console.error('❌ Error in auth check:', error)
         setLoading(false)
         setUser(null)
         clearTimeout(timeoutId)
@@ -153,41 +176,36 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log('Auth state changed:', { event, hasSession: !!session })
+        console.log('🔄 Auth state changed:', { event, hasSession: !!session })
         
         const currentUser = session?.user ?? null
         
         // Handle sign out events explicitly
         if (event === 'SIGNED_OUT' || !currentUser) {
-          console.log('Handling sign out - clearing all state')
+          console.log('🚪 Handling sign out - clearing all state')
           setUser(null)
           setIsAdmin(false)
           setShowPasswordSetup(false)
           setLoginError('')
           setEmail('')
           setPassword('')
-          
-          // Clear localStorage
-          try {
-            localStorage.removeItem('password_setup_complete')
-            Object.keys(localStorage).forEach(key => {
-              if (key.startsWith('password_setup_complete_')) {
-                localStorage.removeItem(key)
-              }
-            })
-          } catch (e) {
-            console.error('Error clearing localStorage:', e)
-          }
-        } else {
-          // Handle sign in events
-          setUser(currentUser)
-          if (currentUser?.email) {
-            await checkAdminStatus(currentUser.email)
+          setIsSigningOut(false)
+          setLoading(false)
+        } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+          // Only process sign in events if we're not in the middle of signing out
+          if (!isSigningOut) {
+            console.log('👤 Processing sign in event')
+            setUser(currentUser)
+            if (currentUser?.email) {
+              // Run admin check in background, don't block UI
+              checkAdminStatus(currentUser.email).catch(console.error)
+            }
+            setLoading(false)
+          } else {
+            console.log('🛑 Ignoring sign in event - currently signing out')
           }
         }
         
-        // Always set loading to false after processing the auth state
-        setLoading(false)
         clearTimeout(timeoutId)
       }
     )
@@ -281,49 +299,92 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   }
 
   const handleLogout = async () => {
-    console.log('Sign out initiated...')
-    try {
-      // Try to sign out with global scope first, fallback to local
-      const { error } = await supabase.auth.signOut({ scope: 'global' })
-      if (error) {
-        console.warn('Global sign out error, trying local:', error)
-        await supabase.auth.signOut({ scope: 'local' })
-      }
-      console.log('Sign out API call completed')
-    } catch (err) {
-      console.error('Sign out error:', err)
-      // Continue with local cleanup even if API fails
-    }
+    console.log('🔐 Sign out initiated...')
+    setIsSigningOut(true)
     
-    // The auth state change listener will handle cleanup,
-    // but also do immediate cleanup to ensure UI updates
-    console.log('Forcing immediate state reset...')
-    setUser(null)
-    setIsAdmin(false)
-    setShowPasswordSetup(false)
-    setLoginError('')
-    setEmail('')
-    setPassword('')
-    
-    // Clear local storage
     try {
-      localStorage.removeItem('password_setup_complete')
+      // Immediately clear state to prevent auto-login during sign out process
+      console.log('🗑️ Immediately clearing component state...')
+      setUser(null)
+      setIsAdmin(false)
+      setShowPasswordSetup(false)
+      setLoginError('')
+      setEmail('')
+      setPassword('')
+      
+      // Clear ALL browser storage aggressively
+      console.log('🗑️ Clearing all browser storage...')
+      
+      // Clear ALL localStorage (more aggressive approach)
       Object.keys(localStorage).forEach(key => {
-        if (key.startsWith('password_setup_complete_')) {
+        if (key.includes('supabase') || 
+            key.includes('sb-') || 
+            key.startsWith('password_setup_complete') ||
+            key.includes('auth')) {
           localStorage.removeItem(key)
+          console.log('Removed localStorage:', key)
         }
       })
+      
+      // Clear ALL sessionStorage
+      Object.keys(sessionStorage).forEach(key => {
+        if (key.includes('supabase') || 
+            key.includes('sb-') || 
+            key.includes('auth')) {
+          sessionStorage.removeItem(key)
+          console.log('Removed sessionStorage:', key)
+        }
+      })
+      
+      // Clear cookies (if any)
+      document.cookie.split(";").forEach(cookie => {
+        const eqPos = cookie.indexOf("=")
+        const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim()
+        if (name.includes('supabase') || name.includes('sb-') || name.includes('auth')) {
+          document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`
+          console.log('Cleared cookie:', name)
+        }
+      })
+      
+      console.log('✅ All storage cleared')
     } catch (storageErr) {
-      console.error('Error clearing localStorage:', storageErr)
+      console.error('❌ Error clearing storage:', storageErr)
     }
     
-    console.log('Immediate state reset complete')
+    try {
+      // Try global sign out first
+      console.log('🌐 Attempting global sign out...')
+      const { error: globalError } = await supabase.auth.signOut({ scope: 'global' })
+      
+      if (globalError) {
+        console.warn('⚠️ Global sign out failed, trying local:', globalError.message)
+        const { error: localError } = await supabase.auth.signOut({ scope: 'local' })
+        
+        if (localError) {
+          console.error('❌ Local sign out also failed:', localError.message)
+        } else {
+          console.log('✅ Local sign out successful')
+        }
+      } else {
+        console.log('✅ Global sign out successful')
+      }
+    } catch (err) {
+      console.error('❌ Sign out exception:', err)
+    }
+    
+    // Let auth state change handler process the sign out
+    console.log('✅ Sign out completed, letting auth state handler manage the rest')
+    setLoading(false)
   }
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-xl text-gray-600">Loading...</div>
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-4"></div>
+          <div className="text-xl text-gray-600">Authenticating...</div>
+          <div className="text-sm text-gray-400 mt-2">Please wait while we verify your session</div>
+        </div>
       </div>
     )
   }

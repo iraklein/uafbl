@@ -55,7 +55,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to fetch rosters' }, { status: 500 })
     }
 
-    // Get draft prices and keeper status from 2024 season for each player
+    // Get draft prices and keeper status from CURRENT season for each player
+    // This shows what they were drafted for THIS season and calculates next year's keeper cost
     const { data: draftPrices, error: draftError } = await supabase
       .from('draft_results')
       .select(`
@@ -63,10 +64,10 @@ export async function GET(request: NextRequest) {
         draft_price,
         is_keeper,
         seasons!inner (
-          year
+          id
         )
       `)
-      .eq('seasons.year', 2024)
+      .eq('seasons.id', seasonId)
 
     if (draftError) {
       console.error('Draft prices error:', draftError)
