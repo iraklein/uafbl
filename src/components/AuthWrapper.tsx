@@ -104,8 +104,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
             if (data.user.email) {
               await checkAdminStatus(data.user.email)
             }
-            // Show password setup for invites and magic links if not already completed
-            if ((type === 'invite' || type === 'magiclink') && !localStorage.getItem('password_setup_complete')) {
+            // Show password setup for invites and recovery (magic links) if not already completed
+            if ((type === 'invite' || type === 'recovery') && !localStorage.getItem('password_setup_complete')) {
               setShowPasswordSetup(true)
             }
             setLoading(false)
@@ -139,7 +139,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           const userMetadata = session.user.user_metadata || {}
           const isInviteOrMagicLink = userMetadata.invitation || 
             window.location.hash.includes('type=invite') ||
-            window.location.hash.includes('type=magiclink')
+            window.location.hash.includes('type=recovery')
           
           // Also check if user has never set a password (for any magic link users)
           const hasNeverSetPassword = !localStorage.getItem(`password_setup_complete_${session.user.id}`)
