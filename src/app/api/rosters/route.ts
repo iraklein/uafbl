@@ -2,6 +2,20 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
 import { calculateKeeperCost } from '../../../../lib/keeper-utils'
 
+interface RosterData {
+  id: number
+  keeper_cost: number | null
+  consecutive_keeps: number | null
+  players: {
+    id: number
+    name: string
+  }
+  managers: {
+    id: number
+    manager_name: string
+  }
+}
+
 export async function GET(request: NextRequest) {
   try {
     const supabase = createServerSupabaseClient()
@@ -81,8 +95,8 @@ export async function GET(request: NextRequest) {
     })
 
     // Add draft prices, keeper status, and calculated keeper costs to roster data
-    const rostersWithPrices = rosters?.map(roster => {
-      const playerId = (roster.players as any).id
+    const rostersWithPrices = (rosters as RosterData[])?.map(roster => {
+      const playerId = roster.players.id
       const draftPrice = draftInfoMap[playerId]?.draft_price || null
       const isKeeper = draftInfoMap[playerId]?.is_keeper || false
       const tradeCount = tradeCountMap[playerId] || 0
