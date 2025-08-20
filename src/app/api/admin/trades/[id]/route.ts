@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '../../../../../../lib/supabase'
+import { createServerSupabaseClient } from '../../../../../../lib/supabase'
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const supabase = createServerSupabaseClient()
+  const { id } = await params
   try {
-    const tradeId = parseInt(params.id)
+    const tradeId = parseInt(id)
 
     if (!tradeId || isNaN(tradeId)) {
       return NextResponse.json({ error: 'Invalid trade ID' }, { status: 400 })
@@ -25,8 +26,7 @@ export async function DELETE(
     }
 
     return NextResponse.json({ message: 'Trade deleted successfully' })
-  } catch (error) {
-    console.error('API error:', error)
+  } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
