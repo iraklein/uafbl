@@ -1,0 +1,1037 @@
+[
+  {
+    "year": 2014,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 122
+  },
+  {
+    "year": 2014,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 110
+  },
+  {
+    "year": 2014,
+    "original": "Lamarcus Aldridge",
+    "mapped": "Lamarcus Aldridge",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 107
+  },
+  {
+    "year": 2014,
+    "original": "Carmelo Anthony",
+    "mapped": "Carmelo Anthony",
+    "team": "Buchs",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 100
+  },
+  {
+    "year": 2014,
+    "original": "Al Jefferson",
+    "mapped": "Al Jefferson",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 97
+  },
+  {
+    "year": 2014,
+    "original": "Marc Gasol",
+    "mapped": "Marc Gasol",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 86
+  },
+  {
+    "year": 2014,
+    "original": "Joakim Noah",
+    "mapped": "Joakim Noah",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 86
+  },
+  {
+    "year": 2014,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 85
+  },
+  {
+    "year": 2014,
+    "original": "Dwight Howard",
+    "mapped": "Dwight Howard",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 83
+  },
+  {
+    "year": 2014,
+    "original": "Dirk Nowitzki",
+    "mapped": "Dirk Nowitzki",
+    "team": "Jones",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 80
+  },
+  {
+    "year": 2014,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 79
+  },
+  {
+    "year": 2014,
+    "original": "Derrick Rose",
+    "mapped": "Derrick Rose",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 69
+  },
+  {
+    "year": 2014,
+    "original": "Chris Bosh",
+    "mapped": "Chris Bosh",
+    "team": "Phil",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 67
+  },
+  {
+    "year": 2014,
+    "original": "DeMarcus Cousins",
+    "mapped": "DeMarcus Cousins",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 58
+  },
+  {
+    "year": 2014,
+    "original": "Ty Lawson",
+    "mapped": "Ty Lawson",
+    "team": "Jones",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 56
+  },
+  {
+    "year": 2014,
+    "original": "Kyle Korver",
+    "mapped": "Kyle Korver",
+    "team": "Luskey",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 54
+  },
+  {
+    "year": 2014,
+    "original": "JJ Redick",
+    "mapped": "J.J. Redick",
+    "team": "Amish",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 14
+  },
+  {
+    "year": 2014,
+    "original": "JR Smith",
+    "mapped": "J.R. Smith",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 11
+  },
+  {
+    "year": 2014,
+    "original": "CJ Miles",
+    "mapped": "C.J. Miles",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 4
+  },
+  {
+    "year": 2014,
+    "original": "Wes Johnson",
+    "mapped": "Wes Johnson",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 2
+  },
+  {
+    "year": 2014,
+    "original": "PJ Tucker",
+    "mapped": "P.J. Tucker",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2015,
+    "original": "DeMarcus Cousins",
+    "mapped": "DeMarcus Cousins",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 156
+  },
+  {
+    "year": 2015,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 130
+  },
+  {
+    "year": 2015,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Luskey",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 117
+  },
+  {
+    "year": 2015,
+    "original": "Marc Gasol",
+    "mapped": "Marc Gasol",
+    "team": "Amish",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 86
+  },
+  {
+    "year": 2015,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Jones",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 80
+  },
+  {
+    "year": 2015,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 75
+  },
+  {
+    "year": 2015,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 75
+  },
+  {
+    "year": 2015,
+    "original": "Carmelo Anthony",
+    "mapped": "Carmelo Anthony",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 66
+  },
+  {
+    "year": 2015,
+    "original": "Kyle Korver",
+    "mapped": "Kyle Korver",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 57
+  },
+  {
+    "year": 2015,
+    "original": "Chris Bosh",
+    "mapped": "Chris Bosh",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 56
+  },
+  {
+    "year": 2015,
+    "original": "Al Jefferson",
+    "mapped": "Al Jefferson",
+    "team": "Amish",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 54
+  },
+  {
+    "year": 2015,
+    "original": "Paul George",
+    "mapped": "Paul George",
+    "team": "peskin",
+    "hasPlayer": true,
+    "hasManager": false,
+    "price": 49
+  },
+  {
+    "year": 2015,
+    "original": "Dirk Nowitzki",
+    "mapped": "Dirk Nowitzki",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 40
+  },
+  {
+    "year": 2015,
+    "original": "Dwight Howard",
+    "mapped": "Dwight Howard",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 35
+  },
+  {
+    "year": 2015,
+    "original": "JJ Redick",
+    "mapped": "J.J. Redick",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 34
+  },
+  {
+    "year": 2015,
+    "original": "Ty Lawson",
+    "mapped": "Ty Lawson",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 28
+  },
+  {
+    "year": 2015,
+    "original": "Joakim Noah",
+    "mapped": "Joakim Noah",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 27
+  },
+  {
+    "year": 2015,
+    "original": "Derrick Rose",
+    "mapped": "Derrick Rose",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 17
+  },
+  {
+    "year": 2015,
+    "original": "JR Smith",
+    "mapped": "J.R. Smith",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 13
+  },
+  {
+    "year": 2015,
+    "original": "PJ Tucker",
+    "mapped": "P.J. Tucker",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 6
+  },
+  {
+    "year": 2015,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 5
+  },
+  {
+    "year": 2015,
+    "original": "CJ Miles",
+    "mapped": "C.J. Miles",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 4
+  },
+  {
+    "year": 2016,
+    "original": "JJ Redick",
+    "mapped": "J.J. Redick",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 26
+  },
+  {
+    "year": 2016,
+    "original": "DeMarcus Cousins",
+    "mapped": "DeMarcus Cousins",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 100
+  },
+  {
+    "year": 2016,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 29
+  },
+  {
+    "year": 2016,
+    "original": "Joakim Noah",
+    "mapped": "Joakim Noah",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 7
+  },
+  {
+    "year": 2016,
+    "original": "Carmelo Anthony",
+    "mapped": "Carmelo Anthony",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 56
+  },
+  {
+    "year": 2016,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 88
+  },
+  {
+    "year": 2016,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 71
+  },
+  {
+    "year": 2016,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 68
+  },
+  {
+    "year": 2016,
+    "original": "Marc Gasol",
+    "mapped": "Marc Gasol",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 48
+  },
+  {
+    "year": 2016,
+    "original": "Brandom Ingram",
+    "mapped": "Brandom Ingram",
+    "team": "Jones",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 27
+  },
+  {
+    "year": 2016,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Amish",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 82
+  },
+  {
+    "year": 2016,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 54
+  },
+  {
+    "year": 2016,
+    "original": "Dwight Howard",
+    "mapped": "Dwight Howard",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 29
+  },
+  {
+    "year": 2016,
+    "original": "Dirk Nowitzki",
+    "mapped": "Dirk Nowitzki",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 15
+  },
+  {
+    "year": 2016,
+    "original": "JR Smith",
+    "mapped": "J.R. Smith",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 9
+  },
+  {
+    "year": 2016,
+    "original": "Kyle Korver",
+    "mapped": "Kyle Korver",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 5
+  },
+  {
+    "year": 2016,
+    "original": "Derrick Rose",
+    "mapped": "Derrick Rose",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 6
+  },
+  {
+    "year": 2016,
+    "original": "CJ Miles",
+    "mapped": "C.J. Miles",
+    "team": "Buchs",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2017,
+    "original": "Marc Gasol",
+    "mapped": "Marc Gasol",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 58
+  },
+  {
+    "year": 2017,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Phil",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 20
+  },
+  {
+    "year": 2017,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Buchs",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 48
+  },
+  {
+    "year": 2017,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 98
+  },
+  {
+    "year": 2017,
+    "original": "PJ Tucker",
+    "mapped": "P.J. Tucker",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2017,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 77
+  },
+  {
+    "year": 2017,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 46
+  },
+  {
+    "year": 2017,
+    "original": "JJ Redick",
+    "mapped": "J.J. Redick",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 8
+  },
+  {
+    "year": 2017,
+    "original": "Dwight Howard",
+    "mapped": "Dwight Howard",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 4
+  },
+  {
+    "year": 2017,
+    "original": "Dirk Nowitzki",
+    "mapped": "Dirk Nowitzki",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 10
+  },
+  {
+    "year": 2017,
+    "original": "Derrick Rose",
+    "mapped": "Derrick Rose",
+    "team": "Luskey",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 2
+  },
+  {
+    "year": 2017,
+    "original": "DeMarcus Cousins",
+    "mapped": "DeMarcus Cousins",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 112
+  },
+  {
+    "year": 2017,
+    "original": "CJ Miles",
+    "mapped": "C.J. Miles",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2017,
+    "original": "Carmelo Anthony",
+    "mapped": "Carmelo Anthony",
+    "team": "Buchs",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 30
+  },
+  {
+    "year": 2017,
+    "original": "Brandom Ingram",
+    "mapped": "Brandom Ingram",
+    "team": "Horn",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 36
+  },
+  {
+    "year": 2017,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Phil",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 71
+  },
+  {
+    "year": 2018,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 73
+  },
+  {
+    "year": 2018,
+    "original": "DeMarcus Cousins",
+    "mapped": "DeMarcus Cousins",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 69
+  },
+  {
+    "year": 2018,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 56
+  },
+  {
+    "year": 2018,
+    "original": "Marc Gasol",
+    "mapped": "Marc Gasol",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 47
+  },
+  {
+    "year": 2018,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 28
+  },
+  {
+    "year": 2018,
+    "original": "Marvin Bagley, III",
+    "mapped": "Marvin Bagley, III",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 23
+  },
+  {
+    "year": 2018,
+    "original": "JJ Redick",
+    "mapped": "J.J. Redick",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 17
+  },
+  {
+    "year": 2018,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 15
+  },
+  {
+    "year": 2018,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 7
+  },
+  {
+    "year": 2018,
+    "original": "Fred VanFleet",
+    "mapped": "Fred VanFleet",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 5
+  },
+  {
+    "year": 2018,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 5
+  },
+  {
+    "year": 2018,
+    "original": "Dwight Howard",
+    "mapped": "Dwight Howard",
+    "team": "Mitch",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 3
+  },
+  {
+    "year": 2019,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Bier",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 55
+  },
+  {
+    "year": 2019,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Buchs",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 19
+  },
+  {
+    "year": 2019,
+    "original": "Marc Gasol",
+    "mapped": "Marc Gasol",
+    "team": "Mitch",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 29
+  },
+  {
+    "year": 2019,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Peskin",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 38
+  },
+  {
+    "year": 2019,
+    "original": "Marvin Bagley, III",
+    "mapped": "Marvin Bagley, III",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 33
+  },
+  {
+    "year": 2019,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 5
+  },
+  {
+    "year": 2019,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Amish",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 11
+  },
+  {
+    "year": 2019,
+    "original": "JJ Redick",
+    "mapped": "J.J. Redick",
+    "team": "Mitch",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 10
+  },
+  {
+    "year": 2019,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Jones",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 2
+  },
+  {
+    "year": 2019,
+    "original": "Derrick Rose",
+    "mapped": "Derrick Rose",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 2
+  },
+  {
+    "year": 2019,
+    "original": "PJ Tucker",
+    "mapped": "P.J. Tucker",
+    "team": "Emmer",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2020,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 70
+  },
+  {
+    "year": 2020,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Tmac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 46
+  },
+  {
+    "year": 2020,
+    "original": "Marvin Bagley, III",
+    "mapped": "Marvin Bagley, III",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 27
+  },
+  {
+    "year": 2020,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Glaspie",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 21
+  },
+  {
+    "year": 2020,
+    "original": "DeMarcus Cousins",
+    "mapped": "DeMarcus Cousins",
+    "team": "Buchs",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 10
+  },
+  {
+    "year": 2020,
+    "original": "Blake Griffin",
+    "mapped": "Blake Griffin",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 10
+  },
+  {
+    "year": 2020,
+    "original": "Paul Millsap",
+    "mapped": "Paul Millsap",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 6
+  },
+  {
+    "year": 2020,
+    "original": "Serge Ibaka",
+    "mapped": "Serge Ibaka",
+    "team": "Weeg",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 5
+  },
+  {
+    "year": 2020,
+    "original": "Derrick Jones, Jr.",
+    "mapped": "Derrick Jones, Jr.",
+    "team": "Haight",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 2
+  },
+  {
+    "year": 2020,
+    "original": "Mo Wagner",
+    "mapped": "Mo Wagner",
+    "team": "Amish",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 2
+  },
+  {
+    "year": 2020,
+    "original": "Derrick Rose",
+    "mapped": "Derrick Rose",
+    "team": "Luskey",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2021,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "Gabe",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 6
+  },
+  {
+    "year": 2021,
+    "original": "John Wall",
+    "mapped": "John Wall",
+    "team": "Mitch",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2021,
+    "original": "LaMarcus Aldridge",
+    "mapped": "LaMarcus Aldridge",
+    "team": "Jones",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  },
+  {
+    "year": 2022,
+    "original": "TJ Warren",
+    "mapped": "T.J. Warren",
+    "team": "MikeMac",
+    "hasPlayer": false,
+    "hasManager": true,
+    "price": 1
+  }
+]

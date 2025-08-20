@@ -1,0 +1,3489 @@
+{
+  "existingInSupabase": 561,
+  "maxExistingId": 7384,
+  "historicalWithIds": 409,
+  "historicalWithoutIds": 617,
+  "missingFromSupabase": 696,
+  "playersToInsert": [
+    {
+      "name": "Russell Westbrook",
+      "bbm_id": 2872,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "DeAndre Jordan",
+      "bbm_id": 2841,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Taj Gibson",
+      "bbm_id": 3011,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Reggie Jackson",
+      "bbm_id": 3370,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Markieff Morris",
+      "bbm_id": 3388,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Tristan Thompson",
+      "bbm_id": 3400,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Alec Burks",
+      "bbm_id": 3356,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Bojan Bogdanovic",
+      "bbm_id": 3354,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Alex Len",
+      "bbm_id": 3720,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Cody Zeller",
+      "bbm_id": 3678,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "James Johnson",
+      "bbm_id": 3029,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Cory Joseph",
+      "bbm_id": 3373,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Jahlil Okafor",
+      "bbm_id": 5037,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Frank Kaminsky",
+      "bbm_id": 5026,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Patty Mills",
+      "bbm_id": 3040,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Delon Wright",
+      "bbm_id": 5058,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Josh Richardson",
+      "bbm_id": 5046,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Trey Lyles",
+      "bbm_id": 5029,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Seth Curry",
+      "bbm_id": 3863,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Ben Simmons",
+      "bbm_id": 5271,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Malcolm Brogdon",
+      "bbm_id": 5308,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Richaun Holmes",
+      "bbm_id": 5021,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Skal Labissiere",
+      "bbm_id": 5351,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Harry Giles",
+      "bbm_id": 5466,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "OG Anunoby",
+      "bbm_id": 5469,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Bogdan Bogdanovich",
+      "bbm_id": 3904,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Michael Porter, Jr.",
+      "bbm_id": 5682,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Marvin Bagley, III",
+      "bbm_id": 5721,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Mo Bamba",
+      "bbm_id": 5711,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Jaren Jackson, Jr.",
+      "bbm_id": 5698,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Wendall Carter, Jr.",
+      "bbm_id": 5675,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "RJ Barrett",
+      "bbm_id": 6057,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Bol Bol",
+      "bbm_id": 6114,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Kevin Knox",
+      "bbm_id": 5705,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Cameron Reddish",
+      "bbm_id": 6109,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Charles Bassey",
+      "bbm_id": 6309,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Colin Sexton",
+      "bbm_id": 5677,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Zhaire Smith",
+      "bbm_id": 5712,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Mo Wagner",
+      "bbm_id": 5697,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Emoni Bates",
+      "bbm_id": 6792,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Patrick Baldwin, Jr.",
+      "bbm_id": 6536,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Malik Beasley",
+      "bbm_id": 5427,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Landry Shamet",
+      "bbm_id": 5713,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Christian Wood",
+      "bbm_id": 5145,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Thomas Bryant",
+      "bbm_id": 5488,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Monte Morris",
+      "bbm_id": 5497,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Devonte' Graham",
+      "bbm_id": 5670,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Kevin Porter",
+      "bbm_id": 6113,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Damion Lee",
+      "bbm_id": 5249,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Cody Martin",
+      "bbm_id": 5980,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Gary Trent, Jr.",
+      "bbm_id": 5719,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Nassir Little",
+      "bbm_id": 5991,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Shake Milton",
+      "bbm_id": 5714,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Keita Bates-Diop",
+      "bbm_id": 5702,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Talen Horton-Tucker",
+      "bbm_id": 6116,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Torrey Craig",
+      "bbm_id": 5577,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Derrick Jones, Jr.",
+      "bbm_id": 5442,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Terrance Mann",
+      "bbm_id": 6015,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Bruno Fernando",
+      "bbm_id": 6048,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Killian Hayes",
+      "bbm_id": 6153,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Precious Achiuwa",
+      "bbm_id": 6163,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Daniel Theis",
+      "bbm_id": 4049,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Malachi Flynn",
+      "bbm_id": 6166,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Jalen McDaniels",
+      "bbm_id": 5981,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "KJ Martin Jr.",
+      "bbm_id": 6207,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Kira Lewis",
+      "bbm_id": 6156,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Chris Duarte",
+      "bbm_id": 6303,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Terry Taylor",
+      "bbm_id": 6354,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Bones Hyland",
+      "bbm_id": 6293,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Josh Christopher",
+      "bbm_id": 6307,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Gary Payton II",
+      "bbm_id": 5336,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Johnny Davis",
+      "bbm_id": 6508,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Skylar Mays",
+      "bbm_id": 6182,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Kai Jones",
+      "bbm_id": 6297,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Jalen Hood-Schifino",
+      "bbm_id": 6744,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Garrison Mathews",
+      "bbm_id": 6094,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Johnny Juzang",
+      "bbm_id": 6568,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Dalano Banton",
+      "bbm_id": 6337,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Vasilije Micic",
+      "bbm_id": 3937,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Alex Sarr",
+      "bbm_id": 6935,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Reece Beekman",
+      "bbm_id": 7004,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Jeff Dowtin Jr",
+      "bbm_id": 6388,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Jeremiah Robinson-Earl",
+      "bbm_id": 6326,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "Colin Castleton",
+      "bbm_id": 6785,
+      "source": "historical_with_id"
+    },
+    {
+      "name": "John Wall",
+      "bbm_id": 1,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Serge Ibaka",
+      "bbm_id": 2,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "LaMarcus Aldridge",
+      "bbm_id": 3,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Carmelo Anthony",
+      "bbm_id": 4,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Al Jefferson",
+      "bbm_id": 5,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marc Gasol",
+      "bbm_id": 6,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Joakim Noah",
+      "bbm_id": 7,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Paul Millsap",
+      "bbm_id": 8,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dwight Howard",
+      "bbm_id": 9,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dirk Nowitzki",
+      "bbm_id": 10,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Blake Griffin",
+      "bbm_id": 11,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Derrick Rose",
+      "bbm_id": 12,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Bosh",
+      "bbm_id": 13,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "DeMarcus Cousins",
+      "bbm_id": 14,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ty Lawson",
+      "bbm_id": 15,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kyle Korver",
+      "bbm_id": 16,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tim Duncan",
+      "bbm_id": 17,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marcin Gortat",
+      "bbm_id": 18,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gordon Hayward",
+      "bbm_id": 19,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ryan Anderson",
+      "bbm_id": 20,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Deron Williams",
+      "bbm_id": 21,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rudy Gay",
+      "bbm_id": 22,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kenneth Faried",
+      "bbm_id": 23,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Pau Gasol",
+      "bbm_id": 24,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rajon Rondo",
+      "bbm_id": 25,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Monta Ellis",
+      "bbm_id": 26,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Roy Hibbert",
+      "bbm_id": 27,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kemba Walker",
+      "bbm_id": 28,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jeff Teague",
+      "bbm_id": 29,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dwyane Wade",
+      "bbm_id": 30,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kobe Bryant",
+      "bbm_id": 31,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ricky Rubio",
+      "bbm_id": 32,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jabari Parker",
+      "bbm_id": 33,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tony Parker",
+      "bbm_id": 34,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Derrick Favors",
+      "bbm_id": 35,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Patrick Beverley",
+      "bbm_id": 36,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jose Calderon",
+      "bbm_id": 37,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wesley Matthews",
+      "bbm_id": 38,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Goran Dragic",
+      "bbm_id": 39,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "David Lee",
+      "bbm_id": 40,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Trey Burke",
+      "bbm_id": 41,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Darren Collison",
+      "bbm_id": 42,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Robin Lopez",
+      "bbm_id": 43,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chandler Parsons",
+      "bbm_id": 44,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andrew Bogut",
+      "bbm_id": 45,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nerlens Noel",
+      "bbm_id": 46,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Danny Green",
+      "bbm_id": 47,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Josh Smith",
+      "bbm_id": 48,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "David West",
+      "bbm_id": 49,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Victor Oladipo",
+      "bbm_id": 50,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jamal Crawford",
+      "bbm_id": 51,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Michael Carter-Williams",
+      "bbm_id": 52,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Thaddeus Young",
+      "bbm_id": 53,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Greg Monroe",
+      "bbm_id": 54,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Enes Kanter",
+      "bbm_id": 55,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Eric Bledsoe",
+      "bbm_id": 56,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Larry Sanders",
+      "bbm_id": 57,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Amir Johnson",
+      "bbm_id": 58,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kevin Martin",
+      "bbm_id": 59,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyreke Evans",
+      "bbm_id": 60,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luol Deng",
+      "bbm_id": 61,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mirza Teletovic",
+      "bbm_id": 62,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brandon Knight",
+      "bbm_id": 63,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyson Chandler",
+      "bbm_id": 64,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jeremy Lin",
+      "bbm_id": 65,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Michael Kidd-Gilchrist",
+      "bbm_id": 66,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brandon Jennings",
+      "bbm_id": 67,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Joe Johnson",
+      "bbm_id": 68,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jared Sullinger",
+      "bbm_id": 69,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaiah Thomas",
+      "bbm_id": 70,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Zach Randolph",
+      "bbm_id": 71,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "George Hill",
+      "bbm_id": 72,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nikola Pekovic",
+      "bbm_id": 73,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Arron Afflalo",
+      "bbm_id": 74,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Manu Ginobili",
+      "bbm_id": 75,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tony Wroten",
+      "bbm_id": 76,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Channing Frye",
+      "bbm_id": 77,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JJ Redick",
+      "bbm_id": 78,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Timofey Mozgov",
+      "bbm_id": 79,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lance Stephenson",
+      "bbm_id": 80,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Trevor Ariza",
+      "bbm_id": 81,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Hill",
+      "bbm_id": 82,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JR Smith",
+      "bbm_id": 83,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Terrence Jones",
+      "bbm_id": 84,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andre Iguodala",
+      "bbm_id": 85,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "John Henson",
+      "bbm_id": 86,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Elfrid Payton",
+      "bbm_id": 87,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Henry Sims",
+      "bbm_id": 88,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mario Chalmers",
+      "bbm_id": 89,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nene Hilario",
+      "bbm_id": 90,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Norris Cole",
+      "bbm_id": 91,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Paul Pierce",
+      "bbm_id": 92,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Josh McRoberts",
+      "bbm_id": 93,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kevin Garnett",
+      "bbm_id": 94,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Omer Asik",
+      "bbm_id": 95,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "DeMarre Carroll",
+      "bbm_id": 96,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anderson Varejao",
+      "bbm_id": 97,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gorgui Dieng",
+      "bbm_id": 98,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JaVale McGee",
+      "bbm_id": 99,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Carlos Boozer",
+      "bbm_id": 100,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "OJ Mayo",
+      "bbm_id": 101,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Perry Jones III",
+      "bbm_id": 102,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nik Stauskas",
+      "bbm_id": 103,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Terrence Ross",
+      "bbm_id": 104,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Danilo Gallinari",
+      "bbm_id": 105,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gerald Green",
+      "bbm_id": 106,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "CJ Miles",
+      "bbm_id": 107,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wilson Chandler",
+      "bbm_id": 108,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Amare Stoudemire",
+      "bbm_id": 109,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Avery Bradley",
+      "bbm_id": 110,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Miles Plumlee",
+      "bbm_id": 111,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marvin Williams",
+      "bbm_id": 112,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tiago Splitter",
+      "bbm_id": 113,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jameer Nelson",
+      "bbm_id": 114,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Copeland",
+      "bbm_id": 115,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Otto Porter Jr",
+      "bbm_id": 116,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ed Davis",
+      "bbm_id": 117,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "DJ Augustin",
+      "bbm_id": 118,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Donald Sloan",
+      "bbm_id": 119,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jodie Meeks",
+      "bbm_id": 120,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ersan Ilyasova",
+      "bbm_id": 121,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Matt Barnes",
+      "bbm_id": 122,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brandan Wright",
+      "bbm_id": 123,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mike Dunleavy",
+      "bbm_id": 124,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rodney Stuckey",
+      "bbm_id": 125,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kyle O'Quinn",
+      "bbm_id": 126,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Spencer Hawes",
+      "bbm_id": 127,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tim Hardaway Jr",
+      "bbm_id": 128,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Evan Turner",
+      "bbm_id": 129,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Noah Vonleh",
+      "bbm_id": 130,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Vince Carter",
+      "bbm_id": 131,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marco Belinelli",
+      "bbm_id": 132,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "PJ Tucker",
+      "bbm_id": 133,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tony Allen",
+      "bbm_id": 134,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shawn Marion",
+      "bbm_id": 135,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andrei Kirilenko",
+      "bbm_id": 136,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Devin Harris",
+      "bbm_id": 137,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Caron Butler",
+      "bbm_id": 138,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marcus Morris",
+      "bbm_id": 139,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Evan Fournier",
+      "bbm_id": 140,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ben McLemore",
+      "bbm_id": 141,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Smith",
+      "bbm_id": 142,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Kaman",
+      "bbm_id": 143,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nikola Mirotic",
+      "bbm_id": 144,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anthony Bennett",
+      "bbm_id": 145,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Udonis Haslem",
+      "bbm_id": 146,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shabazz Napier",
+      "bbm_id": 147,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wesley Johnson",
+      "bbm_id": 148,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Samuel Dalembert",
+      "bbm_id": 149,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Courtney Lee",
+      "bbm_id": 150,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Andersen",
+      "bbm_id": 151,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Corey Brewer",
+      "bbm_id": 152,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Patrick Patterson",
+      "bbm_id": 153,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Randy Foye",
+      "bbm_id": 154,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nick Young",
+      "bbm_id": 155,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Thabo Sefolosha",
+      "bbm_id": 156,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andrea Bargnani",
+      "bbm_id": 157,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Iman Shumpert",
+      "bbm_id": 158,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Boris Diaw",
+      "bbm_id": 159,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anthony Morrow",
+      "bbm_id": 160,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Hollis Thompson",
+      "bbm_id": 161,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shaun Livingston",
+      "bbm_id": 162,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brandon Bass",
+      "bbm_id": 163,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kris Humphries",
+      "bbm_id": 164,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jeremy Lamb",
+      "bbm_id": 165,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "CJ Watson",
+      "bbm_id": 166,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Farmar",
+      "bbm_id": 167,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Pablo Prigioni",
+      "bbm_id": 168,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marreese Speights",
+      "bbm_id": 169,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Danny Granger",
+      "bbm_id": 170,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gerald Henderson",
+      "bbm_id": 171,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kosta Koufos",
+      "bbm_id": 172,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jarrett Jack",
+      "bbm_id": 173,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Maurice Harkless",
+      "bbm_id": 174,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Greivis Vasquez",
+      "bbm_id": 175,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Zeller",
+      "bbm_id": 176,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Al-Farouq Aminu",
+      "bbm_id": 177,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kirk Hinrich",
+      "bbm_id": 178,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mike Miller",
+      "bbm_id": 179,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dion Waiters",
+      "bbm_id": 180,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Carl Landry",
+      "bbm_id": 181,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ramon Sessions",
+      "bbm_id": 182,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Elton Brand",
+      "bbm_id": 183,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Raymond Felton",
+      "bbm_id": 184,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Thompson",
+      "bbm_id": 185,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Steve Blake",
+      "bbm_id": 186,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JJ Hickson",
+      "bbm_id": 187,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Drew Gooden",
+      "bbm_id": 188,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mo Williams",
+      "bbm_id": 189,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Martell Webster",
+      "bbm_id": 190,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dorell Wright",
+      "bbm_id": 191,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "DeJuan Blair",
+      "bbm_id": 192,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nick Collison",
+      "bbm_id": 193,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "John Salmons",
+      "bbm_id": 194,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Zaza Pachulia",
+      "bbm_id": 195,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shawne Williams",
+      "bbm_id": 196,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luc Mbah a Moute",
+      "bbm_id": 197,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Richardson",
+      "bbm_id": 198,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Richard Jefferson",
+      "bbm_id": 199,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jerryd Bayless",
+      "bbm_id": 200,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Terry",
+      "bbm_id": 201,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lou Williams",
+      "bbm_id": 202,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Derrick Williams",
+      "bbm_id": 203,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Omri Casspi",
+      "bbm_id": 204,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luis Scola",
+      "bbm_id": 205,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jonas Jerebko",
+      "bbm_id": 206,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tayshaun Prince",
+      "bbm_id": 207,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marcus Thornton",
+      "bbm_id": 208,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gary Neal",
+      "bbm_id": 209,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Aaron Brooks",
+      "bbm_id": 210,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gerald Wallace",
+      "bbm_id": 211,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anthony Tolliver",
+      "bbm_id": 212,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nate Robinson",
+      "bbm_id": 213,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luke Ridnour",
+      "bbm_id": 214,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andre Miller",
+      "bbm_id": 215,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Darrell Arthur",
+      "bbm_id": 216,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Bismack Biyombo",
+      "bbm_id": 217,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wayne Ellington",
+      "bbm_id": 218,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Francisco Garcia",
+      "bbm_id": 219,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cole Aldrich",
+      "bbm_id": 220,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jimmer Fredette",
+      "bbm_id": 221,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kendall Marshall",
+      "bbm_id": 222,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ben Gordon",
+      "bbm_id": 223,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Hansbrough",
+      "bbm_id": 224,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jared Dudley",
+      "bbm_id": 225,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kevin Seraphin",
+      "bbm_id": 226,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Glen Davis",
+      "bbm_id": 227,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brendan Haywood",
+      "bbm_id": 228,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kendrick Perkins",
+      "bbm_id": 229,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chase Budinger",
+      "bbm_id": 230,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Leandro Barbosa",
+      "bbm_id": 231,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brandon Rush",
+      "bbm_id": 232,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Xavier Henry",
+      "bbm_id": 233,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ronny Turiaf",
+      "bbm_id": 234,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shannon Brown",
+      "bbm_id": 235,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jeffery Taylor",
+      "bbm_id": 236,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ekpe Udoh",
+      "bbm_id": 237,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Hedo Turkoglu",
+      "bbm_id": 238,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Austin Rivers",
+      "bbm_id": 239,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Alonzo Gee",
+      "bbm_id": 240,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Thomas Robinson",
+      "bbm_id": 241,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Vitor Faverani",
+      "bbm_id": 242,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Beno Udrih",
+      "bbm_id": 243,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Travis Outlaw",
+      "bbm_id": 244,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Landry Fields",
+      "bbm_id": 245,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chuck Hayes",
+      "bbm_id": 246,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "John Jenkins",
+      "bbm_id": 247,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rasual Butler",
+      "bbm_id": 248,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Meyers Leonard",
+      "bbm_id": 249,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Steve Nash",
+      "bbm_id": 250,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Reggie Williams",
+      "bbm_id": 251,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Will Bynum",
+      "bbm_id": 252,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Archie Goodwin",
+      "bbm_id": 253,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JJ Barea",
+      "bbm_id": 254,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dennis Schroeder",
+      "bbm_id": 255,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marquis Teague",
+      "bbm_id": 256,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andrew Bynum",
+      "bbm_id": 257,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "James Anderson",
+      "bbm_id": 258,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ray Allen",
+      "bbm_id": 259,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andray Blatche",
+      "bbm_id": 260,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Greg Stiemsma",
+      "bbm_id": 261,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Metta World Peace",
+      "bbm_id": 262,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Earl Clark",
+      "bbm_id": 263,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jamaal Tinsley",
+      "bbm_id": 264,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shane Battier",
+      "bbm_id": 265,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Carlos Delfino",
+      "bbm_id": 266,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Emeka Okafor",
+      "bbm_id": 267,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Hasheem Thabeet",
+      "bbm_id": 268,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andris Biedrins",
+      "bbm_id": 269,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jermaine O'neal",
+      "bbm_id": 270,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Toney Douglas",
+      "bbm_id": 271,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gustavo Ayon",
+      "bbm_id": 272,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Crawford",
+      "bbm_id": 273,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Al Harrington",
+      "bbm_id": 274,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Greg Oden",
+      "bbm_id": 275,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kenyon Martin",
+      "bbm_id": 276,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Michael Beasley",
+      "bbm_id": 277,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Hamilton",
+      "bbm_id": 278,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Eric Maynor",
+      "bbm_id": 279,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Austin Daye",
+      "bbm_id": 280,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Antawn Jamison",
+      "bbm_id": 281,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jan Vesely",
+      "bbm_id": 282,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Maxiell",
+      "bbm_id": 283,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Darius Morris",
+      "bbm_id": 284,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ryan Gomes",
+      "bbm_id": 285,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ronnie Brewer",
+      "bbm_id": 286,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Derek Fisher",
+      "bbm_id": 287,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rudy Fernandez",
+      "bbm_id": 288,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marcus Camby",
+      "bbm_id": 289,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rodrigue Beaubois",
+      "bbm_id": 290,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Charlie Villanueva",
+      "bbm_id": 291,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brandon Roy",
+      "bbm_id": 292,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Richard Hamilton",
+      "bbm_id": 293,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anthony Randolph",
+      "bbm_id": 294,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Linas Kleiza",
+      "bbm_id": 295,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lamar Odom",
+      "bbm_id": 296,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Stephen Jackson",
+      "bbm_id": 297,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Corey Maggette",
+      "bbm_id": 298,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyrus Thomas",
+      "bbm_id": 299,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Daniel Gibson",
+      "bbm_id": 300,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kelenna Azubuike",
+      "bbm_id": 301,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rashard Lewis",
+      "bbm_id": 302,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Delonte West",
+      "bbm_id": 303,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Royce White",
+      "bbm_id": 304,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Wilcox",
+      "bbm_id": 305,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Hakim Warrick",
+      "bbm_id": 306,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Roger Mason",
+      "bbm_id": 307,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Earl Watson",
+      "bbm_id": 308,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Duhon",
+      "bbm_id": 309,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Desagana Diop",
+      "bbm_id": 310,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jamario Moon",
+      "bbm_id": 311,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "DeShawn Stevenson",
+      "bbm_id": 312,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Quentin Richardson",
+      "bbm_id": 313,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Joel Przybilla",
+      "bbm_id": 314,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luke Walton",
+      "bbm_id": 315,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Baron Davis",
+      "bbm_id": 316,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anthony Parker",
+      "bbm_id": 317,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Darko Milicic",
+      "bbm_id": 318,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Gilbert Arenas",
+      "bbm_id": 319,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mike Bibby",
+      "bbm_id": 320,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mehmet Okur",
+      "bbm_id": 321,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mickael Pietrus",
+      "bbm_id": 322,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brad Miller",
+      "bbm_id": 323,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tracy McGrady",
+      "bbm_id": 324,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Antonio Mcdyess",
+      "bbm_id": 325,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Josh Childress",
+      "bbm_id": 326,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Al Thornton",
+      "bbm_id": 327,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Peja Stojakovic",
+      "bbm_id": 328,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ben Wallace",
+      "bbm_id": 329,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Michael Redd",
+      "bbm_id": 330,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andres Nocioni",
+      "bbm_id": 331,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Raja Bell",
+      "bbm_id": 332,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Yi Jianlian",
+      "bbm_id": 333,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Anthony Carter",
+      "bbm_id": 334,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marquis Daniels",
+      "bbm_id": 335,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Josh Howard",
+      "bbm_id": 336,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Troy Murphy",
+      "bbm_id": 337,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Julian Wright",
+      "bbm_id": 338,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "James Posey",
+      "bbm_id": 339,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ike Diogu",
+      "bbm_id": 340,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "T.j. Ford",
+      "bbm_id": 341,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jonny Flynn",
+      "bbm_id": 342,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Terrence Williams",
+      "bbm_id": 343,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Kapono",
+      "bbm_id": 344,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Antonio Daniels",
+      "bbm_id": 345,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Charlie Bell",
+      "bbm_id": 346,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nenad Krstic",
+      "bbm_id": 347,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Acie Law",
+      "bbm_id": 348,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sonny Weems",
+      "bbm_id": 349,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Morris Peterson",
+      "bbm_id": 350,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Larry Hughes",
+      "bbm_id": 351,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Stromile Swift",
+      "bbm_id": 352,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Aleksandar Pavlovic",
+      "bbm_id": 353,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tim Thomas",
+      "bbm_id": 354,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ricky Davis",
+      "bbm_id": 355,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rafer Alston",
+      "bbm_id": 356,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cuttino Mobley",
+      "bbm_id": 357,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Walter Herrmann",
+      "bbm_id": 358,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brevin Knight",
+      "bbm_id": 359,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Bobby Simmons",
+      "bbm_id": 360,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rashad McCants",
+      "bbm_id": 361,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marcus Williams",
+      "bbm_id": 362,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Josh Boone",
+      "bbm_id": 363,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Adam Morrison",
+      "bbm_id": 364,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wally Szcerbiak",
+      "bbm_id": 365,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Douglas Roberts",
+      "bbm_id": 366,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "BJ Mullins",
+      "bbm_id": 367,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chauncey Billups",
+      "bbm_id": 368,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Grant Hill",
+      "bbm_id": 369,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jason Kidd",
+      "bbm_id": 370,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Yao Ming",
+      "bbm_id": 371,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Zydrunas Ilgauskas",
+      "bbm_id": 372,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shaquille O'neal",
+      "bbm_id": 373,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rasheed Wallace",
+      "bbm_id": 374,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Allen Iverson",
+      "bbm_id": 375,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Stephon Marbury",
+      "bbm_id": 376,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sam Cassell",
+      "bbm_id": 377,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "TJ Warren",
+      "bbm_id": 378,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Justin Hamilton",
+      "bbm_id": 379,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sim Bhullar",
+      "bbm_id": 380,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "CJ McCollum",
+      "bbm_id": 381,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ray McCallum",
+      "bbm_id": 382,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rodney Hood",
+      "bbm_id": 383,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Earl Barron",
+      "bbm_id": 384,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mitch McGary",
+      "bbm_id": 385,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ryan Kelly",
+      "bbm_id": 386,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Aron Baynes",
+      "bbm_id": 387,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Trevor Booker",
+      "bbm_id": 388,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Aron Baynes",
+      "bbm_id": 389,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ish Smith",
+      "bbm_id": 390,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Alexis Ajinca",
+      "bbm_id": 391,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ian Mahinmi",
+      "bbm_id": 392,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jae Crowder",
+      "bbm_id": 393,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Quincy Pondexter",
+      "bbm_id": 394,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tony Snell",
+      "bbm_id": 395,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Damien Inglis",
+      "bbm_id": 396,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mike Muscala",
+      "bbm_id": 397,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Bruno Caboclo",
+      "bbm_id": 398,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Joffrey Lauvergne",
+      "bbm_id": 399,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shane Larkin",
+      "bbm_id": 400,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Robert Covington",
+      "bbm_id": 401,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Will Barton",
+      "bbm_id": 402,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Donatas Motiejunas",
+      "bbm_id": 403,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Langston Galloway",
+      "bbm_id": 404,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cleanthony Early",
+      "bbm_id": 405,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Hassan Whiteside",
+      "bbm_id": 406,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jabari Brown",
+      "bbm_id": 407,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tarik Black",
+      "bbm_id": 408,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Furkan Aldemir",
+      "bbm_id": 409,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Adreian Payne",
+      "bbm_id": 410,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "KJ McDaniels",
+      "bbm_id": 411,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mario Hezonja",
+      "bbm_id": 412,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Karl Anthony Towns",
+      "bbm_id": 413,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Emmanuel Mudiay",
+      "bbm_id": 414,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Stanley Johnson",
+      "bbm_id": 415,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Justise Winslow",
+      "bbm_id": 416,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nemanja Bjelica",
+      "bbm_id": 417,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jerian Grant",
+      "bbm_id": 418,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Willie Cauley-Stein",
+      "bbm_id": 419,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaiah Canaan",
+      "bbm_id": 420,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Justin Anderson",
+      "bbm_id": 421,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kent Bazemore",
+      "bbm_id": 422,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Raul Neto",
+      "bbm_id": 423,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rondae Hollis-Jefferson",
+      "bbm_id": 424,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jeff Withey",
+      "bbm_id": 425,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Bryce Dejean Jones",
+      "bbm_id": 426,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jonathan Simmons",
+      "bbm_id": 427,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dante Cunningham",
+      "bbm_id": 428,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marcelo Huertas",
+      "bbm_id": 429,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luke Babbitt",
+      "bbm_id": 430,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Markel Brown",
+      "bbm_id": 431,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "James Ennis",
+      "bbm_id": 432,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Montrezl Harrell",
+      "bbm_id": 433,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cristiano Felicio",
+      "bbm_id": 434,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Boban Marjonovic",
+      "bbm_id": 435,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris McCullough",
+      "bbm_id": 436,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ronnie Price",
+      "bbm_id": 437,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sean Kilpatrick",
+      "bbm_id": 438,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Allen Crabbe",
+      "bbm_id": 439,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JaMychal Green",
+      "bbm_id": 440,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cameron Payne",
+      "bbm_id": 441,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jon Leuer",
+      "bbm_id": 442,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dewayne Dedmon",
+      "bbm_id": 443,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Solomon Hill",
+      "bbm_id": 444,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Quincy Acy",
+      "bbm_id": 445,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tim Frazier",
+      "bbm_id": 446,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Willie Reed",
+      "bbm_id": 447,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "TJ McConnell",
+      "bbm_id": 448,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "RJ Hunter",
+      "bbm_id": 449,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Mickey",
+      "bbm_id": 450,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan McRae",
+      "bbm_id": 451,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Salah Mejri",
+      "bbm_id": 452,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Walter Tavares",
+      "bbm_id": 453,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Matthew Dellavedova",
+      "bbm_id": 454,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Marquese Chriss",
+      "bbm_id": 455,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Denzel Valentine",
+      "bbm_id": 456,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sergio Rodriguez",
+      "bbm_id": 457,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wade Baldwin",
+      "bbm_id": 458,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Thon Maker",
+      "bbm_id": 459,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Patrick McCaw",
+      "bbm_id": 460,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Johnson",
+      "bbm_id": 461,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Andre Roberson",
+      "bbm_id": 462,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Alex Poythress",
+      "bbm_id": 463,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sam Dekker",
+      "bbm_id": 464,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cheick Diallo",
+      "bbm_id": 465,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nicolas Brussino",
+      "bbm_id": 466,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Yogi Ferrell",
+      "bbm_id": 467,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shawn Long",
+      "bbm_id": 468,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Ulis",
+      "bbm_id": 469,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ron Baker",
+      "bbm_id": 470,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Alan Williams",
+      "bbm_id": 471,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Juancho Hernangomez",
+      "bbm_id": 472,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Davis Bertans",
+      "bbm_id": 473,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dragan Bender",
+      "bbm_id": 474,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Timothe Luwawu-Cabarrot",
+      "bbm_id": 475,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Briante Weber",
+      "bbm_id": 476,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Paul Zipser",
+      "bbm_id": 477,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lucas Nogueira",
+      "bbm_id": 478,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Deandre' Bembry",
+      "bbm_id": 479,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Henry Ellenson",
+      "bbm_id": 480,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ante Zizic",
+      "bbm_id": 481,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Ennis",
+      "bbm_id": 482,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Quinn Cook",
+      "bbm_id": 483,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Maurice Ndour",
+      "bbm_id": 484,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Willy Hernangomez",
+      "bbm_id": 485,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaiah Whitehead",
+      "bbm_id": 486,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Edy Tavares",
+      "bbm_id": 487,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tomas Satoransky",
+      "bbm_id": 488,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Georgios Papagiannis",
+      "bbm_id": 489,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Markelle Fultz",
+      "bbm_id": 490,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Josh Jackson",
+      "bbm_id": 491,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Fankie Smokes",
+      "bbm_id": 492,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dennis Smith, Jr.",
+      "bbm_id": 493,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Justin Jackson",
+      "bbm_id": 494,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Justin Patton",
+      "bbm_id": 495,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "DJ Wilson",
+      "bbm_id": 496,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "TJ Leaf",
+      "bbm_id": 497,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Terrance Ferguson",
+      "bbm_id": 498,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Lydon",
+      "bbm_id": 499,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Caleb Swanigan",
+      "bbm_id": 500,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Frankie Ntilinka",
+      "bbm_id": 501,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Milos Teodosic",
+      "bbm_id": 502,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Justin Holiday",
+      "bbm_id": 503,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Bell",
+      "bbm_id": 504,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Trevon Duval",
+      "bbm_id": 505,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Vernon Carey, Jr.",
+      "bbm_id": 506,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sekou Doumbouya",
+      "bbm_id": 507,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shelvin Mack",
+      "bbm_id": 508,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Reggie Bullock",
+      "bbm_id": 509,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ivan Rabb",
+      "bbm_id": 510,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "MarShon Brooks",
+      "bbm_id": 511,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jonah Bolden",
+      "bbm_id": 512,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Johnathan Motley",
+      "bbm_id": 513,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Khem Birch",
+      "bbm_id": 514,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaiah Taylor",
+      "bbm_id": 515,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Damyean Dotson",
+      "bbm_id": 516,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "David Nwaba",
+      "bbm_id": 517,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "E'Twaun Moore",
+      "bbm_id": 518,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyrone Wallace",
+      "bbm_id": 519,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Deyonta Davis",
+      "bbm_id": 520,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jonathan Gibson",
+      "bbm_id": 521,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Tyler Dorsey",
+      "bbm_id": 522,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Wes Iwundu",
+      "bbm_id": 523,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jerome Robinson",
+      "bbm_id": 524,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Elie Okobo",
+      "bbm_id": 525,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cedi Osman",
+      "bbm_id": 526,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Romeo Langford",
+      "bbm_id": 527,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lebron James Jr",
+      "bbm_id": 528,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "RJ Hampton",
+      "bbm_id": 529,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jontay Porter",
+      "bbm_id": 530,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jarrett Culver",
+      "bbm_id": 531,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jakarr Sampson",
+      "bbm_id": 532,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dwayne Bacon",
+      "bbm_id": 533,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sterling Brown",
+      "bbm_id": 534,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ryan Arcidiacono",
+      "bbm_id": 535,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chandler Hutchison",
+      "bbm_id": 536,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Bryn Forbes",
+      "bbm_id": 537,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rodion Kurucs",
+      "bbm_id": 538,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lonnie Walker IV",
+      "bbm_id": 539,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Troy Brown",
+      "bbm_id": 540,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Danuel House",
+      "bbm_id": 541,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Semi Ojeleye",
+      "bbm_id": 542,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Walt Lemon",
+      "bbm_id": 543,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ian Clark",
+      "bbm_id": 544,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Shaquille Harrison",
+      "bbm_id": 545,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Joe Harris",
+      "bbm_id": 546,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jackson Hayes",
+      "bbm_id": 547,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dylan Windler",
+      "bbm_id": 548,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Eric Paschall",
+      "bbm_id": 549,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Norvel Pelle",
+      "bbm_id": 550,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Nicolo Melli",
+      "bbm_id": 551,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Glenn Robinson III",
+      "bbm_id": 552,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Furkan Korkmaz",
+      "bbm_id": 553,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Dzanan Musa",
+      "bbm_id": 554,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Darius Bazley",
+      "bbm_id": 555,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kendrick Nunn",
+      "bbm_id": 556,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cameron Johnson",
+      "bbm_id": 557,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaac Bonga",
+      "bbm_id": 558,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "PJ Dozier",
+      "bbm_id": 559,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Edmond Sumner",
+      "bbm_id": 560,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Brad Wanamaker",
+      "bbm_id": 561,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Matt Thomas",
+      "bbm_id": 562,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Mike Scott",
+      "bbm_id": 563,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Abdel Nader",
+      "bbm_id": 564,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chris Chiozza",
+      "bbm_id": 565,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Hamidou Diallo",
+      "bbm_id": 566,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chimezie Metu",
+      "bbm_id": 567,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Chuma Okeke",
+      "bbm_id": 568,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Aleksej Pokusevski",
+      "bbm_id": 569,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Louis King",
+      "bbm_id": 570,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Khyri Thomas",
+      "bbm_id": 571,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaiah Roby",
+      "bbm_id": 572,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Theo Maledon",
+      "bbm_id": 573,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kelan Martin",
+      "bbm_id": 574,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Facundo Campazzo",
+      "bbm_id": 575,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Armoni Brooks",
+      "bbm_id": 576,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Juan Toscano-Anderson",
+      "bbm_id": 577,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Moses Brown",
+      "bbm_id": 578,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Oshae Brissett",
+      "bbm_id": 579,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Damian Jones",
+      "bbm_id": 580,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Freddie Gillespie",
+      "bbm_id": 581,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "KZ Okpala",
+      "bbm_id": 582,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jordan Nwora",
+      "bbm_id": 583,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Trenton Watford",
+      "bbm_id": 584,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Herbert Jones",
+      "bbm_id": 585,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Braxton Key",
+      "bbm_id": 586,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Rayjon Tucker",
+      "bbm_id": 587,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Joshua Primo",
+      "bbm_id": 588,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jaylen Hoard",
+      "bbm_id": 589,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Cameron Thomas",
+      "bbm_id": 590,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Duane Washington Jr.",
+      "bbm_id": 591,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jabari Smith",
+      "bbm_id": 592,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ousman Dieng",
+      "bbm_id": 593,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "James Bouknight",
+      "bbm_id": 594,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Isaiah Mobley",
+      "bbm_id": 595,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "JT Thor",
+      "bbm_id": 596,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Sandro Mamukelashvii",
+      "bbm_id": 597,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Jeenathan Williams",
+      "bbm_id": 598,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "AJ Griffin",
+      "bbm_id": 599,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Luka Samanic",
+      "bbm_id": 600,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "John Butler, Jr.",
+      "bbm_id": 601,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "RaiQuan Gray",
+      "bbm_id": 602,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Kenneth Lofton, Jr.",
+      "bbm_id": 603,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "A.J. Griffin",
+      "bbm_id": 604,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "GG Jackson II",
+      "bbm_id": 605,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Craig Porter",
+      "bbm_id": 606,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Lamar Stevens",
+      "bbm_id": 607,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Ron Holland II",
+      "bbm_id": 608,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "AJ Johnson",
+      "bbm_id": 609,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Carlton Carrington",
+      "bbm_id": 610,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Keion Brooks Jr.",
+      "bbm_id": 611,
+      "source": "historical_without_id"
+    },
+    {
+      "name": "Oscar Tschiebwe",
+      "bbm_id": 612,
+      "source": "historical_without_id"
+    }
+  ]
+}

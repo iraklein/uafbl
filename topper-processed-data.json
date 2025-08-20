@@ -1,0 +1,1302 @@
+[
+  {
+    "year": 2024,
+    "manager": "Amish",
+    "player_name": "Onyeka Okongwu",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Bier",
+    "player_name": "Tobias Harris",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": true,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Buchs",
+    "player_name": "Evan Mobley",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": "quad"
+  },
+  {
+    "year": 2024,
+    "manager": "Emmer",
+    "player_name": "Donovan Clingan",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Gabe",
+    "player_name": "Reed Sheppard",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Haight",
+    "player_name": "Paolo Banchero",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Horn",
+    "player_name": "Evan Mobley",
+    "is_winner": true,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": "quad"
+  },
+  {
+    "year": 2024,
+    "manager": "Jones",
+    "player_name": "Cade Cunningham",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Luskey",
+    "player_name": "Evan Mobley",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": "quad"
+  },
+  {
+    "year": 2024,
+    "manager": "MikeMac",
+    "player_name": "Alex Sarr",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Mitch",
+    "player_name": "Anthony Edwards",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": true,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Peskin",
+    "player_name": "Chet Holmgren",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Phil",
+    "player_name": "Zach Edey",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": true,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "TMac",
+    "player_name": "Paul George",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2024,
+    "manager": "Weeg",
+    "player_name": "Evan Mobley",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": "quad"
+  },
+  {
+    "year": 2023,
+    "manager": "Amish",
+    "player_name": "Victor Wembanyama",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": true,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Bier",
+    "player_name": "Victor Wembanyama",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": true,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Buchs",
+    "player_name": "Jordan Poole",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Emmer",
+    "player_name": "Austin Reeves",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Gabe",
+    "player_name": "DeAndre Ayton",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Haight",
+    "player_name": "Zion Williamson",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Horn",
+    "player_name": "Giannis Antetokounmpo",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Jones",
+    "player_name": "Jabari Smith",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Luskey",
+    "player_name": "Myles Turner",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "MikeMac",
+    "player_name": "Trae Young",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Mitch",
+    "player_name": "Victor Wembanyama",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": true,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Peskin",
+    "player_name": "Jayson Tatum",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Phil",
+    "player_name": "Jabari Smith",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "TMac",
+    "player_name": "Pascal Siakam",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2023,
+    "manager": "Weeg",
+    "player_name": "Zion Williamson",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Amish",
+    "player_name": "Nikola Jokic",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Bier",
+    "player_name": "SGA",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": true,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Buchs",
+    "player_name": "Myles Turner",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Emmer",
+    "player_name": "John Collins",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Gabe",
+    "player_name": "Chet Holmgren",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Haight",
+    "player_name": "James Harden",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Horn",
+    "player_name": "Bam Adebayo",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Jones",
+    "player_name": "Paolo Banchero",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Luskey",
+    "player_name": "Benedict Mathurini",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "MikeMac",
+    "player_name": "Chet Holmgren",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Mitch",
+    "player_name": "Myles Turner",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Peskin",
+    "player_name": "Luka Doncic",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Phil",
+    "player_name": "De'aaron Fox",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "TMac",
+    "player_name": "Terry Rozier",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2022,
+    "manager": "Weeg",
+    "player_name": "Domantas Sabonis",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Amish",
+    "player_name": "Alperen Sengun",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Bier",
+    "player_name": "Deandre Ayton",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Buchs",
+    "player_name": "Alperen Sengun",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Emmer",
+    "player_name": "Zion Williamson",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Gabe",
+    "player_name": "Trae Young",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Glaspie",
+    "player_name": "Jaren Jackson Jr",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Haight",
+    "player_name": "Jamal Murray",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Horn",
+    "player_name": "Keldon Johnson",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Jones",
+    "player_name": "Khris Middleton",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Luskey",
+    "player_name": "Alperen Sengun",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "MikeMac",
+    "player_name": "Kyrie Irving",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Mitch",
+    "player_name": "Matisse Thybulle",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Peskin",
+    "player_name": "James Harden",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "TMac",
+    "player_name": "Khris Middleton",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2021,
+    "manager": "Weeg",
+    "player_name": "Kristaps Porzingis",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Amish",
+    "player_name": "Killian Hayes",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Bier",
+    "player_name": "Al Horford",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Buchs",
+    "player_name": "Bradley Beal",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Emmer",
+    "player_name": "Jamal Murray",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Gabe",
+    "player_name": "Tyrese Haliburton",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Glaspie",
+    "player_name": "Damian Lillard",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Haight",
+    "player_name": "Steph Curry",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Horn",
+    "player_name": "RJ Barrett",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Jones",
+    "player_name": "Darius Bazley",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Luskey",
+    "player_name": "Anthony Davis",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "MikeMac",
+    "player_name": "Malcolm Brogdon",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Mitch",
+    "player_name": "Onyeka Okongwu",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Peskin",
+    "player_name": "James Harden",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "TMac",
+    "player_name": "Chris Paul",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2020,
+    "manager": "Weeg",
+    "player_name": "Tyler Herro",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Amish",
+    "player_name": "Steven Adams",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Bier",
+    "player_name": "Malcolm Brogdon",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Buchs",
+    "player_name": "Darius Garland",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Emmer",
+    "player_name": "Karl-Anthony Towns",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Gabe",
+    "player_name": "Devin Booker",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Glaspie",
+    "player_name": "Karl-Anthony Towns",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Haight",
+    "player_name": "Giannis or Harden?",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Horn",
+    "player_name": "Joel Embiid",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Jones",
+    "player_name": "Brandon Clarke",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Luskey",
+    "player_name": "Zach LaVine",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "MikeMac",
+    "player_name": "Nikola Jokic",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Mitch",
+    "player_name": "JaVale McGee",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Peskin",
+    "player_name": "Matisse Thybulle",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "TMac",
+    "player_name": "Chris Paul",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2019,
+    "manager": "Weeg",
+    "player_name": "Kevin Durant",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Amish",
+    "player_name": "Victor Oladipo",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Bier",
+    "player_name": "Josh Richardson",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Buchs",
+    "player_name": "Shai Gilgeous-Alexander",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Emmer",
+    "player_name": "Jonas Valanciunas",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Gabe",
+    "player_name": "Markelle Fultz",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Glaspie",
+    "player_name": "Damian Lillard",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Haight",
+    "player_name": "Damian Lillard",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Horn",
+    "player_name": "Eric Bledsoe",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Jones",
+    "player_name": "Rudy Gobert",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Luskey",
+    "player_name": "Rudy Gobert",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Mitch",
+    "player_name": "Dwight Howard",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Peskin",
+    "player_name": "Jrue Holiday",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "TMac",
+    "player_name": "Kevin Knox",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2018,
+    "manager": "Weeg",
+    "player_name": "Gordon Hayward",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Amish",
+    "player_name": "Kyle Kuzma",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Bier",
+    "player_name": "Kevin Love",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": true,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Buchs",
+    "player_name": "Al Horford",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Emmer",
+    "player_name": "Lebron James",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Gabe",
+    "player_name": "John Collins",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Glaspie",
+    "player_name": "Larry Nance Jr",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Haight",
+    "player_name": "Thon Maker",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Horn",
+    "player_name": "Ben Simmons",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Jones",
+    "player_name": "James Harden",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Luskey",
+    "player_name": "Kevin Durant",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Peskin",
+    "player_name": "Elfrid Payton",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "TMac",
+    "player_name": "Kevin Love",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": true,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2017,
+    "manager": "Weeg",
+    "player_name": "Eric Bledsoe",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Amish",
+    "player_name": "Nicolas Batum",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Bier",
+    "player_name": "James Harden",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Buchs",
+    "player_name": "Chris Paul",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Emmer",
+    "player_name": "Reggie Jackson",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Gabe",
+    "player_name": "Marc Gasol",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Glaspie",
+    "player_name": "Chris Paul",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Haight",
+    "player_name": "Kris Dunn",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Horn",
+    "player_name": "Klay Thompson",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Jones",
+    "player_name": "Ben Simmons",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Luskey",
+    "player_name": "Nerlens Noel",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Peskin",
+    "player_name": "Ben Simmons",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "TMac",
+    "player_name": "Trevor Ariza",
+    "is_winner": false,
+    "is_double": false,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  },
+  {
+    "year": 2016,
+    "manager": "Weeg",
+    "player_name": "Jonas Valanciunas",
+    "is_winner": false,
+    "is_double": true,
+    "is_triple": false,
+    "is_unused": false,
+    "notes": null
+  }
+]

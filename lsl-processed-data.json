@@ -1,0 +1,380 @@
+[
+  {
+    "draft_order": 1,
+    "year": 2017,
+    "original_team": "Tmac",
+    "draft_team": "Haight",
+    "player": "Lonzo Ball",
+    "price": 24,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 2,
+    "year": 2017,
+    "original_team": "Peskin",
+    "draft_team": "Amish",
+    "player": "Markelle Fultz",
+    "price": 31,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 3,
+    "year": 2017,
+    "original_team": "Glaspie",
+    "draft_team": "Glaspie",
+    "player": "Josh Jackson",
+    "price": 16,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 4,
+    "year": 2017,
+    "original_team": "Horn",
+    "draft_team": "Buchs",
+    "player": "DeAndre Ayton",
+    "price": 31,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 5,
+    "year": 2017,
+    "original_team": "Gabe",
+    "draft_team": "Amish",
+    "player": "Michael Porter, Jr.",
+    "price": 5,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 6,
+    "year": 2017,
+    "original_team": "Phil",
+    "draft_team": "Tmac",
+    "player": "Marvin Bagley, III",
+    "price": 24,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 7,
+    "year": 2017,
+    "original_team": "Weeg",
+    "draft_team": "Amish",
+    "player": "Dennis Smith, Jr.",
+    "price": 5,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 8,
+    "year": 2017,
+    "original_team": "Emmer",
+    "draft_team": "Tmac",
+    "player": "Zion Williamson",
+    "price": 31,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 9,
+    "year": 2017,
+    "original_team": "Haight",
+    "draft_team": "Haight",
+    "player": "Malik Monk",
+    "price": 5,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 10,
+    "year": 2017,
+    "original_team": "Buchs",
+    "draft_team": "Gabe",
+    "player": "Jonathan Isaac",
+    "price": 11,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 11,
+    "year": 2017,
+    "original_team": "Jones",
+    "draft_team": "Gabe",
+    "player": "De'Aaron Fox",
+    "price": 12,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 12,
+    "year": 2017,
+    "original_team": "Bier",
+    "draft_team": "Bier",
+    "player": "Frankie Ntilinka",
+    "price": 5,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 13,
+    "year": 2017,
+    "original_team": "Luskey",
+    "draft_team": "Horn",
+    "player": "Trevon Duval",
+    "price": 1,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 14,
+    "year": 2017,
+    "original_team": "Amish",
+    "draft_team": "Amish",
+    "player": "Mo Bamba",
+    "price": 11,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 1,
+    "year": 2018,
+    "original_team": "Emmer",
+    "draft_team": "Emmer",
+    "player": "Luka Doncic",
+    "price": 19,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 2,
+    "year": 2018,
+    "original_team": "Buchs",
+    "draft_team": "Buchs",
+    "player": "Trae Young",
+    "price": 12,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 3,
+    "year": 2018,
+    "original_team": "Weeg",
+    "draft_team": "Weeg",
+    "player": "Jaren Jackson, Jr.",
+    "price": 16,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 4,
+    "year": 2018,
+    "original_team": "Bier",
+    "draft_team": "Bier",
+    "player": "Wendall Carter, Jr.",
+    "price": 9,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 5,
+    "year": 2018,
+    "original_team": "Peskin*",
+    "draft_team": "MikeMac",
+    "player": "RJ Barrett",
+    "price": 19,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 6,
+    "year": 2018,
+    "original_team": "Jones",
+    "draft_team": "Horn",
+    "player": "Bol Bol",
+    "price": 2,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 7,
+    "year": 2018,
+    "original_team": "Horn*",
+    "draft_team": "Emmer",
+    "player": "Mikal Bridges",
+    "price": 5,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 8,
+    "year": 2018,
+    "original_team": "Amish",
+    "draft_team": "Weeg",
+    "player": "James Wiseman",
+    "price": 24,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 9,
+    "year": 2018,
+    "original_team": "Phil",
+    "draft_team": "",
+    "player": "Kevin Knox",
+    "price": 5,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 10,
+    "year": 2018,
+    "original_team": "Luskey",
+    "draft_team": "Haight",
+    "player": "Cameron Reddish",
+    "price": 5,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 11,
+    "year": 2018,
+    "original_team": "Tmac",
+    "draft_team": "Peskin",
+    "player": "Charles Bassey",
+    "price": 2,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 12,
+    "year": 2018,
+    "original_team": "Haight",
+    "draft_team": "Haight",
+    "player": "Vernon Carey, Jr.",
+    "price": 2,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 13,
+    "year": 2018,
+    "original_team": "Glaspie",
+    "draft_team": "Luskey",
+    "player": "Colin Sexton",
+    "price": 5,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 14,
+    "year": 2018,
+    "original_team": "Gabe",
+    "draft_team": "Bier",
+    "player": "Sekou Doumbouya",
+    "price": 3,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 1,
+    "year": 2019,
+    "original_team": "Amish",
+    "draft_team": "Amish",
+    "player": "Ja Morant",
+    "price": 24,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 2,
+    "year": 2019,
+    "original_team": "Luskey",
+    "draft_team": "Luskey",
+    "player": "Anthony Edwards",
+    "price": 31,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 3,
+    "year": 2019,
+    "original_team": "Horn",
+    "draft_team": "Horn",
+    "player": "Jalen Green",
+    "price": 24,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 4,
+    "year": 2019,
+    "original_team": "Haight",
+    "draft_team": "Gabe",
+    "player": "Evan Mobley",
+    "price": 19,
+    "status": "Kept"
+  },
+  {
+    "draft_order": 5,
+    "year": 2019,
+    "original_team": "Buchs",
+    "draft_team": "Haight",
+    "player": "Emoni Bates",
+    "price": 2,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 6,
+    "year": 2019,
+    "original_team": "Tmac",
+    "draft_team": "Tmac",
+    "player": "Cole Anthony",
+    "price": 3,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 7,
+    "year": 2019,
+    "original_team": "Bier",
+    "draft_team": "Bier",
+    "player": "Jaden McDaniels",
+    "price": 3,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 8,
+    "year": 2019,
+    "original_team": "Gabe",
+    "draft_team": "Gabe",
+    "player": "Romeo Langford",
+    "price": 5,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 9,
+    "year": 2019,
+    "original_team": "Jones",
+    "draft_team": "Luskey",
+    "player": "Lebron James Jr",
+    "price": 0,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 10,
+    "year": 2019,
+    "original_team": "Glaspie",
+    "draft_team": "Glaspie",
+    "player": "RJ Hampton",
+    "price": 3,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 11,
+    "year": 2019,
+    "original_team": "Emmer",
+    "draft_team": "Emmer",
+    "player": "Isaiah Stewart",
+    "price": 3,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 12,
+    "year": 2019,
+    "original_team": "Mitch",
+    "draft_team": "Mitch",
+    "player": "Jontay Porter",
+    "price": 1,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 13,
+    "year": 2019,
+    "original_team": "Weeg",
+    "draft_team": "Tmac",
+    "player": "Jarrett Culver",
+    "price": 11,
+    "status": "Unkept"
+  },
+  {
+    "draft_order": 14,
+    "year": 2019,
+    "original_team": "Peskin",
+    "draft_team": "Peskin",
+    "player": "Patrick Baldwin, Jr.",
+    "price": 3,
+    "status": "Unkept"
+  }
+]

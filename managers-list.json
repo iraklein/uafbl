@@ -1,0 +1,104 @@
+[
+  {
+    "id": 1,
+    "team_name": "Rumspringa",
+    "manager_name": "Amish",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 2,
+    "team_name": "Sorry For Partying",
+    "manager_name": "Bier",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 3,
+    "team_name": "Scotty B for 3",
+    "manager_name": "Buchs",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 4,
+    "team_name": "Leonine Facies",
+    "manager_name": "Emmer",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 5,
+    "team_name": "Chupacabras",
+    "manager_name": "Gabe",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 6,
+    "team_name": "The Splicers",
+    "manager_name": "Haight",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 7,
+    "team_name": "The Jabberwocks",
+    "manager_name": "Horn",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 8,
+    "team_name": "Scorpion Balls",
+    "manager_name": "Jones",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 9,
+    "team_name": "Dirty Dawg Nation",
+    "manager_name": "Luskey",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 10,
+    "team_name": "MikeMac",
+    "manager_name": "MikeMac",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 11,
+    "team_name": "Smoked Hops",
+    "manager_name": "Mitch",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 12,
+    "team_name": "The Youngstown Pride",
+    "manager_name": "Peskin",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 13,
+    "team_name": "Keep Show",
+    "manager_name": "Phil",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 14,
+    "team_name": "The Brass Rats",
+    "manager_name": "Tmac",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 15,
+    "team_name": "Spliff Fiddles",
+    "manager_name": "Weeg",
+    "created_at": "2025-08-18T22:34:11.81128"
+  },
+  {
+    "id": 16,
+    "team_name": "Kenny Team",
+    "manager_name": "Kenny",
+    "created_at": "2025-08-19T03:56:51.555927"
+  },
+  {
+    "id": 17,
+    "team_name": "Glaspie Team",
+    "manager_name": "Glaspie",
+    "created_at": "2025-08-19T03:57:50.031989"
+  }
+]
