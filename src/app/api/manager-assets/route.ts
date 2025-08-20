@@ -2,7 +2,33 @@ import { NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
 
 // Cache manager assets data for 2 minutes (more dynamic than seasons)
-let assetsCache: { data: any; timestamp: number } | null = null
+interface ManagerAsset {
+  id: number
+  season_id: number
+  manager_id: number
+  available_cash: number
+  available_slots: number
+  spent_budget: number
+  players_drafted: number
+  max_roster_size: number
+  updated_at: string
+  managers: { manager_name: string }
+}
+
+interface Season {
+  id: number
+  year: number
+  name: string
+  is_active: boolean
+}
+
+let assetsCache: { 
+  data: { 
+    assets: ManagerAsset[]
+    activeSeason: Season | null 
+  }
+  timestamp: number 
+} | null = null
 const CACHE_DURATION = 2 * 60 * 1000 // 2 minutes
 
 export async function GET() {
