@@ -28,16 +28,21 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const [passwordSetupError, setPasswordSetupError] = useState('')
 
   const checkAdminStatus = async (userEmail: string) => {
+    console.log('Checking admin status for:', userEmail)
     try {
       const { data, error } = await supabase
         .from('managers')
-        .select('is_admin')
+        .select('is_admin, email, manager_name')
         .eq('email', userEmail)
         .single()
 
+      console.log('Admin check result:', { data, error, userEmail })
+
       if (!error && data) {
-        setIsAdmin(data.is_admin || false)
+        console.log('Setting admin status to:', data.is_admin)
+        setIsAdmin(data.is_admin === true) // Explicitly check for true
       } else {
+        console.log('No admin data found or error:', error)
         setIsAdmin(false)
       }
     } catch (error) {
@@ -51,7 +56,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     const timeoutId = setTimeout(() => {
       console.warn('Auth check timeout, setting loading to false')
       setLoading(false)
-    }, 5000) // 5 second timeout
+      setUser(null) // Show login form on timeout
+    }, 2000) // 2 second timeout
 
     // Check for invitation/recovery tokens in URL
     const checkAuthTokens = async () => {
@@ -133,7 +139,13 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       // after redirect from Supabase auth
       console.log('Checking for existing session...')
       try {
-        const { data: { session }, error } = await supabase.auth.getSession()
+        // Add timeout to the getSession call
+        const sessionPromise = supabase.auth.getSession()
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Session check timeout')), 1500)
+        )
+        
+        const { data: { session }, error } = await Promise.race([sessionPromise, timeoutPromise])
         console.log('Existing session:', { user: !!session?.user, error })
         
         if (session?.user) {

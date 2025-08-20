@@ -7,6 +7,8 @@ import { useAuth } from '../contexts/AuthContext'
 export default function Navigation() {
   const pathname = usePathname()
   const { isAdmin } = useAuth()
+  
+  console.log('Navigation: isAdmin =', isAdmin)
 
   const navItems = [
     { href: '/rosters', label: 'Rosters' },
