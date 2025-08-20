@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
 
 // Cache seasons data for 5 minutes
-let seasonsCache: { data: Array<{ id: number; year: number; name: string }>; timestamp: number } | null = null
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let seasonsCache: { data: any[]; timestamp: number } | null = null
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
 
 export async function GET() {

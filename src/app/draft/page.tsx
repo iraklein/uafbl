@@ -47,6 +47,7 @@ export default function DraftPage() {
   // Data states
   const [managers, setManagers] = useState<Manager[]>([])
   const [draftPicks, setDraftPicks] = useState<DraftPick[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')

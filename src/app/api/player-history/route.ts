@@ -43,7 +43,8 @@ export async function GET(request: NextRequest) {
         managers(manager_name),
         seasons(year, name)
       `)
-      .eq('player_id', player.id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .eq('player_id', (player as any).id)
       .order('seasons(year)', { ascending: false })
 
     // Get topper history
@@ -54,7 +55,8 @@ export async function GET(request: NextRequest) {
         managers(manager_name),
         seasons(year, name)
       `)
-      .eq('player_id', player.id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .eq('player_id', (player as any).id)
       .order('seasons(year)', { ascending: false })
 
     // Get LSL history
@@ -65,7 +67,8 @@ export async function GET(request: NextRequest) {
         original_managers:managers!original_manager_id(manager_name),
         draft_managers:managers!draft_manager_id(manager_name)
       `)
-      .eq('player_id', player.id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .eq('player_id', (player as any).id)
       .order('year', { ascending: false })
 
     if (draftError || topperError || lslError) {

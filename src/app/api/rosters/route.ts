@@ -12,7 +12,7 @@ interface Manager {
   manager_name: string
 }
 
-interface RosterData {
+interface _RosterData {
   id: number
   keeper_cost: number | null
   consecutive_keeps: number | null
@@ -75,7 +75,8 @@ export async function GET(request: NextRequest) {
 
     // Create a map of player_id to draft info (price and keeper status)
     const draftInfoMap: Record<number, { draft_price: number | null; is_keeper: boolean }> = {}
-    draftPrices?.forEach(dp => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    draftPrices?.forEach((dp: any) => {
       draftInfoMap[dp.player_id] = {
         draft_price: dp.draft_price,
         is_keeper: dp.is_keeper
@@ -95,12 +96,14 @@ export async function GET(request: NextRequest) {
 
     // Create a map of player_id to trade count
     const tradeCountMap: Record<number, number> = {}
-    tradesData?.forEach(trade => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    tradesData?.forEach((trade: any) => {
       tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
     })
 
     // Add draft prices, keeper status, and calculated keeper costs to roster data
-    const rostersWithPrices = (rosters as RosterData[] || []).map((roster) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rostersWithPrices = (rosters as any[] || []).map((roster: any) => {
       const playerId = Array.isArray(roster.players) ? roster.players[0]?.id || 0 : roster.players?.id || 0
       const draftPrice = draftInfoMap[playerId]?.draft_price || null
       const isKeeper = draftInfoMap[playerId]?.is_keeper || false

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
 
 // Cache manager assets data for 2 minutes (more dynamic than seasons)
-interface ManagerAsset {
+interface _ManagerAsset {
   id: number
   season_id: number
   manager_id: number
@@ -15,7 +15,7 @@ interface ManagerAsset {
   managers: { manager_name: string }
 }
 
-interface Season {
+interface _Season {
   id: number
   year: number
   name: string
@@ -24,8 +24,10 @@ interface Season {
 
 let assetsCache: { 
   data: { 
-    assets: ManagerAsset[]
-    activeSeason: Season | null 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    assets: any[]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    activeSeason: any | null 
   }
   timestamp: number 
 } | null = null

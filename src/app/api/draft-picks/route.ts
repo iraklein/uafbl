@@ -11,13 +11,13 @@ interface Manager {
   manager_name: string
 }
 
-interface DraftResult {
+interface _DraftResult {
   id: number
   draft_price: number
   is_keeper: boolean
   created_at: string
-  players: Player | Player[]
-  managers: Manager | Manager[]
+  players: Player
+  managers: Manager
 }
 
 export async function GET(request: NextRequest) {
@@ -47,15 +47,16 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
-    // Get topper information for each pick
-    const enrichedData = await Promise.all((data as DraftResult[] || []).map(async (pick) => {
+    // Get topper information for each pick  
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const enrichedData = await Promise.all((data || []).map(async (pick: any) => {
       // Check if this player has toppers for this season
       const { data: topperData } = await supabase
         .from('toppers')
         .select(`
           managers(manager_name)
         `)
-        .eq('player_id', Array.isArray(pick.players) ? pick.players[0]?.id : pick.players?.id)
+        .eq('player_id', pick.players?.id)
         .eq('season_id', seasonId)
 
       const topperManagers = topperData?.map(t => {

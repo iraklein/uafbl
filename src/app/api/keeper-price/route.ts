@@ -54,14 +54,14 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: draftError.message }, { status: 500 })
     }
 
-    const lastDraftPrice = draftData?.draft_price || 1
+    const lastDraftPrice = (draftData?.draft_price as number) || 1
     
     // Calculate keeper cost using same logic as rosters API
     let keeperEscalationYear = 0; // Default for non-keepers (first time keep = +$10)
     
     if (rosterData?.consecutive_keeps !== null && rosterData?.consecutive_keeps !== undefined) {
       // For players who were kept, calculate cost for the NEXT keep
-      keeperEscalationYear = rosterData.consecutive_keeps + 1;
+      keeperEscalationYear = (rosterData.consecutive_keeps as number) + 1;
     }
     
     const keeperPrice = calculateKeeperCost(lastDraftPrice, keeperEscalationYear, tradeCount)

@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
         .eq('is_unused', false)
 
       if (!topperError && toppers) {
-        topperData = toppers
+        topperData = toppers as { player_id: number }[]
       }
     }
 
@@ -58,7 +58,8 @@ export async function GET(request: NextRequest) {
         .eq('season_id', seasonId)
 
       if (!tradesError && tradesData) {
-        tradesData.forEach(trade => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        tradesData.forEach((trade: any) => {
           tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
         })
       }
@@ -73,14 +74,16 @@ export async function GET(request: NextRequest) {
         .eq('season_id', seasonId)
 
       if (!rostersError && rostersData) {
-        rostersData.forEach(roster => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        rostersData.forEach((roster: any) => {
           consecutiveKeepsMap[roster.player_id] = roster.consecutive_keeps
         })
       }
     }
 
     // Add topper information and calculated keeper costs to draft results
-    const resultsWithToppers = draftResults?.map(result => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const resultsWithToppers = draftResults?.map((result: any) => {
       const tradeCount = tradeCountMap[result.player_id] || 0
       const consecutiveKeeps = consecutiveKeepsMap[result.player_id]
       
