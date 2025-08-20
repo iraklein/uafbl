@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get consecutive keeps data from rosters table for this season
-    let consecutiveKeepsMap = {}
+    const consecutiveKeepsMap: Record<number, number | null> = {}
     if (seasonId) {
       const { data: rostersData, error: rostersError } = await supabase
         .from('rosters')
@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
     }) || []
 
     return NextResponse.json(resultsWithToppers)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

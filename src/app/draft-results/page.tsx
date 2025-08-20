@@ -139,7 +139,7 @@ export default function DraftResults() {
         
         const data = await response.json()
         setDraftResults(data)
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error fetching draft results:', error)
         setError('Failed to load draft results')
       } finally {
@@ -166,7 +166,7 @@ export default function DraftResults() {
       
       const data = await response.json()
       setPlayerHistory(data)
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error fetching player history:', error)
       setPlayerError('Failed to load player history')
     } finally {

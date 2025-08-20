@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '../../../lib/supabase'
-import type { User } from '@supabase/supabase-js'
 
 interface Profile {
   id: string

@@ -14,7 +14,7 @@ interface ManagerAsset {
   available_cash: number
   available_slots: number
   managers?: Manager
-  [key: string]: any // Allow for unknown properties
+  [key: string]: unknown // Allow for unknown properties
 }
 
 interface Season {
