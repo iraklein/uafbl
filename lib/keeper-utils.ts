@@ -1,7 +1,7 @@
 // Utility functions for calculating keeper costs
 
 // Escalation table for consecutive keeps
-const KEEPER_ESCALATION = {
+const KEEPER_ESCALATION: Record<number, number> = {
   0: 10,  // First time kept
   1: 15,  // Second consecutive year
   2: 15,  // Third consecutive year
