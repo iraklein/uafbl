@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get topper information for the same season (only used toppers)
-    let topperData = []
+    let topperData: { player_id: number }[] = []
     if (seasonId && draftResults && draftResults.length > 0) {
       const { data: toppers, error: topperError } = await supabase
         .from('toppers')
