@@ -49,43 +49,119 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   useEffect(() => {
     // Check for invitation/recovery tokens in URL
     const checkAuthTokens = async () => {
+      console.log('Checking auth tokens...')
+      console.log('Current URL:', window.location.href)
+      console.log('Hash:', window.location.hash)
+      console.log('Search:', window.location.search)
+      
+      // Check both hash and search params for tokens
       const hashParams = new URLSearchParams(window.location.hash.substring(1))
-      const access_token = hashParams.get('access_token')
-      const refresh_token = hashParams.get('refresh_token')
-      const type = hashParams.get('type')
+      const searchParams = new URLSearchParams(window.location.search)
+      
+      // Try hash params first, then search params
+      let access_token = hashParams.get('access_token') || searchParams.get('access_token')
+      let refresh_token = hashParams.get('refresh_token') || searchParams.get('refresh_token')
+      let type = hashParams.get('type') || searchParams.get('type')
+      
+      // Also check for error parameters
+      const error = hashParams.get('error') || searchParams.get('error')
+      const error_description = hashParams.get('error_description') || searchParams.get('error_description')
+      
+      console.log('Tokens found:', { access_token: !!access_token, refresh_token: !!refresh_token, type, error })
+      
+      if (error) {
+        console.error('Auth error:', error, error_description)
+        const errorMessage = error_description ? 
+          decodeURIComponent(error_description.replace(/\+/g, ' ')) : 
+          error
+        setLoginError(`Invitation error: ${errorMessage}`)
+        setLoading(false)
+        // Clear the error from URL
+        window.history.replaceState(null, '', window.location.pathname)
+        return
+      }
       
       if (access_token && refresh_token && (type === 'invite' || type === 'recovery')) {
-        // Set the session with the tokens
-        const { data, error } = await supabase.auth.setSession({
-          access_token,
-          refresh_token
-        })
-        
-        if (!error && data.user) {
-          setUser(data.user)
-          if (data.user.email) {
-            await checkAdminStatus(data.user.email)
+        console.log('Processing tokens for type:', type)
+        try {
+          // Set the session with the tokens
+          const { data, error } = await supabase.auth.setSession({
+            access_token,
+            refresh_token
+          })
+          
+          console.log('Session result:', { user: !!data.user, error })
+          
+          if (error) {
+            console.error('Session error:', error)
+            setLoginError('Failed to accept invitation. Please try again or request a new invitation.')
+            setLoading(false)
+            return
           }
-          // Only show password setup for actual invitations and if not already completed
-          if (type === 'invite' && !localStorage.getItem('password_setup_complete')) {
-            setShowPasswordSetup(true)
+          
+          if (data.user) {
+            setUser(data.user)
+            if (data.user.email) {
+              await checkAdminStatus(data.user.email)
+            }
+            // Show password setup for invites and magic links if not already completed
+            if ((type === 'invite' || type === 'magiclink') && !localStorage.getItem('password_setup_complete')) {
+              setShowPasswordSetup(true)
+            }
+            setLoading(false)
+            // Clear the URL parameters
+            window.history.replaceState(null, '', window.location.pathname)
+            return
           }
+        } catch (err) {
+          console.error('Error processing invitation:', err)
+          setLoginError('Failed to process invitation. Please try again.')
           setLoading(false)
-          // Clear the URL hash
-          window.history.replaceState(null, '', window.location.pathname)
           return
         }
       }
       
-      // Get initial session if no tokens
-      const { data: { session } } = await supabase.auth.getSession()
-      const currentUser = session?.user ?? null
-      setUser(currentUser)
-      
-      if (currentUser?.email) {
-        await checkAdminStatus(currentUser.email)
+      // For server-side verification flow, check if there's already a valid session
+      // after redirect from Supabase auth
+      console.log('Checking for existing session...')
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession()
+        console.log('Existing session:', { user: !!session?.user, error })
+        
+        if (session?.user) {
+          // User already has a valid session from the server-side verification
+          setUser(session.user)
+          if (session.user.email) {
+            await checkAdminStatus(session.user.email)
+          }
+          
+          // Check if this is a new invitation or magic link by looking for metadata or URL
+          const userMetadata = session.user.user_metadata || {}
+          const isInviteOrMagicLink = userMetadata.invitation || 
+            window.location.hash.includes('type=invite') ||
+            window.location.hash.includes('type=magiclink')
+          
+          // Also check if user has never set a password (for any magic link users)
+          const hasNeverSetPassword = !localStorage.getItem(`password_setup_complete_${session.user.id}`)
+          
+          if ((isInviteOrMagicLink || hasNeverSetPassword) && !localStorage.getItem('password_setup_complete')) {
+            setShowPasswordSetup(true)
+          }
+          
+          setLoading(false)
+          // Clear any URL parameters
+          if (window.location.hash || window.location.search) {
+            window.history.replaceState(null, '', window.location.pathname)
+          }
+          return
+        }
+      } catch (err) {
+        console.error('Error checking session:', err)
       }
       
+      // No session found
+      const currentUser = null
+      setUser(currentUser)
       setLoading(false)
     }
     
@@ -168,6 +244,9 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
 
       // Password set successfully - store this in localStorage to prevent showing again
       localStorage.setItem('password_setup_complete', 'true')
+      if (user?.id) {
+        localStorage.setItem(`password_setup_complete_${user.id}`, 'true')
+      }
       setShowPasswordSetup(false)
       setNewPassword('')
       setConfirmPassword('')
@@ -184,9 +263,24 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   }
 
   if (loading) {
+    const hasTokens = typeof window !== 'undefined' && window.location.hash.includes('access_token')
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-xl text-gray-600">Loading...</div>
+        <div className="text-xl text-gray-600">
+          <div>Loading...</div>
+          <div className="text-sm mt-2">
+            URL: {typeof window !== 'undefined' ? window.location.href : 'server'}
+          </div>
+          <div className="text-sm">
+            Hash: {typeof window !== 'undefined' ? window.location.hash.substring(0, 100) : 'none'}...
+          </div>
+          <div className="text-sm mt-2">
+            Has Tokens: {hasTokens ? 'YES' : 'NO'}
+          </div>
+          <div className="text-sm">
+            Login Error: {loginError || 'none'}
+          </div>
+        </div>
       </div>
     )
   }
