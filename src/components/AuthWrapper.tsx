@@ -47,12 +47,19 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   }
 
   useEffect(() => {
+    // Timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      console.warn('Auth check timeout, setting loading to false')
+      setLoading(false)
+    }, 5000) // 5 second timeout
+
     // Check for invitation/recovery tokens in URL
     const checkAuthTokens = async () => {
-      console.log('Checking auth tokens...')
-      console.log('Current URL:', window.location.href)
-      console.log('Hash:', window.location.hash)
-      console.log('Search:', window.location.search)
+      try {
+        console.log('Checking auth tokens...')
+        console.log('Current URL:', window.location.href)
+        console.log('Hash:', window.location.hash)
+        console.log('Search:', window.location.search)
       
       // Check both hash and search params for tokens
       const hashParams = new URLSearchParams(window.location.hash.substring(1))
@@ -111,6 +118,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
             setLoading(false)
             // Clear the URL parameters
             window.history.replaceState(null, '', window.location.pathname)
+            clearTimeout(timeoutId) // Clear timeout on success
             return
           }
         } catch (err) {
@@ -152,16 +160,29 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           if (window.location.hash || window.location.search) {
             window.history.replaceState(null, '', window.location.pathname)
           }
+          clearTimeout(timeoutId) // Clear timeout on success
           return
         }
       } catch (err) {
         console.error('Error checking session:', err)
+        // Ensure loading is set to false even on error
+        setLoading(false)
+        setUser(null)
+        clearTimeout(timeoutId) // Clear timeout on error
+        return
       }
       
-      // No session found
-      const currentUser = null
-      setUser(currentUser)
-      setLoading(false)
+        // No session found
+        const currentUser = null
+        setUser(currentUser)
+        setLoading(false)
+        clearTimeout(timeoutId) // Clear timeout on success
+      } catch (error) {
+        console.error('Error in checkAuthTokens:', error)
+        setLoading(false)
+        setUser(null)
+        clearTimeout(timeoutId) // Clear timeout on error
+      }
     }
     
     checkAuthTokens()
@@ -182,7 +203,10 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       }
     )
 
-    return () => subscription.unsubscribe()
+    return () => {
+      subscription.unsubscribe()
+      clearTimeout(timeoutId) // Clear timeout on cleanup
+    }
   }, [])
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -270,12 +294,23 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const handleLogout = async () => {
     console.log('Sign out initiated...')
     try {
-      const { error } = await supabase.auth.signOut()
-      if (error) {
-        console.error('Sign out error:', error)
-      } else {
-        console.log('Sign out successful')
-        // Clear local storage
+      // Force sign out regardless of response
+      await supabase.auth.signOut({ scope: 'local' })
+      console.log('Sign out completed')
+    } catch (err) {
+      console.error('Sign out catch error:', err)
+    } finally {
+      // Always reset state even if signOut fails
+      console.log('Resetting local state...')
+      setUser(null)
+      setIsAdmin(false)
+      setShowPasswordSetup(false)
+      setLoginError('')
+      setEmail('')
+      setPassword('')
+      
+      // Clear local storage
+      try {
         localStorage.removeItem('password_setup_complete')
         // Clear user-specific flags
         Object.keys(localStorage).forEach(key => {
@@ -283,36 +318,18 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
             localStorage.removeItem(key)
           }
         })
-        // Reset state
-        setUser(null)
-        setIsAdmin(false)
-        setShowPasswordSetup(false)
-        setLoginError('')
+      } catch (storageErr) {
+        console.error('Error clearing localStorage:', storageErr)
       }
-    } catch (err) {
-      console.error('Sign out catch error:', err)
+      
+      console.log('Local state reset complete')
     }
   }
 
   if (loading) {
-    const hasTokens = typeof window !== 'undefined' && window.location.hash.includes('access_token')
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-xl text-gray-600">
-          <div>Loading...</div>
-          <div className="text-sm mt-2">
-            URL: {typeof window !== 'undefined' ? window.location.href : 'server'}
-          </div>
-          <div className="text-sm">
-            Hash: {typeof window !== 'undefined' ? window.location.hash.substring(0, 100) : 'none'}...
-          </div>
-          <div className="text-sm mt-2">
-            Has Tokens: {hasTokens ? 'YES' : 'NO'}
-          </div>
-          <div className="text-sm">
-            Login Error: {loginError || 'none'}
-          </div>
-        </div>
+        <div className="text-xl text-gray-600">Loading...</div>
       </div>
     )
   }
