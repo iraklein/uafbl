@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClientClient } from '../../../lib/supabase'
+import { supabase } from '../../../lib/supabase'
 import type { User } from '@supabase/supabase-js'
 
 interface Profile {
@@ -17,7 +17,6 @@ export default function Dashboard() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
-  const supabase = createClientClient()
 
   useEffect(() => {
     const getUser = async () => {
