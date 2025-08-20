@@ -59,9 +59,9 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       const searchParams = new URLSearchParams(window.location.search)
       
       // Try hash params first, then search params
-      let access_token = hashParams.get('access_token') || searchParams.get('access_token')
-      let refresh_token = hashParams.get('refresh_token') || searchParams.get('refresh_token')
-      let type = hashParams.get('type') || searchParams.get('type')
+      const access_token = hashParams.get('access_token') || searchParams.get('access_token')
+      const refresh_token = hashParams.get('refresh_token') || searchParams.get('refresh_token')
+      const type = hashParams.get('type') || searchParams.get('type')
       
       // Also check for error parameters
       const error = hashParams.get('error') || searchParams.get('error')

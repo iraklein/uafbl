@@ -47,7 +47,7 @@ export default function DraftPage() {
   // Data states
   const [managers, setManagers] = useState<Manager[]>([])
   const [draftPicks, setDraftPicks] = useState<DraftPick[]>([])
-  const [, _setLoading] = useState(false)
+  const [, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
