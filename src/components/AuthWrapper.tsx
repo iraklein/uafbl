@@ -52,63 +52,55 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   }
 
   useEffect(() => {
-    // Timeout to prevent infinite loading
+    // More generous timeout to prevent premature signouts
     const timeoutId = setTimeout(() => {
       console.warn('Auth check timeout, setting loading to false')
       setLoading(false)
-      setUser(null) // Show login form on timeout
-    }, 2000) // 2 second timeout
+      // Don't automatically set user to null - let the auth state listener handle it
+    }, 10000) // 10 second timeout instead of 2
 
-    // Check for invitation/recovery tokens in URL
+    // Check for invitation/recovery tokens in URL and existing session
     const checkAuthTokens = async () => {
       try {
-        console.log('Checking auth tokens...')
-        console.log('Current URL:', window.location.href)
-        console.log('Hash:', window.location.hash)
-        console.log('Search:', window.location.search)
-      
-      // Check both hash and search params for tokens
-      const hashParams = new URLSearchParams(window.location.hash.substring(1))
-      const searchParams = new URLSearchParams(window.location.search)
-      
-      // Try hash params first, then search params
-      const access_token = hashParams.get('access_token') || searchParams.get('access_token')
-      const refresh_token = hashParams.get('refresh_token') || searchParams.get('refresh_token')
-      const type = hashParams.get('type') || searchParams.get('type')
-      
-      // Also check for error parameters
-      const error = hashParams.get('error') || searchParams.get('error')
-      const error_description = hashParams.get('error_description') || searchParams.get('error_description')
-      
-      console.log('Tokens found:', { access_token: !!access_token, refresh_token: !!refresh_token, type, error })
-      
-      if (error) {
-        console.error('Auth error:', error, error_description)
-        const errorMessage = error_description ? 
-          decodeURIComponent(error_description.replace(/\+/g, ' ')) : 
-          error
-        setLoginError(`Invitation error: ${errorMessage}`)
-        setLoading(false)
-        // Clear the error from URL
-        window.history.replaceState(null, '', window.location.pathname)
-        return
-      }
-      
-      if (access_token && refresh_token && (type === 'invite' || type === 'recovery')) {
-        console.log('Processing tokens for type:', type)
-        try {
-          // Set the session with the tokens
-          const { data, error } = await supabase.auth.setSession({
-            access_token,
-            refresh_token
-          })
-          
-          console.log('Session result:', { user: !!data.user, error })
+        console.log('Checking auth state...')
+        
+        // First, always check for existing session
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+        console.log('Existing session check:', { user: !!session?.user, error: sessionError })
+        
+        // Check URL parameters for tokens
+        const hashParams = new URLSearchParams(window.location.hash.substring(1))
+        const searchParams = new URLSearchParams(window.location.search)
+        
+        const access_token = hashParams.get('access_token') || searchParams.get('access_token')
+        const refresh_token = hashParams.get('refresh_token') || searchParams.get('refresh_token')
+        const type = hashParams.get('type') || searchParams.get('type')
+        const error = hashParams.get('error') || searchParams.get('error')
+        const error_description = hashParams.get('error_description') || searchParams.get('error_description')
+        
+        console.log('URL tokens:', { hasAccess: !!access_token, hasRefresh: !!refresh_token, type, error })
+        
+        // Handle auth errors from URL
+        if (error) {
+          const errorMessage = error_description ? 
+            decodeURIComponent(error_description.replace(/\+/g, ' ')) : error
+          setLoginError(`Invitation error: ${errorMessage}`)
+          setLoading(false)
+          window.history.replaceState(null, '', window.location.pathname)
+          clearTimeout(timeoutId)
+          return
+        }
+        
+        // If we have tokens in URL, process them
+        if (access_token && refresh_token && (type === 'invite' || type === 'recovery')) {
+          console.log('Processing URL tokens for type:', type)
+          const { data, error } = await supabase.auth.setSession({ access_token, refresh_token })
           
           if (error) {
             console.error('Session error:', error)
-            setLoginError('Failed to accept invitation. Please try again or request a new invitation.')
+            setLoginError('Failed to accept invitation. Please try again.')
             setLoading(false)
+            clearTimeout(timeoutId)
             return
           }
           
@@ -117,77 +109,42 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
             if (data.user.email) {
               await checkAdminStatus(data.user.email)
             }
-            // Show password setup for invites and recovery (magic links) if not already completed
-            if ((type === 'invite' || type === 'recovery') && !localStorage.getItem('password_setup_complete')) {
+            
+            // Show password setup for first-time logins
+            const hasSetPassword = localStorage.getItem('password_setup_complete') || 
+                                 localStorage.getItem(`password_setup_complete_${data.user.id}`)
+            if (!hasSetPassword) {
               setShowPasswordSetup(true)
             }
+            
             setLoading(false)
-            // Clear the URL parameters
             window.history.replaceState(null, '', window.location.pathname)
-            clearTimeout(timeoutId) // Clear timeout on success
+            clearTimeout(timeoutId)
             return
           }
-        } catch (err) {
-          console.error('Error processing invitation:', err)
-          setLoginError('Failed to process invitation. Please try again.')
-          setLoading(false)
-          return
         }
-      }
-      
-      // For server-side verification flow, check if there's already a valid session
-      // after redirect from Supabase auth
-      console.log('Checking for existing session...')
-      try {
-        const { data: { session }, error } = await supabase.auth.getSession()
-        console.log('Existing session:', { user: !!session?.user, error })
         
+        // If we have an existing session (from refresh), use it
         if (session?.user) {
-          // User already has a valid session from the server-side verification
+          console.log('Using existing session for user:', session.user.email)
           setUser(session.user)
           if (session.user.email) {
             await checkAdminStatus(session.user.email)
           }
-          
-          // Only show password setup if user specifically has never set one
-          const hasSetPasswordGlobally = localStorage.getItem('password_setup_complete')
-          const hasSetPasswordForUser = localStorage.getItem(`password_setup_complete_${session.user.id}`)
-          
-          // Only show password setup on first login (from invite/recovery link), not on refresh
-          const isFirstTimeLogin = window.location.hash.includes('type=invite') || 
-                                   window.location.hash.includes('type=recovery')
-          
-          if (isFirstTimeLogin && !hasSetPasswordGlobally && !hasSetPasswordForUser) {
-            setShowPasswordSetup(true)
-          }
-          
           setLoading(false)
-          // Clear any URL parameters
-          if (window.location.hash || window.location.search) {
-            window.history.replaceState(null, '', window.location.pathname)
-          }
-          clearTimeout(timeoutId) // Clear timeout on success
+          clearTimeout(timeoutId)
           return
         }
-      } catch (err) {
-        console.error('Error checking session:', err)
-        // Ensure loading is set to false even on error
-        setLoading(false)
-        setUser(null)
-        clearTimeout(timeoutId) // Clear timeout on error
-        return
-      }
-      
-        // No session found
-        const currentUser = null
-        setUser(currentUser)
-        setLoading(false)
-        clearTimeout(timeoutId) // Clear timeout on success
+        
+        // No session found, but don't immediately show login - let the auth state listener handle the final decision
+        console.log('No session found in initial check')
+        // The auth state change listener will handle setting loading to false
+        
       } catch (error) {
-        console.error('Error in checkAuthTokens:', error)
+        console.error('Error in auth check:', error)
         setLoading(false)
         setUser(null)
-        clearTimeout(timeoutId) // Clear timeout on error
+        clearTimeout(timeoutId)
       }
     }
     
@@ -196,6 +153,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        console.log('Auth state changed:', { event, hasSession: !!session })
+        
         const currentUser = session?.user ?? null
         setUser(currentUser)
         
@@ -205,7 +164,10 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           setIsAdmin(false)
         }
         
+        // Always set loading to false after processing the auth state
+        // The INITIAL_SESSION event is fired when the component first loads
         setLoading(false)
+        clearTimeout(timeoutId)
       }
     )
 

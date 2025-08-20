@@ -4,7 +4,7 @@ import { createServerSupabaseClient } from '../../../../../lib/supabase'
 export async function POST(request: NextRequest) {
   const supabase = createServerSupabaseClient()
   try {
-    const { season_id, player_id, notes } = await request.json()
+    const { season_id, player_id } = await request.json()
 
     if (!season_id || !player_id) {
       return NextResponse.json({ error: 'Season ID and Player ID are required' }, { status: 400 })
@@ -15,8 +15,7 @@ export async function POST(request: NextRequest) {
       .from('trades')
       .insert({
         season_id,
-        player_id,
-        notes
+        player_id
       })
       .select('id')
       .single()
@@ -53,7 +52,6 @@ export async function GET(request: NextRequest) {
         id,
         season_id,
         player_id,
-        notes,
         created_at,
         players (
           id,

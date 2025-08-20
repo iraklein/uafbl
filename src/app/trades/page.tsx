@@ -11,7 +11,6 @@ interface Player {
 interface Trade {
   id: number
   player_id: number
-  notes: string | null
   created_at: string
   players: Player
 }
@@ -77,13 +76,19 @@ export default function Trades() {
 
       try {
         const response = await fetch(`/api/admin/trades?season_id=${selectedSeason}`)
-        if (!response.ok) throw new Error('Failed to fetch trades')
+        
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ error: 'Unknown error' }))
+          console.error('API error response:', response.status, errorData)
+          throw new Error(`API Error ${response.status}: ${errorData.error || 'Failed to fetch trades'}`)
+        }
         
         const data = await response.json()
+        console.log('Trades data received:', data)
         setTrades(data)
       } catch (error) {
         console.error('Error fetching trades:', error)
-        setError('Failed to load trades')
+        setError(error instanceof Error ? error.message : 'Failed to load trades')
       } finally {
         setTradesLoading(false)
       }
