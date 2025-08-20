@@ -13,7 +13,6 @@ interface Profile {
 }
 
 export default function Dashboard() {
-  const [user, setUser] = useState<User | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
@@ -27,8 +26,6 @@ export default function Dashboard() {
         return
       }
 
-      setUser(user)
-
       const { data: profile } = await supabase
         .from('profiles')
         .select('*')
@@ -40,7 +37,7 @@ export default function Dashboard() {
     }
 
     getUser()
-  }, [router, supabase])
+  }, [router])
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
@@ -112,7 +109,7 @@ export default function Dashboard() {
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="font-medium text-gray-900">Team Roster</h3>
-                  <p className="text-sm text-gray-500 mt-1">Manage your team's players</p>
+                  <p className="text-sm text-gray-500 mt-1">Manage your team&apos;s players</p>
                   <button className="mt-2 bg-indigo-600 text-white px-3 py-1 rounded text-sm">
                     Coming Soon
                   </button>

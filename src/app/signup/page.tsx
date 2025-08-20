@@ -44,8 +44,8 @@ export default function Signup() {
 
       alert('Check your email for the confirmation link!')
       router.push('/login')
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'An error occurred')
     } finally {
       setLoading(false)
     }

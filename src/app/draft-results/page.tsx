@@ -99,7 +99,7 @@ export default function DraftResults() {
             setSelectedSeason(data[0].id.toString())
           }
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error fetching seasons:', error)
         setError('Failed to load seasons')
       }
@@ -117,7 +117,7 @@ export default function DraftResults() {
         
         const data = await response.json()
         setAllPlayers(data)
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error fetching players:', error)
       }
     }
@@ -238,7 +238,6 @@ export default function DraftResults() {
       totalSpent,
       draftCount,
       keeperCount,
-      totalPlayers: results.length,
       results: results.sort((a, b) => (b.draft_price || 0) - (a.draft_price || 0))
     }
   }).sort((a, b) => a.managerName.localeCompare(b.managerName))
@@ -434,7 +433,7 @@ export default function DraftResults() {
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                {managerTotals.map(({ managerName, totalSpent, draftCount, keeperCount, totalPlayers, results }) => (
+                {managerTotals.map(({ managerName, totalSpent, draftCount, keeperCount, results }) => (
                   <div key={managerName} className="bg-white shadow rounded-lg overflow-hidden">
                     <div className="bg-indigo-600 text-white px-3 py-2">
                       <div className="flex flex-col">
