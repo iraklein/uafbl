@@ -74,7 +74,7 @@ export default function DraftResults() {
   const [playerHistory, setPlayerHistory] = useState<PlayerHistory | null>(null)
   const [playerLoading, setPlayerLoading] = useState(false)
   const [playerError, setPlayerError] = useState('')
-  const [allPlayers, setAllPlayers] = useState<Player[]>([])
+  const [, _setAllPlayers] = useState<Player[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([])
 

@@ -1,6 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
 
+interface Player {
+  id: number
+  name: string
+}
+
+interface Manager {
+  id: number
+  manager_name: string
+}
+
+interface DraftResult {
+  id: number
+  draft_price: number
+  is_keeper: boolean
+  created_at: string
+  players: Player | Player[]
+  managers: Manager | Manager[]
+}
+
 export async function GET(request: NextRequest) {
   const supabase = createServerSupabaseClient()
   const { searchParams } = new URL(request.url)
@@ -29,24 +48,30 @@ export async function GET(request: NextRequest) {
     }
 
     // Get topper information for each pick
-    const enrichedData = await Promise.all((data || []).map(async (pick) => {
+    const enrichedData = await Promise.all((data as DraftResult[] || []).map(async (pick) => {
       // Check if this player has toppers for this season
-      const { data: topperData, error: topperError } = await supabase
+      const { data: topperData } = await supabase
         .from('toppers')
         .select(`
           managers(manager_name)
         `)
-        .eq('player_id', pick.players.id)
+        .eq('player_id', Array.isArray(pick.players) ? pick.players[0]?.id : pick.players?.id)
         .eq('season_id', seasonId)
 
-      const topperManagers = topperData?.map(t => t.managers.manager_name) || []
+      const topperManagers = topperData?.map(t => {
+        const manager = Array.isArray(t.managers) ? t.managers[0] : t.managers
+        return manager?.manager_name
+      }).filter(Boolean) || []
+      
+      const player = Array.isArray(pick.players) ? pick.players[0] : pick.players
+      const manager = Array.isArray(pick.managers) ? pick.managers[0] : pick.managers
       
       return {
         id: pick.id,
-        player_id: pick.players.id,
-        player_name: pick.players.name,
-        manager_id: pick.managers.id,
-        manager_name: pick.managers.manager_name,
+        player_id: player?.id,
+        player_name: player?.name,
+        manager_id: manager?.id,
+        manager_name: manager?.manager_name,
         draft_price: pick.draft_price,
         is_keeper: pick.is_keeper,
         is_topper: topperManagers.length > 0,

@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       available_slots: 3
     }))
 
-    const { data: insertedAssets, error: insertError } = await supabase
+    const { error: insertError } = await supabase
       .from('managers_assets')
       .insert(assetRecords)
       .select()

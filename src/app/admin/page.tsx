@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Navigation from "../../components/Navigation"
 
 interface Season {
@@ -82,14 +82,7 @@ export default function Admin() {
     fetchPlayers()
   }, [])
 
-  // Fetch trades when season changes
-  useEffect(() => {
-    if (selectedSeason) {
-      fetchTrades()
-    }
-  }, [selectedSeason])
-
-  const fetchTrades = async () => {
+  const fetchTrades = useCallback(async () => {
     if (!selectedSeason) return
     
     setTradesLoading(true)
@@ -104,7 +97,14 @@ export default function Admin() {
     } finally {
       setTradesLoading(false)
     }
-  }
+  }, [selectedSeason])
+
+  // Fetch trades when season changes
+  useEffect(() => {
+    if (selectedSeason) {
+      fetchTrades()
+    }
+  }, [selectedSeason, fetchTrades])
 
   const handleAddSeason = async () => {
     if (!seasonName.trim() || !seasonYear.trim()) {
