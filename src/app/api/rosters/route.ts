@@ -82,9 +82,10 @@ export async function GET(request: NextRequest) {
 
     // Add draft prices, keeper status, and calculated keeper costs to roster data
     const rostersWithPrices = rosters?.map(roster => {
-      const draftPrice = draftInfoMap[roster.players.id]?.draft_price || null
-      const isKeeper = draftInfoMap[roster.players.id]?.is_keeper || false
-      const tradeCount = tradeCountMap[roster.players.id] || 0
+      const playerId = (roster.players as any).id
+      const draftPrice = draftInfoMap[playerId]?.draft_price || null
+      const isKeeper = draftInfoMap[playerId]?.is_keeper || false
+      const tradeCount = tradeCountMap[playerId] || 0
       
       // Calculate the keeper cost using the utility function
       let keeperEscalationYear = 0; // Default for non-keepers (first time keep = +$10)
