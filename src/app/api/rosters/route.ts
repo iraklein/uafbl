@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Create a map of player_id to draft info (price and keeper status)
-    const draftInfoMap = {}
+    const draftInfoMap: Record<number, { draft_price: number | null; is_keeper: boolean }> = {}
     draftPrices?.forEach(dp => {
       draftInfoMap[dp.player_id] = {
         draft_price: dp.draft_price,
@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Create a map of player_id to trade count
-    const tradeCountMap = {}
+    const tradeCountMap: Record<number, number> = {}
     tradesData?.forEach(trade => {
       tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
     })
