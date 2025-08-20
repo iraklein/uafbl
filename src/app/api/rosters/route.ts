@@ -9,11 +9,11 @@ interface RosterData {
   players: {
     id: number
     name: string
-  }
+  }[]
   managers: {
     id: number
     manager_name: string
-  }
+  }[]
 }
 
 export async function GET(request: NextRequest) {
@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
 
     // Add draft prices, keeper status, and calculated keeper costs to roster data
     const rostersWithPrices = (rosters as RosterData[])?.map(roster => {
-      const playerId = roster.players.id
+      const playerId = roster.players[0]?.id
       const draftPrice = draftInfoMap[playerId]?.draft_price || null
       const isKeeper = draftInfoMap[playerId]?.is_keeper || false
       const tradeCount = tradeCountMap[playerId] || 0
@@ -117,6 +117,8 @@ export async function GET(request: NextRequest) {
       
       return {
         ...roster,
+        players: roster.players[0],
+        managers: roster.managers[0],
         draft_price: draftPrice,
         is_keeper: isKeeper,
         trade_count: tradeCount,
