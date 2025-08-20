@@ -156,16 +156,37 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
         console.log('Auth state changed:', { event, hasSession: !!session })
         
         const currentUser = session?.user ?? null
-        setUser(currentUser)
         
-        if (currentUser?.email) {
-          await checkAdminStatus(currentUser.email)
-        } else {
+        // Handle sign out events explicitly
+        if (event === 'SIGNED_OUT' || !currentUser) {
+          console.log('Handling sign out - clearing all state')
+          setUser(null)
           setIsAdmin(false)
+          setShowPasswordSetup(false)
+          setLoginError('')
+          setEmail('')
+          setPassword('')
+          
+          // Clear localStorage
+          try {
+            localStorage.removeItem('password_setup_complete')
+            Object.keys(localStorage).forEach(key => {
+              if (key.startsWith('password_setup_complete_')) {
+                localStorage.removeItem(key)
+              }
+            })
+          } catch (e) {
+            console.error('Error clearing localStorage:', e)
+          }
+        } else {
+          // Handle sign in events
+          setUser(currentUser)
+          if (currentUser?.email) {
+            await checkAdminStatus(currentUser.email)
+          }
         }
         
         // Always set loading to false after processing the auth state
-        // The INITIAL_SESSION event is fired when the component first loads
         setLoading(false)
         clearTimeout(timeoutId)
       }
@@ -262,36 +283,41 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const handleLogout = async () => {
     console.log('Sign out initiated...')
     try {
-      // Force sign out regardless of response
-      await supabase.auth.signOut({ scope: 'local' })
-      console.log('Sign out completed')
-    } catch (err) {
-      console.error('Sign out catch error:', err)
-    } finally {
-      // Always reset state even if signOut fails
-      console.log('Resetting local state...')
-      setUser(null)
-      setIsAdmin(false)
-      setShowPasswordSetup(false)
-      setLoginError('')
-      setEmail('')
-      setPassword('')
-      
-      // Clear local storage
-      try {
-        localStorage.removeItem('password_setup_complete')
-        // Clear user-specific flags
-        Object.keys(localStorage).forEach(key => {
-          if (key.startsWith('password_setup_complete_')) {
-            localStorage.removeItem(key)
-          }
-        })
-      } catch (storageErr) {
-        console.error('Error clearing localStorage:', storageErr)
+      // Try to sign out with global scope first, fallback to local
+      const { error } = await supabase.auth.signOut({ scope: 'global' })
+      if (error) {
+        console.warn('Global sign out error, trying local:', error)
+        await supabase.auth.signOut({ scope: 'local' })
       }
-      
-      console.log('Local state reset complete')
+      console.log('Sign out API call completed')
+    } catch (err) {
+      console.error('Sign out error:', err)
+      // Continue with local cleanup even if API fails
     }
+    
+    // The auth state change listener will handle cleanup,
+    // but also do immediate cleanup to ensure UI updates
+    console.log('Forcing immediate state reset...')
+    setUser(null)
+    setIsAdmin(false)
+    setShowPasswordSetup(false)
+    setLoginError('')
+    setEmail('')
+    setPassword('')
+    
+    // Clear local storage
+    try {
+      localStorage.removeItem('password_setup_complete')
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith('password_setup_complete_')) {
+          localStorage.removeItem(key)
+        }
+      })
+    } catch (storageErr) {
+      console.error('Error clearing localStorage:', storageErr)
+    }
+    
+    console.log('Immediate state reset complete')
   }
 
   if (loading) {
