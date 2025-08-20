@@ -135,16 +135,15 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
             await checkAdminStatus(session.user.email)
           }
           
-          // Check if this is a new invitation or magic link by looking for metadata or URL
-          const userMetadata = session.user.user_metadata || {}
-          const isInviteOrMagicLink = userMetadata.invitation || 
-            window.location.hash.includes('type=invite') ||
-            window.location.hash.includes('type=recovery')
+          // Only show password setup if user specifically has never set one
+          const hasSetPasswordGlobally = localStorage.getItem('password_setup_complete')
+          const hasSetPasswordForUser = localStorage.getItem(`password_setup_complete_${session.user.id}`)
           
-          // Also check if user has never set a password (for any magic link users)
-          const hasNeverSetPassword = !localStorage.getItem(`password_setup_complete_${session.user.id}`)
+          // Only show password setup on first login (from invite/recovery link), not on refresh
+          const isFirstTimeLogin = window.location.hash.includes('type=invite') || 
+                                   window.location.hash.includes('type=recovery')
           
-          if ((isInviteOrMagicLink || hasNeverSetPassword) && !localStorage.getItem('password_setup_complete')) {
+          if (isFirstTimeLogin && !hasSetPasswordGlobally && !hasSetPasswordForUser) {
             setShowPasswordSetup(true)
           }
           
@@ -217,6 +216,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
 
   const handlePasswordSetup = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('Password setup starting...')
     setPasswordSetupLoading(true)
     setPasswordSetupError('')
 
@@ -233,16 +233,22 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     }
 
     try {
+      console.log('Updating password...')
       const { error } = await supabase.auth.updateUser({
         password: newPassword
       })
 
+      console.log('Password update result:', { error })
+
       if (error) {
+        console.error('Password update error:', error)
         setPasswordSetupError(error.message)
+        setPasswordSetupLoading(false)
         return
       }
 
       // Password set successfully - store this in localStorage to prevent showing again
+      console.log('Password set successfully, updating localStorage...')
       localStorage.setItem('password_setup_complete', 'true')
       if (user?.id) {
         localStorage.setItem(`password_setup_complete_${user.id}`, 'true')
@@ -250,16 +256,42 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       setShowPasswordSetup(false)
       setNewPassword('')
       setConfirmPassword('')
+      console.log('Password setup completed')
 
     } catch (error: unknown) {
+      console.error('Password setup catch error:', error)
       setPasswordSetupError(error instanceof Error ? error.message : 'An error occurred')
     } finally {
+      console.log('Password setup finally block')
       setPasswordSetupLoading(false)
     }
   }
 
   const handleLogout = async () => {
-    await supabase.auth.signOut()
+    console.log('Sign out initiated...')
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) {
+        console.error('Sign out error:', error)
+      } else {
+        console.log('Sign out successful')
+        // Clear local storage
+        localStorage.removeItem('password_setup_complete')
+        // Clear user-specific flags
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith('password_setup_complete_')) {
+            localStorage.removeItem(key)
+          }
+        })
+        // Reset state
+        setUser(null)
+        setIsAdmin(false)
+        setShowPasswordSetup(false)
+        setLoginError('')
+      }
+    } catch (err) {
+      console.error('Sign out catch error:', err)
+    }
   }
 
   if (loading) {
