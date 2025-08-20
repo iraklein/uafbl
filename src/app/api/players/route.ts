@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     
     let newId = 1
     if (existingLowIds && existingLowIds.length > 0) {
-      newId = existingLowIds[0].id + 1
+      newId = (existingLowIds[0] as { id: number }).id + 1
     }
     
     // Ensure we don't exceed our threshold

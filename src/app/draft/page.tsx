@@ -868,7 +868,7 @@ export default function DraftPage() {
               
               <div className="mb-4">
                 <p className="text-sm text-gray-600 mb-3">
-                  Player "{newPlayerName}" was not found in the database. Would you like to create this player?
+                  Player &quot;{newPlayerName}&quot; was not found in the database. Would you like to create this player?
                 </p>
                 
                 <label htmlFor="new-player-name" className="block text-sm font-medium text-gray-700 mb-2">
