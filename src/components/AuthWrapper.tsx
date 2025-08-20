@@ -139,14 +139,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       // after redirect from Supabase auth
       console.log('Checking for existing session...')
       try {
-        // Add timeout to the getSession call
-        const sessionPromise = supabase.auth.getSession()
-        const timeoutPromise = new Promise<never>((_, reject) => 
-          setTimeout(() => reject(new Error('Session check timeout')), 1500)
-        )
-        
-        const result = await Promise.race([sessionPromise, timeoutPromise])
-        const { data: { session }, error } = result
+        const { data: { session }, error } = await supabase.auth.getSession()
         console.log('Existing session:', { user: !!session?.user, error })
         
         if (session?.user) {
