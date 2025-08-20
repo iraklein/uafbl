@@ -3,6 +3,15 @@
 ## Purpose
 These standards prevent the recurring TypeScript/ESLint issues that cause frequent breakages and development friction.
 
+## 🚨 CRITICAL REMINDERS
+
+### Player ID Assignment - DO NOT FORGET!
+**ALWAYS use IDs under 2000 for new player creation**
+- Basketball Monster imports will use IDs 6000-7000+
+- Manual player additions must use 1-1999 range
+- Check existing implementation in `/api/players` route before making changes
+- This prevents database conflicts and data corruption
+
 ## TypeScript Guidelines
 
 ### ✅ DO: Practical Type Safety
@@ -368,12 +377,13 @@ if (!isValidSeasonId(seasonId)) {
 
 When a query fails, check:
 
-1. **Column exists**: `\d table_name` in database to verify columns
-2. **Relationship syntax**: Use `table!inner` for required joins
-3. **ID vs Year**: Prefer ID-based queries over year-based when possible
-4. **Data types**: URL params are strings, convert to numbers safely
-5. **Array vs Object**: Handle both relationship return types
-6. **Season logic**: Use config helpers instead of hardcoded mappings
+1. **🚨 Player ID Range**: New players MUST use IDs < 2000 (Basketball Monster uses 6000+)
+2. **Column exists**: `\d table_name` in database to verify columns
+3. **Relationship syntax**: Use `table!inner` for required joins
+4. **ID vs Year**: Prefer ID-based queries over year-based when possible
+5. **Data types**: URL params are strings, convert to numbers safely
+6. **Array vs Object**: Handle both relationship return types
+7. **Season logic**: Use config helpers instead of hardcoded mappings
 
 ### 🛠️ Database Verification Commands
 
@@ -394,11 +404,67 @@ SELECT COUNT(*) FROM draft_results WHERE season_id = 1;  -- Should have 2025 dat
 
 ## Summary
 
+## Player ID Assignment Process
+
+### New Player Creation During Draft
+
+When creating new players during the draft (players not already in our database), we follow a specific ID assignment process:
+
+**✅ Use Low IDs (Under 2000) for New Players**
+```typescript
+// Find the highest used ID under 2000
+const { data: existingLowIds } = await supabase
+  .from('players')
+  .select('id')
+  .lt('id', 2000)
+  .order('id', { ascending: false })
+  .limit(1)
+
+let newId = 1
+if (existingLowIds && existingLowIds.length > 0) {
+  newId = existingLowIds[0].id + 1
+}
+
+// Ensure we don't exceed our threshold
+if (newId >= 2000) {
+  throw new Error('No available low IDs under 2000')
+}
+
+// Create player with low ID
+const { data, error } = await supabase
+  .from('players')
+  .insert([{ id: newId, name: playerName }])
+  .select('id, name')
+  .single()
+```
+
+**Why IDs Under 2000?**
+- Prevents conflicts with future Basketball Monster player IDs (6000s-7000s range)
+- Separates draft-time additions from Basketball Monster imports
+- Provides plenty of room (1-1999) for manually added players
+- Makes it easy to identify locally-added vs imported players
+
+**ID Assignment Pattern**:
+- First new player: ID = 1 (or next available if 1 is taken)
+- Second new player: ID = 2 (or next sequential available)
+- Continues sequentially up to 1999
+- Basketball Monster imports will use 6000+ range
+
+**✅ API Implementation**
+The `/api/players` POST endpoint automatically handles this:
+- Checks if player already exists (prevents duplicates)
+- Finds next available low ID under 2000
+- Creates player with proper low ID
+- Returns the new player data for immediate use
+
+This process is implemented in the draft page modal that appears when typing a player name that doesn't exist and pressing Enter.
+
 The goal is **practical type safety** that helps development rather than hindering it. Use the provided utilities, follow the patterns, and prioritize shipping working code over perfect types.
 
 **Key Principles**:
-1. **Centralize configuration** - No magic numbers
-2. **Validate inputs** - Use schemas for all API parameters  
-3. **Handle edge cases** - Arrays vs objects, null values, missing data
-4. **Use type safety** - Import proper interfaces
-5. **Debug systematically** - Check database structure first
+1. **🚨 CRITICAL: Follow ID conventions** - ALWAYS use low IDs (under 2000) for new player creation to avoid Basketball Monster conflicts
+2. **Centralize configuration** - No magic numbers
+3. **Validate inputs** - Use schemas for all API parameters  
+4. **Handle edge cases** - Arrays vs objects, null values, missing data
+5. **Use type safety** - Import proper interfaces
+6. **Debug systematically** - Check database structure first

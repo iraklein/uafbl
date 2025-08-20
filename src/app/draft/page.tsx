@@ -61,6 +61,11 @@ export default function DraftPage() {
   const [editPlayerSuggestions, setEditPlayerSuggestions] = useState<Player[]>([])
   const [showEditPlayerSuggestions, setShowEditPlayerSuggestions] = useState(false)
 
+  // Create player modal states
+  const [showCreatePlayerModal, setShowCreatePlayerModal] = useState(false)
+  const [newPlayerName, setNewPlayerName] = useState('')
+  const [creatingPlayer, setCreatingPlayer] = useState(false)
+
   // Fetch managers
   useEffect(() => {
     async function fetchManagers() {
@@ -136,6 +141,71 @@ export default function DraftPage() {
     if (isKeeper) {
       await fetchKeeperPrice(player.id)
     }
+  }
+
+  // Handle Enter key press in player search
+  const handlePlayerSearchKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      const query = playerSearchQuery.trim()
+      
+      if (query.length < 2) return
+      
+      // Check if any of the filtered players match exactly
+      const exactMatch = filteredPlayers.find(player => 
+        player.name.toLowerCase() === query.toLowerCase()
+      )
+      
+      if (exactMatch) {
+        // Player exists, select it
+        await handlePlayerSelect(exactMatch)
+      } else {
+        // Player doesn't exist, show create modal
+        setNewPlayerName(query)
+        setShowCreatePlayerModal(true)
+        setShowSuggestions(false)
+      }
+    }
+  }
+
+  // Create new player
+  const handleCreatePlayer = async () => {
+    if (!newPlayerName.trim()) return
+    
+    setCreatingPlayer(true)
+    try {
+      const response = await fetch('/api/players', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: newPlayerName.trim() })
+      })
+      
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to create player')
+      }
+      
+      const newPlayer = await response.json()
+      
+      // Select the newly created player
+      await handlePlayerSelect(newPlayer)
+      
+      // Close modal and reset
+      setShowCreatePlayerModal(false)
+      setNewPlayerName('')
+      
+    } catch (error) {
+      console.error('Error creating player:', error)
+      setError(error instanceof Error ? error.message : 'Failed to create player')
+    } finally {
+      setCreatingPlayer(false)
+    }
+  }
+
+  // Cancel player creation
+  const handleCancelCreatePlayer = () => {
+    setShowCreatePlayerModal(false)
+    setNewPlayerName('')
   }
 
   // Fetch keeper price for selected player
@@ -392,6 +462,7 @@ export default function DraftPage() {
                   type="text"
                   value={playerSearchQuery}
                   onChange={handlePlayerSearchChange}
+                  onKeyPress={handlePlayerSearchKeyPress}
                   onFocus={() => {
                     if (playerSearchQuery.trim().length >= 2) {
                       setShowSuggestions(true)
@@ -775,6 +846,63 @@ export default function DraftPage() {
           )}
         </div>
       </div>
+
+      {/* Create Player Modal */}
+      {showCreatePlayerModal && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div className="mt-3">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-medium text-gray-900">
+                  Create New Player
+                </h3>
+                <button
+                  onClick={handleCancelCreatePlayer}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <div className="mb-4">
+                <p className="text-sm text-gray-600 mb-3">
+                  Player "{newPlayerName}" was not found in the database. Would you like to create this player?
+                </p>
+                
+                <label htmlFor="new-player-name" className="block text-sm font-medium text-gray-700 mb-2">
+                  Player Name
+                </label>
+                <input
+                  id="new-player-name"
+                  type="text"
+                  value={newPlayerName}
+                  onChange={(e) => setNewPlayerName(e.target.value)}
+                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                  placeholder="Enter player name"
+                />
+              </div>
+              
+              <div className="flex space-x-3">
+                <button
+                  onClick={handleCreatePlayer}
+                  disabled={creatingPlayer || !newPlayerName.trim()}
+                  className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {creatingPlayer ? 'Creating...' : 'Create Player'}
+                </button>
+                <button
+                  onClick={handleCancelCreatePlayer}
+                  className="flex-1 bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
