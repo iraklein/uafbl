@@ -5,10 +5,9 @@ export async function GET() {
   const supabase = createServerSupabaseClient()
   try {
     const { data, error } = await supabase
-      .from('players')
-      .select('id, name')
-      .order('name', { ascending: true })
-      .limit(10000) // Ensure we get all players
+      .from('managers')
+      .select('id, manager_name')
+      .order('manager_name', { ascending: true })
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 })

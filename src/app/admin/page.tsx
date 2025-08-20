@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Navigation from "../../components/Navigation"
 
 interface Season {
   id: number
@@ -251,45 +251,8 @@ export default function Admin() {
           <div className="mb-6">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
             
-            {/* Navigation Tabs */}
-            <nav className="flex space-x-4">
-              <Link 
-                href="/rosters"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Rosters
-              </Link>
-              <Link 
-                href="/draft-results"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Draft Results
-              </Link>
-              <Link 
-                href="/assets"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Assets
-              </Link>
-              <Link 
-                href="/lsl"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                LSL
-              </Link>
-              <Link 
-                href="/toppers"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Toppers
-              </Link>
-              <Link 
-                href="/admin"
-                className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md"
-              >
-                Admin
-              </Link>
-            </nav>
+          {/* Navigation Tabs */}
+          <Navigation />
           </div>
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Admin Panel</h2>

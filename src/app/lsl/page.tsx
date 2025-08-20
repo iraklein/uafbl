@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Navigation from "../../components/Navigation"
 
 interface LSLRecord {
   id: number
@@ -89,26 +89,7 @@ export default function LSLPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
           
           {/* Navigation Tabs */}
-          <nav className="flex space-x-4">
-            <Link 
-              href="/"
-              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-            >
-              Draft Results
-            </Link>
-            <Link 
-              href="/lsl"
-              className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md"
-            >
-              LSL
-            </Link>
-            <Link 
-              href="/toppers"
-              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-            >
-              Toppers
-            </Link>
-          </nav>
+          <Navigation />
         </div>
 
         <div className="mb-8">

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Navigation from '../../components/Navigation'
 
 interface Player {
   id: number
@@ -137,50 +137,7 @@ export default function Rosters() {
             <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
             
             {/* Navigation Tabs */}
-            <nav className="flex space-x-4">
-              <Link 
-                href="/rosters"
-                className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md"
-              >
-                Rosters
-              </Link>
-              <Link 
-                href="/assets"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Assets
-              </Link>
-              <Link 
-                href="/trades"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Trades
-              </Link>
-              <Link 
-                href="/draft-results"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Draft Results
-              </Link>
-              <Link 
-                href="/lsl"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                LSL
-              </Link>
-              <Link 
-                href="/toppers"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Toppers
-              </Link>
-              <Link 
-                href="/admin"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Admin
-              </Link>
-            </nav>
+            <Navigation />
           </div>
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Team Rosters</h2>
@@ -247,19 +204,19 @@ export default function Rosters() {
                       <table className="w-full text-xs">
                         <thead className="bg-gray-50">
                           <tr>
-                            <th className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight w-1/2">
                               Player
                             </th>
-                            <th className="px-1 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
                               Price
                             </th>
-                            <th className="px-1 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
                               Kept
                             </th>
-                            <th className="px-1 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
                               Trades
                             </th>
-                            <th className="px-1 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
                               Keep $
                             </th>
                           </tr>
@@ -267,8 +224,8 @@ export default function Rosters() {
                         <tbody className="bg-white divide-y divide-gray-200">
                           {players.map((roster) => (
                             <tr key={roster.id} className="hover:bg-gray-50">
-                              <td className="px-2 py-1 text-xs font-medium text-gray-900 truncate max-w-0">
-                                <div className="truncate">{roster.players.name}</div>
+                              <td className="px-3 py-1 text-xs font-medium text-gray-900">
+                                <div className="min-w-0">{roster.players.name}</div>
                               </td>
                               <td className="px-1 py-1 text-xs text-gray-700 text-center">
                                 {roster.draft_price ? `$${roster.draft_price}` : '-'}

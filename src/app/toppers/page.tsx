@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Navigation from "../../components/Navigation"
 
 interface TopperRecord {
   id: number
@@ -108,7 +108,7 @@ export default function ToppersPage() {
     const status = getPlayerStatus(record)
     
     const managerMatch = filters.manager === '' || 
-      record.managers.manager_name === filters.manager
+      record.managers?.manager_name === filters.manager
     
     const playerMatch = filters.player === '' || 
       record.players.name.toLowerCase().includes(filters.player.toLowerCase())
@@ -178,26 +178,7 @@ export default function ToppersPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
           
           {/* Navigation Tabs */}
-          <nav className="flex space-x-4">
-            <Link 
-              href="/"
-              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-            >
-              Draft Results
-            </Link>
-            <Link 
-              href="/lsl"
-              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-            >
-              LSL
-            </Link>
-            <Link 
-              href="/toppers"
-              className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md"
-            >
-              Toppers
-            </Link>
-          </nav>
+          <Navigation />
         </div>
 
         <div className="mb-8">
@@ -257,7 +238,7 @@ export default function ToppersPage() {
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-900"
                   >
                     <option value="">All Managers</option>
-                    {[...new Set(toppersData.map(r => r.managers.manager_name))]
+                    {[...new Set(toppersData.map(r => r.managers?.manager_name).filter(Boolean))]
                       .sort()
                       .map((managerName) => (
                         <option key={managerName} value={managerName}>
@@ -321,7 +302,7 @@ export default function ToppersPage() {
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {filteredToppersData
-                      .sort((a, b) => a.managers.manager_name.localeCompare(b.managers.manager_name))
+                      .sort((a, b) => (a.managers?.manager_name || '').localeCompare(b.managers?.manager_name || ''))
                       .map((record) => {
                         const status = getPlayerStatus(record)
                         
@@ -331,7 +312,7 @@ export default function ToppersPage() {
                               {record.seasons.year}
                             </td>
                             <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                              {record.managers.manager_name}
+                              {record.managers?.manager_name || 'Unknown'}
                             </td>
                             <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                               {record.players.name}

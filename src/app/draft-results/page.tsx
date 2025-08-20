@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Navigation from "../../components/Navigation"
 
 interface Player {
   id?: number
@@ -108,22 +108,24 @@ export default function DraftResults() {
     fetchSeasons()
   }, [])
 
-  // Fetch all players for autocomplete
-  useEffect(() => {
-    async function fetchPlayers() {
-      try {
-        const response = await fetch('/api/players')
-        if (!response.ok) throw new Error('Failed to fetch players')
-        
-        const data = await response.json()
-        setAllPlayers(data)
-      } catch (error: unknown) {
-        console.error('Error fetching players:', error)
-      }
+  // Search players dynamically as user types
+  const searchPlayers = async (query: string) => {
+    if (query.length < 2) {
+      setFilteredPlayers([])
+      return
     }
 
-    fetchPlayers()
-  }, [])
+    try {
+      const response = await fetch(`/api/players/search?q=${encodeURIComponent(query)}`)
+      if (!response.ok) throw new Error('Failed to search players')
+      
+      const data = await response.json()
+      setFilteredPlayers(data)
+    } catch (error: unknown) {
+      console.error('Error searching players:', error)
+      setFilteredPlayers([])
+    }
+  }
 
   // Fetch draft results when season changes
   useEffect(() => {
@@ -187,11 +189,8 @@ export default function DraftResults() {
     const query = e.target.value
     setPlayerSearchQuery(query)
     
-    if (query.trim().length > 0) {
-      const filtered = allPlayers.filter(player => 
-        player.name.toLowerCase().includes(query.toLowerCase())
-      ).slice(0, 10) // Limit to 10 suggestions
-      setFilteredPlayers(filtered)
+    if (query.trim().length >= 2) {
+      searchPlayers(query.trim())
       setShowSuggestions(true)
     } else {
       setShowSuggestions(false)
@@ -252,50 +251,7 @@ export default function DraftResults() {
             <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
             
             {/* Navigation Tabs */}
-            <nav className="flex space-x-4">
-              <Link 
-                href="/rosters"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Rosters
-              </Link>
-              <Link 
-                href="/assets"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Assets
-              </Link>
-              <Link 
-                href="/trades"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Trades
-              </Link>
-              <Link 
-                href="/draft-results"
-                className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md"
-              >
-                Draft Results
-              </Link>
-              <Link 
-                href="/lsl"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                LSL
-              </Link>
-              <Link 
-                href="/toppers"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Toppers
-              </Link>
-              <Link 
-                href="/admin"
-                className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
-              >
-                Admin
-              </Link>
-            </nav>
+            <Navigation />
           </div>
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Draft Results</h2>
@@ -453,10 +409,10 @@ export default function DraftResults() {
                             <th className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
                               Player
                             </th>
-                            <th className="px-1 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight">
                               Price
                             </th>
-                            <th className="px-1 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
+                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight">
                               Kept
                             </th>
                           </tr>
@@ -467,6 +423,7 @@ export default function DraftResults() {
                               <td className="px-2 py-1 text-xs font-medium text-gray-900 truncate max-w-0">
                                 <div className="truncate">
                                   {result.players.name}
+                                  {result.is_keeper && <span className="ml-1 px-1 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
                                   {result.is_topper && <span className="ml-1">🎩</span>}
                                 </div>
                               </td>
@@ -507,10 +464,16 @@ export default function DraftResults() {
                   <>
                     <div className="bg-white p-6 rounded-lg shadow">
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">{playerHistory.player.name}</h2>
-                      <div className="grid grid-cols-3 gap-4 text-center">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                         <div className="bg-blue-50 p-4 rounded-lg">
                           <div className="text-2xl font-bold text-blue-600">{playerHistory.draft_history.length}</div>
                           <div className="text-sm text-gray-600">Draft Records</div>
+                        </div>
+                        <div className="bg-orange-50 p-4 rounded-lg">
+                          <div className="text-2xl font-bold text-orange-600">
+                            ${playerHistory.draft_history.reduce((total, record) => total + (record.draft_price || 0), 0)}
+                          </div>
+                          <div className="text-sm text-gray-600">Total Draft Dollars</div>
                         </div>
                         <div className="bg-green-50 p-4 rounded-lg">
                           <div className="text-2xl font-bold text-green-600">{playerHistory.topper_history.length}</div>
