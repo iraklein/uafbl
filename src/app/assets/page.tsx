@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Navigation from '../../components/Navigation'
+import { useAuth } from '../../contexts/AuthContext'
 
 interface Manager {
   manager_name: string
@@ -13,6 +14,8 @@ interface ManagerAsset {
   manager_id: number
   available_cash: number
   available_slots: number
+  trades_cash?: number
+  trades_slots?: number
   cash_spent: number
   slots_used: number
   cash_left: number
@@ -29,11 +32,14 @@ interface Season {
 }
 
 export default function Assets() {
+  const { isAdmin } = useAuth()
   const [assets, setAssets] = useState<ManagerAsset[]>([])
   const [activeSeason, setActiveSeason] = useState<Season | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [refreshing, setRefreshing] = useState(false)
+  const [editingAsset, setEditingAsset] = useState<number | null>(null)
+  const [editValues, setEditValues] = useState<{cash: string, slots: string, reason: string}>({cash: '', slots: '', reason: ''})
 
   const fetchAssets = async (forceRefresh = false) => {
     try {
@@ -69,13 +75,54 @@ export default function Assets() {
     fetchAssets()
   }, [])
 
+  const startEditing = (assetId: number, currentCash: number, currentSlots: number) => {
+    setEditingAsset(assetId)
+    setEditValues({
+      cash: currentCash.toString(),
+      slots: currentSlots.toString()
+    })
+  }
+
+  const cancelEditing = () => {
+    setEditingAsset(null)
+    setEditValues({cash: '', slots: ''})
+  }
+
+  const saveEdit = async (assetId: number) => {
+    try {
+      const response = await fetch('/api/update-manager-assets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          assetId,
+          availableCash: parseInt(editValues.cash),
+          availableSlots: parseInt(editValues.slots)
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update assets')
+      }
+
+      // Refresh the data
+      await fetchAssets(true)
+      setEditingAsset(null)
+      setEditValues({cash: '', slots: ''})
+    } catch (err) {
+      console.error('Error updating assets:', err)
+      setError('Failed to update assets')
+    }
+  }
+
   // Calculate totals - handle undefined values
-  const totalStartingCash = assets.reduce((sum, asset) => sum + (asset.available_cash || 0), 0)
-  const totalStartingSlots = assets.reduce((sum, asset) => sum + (asset.available_slots || 0), 0)
+  const totalPreDraftCash = assets.reduce((sum, asset) => sum + (asset.available_cash || 0), 0)
+  const totalPreDraftSlots = assets.reduce((sum, asset) => sum + (asset.available_slots || 0), 0)
   const totalCashSpent = assets.reduce((sum, asset) => sum + (asset.cash_spent || 0), 0)
   const totalSlotsUsed = assets.reduce((sum, asset) => sum + (asset.slots_used || 0), 0)
-  const totalCashLeft = assets.reduce((sum, asset) => sum + (asset.cash_left || 0), 0)
-  const totalSlotsLeft = assets.reduce((sum, asset) => sum + (asset.slots_left || 0), 0)
+  const totalCashRemaining = assets.reduce((sum, asset) => sum + ((asset.available_cash || 0) - (asset.cash_spent || 0)), 0)
+  const totalSlotsRemaining = assets.reduce((sum, asset) => sum + ((asset.available_slots || 0) - (asset.slots_used || 0)), 0)
   const totalDraftedPlayers = assets.reduce((sum, asset) => sum + (asset.drafted_players || 0), 0)
 
   return (
@@ -107,41 +154,53 @@ export default function Assets() {
         ) : (
           <>
             {/* Summary Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-3 mb-8">
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-gray-600">${totalStartingCash.toLocaleString()}</div>
-                <div className="text-xs text-gray-600">Starting Cash</div>
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
+              {/* Left side - 3 rows stacked */}
+              <div className="lg:col-span-3 space-y-2">
+                {/* Row 1: Pre-Draft */}
+                <div className="flex gap-2">
+                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
+                    <div className="text-lg font-bold text-gray-600">Pre-Draft Cash: ${totalPreDraftCash.toLocaleString()}</div>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
+                    <div className="text-lg font-bold text-gray-600">Pre-Draft Slots: {totalPreDraftSlots}</div>
+                  </div>
+                </div>
+                
+                {/* Row 2: Spent */}
+                <div className="flex gap-2">
+                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
+                    <div className="text-lg font-bold text-red-600">Cash Spent: ${totalCashSpent.toLocaleString()}</div>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
+                    <div className="text-lg font-bold text-red-600">Slots Used: {totalSlotsUsed}</div>
+                  </div>
+                </div>
+                
+                {/* Row 3: Remaining */}
+                <div className="flex gap-2">
+                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
+                    <div className="text-lg font-bold text-green-600">Cash Remaining: ${totalCashRemaining.toLocaleString()}</div>
+                  </div>
+                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
+                    <div className="text-lg font-bold text-green-600">Slots Remaining: {totalSlotsRemaining}</div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-gray-600">{totalStartingSlots}</div>
-                <div className="text-xs text-gray-600">Starting Slots</div>
-              </div>
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-red-600">${totalCashSpent.toLocaleString()}</div>
-                <div className="text-xs text-gray-600">Cash Spent</div>
-              </div>
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-red-600">{totalSlotsUsed}</div>
-                <div className="text-xs text-gray-600">Slots Used</div>
-              </div>
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-green-600">${totalCashLeft.toLocaleString()}</div>
-                <div className="text-xs text-gray-600">Cash Left</div>
-              </div>
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-green-600">{totalSlotsLeft}</div>
-                <div className="text-xs text-gray-600">Slots Left</div>
-              </div>
-              <div className="bg-white p-3 rounded-lg shadow text-center">
-                <div className="text-lg font-bold text-purple-600">{totalDraftedPlayers}</div>
-                <div className="text-xs text-gray-600">Drafted Players</div>
+              
+              {/* Right side - Drafted Players */}
+              <div className="bg-white p-2 rounded-lg shadow flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600">{totalDraftedPlayers}</div>
+                  <div className="text-sm text-gray-600">Drafted Players</div>
+                </div>
               </div>
             </div>
 
             {/* Assets Table */}
             <div className="bg-white shadow rounded-lg overflow-hidden">
               <div className="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center">
-                <h3 className="text-lg font-semibold">Manager Assets Breakdown</h3>
+                <h3 className="text-lg font-semibold">Manager Assets</h3>
                 <button
                   onClick={() => fetchAssets(true)}
                   disabled={refreshing}
@@ -158,17 +217,21 @@ export default function Assets() {
                       <th rowSpan={2} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider align-bottom">
                         Manager
                       </th>
-                      {/* Starting Group */}
+                      {/* Trades Group */}
                       <th colSpan={2} className="px-3 py-2 pr-8 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-300">
-                        Starting
+                        Trades
+                      </th>
+                      {/* Pre-Draft Group */}
+                      <th colSpan={2} className="px-3 py-2 pr-8 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-300">
+                        Pre-Draft
                       </th>
                       {/* Spent Group */}
                       <th colSpan={2} className="px-3 py-2 pr-8 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-300">
                         Spent
                       </th>
-                      {/* Left Group */}
+                      {/* Remaining Group */}
                       <th colSpan={2} className="px-3 py-2 pr-8 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-300">
-                        Left
+                        Remaining
                       </th>
                       {/* Drafted Group */}
                       <th rowSpan={2} className="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider align-bottom">
@@ -177,7 +240,14 @@ export default function Assets() {
                     </tr>
                     {/* Metric Row */}
                     <tr>
-                      {/* Starting Group */}
+                      {/* Trades Group */}
+                      <th className="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Cash
+                      </th>
+                      <th className="px-3 py-2 pr-8 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-300">
+                        Slots
+                      </th>
+                      {/* Pre-Draft Group */}
                       <th className="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Cash
                       </th>
@@ -191,7 +261,7 @@ export default function Assets() {
                       <th className="px-3 py-2 pr-8 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-300">
                         Slots
                       </th>
-                      {/* Left Group */}
+                      {/* Remaining Group */}
                       <th className="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Cash
                       </th>
@@ -211,16 +281,67 @@ export default function Assets() {
                               {isDraftComplete && <span className="ml-2 text-xs bg-red-200 text-red-800 px-2 py-1 rounded">COMPLETE</span>}
                             </span>
                           </td>
-                        {/* Starting Group */}
+                        {/* Trades Group */}
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center">
-                          <span className="font-semibold text-gray-600">
-                            ${(asset.available_cash || 0).toLocaleString()}
+                          <span className="font-semibold text-blue-600">
+                            ${(asset.trades_cash || 0).toLocaleString()}
                           </span>
                         </td>
                         <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200">
-                          <span className="font-semibold text-gray-600">
-                            {asset.available_slots || 0}
+                          <span className="font-semibold text-blue-600">
+                            {asset.trades_slots || 0}
                           </span>
+                        </td>
+                        {/* Pre-Draft Group */}
+                        <td className="px-3 py-4 whitespace-nowrap text-sm text-center">
+                          {isAdmin && editingAsset === asset.id ? (
+                            <input
+                              type="number"
+                              value={editValues.cash}
+                              onChange={(e) => setEditValues({...editValues, cash: e.target.value})}
+                              className="w-20 px-2 py-1 text-center border border-gray-300 rounded text-gray-600 font-semibold"
+                              min="0"
+                            />
+                          ) : (
+                            <span 
+                              className={`font-semibold text-gray-600 ${isAdmin ? 'cursor-pointer hover:bg-gray-100 px-2 py-1 rounded' : ''}`}
+                              onClick={() => isAdmin && startEditing(asset.id, asset.available_cash || 0, asset.available_slots || 0)}
+                            >
+                              ${(asset.available_cash || 0).toLocaleString()}
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200">
+                          {isAdmin && editingAsset === asset.id ? (
+                            <div className="flex items-center justify-center space-x-2">
+                              <input
+                                type="number"
+                                value={editValues.slots}
+                                onChange={(e) => setEditValues({...editValues, slots: e.target.value})}
+                                className="w-16 px-2 py-1 text-center border border-gray-300 rounded text-gray-600 font-semibold"
+                                min="0"
+                              />
+                              <button
+                                onClick={() => saveEdit(asset.id)}
+                                className="text-green-600 hover:text-green-800 text-xs px-2 py-1 bg-green-100 rounded"
+                              >
+                                ✓
+                              </button>
+                              <button
+                                onClick={cancelEditing}
+                                className="text-red-600 hover:text-red-800 text-xs px-2 py-1 bg-red-100 rounded"
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          ) : (
+                            <span 
+                              className={`font-semibold text-gray-600 ${isAdmin ? 'cursor-pointer hover:bg-gray-100 px-2 py-1 rounded' : ''}`}
+                              onClick={() => isAdmin && startEditing(asset.id, asset.available_cash || 0, asset.available_slots || 0)}
+                            >
+                              {asset.available_slots || 0}
+                            </span>
+                          )}
                         </td>
                         {/* Spent Group */}
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center">
@@ -233,15 +354,15 @@ export default function Assets() {
                             {asset.slots_used || 0}
                           </span>
                         </td>
-                        {/* Left Group */}
-                        <td className={`px-3 py-4 whitespace-nowrap text-sm text-center ${(asset.cash_left || 0) < 0 ? 'bg-red-800' : ''}`}>
-                          <span className={`font-semibold ${(asset.cash_left || 0) < 0 ? 'text-white' : 'text-green-600'}`}>
-                            ${(asset.cash_left || 0).toLocaleString()}
+                        {/* Remaining Group */}
+                        <td className={`px-3 py-4 whitespace-nowrap text-sm text-center ${((asset.available_cash || 0) - (asset.cash_spent || 0)) < 0 ? 'bg-red-800' : ''}`}>
+                          <span className={`font-semibold ${((asset.available_cash || 0) - (asset.cash_spent || 0)) < 0 ? 'text-white' : 'text-green-600'}`}>
+                            ${((asset.available_cash || 0) - (asset.cash_spent || 0)).toLocaleString()}
                           </span>
                         </td>
-                        <td className={`px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 ${(asset.slots_left || 0) < 0 ? 'bg-red-800' : ''}`}>
-                          <span className={`font-semibold ${(asset.slots_left || 0) < 0 ? 'text-white' : 'text-green-600'}`}>
-                            {asset.slots_left || 0}
+                        <td className={`px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 ${((asset.available_slots || 0) - (asset.slots_used || 0)) < 0 ? 'bg-red-800' : ''}`}>
+                          <span className={`font-semibold ${((asset.available_slots || 0) - (asset.slots_used || 0)) < 0 ? 'text-white' : 'text-green-600'}`}>
+                            {(asset.available_slots || 0) - (asset.slots_used || 0)}
                           </span>
                         </td>
                         {/* Drafted Group */}

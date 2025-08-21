@@ -4,17 +4,36 @@ import { createServerSupabaseClient } from '../../../../lib/supabase'
 export async function GET() {
   const supabase = createServerSupabaseClient()
   try {
-    const { data, error } = await supabase
-      .from('players')
-      .select('id, name')
-      .order('name', { ascending: true })
-      .limit(10000) // Ensure we get all players
+    // Get ALL players using pagination to bypass Supabase default limits
+    let allPlayers: any[] = []
+    let hasMore = true
+    let offset = 0
+    const pageSize = 1000
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+    while (hasMore) {
+      const { data: pageData, error: pageError } = await supabase
+        .from('players')
+        .select('id, name')
+        .order('id', { ascending: true })
+        .range(offset, offset + pageSize - 1)
+
+      if (pageError) {
+        return NextResponse.json({ error: pageError.message }, { status: 500 })
+      }
+
+      if (pageData && pageData.length > 0) {
+        allPlayers = allPlayers.concat(pageData)
+        offset += pageSize
+        hasMore = pageData.length === pageSize
+      } else {
+        hasMore = false
+      }
     }
 
-    return NextResponse.json(data)
+    // Sort by name after collecting all players
+    allPlayers.sort((a, b) => a.name.localeCompare(b.name))
+
+    return NextResponse.json(allPlayers)
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }

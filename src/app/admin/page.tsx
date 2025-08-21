@@ -10,19 +10,6 @@ interface Season {
   is_active: boolean
 }
 
-interface Player {
-  id: number
-  name: string
-}
-
-interface Trade {
-  id: number
-  season_id: number
-  player_id: number
-  notes: string | null
-  players: Player
-  seasons: Season
-}
 
 export default function Admin() {
   const [seasons, setSeasons] = useState<Season[]>([])
@@ -41,14 +28,6 @@ export default function Admin() {
   const [initializeLoading, setInitializeLoading] = useState(false)
   const [initializeResult, setInitializeResult] = useState<string>('')
   
-  // Trades management states
-  const [players, setPlayers] = useState<Player[]>([])
-  const [trades, setTrades] = useState<Trade[]>([])
-  const [selectedPlayer, setSelectedPlayer] = useState<string>('')
-  const [tradeNotes, setTradeNotes] = useState('')
-  const [addTradeLoading, setAddTradeLoading] = useState(false)
-  const [addTradeResult, setAddTradeResult] = useState<string>('')
-  const [tradesLoading, setTradesLoading] = useState(false)
 
   useEffect(() => {
     async function fetchSeasons() {
@@ -66,45 +45,9 @@ export default function Admin() {
       }
     }
 
-    async function fetchPlayers() {
-      try {
-        const response = await fetch('/api/players')
-        if (!response.ok) throw new Error('Failed to fetch players')
-        
-        const data = await response.json()
-        setPlayers(data)
-      } catch (error) {
-        console.error('Error fetching players:', error)
-      }
-    }
-
     fetchSeasons()
-    fetchPlayers()
   }, [])
 
-  const fetchTrades = useCallback(async () => {
-    if (!selectedSeason) return
-    
-    setTradesLoading(true)
-    try {
-      const response = await fetch(`/api/admin/trades?season_id=${selectedSeason}`)
-      if (!response.ok) throw new Error('Failed to fetch trades')
-      
-      const data = await response.json()
-      setTrades(data)
-    } catch (error) {
-      console.error('Error fetching trades:', error)
-    } finally {
-      setTradesLoading(false)
-    }
-  }, [selectedSeason])
-
-  // Fetch trades when season changes
-  useEffect(() => {
-    if (selectedSeason) {
-      fetchTrades()
-    }
-  }, [selectedSeason, fetchTrades])
 
   const handleAddSeason = async () => {
     if (!seasonName.trim() || !seasonYear.trim()) {
@@ -183,66 +126,6 @@ export default function Admin() {
     }
   }
 
-  const handleAddTrade = async () => {
-    if (!selectedSeason || !selectedPlayer) {
-      setAddTradeResult('❌ Please select both season and player')
-      return
-    }
-
-    setAddTradeLoading(true)
-    setAddTradeResult('')
-
-    try {
-      const response = await fetch('/api/admin/trades', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          season_id: parseInt(selectedSeason),
-          player_id: parseInt(selectedPlayer),
-          notes: tradeNotes.trim() || null
-        }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setAddTradeResult(`✅ ${data.message}`)
-        setSelectedPlayer('')
-        setTradeNotes('')
-        // Refresh trades list
-        fetchTrades()
-      } else {
-        setAddTradeResult(`❌ ${data.error}`)
-      }
-    } catch (error) {
-      console.error('Error adding trade:', error)
-      setAddTradeResult('❌ Failed to add trade')
-    } finally {
-      setAddTradeLoading(false)
-    }
-  }
-
-  const handleDeleteTrade = async (tradeId: number) => {
-    if (!confirm('Are you sure you want to delete this trade?')) return
-
-    try {
-      const response = await fetch(`/api/admin/trades/${tradeId}`, {
-        method: 'DELETE',
-      })
-
-      if (response.ok) {
-        fetchTrades() // Refresh list
-      } else {
-        const data = await response.json()
-        alert(`Failed to delete trade: ${data.error}`)
-      }
-    } catch (error) {
-      console.error('Error deleting trade:', error)
-      alert('Failed to delete trade')
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -405,175 +288,6 @@ export default function Admin() {
               </div>
             </div>
 
-            {/* Step 3: Manage Trades */}
-            <div className="bg-white shadow rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                  3
-                </div>
-                <h3 className="ml-3 text-lg font-semibold text-gray-900">Manage Trades</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Add trades for players to calculate keeper costs. Each trade adds $5 to the keeper cost.
-              </p>
-              
-              <div className="space-y-6">
-                {/* Add Trade Form */}
-                <div className="border border-gray-200 rounded-lg p-4">
-                  <h4 className="text-md font-medium text-gray-900 mb-4">Add New Trade</h4>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                    <div>
-                      <label htmlFor="trade-season" className="block text-sm font-medium text-gray-700 mb-2">
-                        Season:
-                      </label>
-                      <select
-                        id="trade-season"
-                        value={selectedSeason}
-                        onChange={(e) => setSelectedSeason(e.target.value)}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                      >
-                        <option value="">Choose season...</option>
-                        {seasons.map((season) => (
-                          <option key={season.id} value={season.id}>
-                            {season.name} ({season.year})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="trade-player" className="block text-sm font-medium text-gray-700 mb-2">
-                        Player:
-                      </label>
-                      <select
-                        id="trade-player"
-                        value={selectedPlayer}
-                        onChange={(e) => setSelectedPlayer(e.target.value)}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                      >
-                        <option value="">Choose player...</option>
-                        {players
-                          .sort((a, b) => a.name.localeCompare(b.name))
-                          .map((player) => (
-                            <option key={player.id} value={player.id}>
-                              {player.name}
-                            </option>
-                          ))}
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="trade-notes" className="block text-sm font-medium text-gray-700 mb-2">
-                        Notes (optional):
-                      </label>
-                      <input
-                        id="trade-notes"
-                        type="text"
-                        value={tradeNotes}
-                        onChange={(e) => setTradeNotes(e.target.value)}
-                        placeholder="Trade details..."
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                      />
-                    </div>
-                    
-                    <div className="flex items-end">
-                      <button
-                        onClick={handleAddTrade}
-                        disabled={addTradeLoading || !selectedSeason || !selectedPlayer}
-                        className="w-full px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {addTradeLoading ? 'Adding...' : 'Add Trade'}
-                      </button>
-                    </div>
-                  </div>
-
-                  {addTradeResult && (
-                    <div className={`text-sm ${
-                      addTradeResult.includes('✅') ? 'text-green-600' : 'text-red-600'
-                    }`}>
-                      {addTradeResult}
-                    </div>
-                  )}
-                </div>
-
-                {/* Trades List */}
-                {selectedSeason && (
-                  <div className="border border-gray-200 rounded-lg p-4">
-                    <h4 className="text-md font-medium text-gray-900 mb-4">
-                      Trades for {seasons.find(s => s.id.toString() === selectedSeason)?.name}
-                    </h4>
-                    
-                    {tradesLoading ? (
-                      <div className="text-center py-4 text-gray-500">Loading trades...</div>
-                    ) : trades.length === 0 ? (
-                      <div className="text-center py-4 text-gray-500">No trades found for this season.</div>
-                    ) : (
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
-                          <thead className="bg-gray-50">
-                            <tr>
-                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Player
-                              </th>
-                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Notes
-                              </th>
-                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Actions
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
-                            {trades.map((trade) => (
-                              <tr key={trade.id} className="hover:bg-gray-50">
-                                <td className="px-4 py-2 text-sm font-medium text-gray-900">
-                                  {trade.players.name}
-                                </td>
-                                <td className="px-4 py-2 text-sm text-gray-700">
-                                  {trade.notes || '-'}
-                                </td>
-                                <td className="px-4 py-2 text-sm">
-                                  <button
-                                    onClick={() => handleDeleteTrade(trade.id)}
-                                    className="text-red-600 hover:text-red-800 font-medium"
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        
-                        {/* Trade count summary */}
-                        <div className="mt-4 p-3 bg-blue-50 rounded-md">
-                          <div className="text-sm text-blue-700">
-                            <strong>Trade Summary:</strong>
-                            <div className="mt-2 grid grid-cols-1 md:grid-cols-3 gap-4">
-                              {Object.entries(
-                                trades.reduce((acc, trade) => {
-                                  const playerName = trade.players.name
-                                  acc[playerName] = (acc[playerName] || 0) + 1
-                                  return acc
-                                }, {} as Record<string, number>)
-                              )
-                                .sort(([,a], [,b]) => b - a)
-                                .map(([player, count]) => (
-                                  <div key={player} className="flex justify-between">
-                                    <span>{player}:</span>
-                                    <span className="font-medium">{count} trade{count !== 1 ? 's' : ''} (+${count * 5})</span>
-                                  </div>
-                                ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
 
           </div>
         )}
