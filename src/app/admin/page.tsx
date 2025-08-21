@@ -1,7 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import Navigation from "../../components/Navigation"
+import Header from "../../components/Header"
+import SeasonSelector from "../../components/SeasonSelector"
+import ErrorAlert from "../../components/ErrorAlert"
+import LoadingState from "../../components/LoadingState"
+import FormInput from "../../components/FormInput"
 
 interface Season {
   id: number
@@ -130,28 +134,18 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Header />
+
         <div className="mb-8">
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
-            
-          {/* Navigation Tabs */}
-          <Navigation />
-          </div>
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Admin Panel</h2>
           <p className="text-gray-600 mb-6">Administrative tools for managing seasons and league operations</p>
         </div>
 
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
-          </div>
-        )}
+        <ErrorAlert error={error} />
 
         {loading ? (
-          <div className="text-center py-8">
-            <div className="text-lg text-gray-600">Loading admin tools...</div>
-          </div>
+          <LoadingState message="Loading admin tools..." />
         ) : (
           <div className="space-y-8">
             {/* Step 1: Add New Season */}
@@ -168,29 +162,21 @@ export default function Admin() {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
-                  <label htmlFor="season-name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Season Name:
-                  </label>
-                  <input
-                    id="season-name"
+                  <FormInput
+                    label="Season Name"
                     type="text"
                     value={seasonName}
                     onChange={(e) => setSeasonName(e.target.value)}
                     placeholder="e.g., 2025-26 Season"
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
                   />
                 </div>
                 <div>
-                  <label htmlFor="season-year" className="block text-sm font-medium text-gray-700 mb-2">
-                    Year:
-                  </label>
-                  <input
-                    id="season-year"
+                  <FormInput
+                    label="Year"
                     type="number"
                     value={seasonYear}
                     onChange={(e) => setSeasonYear(e.target.value)}
                     placeholder="2025"
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
                   />
                 </div>
                 <div className="flex items-end">
@@ -242,19 +228,14 @@ export default function Admin() {
                   <label htmlFor="season-select" className="block text-sm font-medium text-gray-700 mb-2">
                     Select Season:
                   </label>
-                  <select
-                    id="season-select"
-                    value={selectedSeason}
-                    onChange={(e) => setSelectedSeason(e.target.value)}
+                  <SeasonSelector
+                    seasons={seasons}
+                    selectedSeason={selectedSeason}
+                    onSeasonChange={setSelectedSeason}
+                    placeholder="Choose a season..."
                     className="block w-64 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                  >
-                    <option value="">Choose a season...</option>
-                    {seasons.map((season) => (
-                      <option key={season.id} value={season.id}>
-                        {season.name} ({season.year}) {season.is_active ? '(Active)' : ''}
-                      </option>
-                    ))}
-                  </select>
+                    seasonLabelFormatter={(season) => `${season.name} (${season.year}) ${season.is_active ? '(Active)' : ''}`}
+                  />
                 </div>
 
                 <div className="flex items-center space-x-4">

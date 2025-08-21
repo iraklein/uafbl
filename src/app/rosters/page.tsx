@@ -1,79 +1,24 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Navigation from '../../components/Navigation'
+import Header from '../../components/Header'
+import SeasonSelector from '../../components/SeasonSelector'
+import LoadingState from '../../components/LoadingState'
+import ErrorAlert from '../../components/ErrorAlert'
+import DataTable, { Column } from '../../components/DataTable'
+import { useSeasons } from '../../hooks/useSeasons'
+import { Roster } from '../../types'
 
-interface Player {
-  id: number
-  name: string
-}
-
-interface Manager {
-  id: number
-  manager_name: string
-}
-
-interface Roster {
-  id: number
-  keeper_cost: number | null
-  consecutive_keeps: number | null
-  trades: number
-  draft_price: number | null
-  is_keeper: boolean
-  trade_count: number
-  calculated_keeper_cost: number | null
-  players: Player
-  managers: Manager
-}
-
-interface SeasonOption {
-  id: number
-  year: number
-  name: string
-}
 
 interface GroupedRosters {
   [managerName: string]: Roster[]
 }
 
 export default function Rosters() {
-  const [seasons, setSeasons] = useState<SeasonOption[]>([])
-  const [selectedSeason, setSelectedSeason] = useState<string>('')
+  const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons()
   const [rosters, setRosters] = useState<Roster[]>([])
-  const [loading, setLoading] = useState(true)
   const [rostersLoading, setRostersLoading] = useState(false)
-  const [error, setError] = useState('')
-
-  // Fetch seasons for dropdown
-  useEffect(() => {
-    async function fetchSeasons() {
-      try {
-        const response = await fetch('/api/seasons')
-        if (!response.ok) throw new Error('Failed to fetch seasons')
-        
-        const data = await response.json()
-        setSeasons(data)
-        
-        // Find the most recent season with data (default to 2024-25 if available)
-        if (data.length > 0) {
-          const season2024_25 = data.find((season: SeasonOption) => season.name.includes('2024-25') || season.year === 2024)
-          if (season2024_25) {
-            setSelectedSeason(season2024_25.id.toString())
-          } else {
-            // Fall back to the most recent season
-            setSelectedSeason(data[0].id.toString())
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching seasons:', error)
-        setError('Failed to load seasons')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchSeasons()
-  }, [])
+  const [rostersError, setRostersError] = useState('')
 
   // Fetch rosters when season changes
   useEffect(() => {
@@ -81,7 +26,7 @@ export default function Rosters() {
 
     async function fetchRosters() {
       setRostersLoading(true)
-      setError('')
+      setRostersError('')
 
       try {
         const response = await fetch(`/api/rosters?season_id=${selectedSeason}`)
@@ -91,7 +36,7 @@ export default function Rosters() {
         setRosters(data)
       } catch (error) {
         console.error('Error fetching rosters:', error)
-        setError('Failed to load rosters')
+        setRostersError('Failed to load rosters')
       } finally {
         setRostersLoading(false)
       }
@@ -129,67 +74,86 @@ export default function Rosters() {
 
   const selectedSeasonName = seasons.find(s => s.id.toString() === selectedSeason)?.name || ''
 
+  // Define columns for the roster DataTable
+  const rosterColumns: Column<Roster>[] = [
+    {
+      key: 'players.name',
+      header: 'Player',
+      className: 'font-medium',
+      headerClassName: 'w-1/2'
+    },
+    {
+      key: 'draft_price',
+      header: 'Price',
+      headerClassName: 'text-center w-1/8',
+      className: 'text-center',
+      render: (value) => value ? `$${value}` : '-'
+    },
+    {
+      key: 'consecutive_keeps',
+      header: 'Kept',
+      headerClassName: 'text-center w-1/8',
+      className: 'text-center',
+      render: (value) => value !== null ? value + 1 : '-'
+    },
+    {
+      key: 'trade_count',
+      header: 'Trades',
+      headerClassName: 'text-center w-1/8',
+      className: 'text-center',
+      render: (value) => value ? value : '-'
+    },
+    {
+      key: 'calculated_keeper_cost',
+      header: 'Keep $',
+      headerClassName: 'text-center w-1/8',
+      className: 'text-center',
+      render: (value) => value ? `$${value}` : '-'
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Header />
+
         <div className="mb-8">
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
-            
-            {/* Navigation Tabs */}
-            <Navigation />
-          </div>
           
           {/* Header with inline season selector */}
           <div className="flex items-center space-x-6 mb-4">
             <h2 className="text-2xl font-semibold text-gray-800">Team Rosters</h2>
             
             {/* Season Selector */}
-            <select
-              id="season-select"
-              value={selectedSeason}
-              onChange={(e) => setSelectedSeason(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-sm"
-              disabled={loading}
-            >
-              <option value="">Choose a season...</option>
-              {seasons.map((season) => (
-                <option key={season.id} value={season.id}>
-                  {season.name} ({season.year})
-                </option>
-              ))}
-            </select>
-          </div>
+            <SeasonSelector
+              seasons={seasons}
+              selectedSeason={selectedSeason}
+              onSeasonChange={setSelectedSeason}
+              loading={loading}
+            />
 
-          {selectedSeasonName && (
-            <div className="bg-white p-4 rounded-lg shadow mb-6">
-              <h3 className="text-xl font-semibold text-gray-800">{selectedSeasonName}</h3>
-              <p className="text-gray-600">{rosters.length} total players</p>
-            </div>
-          )}
+            {/* Player count info box */}
+            {selectedSeason && (
+              <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
+                <span className="text-sm font-medium text-blue-900">{rosters.length} total players</span>
+              </div>
+            )}
+          </div>
         </div>
 
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
-          </div>
-        )}
+        <ErrorAlert error={error} />
+        <ErrorAlert error={rostersError} />
 
         {loading ? (
-          <div className="text-center py-8">
-            <div className="text-lg text-gray-600">Loading seasons...</div>
-          </div>
+          <LoadingState message="Loading seasons..." />
         ) : rostersLoading ? (
-          <div className="text-center py-8">
-            <div className="text-lg text-gray-600">Loading rosters...</div>
-          </div>
+          <LoadingState message="Loading rosters..." />
         ) : selectedSeason ? (
           <>
             {sortedManagers.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                 {sortedManagers.map(({ managerName, players }) => (
-                  <div key={managerName} className="bg-white shadow rounded-lg overflow-hidden">
-                    <div className="bg-indigo-600 text-white px-3 py-2">
+                  <div key={managerName}>
+                    <div className="bg-indigo-600 text-white px-3 py-2 rounded-t-lg">
                       <div className="flex justify-between items-center">
                         <h3 className="text-sm font-semibold">{managerName}</h3>
                         <div className="text-xs">
@@ -198,63 +162,22 @@ export default function Rosters() {
                       </div>
                     </div>
                     
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-xs">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight w-1/2">
-                              Player
-                            </th>
-                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
-                              Price
-                            </th>
-                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
-                              Kept
-                            </th>
-                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
-                              Trades
-                            </th>
-                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight w-1/8">
-                              Keep $
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                          {players.map((roster) => (
-                            <tr key={roster.id} className="hover:bg-gray-50">
-                              <td className="px-3 py-1 text-xs font-medium text-gray-900">
-                                <div className="min-w-0">{roster.players.name}</div>
-                              </td>
-                              <td className="px-1 py-1 text-xs text-gray-700 text-center">
-                                {roster.draft_price ? `$${roster.draft_price}` : '-'}
-                              </td>
-                              <td className="px-1 py-1 text-xs text-gray-700 text-center">
-                                {roster.consecutive_keeps !== null ? roster.consecutive_keeps + 1 : '-'}
-                              </td>
-                              <td className="px-1 py-1 text-xs text-gray-700 text-center">
-                                {roster.trade_count ? roster.trade_count : '-'}
-                              </td>
-                              <td className="px-1 py-1 text-xs text-gray-700 text-center">
-                                {roster.calculated_keeper_cost ? `$${roster.calculated_keeper_cost}` : '-'}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                    <DataTable
+                      columns={rosterColumns}
+                      data={players}
+                      className="rounded-t-none shadow"
+                      emptyMessage={`No players found for ${managerName}.`}
+                      size="sm"
+                    />
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8">
-                <div className="text-lg text-gray-600">No rosters found for this season.</div>
-              </div>
+              <LoadingState message="No rosters found for this season." />
             )}
           </>
         ) : (
-          <div className="text-center py-8">
-            <div className="text-lg text-gray-600">Please select a season to view rosters.</div>
-          </div>
+          <LoadingState message="Please select a season to view rosters." />
         )}
       </div>
     </div>

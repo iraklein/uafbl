@@ -1,7 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Navigation from '../../components/Navigation'
+import Header from '../../components/Header'
+import ErrorAlert from '../../components/ErrorAlert'
+import Modal from '../../components/Modal'
+import Select from '../../components/Select'
+import FormInput from '../../components/FormInput'
+import PlayerSearch from '../../components/PlayerSearch'
 
 interface Player {
   id: number
@@ -32,8 +37,6 @@ const CURRENT_SEASON_ID = 1 // 2025-26 Season
 export default function DraftPage() {
   // Search states
   const [playerSearchQuery, setPlayerSearchQuery] = useState('')
-  const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([])
-  const [showSuggestions, setShowSuggestions] = useState(false)
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
 
   // Form states
@@ -58,8 +61,6 @@ export default function DraftPage() {
   
   // Player search states for editing
   const [editPlayerSearchQuery, setEditPlayerSearchQuery] = useState('')
-  const [editPlayerSuggestions, setEditPlayerSuggestions] = useState<Player[]>([])
-  const [showEditPlayerSuggestions, setShowEditPlayerSuggestions] = useState(false)
 
   // Create player modal states
   const [showCreatePlayerModal, setShowCreatePlayerModal] = useState(false)
@@ -98,44 +99,12 @@ export default function DraftPage() {
     fetchDraftPicks()
   }, [])
 
-  // Search players dynamically
-  const searchPlayers = async (query: string) => {
-    if (query.length < 2) {
-      setFilteredPlayers([])
-      return
-    }
 
-    try {
-      const response = await fetch(`/api/players/search?q=${encodeURIComponent(query)}`)
-      if (!response.ok) throw new Error('Failed to search players')
-      
-      const data = await response.json()
-      setFilteredPlayers(data)
-    } catch (error) {
-      console.error('Error searching players:', error)
-      setFilteredPlayers([])
-    }
-  }
-
-  // Handle player search input change
-  const handlePlayerSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
-    setPlayerSearchQuery(query)
-    
-    if (query.trim().length >= 2) {
-      searchPlayers(query.trim())
-      setShowSuggestions(true)
-    } else {
-      setShowSuggestions(false)
-      setFilteredPlayers([])
-    }
-  }
 
   // Handle player selection
   const handlePlayerSelect = async (player: Player) => {
     setSelectedPlayer(player)
     setPlayerSearchQuery(player.name)
-    setShowSuggestions(false)
     
     // If keeper is checked, fetch the calculated keeper price
     if (isKeeper) {
@@ -143,30 +112,18 @@ export default function DraftPage() {
     }
   }
 
-  // Handle Enter key press in player search
-  const handlePlayerSearchKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      const query = playerSearchQuery.trim()
-      
-      if (query.length < 2) return
-      
-      // Check if any of the filtered players match exactly
-      const exactMatch = filteredPlayers.find(player => 
-        player.name.toLowerCase() === query.toLowerCase()
-      )
-      
-      if (exactMatch) {
-        // Player exists, select it
-        await handlePlayerSelect(exactMatch)
-      } else {
-        // Player doesn't exist, show create modal
-        setNewPlayerName(query)
-        setShowCreatePlayerModal(true)
-        setShowSuggestions(false)
-      }
+  // Handle exact match or enter press
+  const handlePlayerExactMatch = async (player: Player) => {
+    if (player.id === -1) {
+      // This is a new player, trigger create modal
+      setNewPlayerName(player.name)
+      setShowCreatePlayerModal(true)
+    } else {
+      // Existing player
+      await handlePlayerSelect(player)
     }
   }
+
 
   // Create new player
   const handleCreatePlayer = async () => {
@@ -187,8 +144,14 @@ export default function DraftPage() {
       
       const newPlayer = await response.json()
       
-      // Select the newly created player
-      await handlePlayerSelect(newPlayer)
+      // Select the newly created player based on context
+      if (editingPickId) {
+        // We're editing a draft pick
+        handleEditPlayerSelect(newPlayer)
+      } else {
+        // We're in the main form
+        await handlePlayerSelect(newPlayer)
+      }
       
       // Close modal and reset
       setShowCreatePlayerModal(false)
@@ -336,52 +299,28 @@ export default function DraftPage() {
     setEditingPickId(null)
     setEditingPick(null)
     setEditPlayerSearchQuery('')
-    setEditPlayerSuggestions([])
-    setShowEditPlayerSuggestions(false)
-  }
-
-  // Search players for editing
-  const searchPlayersForEdit = async (query: string) => {
-    if (query.length < 2) {
-      setEditPlayerSuggestions([])
-      return
-    }
-
-    try {
-      const response = await fetch(`/api/players/search?q=${encodeURIComponent(query)}`)
-      if (!response.ok) throw new Error('Failed to search players')
-      
-      const data = await response.json()
-      setEditPlayerSuggestions(data)
-    } catch (error) {
-      console.error('Error searching players:', error)
-      setEditPlayerSuggestions([])
-    }
-  }
-
-  // Handle player search input change for editing
-  const handleEditPlayerSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
-    setEditPlayerSearchQuery(query)
-    
-    if (query.trim().length >= 2) {
-      searchPlayersForEdit(query.trim())
-      setShowEditPlayerSuggestions(true)
-    } else {
-      setShowEditPlayerSuggestions(false)
-      setEditPlayerSuggestions([])
-    }
   }
 
   // Handle player selection for editing
   const handleEditPlayerSelect = (player: Player) => {
     setEditPlayerSearchQuery(player.name)
-    setShowEditPlayerSuggestions(false)
     setEditingPick(prev => ({
       ...prev!,
       player_id: player.id,
       player_name: player.name
     }))
+  }
+
+  // Handle exact match or enter press for editing
+  const handleEditPlayerExactMatch = async (player: Player) => {
+    if (player.id === -1) {
+      // This is a new player, trigger create modal
+      setNewPlayerName(player.name)
+      setShowCreatePlayerModal(true)
+    } else {
+      // Existing player
+      handleEditPlayerSelect(player)
+    }
   }
 
   // Save edited draft pick
@@ -429,86 +368,68 @@ export default function DraftPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
-          <Navigation />
-        </div>
+        <Header />
 
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Live Draft Entry</h2>
-          <p className="text-gray-600 mb-6">2025-26 Season Draft</p>
+          <div className="flex items-center space-x-6 mb-4">
+            <h2 className="text-2xl font-semibold text-gray-800">Live Draft Entry</h2>
+            <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
+              <span className="text-sm font-medium text-blue-900">2025-26 Season Draft</span>
+            </div>
+          </div>
         </div>
 
         {/* Draft Form */}
         <div className="bg-white shadow rounded-lg p-6 mb-8">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Add Draft Pick</h3>
           
-          {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-              {error}
-            </div>
-          )}
+          <ErrorAlert error={error} className="mb-4" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
             {/* Player Search */}
-            <div>
-              <label htmlFor="player-search" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Player *
               </label>
-              <div className="relative">
-                <input
-                  id="player-search"
-                  type="text"
-                  value={playerSearchQuery}
-                  onChange={handlePlayerSearchChange}
-                  onKeyPress={handlePlayerSearchKeyPress}
-                  onFocus={() => {
-                    if (playerSearchQuery.trim().length >= 2) {
-                      setShowSuggestions(true)
-                    }
-                  }}
-                  placeholder="Search for player..."
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                  autoComplete="off"
-                />
-                
-                {/* Autocomplete Dropdown */}
-                {showSuggestions && filteredPlayers.length > 0 && (
-                  <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto mt-1">
-                    {filteredPlayers.map((player) => (
-                      <button
-                        key={player.id}
-                        type="button"
-                        onClick={() => handlePlayerSelect(player)}
-                        className="w-full text-left px-3 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none text-gray-900"
-                      >
-                        {player.name}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <PlayerSearch
+                value={playerSearchQuery}
+                onChange={setPlayerSearchQuery}
+                onPlayerSelect={handlePlayerSelect}
+                onExactMatch={handlePlayerExactMatch}
+                placeholder="Search for player..."
+                allowCreateNew={true}
+              />
             </div>
 
             {/* Manager Selection */}
-            <div>
-              <label htmlFor="manager-select" className="block text-sm font-medium text-gray-700 mb-1">
-                Manager *
-              </label>
-              <select
-                id="manager-select"
+            <div className="md:col-span-2">
+              <Select
+                label="Manager"
                 value={selectedManager}
                 onChange={(e) => setSelectedManager(e.target.value)}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-              >
-                <option value="">Select manager...</option>
-                {managers.map((manager) => (
-                  <option key={manager.id} value={manager.id}>
-                    {manager.manager_name}
-                  </option>
-                ))}
-              </select>
+                placeholder="Select manager..."
+                required
+                options={managers.map(manager => ({
+                  value: manager.id.toString(),
+                  label: manager.manager_name
+                }))}
+              />
+            </div>
+
+            {/* Topper Checkbox */}
+            <div className="md:col-span-2">
+              <div className="flex items-center">
+                <input
+                  id="is-topper"
+                  type="checkbox"
+                  checked={isTopper}
+                  onChange={(e) => setIsTopper(e.target.checked)}
+                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                />
+                <label htmlFor="is-topper" className="ml-2 block text-sm text-gray-900">
+                  This player was topped
+                </label>
+              </div>
             </div>
 
             {/* Keeper Checkbox */}
@@ -532,35 +453,16 @@ export default function DraftPage() {
               </div>
             </div>
 
-            {/* Topper Checkbox */}
-            <div className="md:col-span-2">
-              <div className="flex items-center">
-                <input
-                  id="is-topper"
-                  type="checkbox"
-                  checked={isTopper}
-                  onChange={(e) => setIsTopper(e.target.checked)}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="is-topper" className="ml-2 block text-sm text-gray-900">
-                  This player was topped
-                </label>
-              </div>
-            </div>
-
             {/* Draft Price */}
             <div>
-              <label htmlFor="draft-price" className="block text-sm font-medium text-gray-700 mb-1">
-                Draft Price * {isKeeper && '(Auto-filled for keepers)'}
-              </label>
-              <input
-                id="draft-price"
+              <FormInput
+                label={`Draft Price ${isKeeper ? '(Auto-filled for keepers)' : ''}`}
                 type="number"
                 value={draftPrice}
                 onChange={(e) => setDraftPrice(e.target.value)}
                 disabled={isKeeper}
                 placeholder="Enter draft price..."
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 disabled:bg-gray-100"
+                required
               />
             </div>
 
@@ -647,31 +549,15 @@ export default function DraftPage() {
                       {/* Player Column */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {isEditing ? (
-                          <div className="relative">
-                            <input
-                              type="text"
-                              value={editPlayerSearchQuery}
-                              onChange={handleEditPlayerSearchChange}
-                              onFocus={() => editPlayerSearchQuery.length >= 2 && setShowEditPlayerSuggestions(true)}
-                              onBlur={() => setTimeout(() => setShowEditPlayerSuggestions(false), 150)}
-                              placeholder="Search player..."
-                              className="block w-full px-2 py-1 border border-gray-300 rounded text-sm"
-                            />
-                            {showEditPlayerSuggestions && editPlayerSuggestions.length > 0 && (
-                              <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-40 overflow-y-auto mt-1">
-                                {editPlayerSuggestions.map((player) => (
-                                  <button
-                                    key={player.id}
-                                    type="button"
-                                    onClick={() => handleEditPlayerSelect(player)}
-                                    className="w-full text-left px-3 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none text-gray-900 text-sm"
-                                  >
-                                    {player.name}
-                                  </button>
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                          <PlayerSearch
+                            value={editPlayerSearchQuery}
+                            onChange={setEditPlayerSearchQuery}
+                            onPlayerSelect={handleEditPlayerSelect}
+                            onExactMatch={handleEditPlayerExactMatch}
+                            placeholder="Search player..."
+                            className="text-sm"
+                            allowCreateNew={true}
+                          />
                         ) : (
                           <>
                             {pick.player_name}
@@ -848,61 +734,42 @@ export default function DraftPage() {
       </div>
 
       {/* Create Player Modal */}
-      {showCreatePlayerModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <div className="mt-3">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-gray-900">
-                  Create New Player
-                </h3>
-                <button
-                  onClick={handleCancelCreatePlayer}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              
-              <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-3">
-                  Player &quot;{newPlayerName}&quot; was not found in the database. Would you like to create this player?
-                </p>
-                
-                <label htmlFor="new-player-name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Player Name
-                </label>
-                <input
-                  id="new-player-name"
-                  type="text"
-                  value={newPlayerName}
-                  onChange={(e) => setNewPlayerName(e.target.value)}
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                  placeholder="Enter player name"
-                />
-              </div>
-              
-              <div className="flex space-x-3">
-                <button
-                  onClick={handleCreatePlayer}
-                  disabled={creatingPlayer || !newPlayerName.trim()}
-                  className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {creatingPlayer ? 'Creating...' : 'Create Player'}
-                </button>
-                <button
-                  onClick={handleCancelCreatePlayer}
-                  className="flex-1 bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
+      <Modal
+        isOpen={showCreatePlayerModal}
+        onClose={handleCancelCreatePlayer}
+        title="Create New Player"
+        size="sm"
+      >
+        <div className="mb-4">
+          <p className="text-sm text-gray-600 mb-3">
+            Player &quot;{newPlayerName}&quot; was not found in the database. Would you like to create this player?
+          </p>
+          
+          <FormInput
+            label="Player Name"
+            type="text"
+            value={newPlayerName}
+            onChange={(e) => setNewPlayerName(e.target.value)}
+            placeholder="Enter player name"
+          />
         </div>
-      )}
+        
+        <div className="flex space-x-3">
+          <button
+            onClick={handleCreatePlayer}
+            disabled={creatingPlayer || !newPlayerName.trim()}
+            className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {creatingPlayer ? 'Creating...' : 'Create Player'}
+          </button>
+          <button
+            onClick={handleCancelCreatePlayer}
+            className="flex-1 bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            Cancel
+          </button>
+        </div>
+      </Modal>
     </div>
   )
 }

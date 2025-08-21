@@ -1,7 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Navigation from "../../components/Navigation"
+import Header from "../../components/Header"
+import ErrorAlert from "../../components/ErrorAlert"
+import LoadingState from "../../components/LoadingState"
+import DataTable, { Column } from "../../components/DataTable"
 
 interface LSLRecord {
   id: number
@@ -57,13 +60,54 @@ export default function LSLPage() {
 
   const years = Object.keys(groupedByYear).map(Number).sort()
 
+  // Define columns for the DataTable
+  const columns: Column<LSLRecord>[] = [
+    {
+      key: 'draft_order',
+      header: 'Pick',
+      render: (value) => `#${value}`,
+      className: 'font-medium'
+    },
+    {
+      key: 'players.name',
+      header: 'Player',
+      className: 'font-medium'
+    },
+    {
+      key: 'original_managers.manager_name',
+      header: 'LSL Draft Team',
+      render: (value) => value || 'Unknown'
+    },
+    {
+      key: 'draft_managers.manager_name',
+      header: 'Draft Team',
+      render: (value) => value || 'Unknown'
+    },
+    {
+      key: 'draft_price',
+      header: 'Price',
+      render: (value) => `$${value}`
+    },
+    {
+      key: 'status',
+      header: 'Status',
+      render: (value) => (
+        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+          value === 'Kept' 
+            ? 'bg-green-100 text-green-800' 
+            : 'bg-red-100 text-red-800'
+        }`}>
+          {value}
+        </span>
+      )
+    }
+  ]
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center py-8">
-            <div className="text-lg text-gray-600">Loading LSL data...</div>
-          </div>
+          <LoadingState message="Loading LSL data..." />
         </div>
       </div>
     )
@@ -73,9 +117,7 @@ export default function LSLPage() {
     return (
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            {error}
-          </div>
+          <ErrorAlert error={error} />
         </div>
       </div>
     )
@@ -84,13 +126,7 @@ export default function LSLPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Header */}
-        <div className="mb-6">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
-          
-          {/* Navigation Tabs */}
-          <Navigation />
-        </div>
+        <Header />
 
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Lone Star League</h2>
@@ -105,64 +141,12 @@ export default function LSLPage() {
           <div key={year} className="mb-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">{year} LSL Draft</h2>
             
-            <div className="bg-white shadow rounded-lg overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Pick
-                      </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Player
-                      </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        LSL Draft Team
-                      </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Draft Team
-                      </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Price
-                      </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Status
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {groupedByYear[year].map((record) => (
-                      <tr key={record.id} className="hover:bg-gray-50">
-                        <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          #{record.draft_order}
-                        </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">
-                          {record.players.name}
-                        </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-600">
-                          {record.original_managers?.manager_name || 'Unknown'}
-                        </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-600">
-                          {record.draft_managers?.manager_name || 'Unknown'}
-                        </td>
-                        <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-900">
-                          ${record.draft_price}
-                        </td>
-                        <td className="px-3 py-4 whitespace-nowrap">
-                          <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            record.status === 'Kept' 
-                              ? 'bg-green-100 text-green-800' 
-                              : 'bg-red-100 text-red-800'
-                          }`}>
-                            {record.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <DataTable
+              columns={columns}
+              data={groupedByYear[year]}
+              emptyMessage={`No LSL data found for ${year}.`}
+              size="sm"
+            />
           </div>
         ))}
       </div>

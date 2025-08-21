@@ -1,7 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Navigation from "../../components/Navigation"
+import Header from "../../components/Header"
+import SeasonSelector from "../../components/SeasonSelector"
+import ErrorAlert from "../../components/ErrorAlert"
+import LoadingState from "../../components/LoadingState"
+import PlayerSearch from "../../components/PlayerSearch"
+import { useSeasons } from "../../hooks/useSeasons"
 
 interface Player {
   id?: number
@@ -29,11 +34,6 @@ interface DraftResult {
   seasons: Season
 }
 
-interface SeasonOption {
-  id: number
-  year: number
-  name: string
-}
 
 interface GroupedResults {
   [managerName: string]: DraftResult[]
@@ -63,8 +63,9 @@ interface PlayerHistory {
 
 export default function DraftResults() {
   const [activeTab, setActiveTab] = useState<'team' | 'player'>('team')
-  const [seasons, setSeasons] = useState<SeasonOption[]>([])
-  const [selectedSeason, setSelectedSeason] = useState<string>('')
+  const { seasons, selectedSeason, setSelectedSeason, loading: seasonsLoading, error: seasonsError } = useSeasons({
+    defaultSeasonFilter: '2024-25'
+  })
   const [draftResults, setDraftResults] = useState<DraftResult[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -74,59 +75,8 @@ export default function DraftResults() {
   const [playerHistory, setPlayerHistory] = useState<PlayerHistory | null>(null)
   const [playerLoading, setPlayerLoading] = useState(false)
   const [playerError, setPlayerError] = useState('')
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [allPlayers, setAllPlayers] = useState<Player[]>([])
-  const [showSuggestions, setShowSuggestions] = useState(false)
-  const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([])
 
-  // Fetch seasons for dropdown
-  useEffect(() => {
-    async function fetchSeasons() {
-      try {
-        const response = await fetch('/api/seasons')
-        if (!response.ok) throw new Error('Failed to fetch seasons')
-        
-        const data = await response.json()
-        setSeasons(data)
-        
-        // Find the season with data, preferring 2024-25 or the most recent with data
-        if (data.length > 0) {
-          // Look for 2024-25 season first
-          const season2024_25 = data.find((season: SeasonOption) => season.name.includes('2024-25') || season.year === 2024)
-          if (season2024_25) {
-            setSelectedSeason(season2024_25.id.toString())
-          } else {
-            // Fall back to the most recent season
-            setSelectedSeason(data[0].id.toString())
-          }
-        }
-      } catch (error: unknown) {
-        console.error('Error fetching seasons:', error)
-        setError('Failed to load seasons')
-      }
-    }
 
-    fetchSeasons()
-  }, [])
-
-  // Search players dynamically as user types
-  const searchPlayers = async (query: string) => {
-    if (query.length < 2) {
-      setFilteredPlayers([])
-      return
-    }
-
-    try {
-      const response = await fetch(`/api/players/search?q=${encodeURIComponent(query)}`)
-      if (!response.ok) throw new Error('Failed to search players')
-      
-      const data = await response.json()
-      setFilteredPlayers(data)
-    } catch (error: unknown) {
-      console.error('Error searching players:', error)
-      setFilteredPlayers([])
-    }
-  }
 
   // Fetch draft results when season changes
   useEffect(() => {
@@ -154,8 +104,9 @@ export default function DraftResults() {
   }, [selectedSeason])
 
   // Search for player history
-  const searchPlayerHistory = async () => {
-    if (!playerSearchQuery.trim()) {
+  const searchPlayerHistory = async (playerName?: string) => {
+    const searchQuery = playerName || playerSearchQuery
+    if (!searchQuery.trim()) {
       setPlayerError('Please enter a player name')
       return
     }
@@ -164,7 +115,7 @@ export default function DraftResults() {
     setPlayerError('')
 
     try {
-      const response = await fetch(`/api/player-history?player_name=${encodeURIComponent(playerSearchQuery)}`)
+      const response = await fetch(`/api/player-history?player_name=${encodeURIComponent(searchQuery)}`)
       if (!response.ok) throw new Error('Failed to fetch player history')
       
       const data = await response.json()
@@ -177,44 +128,13 @@ export default function DraftResults() {
     }
   }
 
-  // Handle Enter key press in search input
-  const handleSearchKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      searchPlayerHistory()
-      setShowSuggestions(false)
-    }
-  }
-
-  // Handle player search input change
-  const handlePlayerSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
-    setPlayerSearchQuery(query)
-    
-    if (query.trim().length >= 2) {
-      searchPlayers(query.trim())
-      setShowSuggestions(true)
-    } else {
-      setShowSuggestions(false)
-      setFilteredPlayers([])
-    }
-  }
-
-  // Handle suggestion click
-  const handleSuggestionClick = (playerName: string) => {
-    setPlayerSearchQuery(playerName)
-    setShowSuggestions(false)
-    // Auto-search when suggestion is clicked
+  // Handle player selection from search component
+  const handlePlayerSelect = (player: Player) => {
+    setPlayerSearchQuery(player.name)
+    // Auto-search when player is selected
     setTimeout(() => {
-      searchPlayerHistory()
+      searchPlayerHistory(player.name)
     }, 100)
-  }
-
-  // Handle input blur
-  const handleInputBlur = () => {
-    // Delay hiding suggestions to allow for clicks
-    setTimeout(() => {
-      setShowSuggestions(false)
-    }, 150)
   }
 
   // Group results by manager
@@ -247,13 +167,11 @@ export default function DraftResults() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Header />
+
+        <ErrorAlert error={seasonsError} />
+
         <div className="mb-8">
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
-            
-            {/* Navigation Tabs */}
-            <Navigation />
-          </div>
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Draft Results</h2>
           
@@ -284,19 +202,13 @@ export default function DraftResults() {
           {activeTab === 'team' && (
             <>
               <div className="mb-6">
-                <select
-                  id="season-select"
-                  value={selectedSeason}
-                  onChange={(e) => setSelectedSeason(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-sm"
-                >
-                  <option value="">Choose a season...</option>
-                  {seasons.map((season) => (
-                    <option key={season.id} value={season.id}>
-                      {season.name} ({season.year})
-                    </option>
-                  ))}
-                </select>
+                <SeasonSelector
+                  seasons={seasons}
+                  selectedSeason={selectedSeason}
+                  onSeasonChange={setSelectedSeason}
+                  placeholder="Choose a season..."
+                  className="text-sm"
+                />
               </div>
 
               {selectedSeasonName && (
@@ -312,79 +224,33 @@ export default function DraftResults() {
 
           {activeTab === 'player' && (
             <div className="mb-6">
-              <label htmlFor="player-search" className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Search Player:
               </label>
-              <div className="relative">
-                <div className="flex space-x-2">
-                  <div className="relative flex-1">
-                    <input
-                      id="player-search"
-                      type="text"
-                      value={playerSearchQuery}
-                      onChange={handlePlayerSearchChange}
-                      onKeyPress={handleSearchKeyPress}
-                      onBlur={handleInputBlur}
-                      onFocus={() => {
-                        if (playerSearchQuery.trim().length > 0) {
-                          setShowSuggestions(true)
-                        }
-                      }}
-                      placeholder="Enter player name..."
-                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                      autoComplete="off"
-                    />
-                    
-                    {/* Autocomplete Dropdown */}
-                    {showSuggestions && filteredPlayers.length > 0 && (
-                      <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto mt-1">
-                        {filteredPlayers.map((player) => (
-                          <button
-                            key={player.id}
-                            type="button"
-                            onClick={() => handleSuggestionClick(player.name)}
-                            className="w-full text-left px-3 py-2 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none text-gray-900"
-                          >
-                            {player.name}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  
-                  <button
-                    onClick={searchPlayerHistory}
-                    disabled={playerLoading}
-                    className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-                  >
-                    {playerLoading ? 'Searching...' : 'Search'}
-                  </button>
-                </div>
-              </div>
+              <PlayerSearch
+                value={playerSearchQuery}
+                onChange={setPlayerSearchQuery}
+                onPlayerSelect={handlePlayerSelect}
+                onExactMatch={handlePlayerSelect}
+                placeholder="Enter player name..."
+                showSearchButton={true}
+                searchButtonText="Search"
+                onSearchButtonClick={() => searchPlayerHistory()}
+                searchButtonLoading={playerLoading}
+              />
             </div>
           )}
         </div>
 
         {/* Error Messages */}
-        {error && activeTab === 'team' && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
-          </div>
-        )}
-
-        {playerError && activeTab === 'player' && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {playerError}
-          </div>
-        )}
+        {activeTab === 'team' && <ErrorAlert error={error} />}
+        {activeTab === 'player' && <ErrorAlert error={playerError} />}
 
         {/* By Team Tab Content */}
         {activeTab === 'team' && (
           <>
             {loading ? (
-              <div className="text-center py-8">
-                <div className="text-lg text-gray-600">Loading draft results...</div>
-              </div>
+              <LoadingState message="Loading draft results..." />
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                 {managerTotals.map(({ managerName, totalSpent, draftCount, keeperCount, results }) => (
@@ -442,9 +308,7 @@ export default function DraftResults() {
             )}
 
             {!loading && draftResults.length === 0 && selectedSeason && (
-              <div className="text-center py-8">
-                <div className="text-lg text-gray-600">No draft results found for this season.</div>
-              </div>
+              <LoadingState message="No draft results found for this season." />
             )}
           </>
         )}
@@ -453,9 +317,7 @@ export default function DraftResults() {
         {activeTab === 'player' && (
           <>
             {playerLoading ? (
-              <div className="text-center py-8">
-                <div className="text-lg text-gray-600">Searching player history...</div>
-              </div>
+              <LoadingState message="Searching player history..." />
             ) : playerHistory ? (
               <div className="space-y-6">
                 {playerHistory.player ? (
@@ -580,15 +442,11 @@ export default function DraftResults() {
                     )}
                   </>
                 ) : (
-                  <div className="text-center py-8">
-                    <div className="text-lg text-gray-600">No player found with that name.</div>
-                  </div>
+                  <LoadingState message="No player found with that name." />
                 )}
               </div>
             ) : (
-              <div className="text-center py-8">
-                <div className="text-lg text-gray-600">Enter a player name to search their history.</div>
-              </div>
+              <LoadingState message="Enter a player name to search their history." />
             )}
           </>
         )}

@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Navigation from '../../components/Navigation'
+import Header from '../../components/Header'
+import ErrorAlert from '../../components/ErrorAlert'
+import LoadingState from '../../components/LoadingState'
 import { useAuth } from '../../contexts/AuthContext'
 
 interface Manager {
@@ -129,29 +131,19 @@ export default function Assets() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Header />
+
         <div className="mb-8">
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">UAFBL</h1>
-            
-            {/* Navigation Tabs */}
-            <Navigation />
-          </div>
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Manager Assets for {activeSeason ? activeSeason.name : 'Current Season'}
           </h2>
         </div>
 
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
-          </div>
-        )}
+        <ErrorAlert error={error} />
 
         {loading ? (
-          <div className="text-center py-8">
-            <div className="text-lg text-gray-600">Loading manager assets...</div>
-          </div>
+          <LoadingState message="Loading manager assets..." />
         ) : (
           <>
             {/* Summary Cards */}
