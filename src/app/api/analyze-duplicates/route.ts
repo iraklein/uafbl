@@ -158,8 +158,8 @@ export async function GET() {
           
           // Check for Jr/Sr variations
           if (!isDuplicate && name1Parts.length >= 2 && name2Parts.length >= 2) {
-            const baseName1 = name1Parts.filter(part => !['jr', 'sr', 'ii', 'iii', 'iv'].includes(part)).join(' ')
-            const baseName2 = name2Parts.filter(part => !['jr', 'sr', 'ii', 'iii', 'iv'].includes(part)).join(' ')
+            const baseName1 = name1Parts.filter((part: string) => !['jr', 'sr', 'ii', 'iii', 'iv'].includes(part)).join(' ')
+            const baseName2 = name2Parts.filter((part: string) => !['jr', 'sr', 'ii', 'iii', 'iv'].includes(part)).join(' ')
             
             if (baseName1 === baseName2 && baseName1.length > 5) {
               isDuplicate = true

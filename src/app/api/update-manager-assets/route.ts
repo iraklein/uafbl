@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     // Get current values and admin info for audit trail
     const { data: currentAsset, error: fetchError } = await supabase
       .from('managers_assets')
-      .select('available_cash, available_slots, change_history, managers(manager_name, email)')
+      .select('available_cash, available_slots, change_history, manager_id')
       .eq('id', assetId)
       .single()
     
@@ -50,17 +50,24 @@ export async function POST(request: NextRequest) {
       changes.available_slots = { from: oldSlots, to: availableSlots }
     }
     
+    // Get manager name separately
+    const { data: manager } = await supabase
+      .from('managers')
+      .select('manager_name')
+      .eq('id', currentAsset.manager_id as number)
+      .single()
+
     // Create audit entry
     const auditEntry = {
       timestamp: new Date().toISOString(),
       admin_email: adminEmail,
-      manager_name: currentAsset.managers?.manager_name || 'Unknown',
+      manager_name: manager?.manager_name || 'Unknown',
       changes: changes,
       reason: reason || 'No reason provided'
     }
     
     // Append to existing change history
-    const currentHistory = currentAsset.change_history || []
+    const currentHistory = Array.isArray(currentAsset.change_history) ? currentAsset.change_history : []
     const newHistory = [...currentHistory, auditEntry]
     
     // Update the manager asset with new values and history

@@ -79,13 +79,14 @@ export default function Assets() {
     setEditingAsset(assetId)
     setEditValues({
       cash: currentCash.toString(),
-      slots: currentSlots.toString()
+      slots: currentSlots.toString(),
+      reason: ''
     })
   }
 
   const cancelEditing = () => {
     setEditingAsset(null)
-    setEditValues({cash: '', slots: ''})
+    setEditValues({cash: '', slots: '', reason: ''})
   }
 
   const saveEdit = async (assetId: number) => {
@@ -109,7 +110,7 @@ export default function Assets() {
       // Refresh the data
       await fetchAssets(true)
       setEditingAsset(null)
-      setEditValues({cash: '', slots: ''})
+      setEditValues({cash: '', slots: '', reason: ''})
     } catch (err) {
       console.error('Error updating assets:', err)
       setError('Failed to update assets')
