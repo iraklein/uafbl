@@ -16,7 +16,7 @@ export async function DELETE(
 
     // Delete the trade
     const { error } = await supabase
-      .from('trades')
+      .from('trades_old')
       .delete()
       .eq('id', tradeId)
 

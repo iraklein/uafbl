@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
           .eq('season_id', seasonId)
           .eq('is_unused', false),
         supabase
-          .from('trades')
+          .from('trades_old')
           .select('player_id')
           .eq('season_id', seasonId),
         supabase

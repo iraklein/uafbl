@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
 
     // Get trade count for the previous season
     const { data: tradeData, error: tradeError } = await supabase
-      .from('trades')
+      .from('trades_old')
       .select('player_id')
       .eq('player_id', playerId)
       .eq('season_id', previousSeasonId)

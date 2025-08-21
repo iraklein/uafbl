@@ -75,7 +75,7 @@ export async function POST() {
       
       // Update trades table
       const { error: tradesError } = await supabase
-        .from('trades')
+        .from('trades_old')
         .update({ player_id: targetId })
         .eq('player_id', sourceId)
       

@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
 
     // Insert the trade
     const { data, error } = await supabase
-      .from('trades')
+      .from('trades_old')
       .insert({
         season_id,
         player_id
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 
     // Fetch trades for the season with player and season details
     const { data: trades, error } = await supabase
-      .from('trades')
+      .from('trades_old')
       .select(`
         id,
         season_id,

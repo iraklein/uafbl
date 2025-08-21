@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
       
       // Get trade counts for all players in this season
       supabase
-        .from('trades')
+        .from('trades_old')
         .select('player_id')
         .eq('season_id', seasonId)
     ])
