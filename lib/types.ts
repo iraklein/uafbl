@@ -190,7 +190,7 @@ export interface PasswordSetupForm {
 
 // State types
 export interface AuthState {
-  user: any | null // Supabase User type
+  user: any | null // Supabase User type - using any for external library compatibility
   loading: boolean
   isAdmin: boolean
 }

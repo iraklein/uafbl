@@ -52,8 +52,8 @@ export async function POST(request: Request) {
     const draftedPlayerIds = new Set(draftRecords?.map(record => record.player_id) || [])
     
     // Find players from the list
-    const results = []
-    const notFound = []
+    const results: any[] = []
+    const notFound: string[] = []
     
     for (const playerName of playerNames) {
       const normalizedSearchName = playerName.toLowerCase().trim()

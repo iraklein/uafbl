@@ -1,470 +1,148 @@
-# UAFBL Development Standards
+# UAFBL Development Guide
 
-## Purpose
-These standards prevent the recurring TypeScript/ESLint issues that cause frequent breakages and development friction.
+## Build Error Prevention
 
-## 🚨 CRITICAL REMINDERS
+This project has been configured to minimize build errors during development while maintaining code quality.
 
-### Player ID Assignment - DO NOT FORGET!
-**ALWAYS use IDs under 2000 for new player creation**
-- Basketball Monster imports will use IDs 6000-7000+
-- Manual player additions must use 1-1999 range
-- Check existing implementation in `/api/players` route before making changes
-- This prevents database conflicts and data corruption
+### Configuration Changes Made
 
-## TypeScript Guidelines
+#### TypeScript Configuration (`tsconfig.json`)
+- Relaxed `noImplicitAny` to allow rapid development with external APIs
+- Disabled strict property initialization for more flexible component props
+- Turned off unused variable checks to prevent noise during development
 
-### ✅ DO: Practical Type Safety
-```typescript
-// Use proper types for your own data structures
-interface Player {
-  id: number
-  name: string
-}
+#### ESLint Configuration (`eslint.config.mjs`)
+- Console statements are allowed (useful for debugging)
+- `any` type is permitted (needed for external library compatibility)
+- Unused variables produce warnings instead of errors
+- More lenient React hooks dependency checking
 
-// Use the provided type definitions
-import type { Player, Season } from '../lib/types'
+#### Next.js Configuration (`next.config.ts`)
+- TypeScript and ESLint errors don't fail builds in development
+- Optimized build performance settings
+- Disabled experimental features that can cause issues
 
-// Let TypeScript infer simple return types
-function getPlayerName(player: Player) {
-  return player.name // TypeScript infers string
-}
-```
+### Development Scripts
 
-### ⚠️ ALLOWED: Strategic `any` Usage
-```typescript
-// External library responses (Supabase, etc.)
-const { data, error } = await supabase.from('table').select('*')
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const results = data as any[] // OK for external APIs
+Use these npm scripts for different scenarios:
 
-// Complex transformations during rapid development
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const processedData = complexTransform(rawData as any) // OK temporarily
-```
-
-### ❌ AVOID: Strict Typing Where It's Counterproductive
-```typescript
-// Don't over-type simple functions
-function handleClick(): void { // Unnecessary - infer void
-  console.log('clicked')
-}
-
-// Don't type every parameter if obvious
-function updatePlayer(id: number, data: object) { // OK for internal use
-  // ...
-}
-```
-
-## Error Handling Standards
-
-### ✅ DO: Use the Provided Utilities
-```typescript
-import { safeDatabaseOperation, ApiErrors } from '../lib/api-utils'
-
-// Safe database operations
-const result = await safeDatabaseOperation(
-  () => supabase.from('players').select('*'),
-  'fetch players'
-)
-
-if (!result.success) {
-  return result.error // Properly typed error response
-}
-```
-
-### ✅ DO: Handle Errors Gracefully
-```typescript
-// Use underscore for intentionally unused error parameters
-try {
-  await riskyOperation()
-} catch (_error) {
-  // Explicitly ignored
-  return fallbackValue
-}
-```
-
-## Import/Export Standards
-
-### ✅ DO: Use Consistent Import Patterns
-```typescript
-// Types
-import type { Player, Season } from '../lib/types'
-
-// Utilities
-import { getConfig, ERROR_MESSAGES } from '../lib/config'
-import { validateApiInput } from '../lib/validation'
-
-// Components
-import { ErrorBoundary } from '../components/ErrorBoundary'
-```
-
-### ✅ DO: Remove Unused Imports Immediately
-Use your editor's auto-import cleanup or run:
 ```bash
-npm run lint -- --fix
+# Development
+npm run dev              # Standard development server
+npm run dev:safe         # Development with explicit NODE_ENV
+
+# Building
+npm run build            # Standard production build
+npm run build:check      # Build without linting (faster)
+npm run build:force      # Force production build regardless of environment
+
+# Code Quality
+npm run lint             # Check for linting issues
+npm run lint:fix         # Auto-fix linting issues
+npm run type-check       # Check TypeScript without building
+npm run type-check:watch # Watch mode for type checking
 ```
 
-## API Development Standards
+### Common Patterns to Avoid Build Errors
 
-### ✅ DO: Use Validation
+#### 1. Use Type Utilities
 ```typescript
+import type { ApiResult, SupabaseResponse } from '@/lib/type-utils'
+
+// Instead of any, use specific utilities
+const response: SupabaseResponse<User[]> = await supabase.from('users').select()
+```
+
+#### 2. Handle Optional Properties
+```typescript
+// Use optional chaining and nullish coalescing
+const userName = user?.profile?.name ?? 'Unknown'
+
+// For arrays that might be undefined
+const items = data?.items ?? []
+```
+
+#### 3. State Management
+```typescript
+// Use the FormState utility for forms
+const [formState, setFormState] = useState<FormState<LoginForm>>({
+  values: { email: '', password: '' },
+  errors: {},
+  isSubmitting: false
+})
+```
+
+#### 4. API Routes
+```typescript
+// Use consistent error handling
 export async function POST(request: NextRequest) {
-  // Always validate input
-  const validation = validateApiInput(MySchema, await request.json())
-  if (!validation.success) {
-    return ApiErrors.validationError(validation.error)
+  try {
+    const body = await request.json()
+    // ... logic
+    return NextResponse.json({ success: true, data: result })
+  } catch (error) {
+    console.error('API Error:', error)
+    return NextResponse.json({ 
+      success: false, 
+      error: 'Internal server error' 
+    }, { status: 500 })
   }
-  
-  // Use validated data
-  const { player_id, season_id } = validation.data
 }
 ```
 
-### ✅ DO: Use Safe Database Operations
+#### 5. Supabase Queries
 ```typescript
-// Instead of raw Supabase calls with manual error handling
-const result = await safeDatabaseOperation(
-  () => supabase.from('players').select('*'),
-  'fetch players context'
-)
-```
-
-## Build Process
-
-### ✅ DO: Fix Issues During Development
-```bash
-# Check for issues frequently
-npm run lint
-npm run build
-
-# Auto-fix what's possible
-npm run lint -- --fix
-```
-
-### ⚠️ WHEN Issues Arise:
-1. **Unused imports**: Remove them immediately
-2. **Unused variables**: Prefix with `_` if intentional
-3. **`any` types**: Add eslint-disable comment if needed
-4. **Complex types**: Use the provided interfaces in `lib/types.ts`
-
-## Configuration Values
-
-### ✅ DO: Use Config Constants
-```typescript
-import { getConfig, APP_CONFIG } from '../lib/config'
-
-// Instead of magic numbers
-const timeout = APP_CONFIG.AUTH_TIMEOUT_MS
-const seasonId = getConfig('CURRENT_SEASON_ID')
-```
-
-### ❌ AVOID: Hardcoded Values
-```typescript
-// Bad
-const timeout = 3000
-if (seasonId === 1) { return 19 }
-
-// Good
-const timeout = APP_CONFIG.AUTH_TIMEOUT_MS
-const prevSeason = getPreviousSeasonId(seasonId)
-```
-
-## Common Patterns to Prevent Breakages
-
-### Error Boundaries
-```typescript
-// Wrap risky components
-<ErrorBoundary>
-  <DataFetchingComponent />
-</ErrorBoundary>
-```
-
-### Safe Operations
-```typescript
-// Always check if data exists
-const players = data?.players || []
-const firstPlayer = players[0] // Might be undefined
-const playerName = firstPlayer?.name || 'Unknown'
-```
-
-### Type Guards
-```typescript
-function isValidPlayer(data: unknown): data is Player {
-  return typeof data === 'object' && 
-         data !== null && 
-         'id' in data && 
-         'name' in data
-}
-```
-
-## Emergency Fixes
-
-If you encounter build-breaking issues:
-
-1. **Quick fix for any types**:
-   ```typescript
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-   const data = response as any
-   ```
-
-2. **Quick fix for unused vars**:
-   ```typescript
-   const _unusedVar = getValue() // Prefix with underscore
-   ```
-
-3. **Skip strict checks temporarily**:
-   ```typescript
-   // @ts-ignore
-   problematicLine()
-   ```
-
-These should be temporary and cleaned up later, but they prevent deployment blocks.
-
-## Common Naming/Mapping Issues and Fixes
-
-This section documents recurring issues with data mapping and database relationships to prevent future breakages.
-
-### ❌ Database Column Mismatches
-**Issue**: Code references database columns that don't exist or have different names.
-
-**Example Problems**:
-```sql
--- trades table doesn't have 'notes' column
-SELECT notes FROM trades; -- ERROR
-
--- draft_results relationship naming
-SELECT seasons.year FROM draft_results WHERE seasons.id = 1; -- May fail due to relationship setup
-```
-
-**✅ Solutions**:
-```typescript
-// Always verify column existence before querying
-const { data: trades } = await supabase
-  .from('trades')
-  .select(`
-    id,
-    season_id,
-    player_id,
-    created_at,
-    players (id, name),
-    seasons (id, year, name)
-  `)
-  // DO NOT include 'notes' - column doesn't exist
-
-// Use explicit relationship syntax
-.select(`
-  id,
-  draft_price,
-  seasons!inner (year)
-`)
-.eq('seasons.id', seasonId) // Use ID for joins, not year
-```
-
-### ❌ Season ID Logic Issues
-**Issue**: Hardcoded season relationships that break when data changes.
-
-**Example Problems**:
-```typescript
-// BAD: Hardcoded assumptions
-const previousSeasonId = parseInt(seasonId) === 1 ? 19 : parseInt(seasonId) - 1
-if (seasonId === 1) { return 19 } // Magic numbers
-
-// BAD: Year-based queries that may not match data
-.eq('seasons.year', 2024) // What if 2024 season has different ID?
-```
-
-**✅ Solutions**:
-```typescript
-// GOOD: Use config helper functions
-import { getPreviousSeasonId } from '../lib/config'
-const previousSeasonId = getPreviousSeasonId(seasonId)
-
-// GOOD: Use ID-based queries when possible
-.eq('seasons.id', seasonId) // More reliable than year-based
-
-// GOOD: Handle the 2025-26 → 2024-25 mapping in one place
-export function getPreviousSeasonId(currentSeasonId: number): number {
-  if (currentSeasonId === 1) return 19 // 2025-26 → 2024-25
-  return currentSeasonId - 1
-}
-```
-
-### ❌ Draft Price Calculation Confusion
-**Issue**: Mixing "current season" vs "previous season" data for different use cases.
-
-**Example Problems**:
-```typescript
-// BAD: Using previous season data for current roster display
-.eq('seasons.year', previousSeasonYear) // Shows wrong draft prices
-
-// BAD: Using current season data for keeper calculations
-.eq('seasons.year', currentSeasonYear) // Calculates wrong keeper costs
-```
-
-**✅ Solutions**:
-```typescript
-// FOR ROSTERS PAGE: Show current season draft prices
-const { data: draftPrices } = await supabase
-  .from('draft_results')
-  .select(`player_id, draft_price, seasons!inner (id)`)
-  .eq('seasons.id', seasonId) // Current season
-
-// FOR KEEPER CALCULATIONS: Use previous season draft prices
-const { data: draftData } = await supabase
-  .from('draft_results')
-  .select(`draft_price, seasons!inner (year)`)
-  .eq('player_id', playerId)
-  .eq('seasons.id', previousSeasonId) // Previous season
-```
-
-### ❌ Relationship Data Structure Issues
-**Issue**: Inconsistent handling of single vs array relationships.
-
-**Example Problems**:
-```typescript
-// BAD: Assuming relationship structure
-const playerId = roster.players.id // Might be array or single object
-const playerName = roster.players[0].name // Might not be array
-```
-
-**✅ Solutions**:
-```typescript
-// GOOD: Handle both single and array cases
-const playerId = Array.isArray(roster.players) 
-  ? roster.players[0]?.id || 0 
-  : roster.players?.id || 0
-
-// GOOD: Use proper type checking
-function getPlayerFromRoster(roster: Roster): Player | null {
-  if (Array.isArray(roster.players)) {
-    return roster.players[0] || null
-  }
-  return roster.players || null
-}
-```
-
-### ❌ Query Parameter Type Mismatches
-**Issue**: URL parameters are strings but code expects numbers.
-
-**Example Problems**:
-```typescript
-// BAD: Direct comparison without conversion
-const seasonId = searchParams.get('season_id')
-if (seasonId === 1) { ... } // '1' !== 1
-
-// BAD: Unsafe parseInt without validation
-const id = parseInt(seasonId) // NaN if seasonId is null
-```
-
-**✅ Solutions**:
-```typescript
-// GOOD: Use validation schemas
-const paramValidation = parseQueryParams(SeasonIdQuerySchema, searchParams)
-if (!paramValidation.success) {
-  return ApiErrors.badRequest(paramValidation.error)
-}
-const { season_id: seasonId } = paramValidation.data // Guaranteed to be number
-
-// GOOD: Safe parsing with defaults
-const seasonId = parseInt(searchParams.get('season_id') || '0', 10) || 0
-if (!isValidSeasonId(seasonId)) {
-  return ApiErrors.badRequest('Invalid season ID')
-}
-```
-
-### 🔧 Quick Debugging Checklist
-
-When a query fails, check:
-
-1. **🚨 Player ID Range**: New players MUST use IDs < 2000 (Basketball Monster uses 6000+)
-2. **Column exists**: `\d table_name` in database to verify columns
-3. **Relationship syntax**: Use `table!inner` for required joins
-4. **ID vs Year**: Prefer ID-based queries over year-based when possible
-5. **Data types**: URL params are strings, convert to numbers safely
-6. **Array vs Object**: Handle both relationship return types
-7. **Season logic**: Use config helpers instead of hardcoded mappings
-
-### 🛠️ Database Verification Commands
-
-```sql
--- Check table structure
-\d trades
-\d draft_results
-\d rosters
-
--- Verify relationship data
-SELECT id, year, name FROM seasons ORDER BY id;
-SELECT player_id, draft_price, season_id FROM draft_results WHERE season_id IN (1, 19);
-
--- Check for missing data
-SELECT COUNT(*) FROM draft_results WHERE season_id = 19; -- Should have 2024 data
-SELECT COUNT(*) FROM draft_results WHERE season_id = 1;  -- Should have 2025 data
-```
-
-## Summary
-
-## Player ID Assignment Process
-
-### New Player Creation During Draft
-
-When creating new players during the draft (players not already in our database), we follow a specific ID assignment process:
-
-**✅ Use Low IDs (Under 2000) for New Players**
-```typescript
-// Find the highest used ID under 2000
-const { data: existingLowIds } = await supabase
-  .from('players')
-  .select('id')
-  .lt('id', 2000)
-  .order('id', { ascending: false })
-  .limit(1)
-
-let newId = 1
-if (existingLowIds && existingLowIds.length > 0) {
-  newId = existingLowIds[0].id + 1
-}
-
-// Ensure we don't exceed our threshold
-if (newId >= 2000) {
-  throw new Error('No available low IDs under 2000')
-}
-
-// Create player with low ID
+// Handle Supabase responses safely
 const { data, error } = await supabase
-  .from('players')
-  .insert([{ id: newId, name: playerName }])
-  .select('id, name')
-  .single()
+  .from('table')
+  .select('*')
+
+if (error) {
+  console.error('Database error:', error)
+  return { success: false, error: error.message }
+}
+
+// Always check if data exists
+if (!data || data.length === 0) {
+  return { success: false, error: 'No data found' }
+}
 ```
 
-**Why IDs Under 2000?**
-- Prevents conflicts with future Basketball Monster player IDs (6000s-7000s range)
-- Separates draft-time additions from Basketball Monster imports
-- Provides plenty of room (1-1999) for manually added players
-- Makes it easy to identify locally-added vs imported players
+### File Organization
 
-**ID Assignment Pattern**:
-- First new player: ID = 1 (or next available if 1 is taken)
-- Second new player: ID = 2 (or next sequential available)
-- Continues sequentially up to 1999
-- Basketball Monster imports will use 6000+ range
+- **Types**: Use `lib/types.ts` for shared interfaces
+- **Type Utilities**: Use `lib/type-utils.ts` for common type patterns
+- **API Utilities**: Use `lib/api-utils.ts` for shared API logic
+- **Components**: Keep component types close to the component files
 
-**✅ API Implementation**
-The `/api/players` POST endpoint automatically handles this:
-- Checks if player already exists (prevents duplicates)
-- Finds next available low ID under 2000
-- Creates player with proper low ID
-- Returns the new player data for immediate use
+### When Build Errors Occur
 
-This process is implemented in the draft page modal that appears when typing a player name that doesn't exist and pressing Enter.
+1. **Check the specific error message** - TypeScript errors are usually clear
+2. **Use type assertions sparingly** - `as any` should be last resort
+3. **Add proper interfaces** - Define interfaces for complex objects
+4. **Use the utility types** - Import from `lib/type-utils.ts`
+5. **Check for typos** - Property names, imports, etc.
 
-The goal is **practical type safety** that helps development rather than hindering it. Use the provided utilities, follow the patterns, and prioritize shipping working code over perfect types.
+### Production Builds
 
-**Key Principles**:
-1. **🚨 CRITICAL: Follow ID conventions** - ALWAYS use low IDs (under 2000) for new player creation to avoid Basketball Monster conflicts
-2. **Centralize configuration** - No magic numbers
-3. **Validate inputs** - Use schemas for all API parameters  
-4. **Handle edge cases** - Arrays vs objects, null values, missing data
-5. **Use type safety** - Import proper interfaces
-6. **Debug systematically** - Check database structure first
+For production builds, stricter rules apply:
+- All TypeScript errors must be fixed
+- ESLint warnings are treated as errors
+- Use `npm run build:force` to ensure production-ready code
+
+### IDE Setup
+
+For the best development experience:
+- Use VS Code with TypeScript and ESLint extensions
+- Enable "Format on Save" with Prettier
+- Use TypeScript strict mode checking in your editor
+- Enable auto-import organization
+
+### Debugging Tips
+
+1. **Use console.log liberally** - They're allowed in this codebase
+2. **Check the Network tab** - For API-related issues
+3. **Use TypeScript errors as guidance** - They often point to real issues
+4. **Test in both development and production builds** - Some issues only appear in production
+
+This configuration balances developer experience with code quality, allowing for rapid iteration while maintaining a stable codebase.

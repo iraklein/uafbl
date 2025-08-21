@@ -20,7 +20,7 @@ export async function GET() {
     
     // Group by season to find conflicts
     const recordsBySeasonPlayer = new Map()
-    const conflicts = []
+    const conflicts: any[] = []
     
     for (const record of draftRecords || []) {
       const key = `${record.season_id}_${record.player_id}`

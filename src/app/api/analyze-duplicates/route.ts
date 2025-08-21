@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from '../../../../lib/supabase'
 
 // Levenshtein distance function for fuzzy matching
 function levenshteinDistance(str1: string, str2: string): number {
-  const matrix = []
+  const matrix: number[][] = []
   
   for (let i = 0; i <= str2.length; i++) {
     matrix[i] = [i]

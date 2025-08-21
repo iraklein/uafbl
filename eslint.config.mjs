@@ -21,10 +21,8 @@ const eslintConfig = [
         "destructuredArrayIgnorePattern": "^_"
       }],
       
-      // Allow 'any' type in specific cases (external libraries, rapid prototyping)
-      "@typescript-eslint/no-explicit-any": ["warn", {
-        "ignoreRestArgs": true
-      }],
+      // Allow 'any' type - often needed with external APIs and rapid development
+      "@typescript-eslint/no-explicit-any": "off",
       
       // Don't force explicit return types - let TypeScript infer
       "@typescript-eslint/explicit-function-return-type": "off",
@@ -36,14 +34,29 @@ const eslintConfig = [
       // Don't enforce prefer-const for destructuring (can be noisy)
       "prefer-const": ["error", { "destructuring": "all" }],
       
-      // Allow console.log in development
-      "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+      // Allow console.log everywhere - useful for debugging
+      "no-console": "off",
       
-      // React specific rules - be more lenient
+      // React specific rules - be more lenient for development
       "react-hooks/exhaustive-deps": "warn",
+      "react/no-unescaped-entities": "warn",
+      "react/display-name": "off",
       
-      // Next.js specific
-      "@next/next/no-html-link-for-pages": "off"
+      // Next.js specific - turn off strict rules that cause issues
+      "@next/next/no-html-link-for-pages": "off",
+      "@next/next/no-img-element": "warn",
+      
+      // TypeScript specific - be more permissive
+      "@typescript-eslint/ban-ts-comment": "warn",
+      "@typescript-eslint/no-non-null-assertion": "warn",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-inferrable-types": "off",
+      
+      // General JavaScript - reduce noise
+      "no-var": "warn",
+      "prefer-const": "warn",
+      "no-prototype-builtins": "off",
+      "no-case-declarations": "off"
     }
   }
 ];

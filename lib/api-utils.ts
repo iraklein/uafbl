@@ -157,7 +157,7 @@ export function extractQueryParams(
     }
     
     return { success: true, params }
-  } catch (error) {
+  } catch (_error) {
     return { 
       success: false, 
       error: ApiErrors.badRequest('Invalid URL or query parameters') 

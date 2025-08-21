@@ -4,9 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:safe": "NODE_ENV=development next dev",
     "build": "next build",
+    "build:check": "next build --no-lint",
+    "build:force": "NODE_ENV=production next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.10.0",
