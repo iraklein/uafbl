@@ -15,10 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UAFBL League Management",
-  description: "Fantasy football league management system",
+  title: "Urban Achievers Fantasy Basketball League",
+  description: "Fantasy basketball league management system",
   icons: {
-    icon: "/uafbl-logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/icon.png", sizes: "32x32", type: "image/png" }
+    ],
+    apple: "/apple-icon.png",
   },
 };
 
