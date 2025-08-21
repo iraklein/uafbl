@@ -42,7 +42,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(({
 
   const sizeClasses = {
     sm: 'px-2 py-1 text-sm',
-    md: 'px-3 py-2 text-sm',
+    md: 'px-3 py-2 text-base',
     lg: 'px-4 py-3 text-base'
   }
 
@@ -53,7 +53,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   }
 
   const baseSelectClasses = `
-    block rounded-md shadow-sm
+    block rounded-md shadow-sm text-gray-900
     focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
     disabled:bg-gray-100 disabled:cursor-not-allowed
     ${sizeClasses[size]}

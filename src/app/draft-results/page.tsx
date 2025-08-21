@@ -6,6 +6,9 @@ import SeasonSelector from "../../components/SeasonSelector"
 import ErrorAlert from "../../components/ErrorAlert"
 import LoadingState from "../../components/LoadingState"
 import PlayerSearch from "../../components/PlayerSearch"
+import DataTable, { Column } from "../../components/DataTable"
+import StatsCard from "../../components/StatsCard"
+import ManagerHeader from "../../components/ManagerHeader"
 import { useSeasons } from "../../hooks/useSeasons"
 
 interface Player {
@@ -15,6 +18,7 @@ interface Player {
 
 interface Manager {
   manager_name: string
+  team_name?: string
   active?: boolean
 }
 
@@ -175,71 +179,70 @@ export default function DraftResults() {
           
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Draft Results</h2>
           
-          {/* Tab Navigation */}
-          <div className="flex space-x-2 mb-6 bg-gray-100 p-1 rounded-lg w-fit">
-            <button
-              onClick={() => setActiveTab('team')}
-              className={`px-6 py-3 text-sm font-semibold rounded-md transition-colors ${
-                activeTab === 'team'
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
-              }`}
-            >
-              By Team
-            </button>
-            <button
-              onClick={() => setActiveTab('player')}
-              className={`px-6 py-3 text-sm font-semibold rounded-md transition-colors ${
-                activeTab === 'player'
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
-              }`}
-            >
-              By Player
-            </button>
-          </div>
+          {/* Tab Navigation with Controls */}
+          <div className="flex items-center space-x-6 mb-6">
+            {/* Tab buttons */}
+            <div className="flex space-x-2 bg-gray-100 p-1 rounded-lg">
+              <button
+                onClick={() => setActiveTab('team')}
+                className={`px-6 py-3 text-sm font-semibold rounded-md transition-colors ${
+                  activeTab === 'team'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+                }`}
+              >
+                By Team
+              </button>
+              <button
+                onClick={() => setActiveTab('player')}
+                className={`px-6 py-3 text-sm font-semibold rounded-md transition-colors ${
+                  activeTab === 'player'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+                }`}
+              >
+                By Player
+              </button>
+            </div>
 
-          {activeTab === 'team' && (
-            <>
-              <div className="mb-6">
-                <SeasonSelector
-                  seasons={seasons}
-                  selectedSeason={selectedSeason}
-                  onSeasonChange={setSelectedSeason}
-                  placeholder="Choose a season..."
-                  className="text-sm"
-                />
-              </div>
-
-              {selectedSeasonName && (
-                <div className="bg-white p-4 rounded-lg shadow mb-6">
-                  <h2 className="text-xl font-semibold text-gray-800">{selectedSeasonName}</h2>
-                  <p className="text-gray-600">
-                    {draftResults.length} total draft records | {draftResults.filter(r => !r.is_keeper).length} drafted | {draftResults.filter(r => r.is_keeper).length} kept
-                  </p>
+            {/* Season selector & stats OR Player search */}
+            <div className="flex items-center space-x-4">
+              {activeTab === 'team' ? (
+                <>
+                  <SeasonSelector
+                    seasons={seasons}
+                    selectedSeason={selectedSeason}
+                    onSeasonChange={setSelectedSeason}
+                    placeholder="Choose a season..."
+                  />
+                  
+                  {/* Draft records info pill */}
+                  {selectedSeason && (
+                    <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
+                      <span className="text-sm font-medium text-blue-900">
+                        {draftResults.length} total draft records | {draftResults.filter(r => !r.is_keeper).length} drafted | {draftResults.filter(r => r.is_keeper).length} kept
+                      </span>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="w-80">
+                  <PlayerSearch
+                    value={playerSearchQuery}
+                    onChange={setPlayerSearchQuery}
+                    onPlayerSelect={handlePlayerSelect}
+                    onExactMatch={handlePlayerSelect}
+                    placeholder="Enter player name..."
+                    showSearchButton={true}
+                    searchButtonText="Search"
+                    onSearchButtonClick={() => searchPlayerHistory()}
+                    searchButtonLoading={playerLoading}
+                    className="text-sm"
+                  />
                 </div>
               )}
-            </>
-          )}
-
-          {activeTab === 'player' && (
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Search Player:
-              </label>
-              <PlayerSearch
-                value={playerSearchQuery}
-                onChange={setPlayerSearchQuery}
-                onPlayerSelect={handlePlayerSelect}
-                onExactMatch={handlePlayerSelect}
-                placeholder="Enter player name..."
-                showSearchButton={true}
-                searchButtonText="Search"
-                onSearchButtonClick={() => searchPlayerHistory()}
-                searchButtonLoading={playerLoading}
-              />
             </div>
-          )}
+          </div>
         </div>
 
         {/* Error Messages */}
@@ -257,7 +260,13 @@ export default function DraftResults() {
                   <div key={managerName} className="bg-white shadow rounded-lg overflow-hidden">
                     <div className="bg-indigo-600 text-white px-3 py-2">
                       <div className="flex flex-col">
-                        <h3 className="text-sm font-semibold">{managerName}</h3>
+                        <ManagerHeader
+                          managerName={managerName}
+                          teamName={results[0]?.managers?.team_name}
+                          showLogo={true}
+                          logoSize="sm"
+                          textSize="sm"
+                        />
                         <div className="text-xs mt-1">
                           <span className="mr-2">Total: ${totalSpent}</span>
                           <span className="mr-2">Draft: {draftCount}</span>
@@ -266,42 +275,39 @@ export default function DraftResults() {
                       </div>
                     </div>
                     
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-xs">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            <th className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-tight">
-                              Player
-                            </th>
-                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight">
-                              Price
-                            </th>
-                            <th className="px-1 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-tight">
-                              Kept
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                          {results.map((result) => (
-                            <tr key={result.id} className="hover:bg-gray-50">
-                              <td className="px-2 py-1 text-xs font-medium text-gray-900 truncate max-w-0">
-                                <div className="truncate">
-                                  {result.players.name}
-                                  {result.is_keeper && <span className="ml-1 px-1 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
-                                  {result.is_topper && <span className="ml-1">🎩</span>}
-                                </div>
-                              </td>
-                              <td className="px-1 py-1 text-xs text-gray-700 text-center">
-                                {result.draft_price ? `$${result.draft_price}` : 'Free'}
-                              </td>
-                              <td className="px-1 py-1 text-xs text-gray-700 text-center">
-                                {result.consecutive_keeps !== null && result.consecutive_keeps !== undefined ? result.consecutive_keeps + 1 : '-'}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                    <DataTable<DraftResult>
+                      columns={[
+                        {
+                          key: 'players.name',
+                          header: 'Player',
+                          render: (_, result) => (
+                            <div className="truncate">
+                              {result.players.name}
+                              {result.is_keeper && <span className="ml-1 px-1 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
+                              {result.is_topper && <span className="ml-1">🎩</span>}
+                            </div>
+                          ),
+                          className: 'font-medium max-w-0'
+                        },
+                        {
+                          key: 'draft_price',
+                          header: 'Price',
+                          render: (price) => price ? `$${price}` : 'Free',
+                          className: 'text-center',
+                          headerClassName: 'text-center'
+                        },
+                        {
+                          key: 'consecutive_keeps',
+                          header: 'Kept',
+                          render: (keeps) => keeps !== null && keeps !== undefined ? keeps + 1 : '-',
+                          className: 'text-center w-16',
+                          headerClassName: 'text-center w-16'
+                        }
+                      ]}
+                      data={results}
+                      size="sm"
+                      className="shadow-none border-0 rounded-t-none"
+                    />
                   </div>
                 ))}
               </div>
@@ -324,25 +330,27 @@ export default function DraftResults() {
                   <>
                     <div className="bg-white p-6 rounded-lg shadow">
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">{playerHistory.player.name}</h2>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                          <div className="text-2xl font-bold text-blue-600">{playerHistory.draft_history.length}</div>
-                          <div className="text-sm text-gray-600">Draft Records</div>
-                        </div>
-                        <div className="bg-orange-50 p-4 rounded-lg">
-                          <div className="text-2xl font-bold text-orange-600">
-                            ${playerHistory.draft_history.reduce((total, record) => total + (record.draft_price || 0), 0)}
-                          </div>
-                          <div className="text-sm text-gray-600">Total Draft Dollars</div>
-                        </div>
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <div className="text-2xl font-bold text-green-600">{playerHistory.topper_history.length}</div>
-                          <div className="text-sm text-gray-600">Topper Records</div>
-                        </div>
-                        <div className="bg-purple-50 p-4 rounded-lg">
-                          <div className="text-2xl font-bold text-purple-600">{playerHistory.lsl_history.length}</div>
-                          <div className="text-sm text-gray-600">LSL Records</div>
-                        </div>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <StatsCard
+                          title="Draft Records"
+                          value={playerHistory.draft_history.length}
+                          variant="blue"
+                        />
+                        <StatsCard
+                          title="Total Draft Dollars"
+                          value={`$${playerHistory.draft_history.reduce((total, record) => total + (record.draft_price || 0), 0)}`}
+                          variant="orange"
+                        />
+                        <StatsCard
+                          title="Topper Records"
+                          value={playerHistory.topper_history.length}
+                          variant="green"
+                        />
+                        <StatsCard
+                          title="LSL Records"
+                          value={playerHistory.lsl_history.length}
+                          variant="purple"
+                        />
                       </div>
                     </div>
 
@@ -352,53 +360,46 @@ export default function DraftResults() {
                         <div className="bg-blue-600 text-white px-6 py-4">
                           <h3 className="text-lg font-semibold">Draft History</h3>
                         </div>
-                        <div className="overflow-x-auto">
-                          <table className="w-full">
-                            <thead className="bg-gray-50">
-                              <tr>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Season
-                                </th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Manager
-                                </th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Price
-                                </th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Type
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                              {playerHistory.draft_history.map((result) => (
-                                <tr key={result.id} className="hover:bg-gray-50">
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {result.seasons.name} ({result.seasons.year})
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                    {result.managers.manager_name}
-                                    {result.is_topper && <span className="ml-1">🎩</span>}
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                    {result.draft_price ? `$${result.draft_price}` : 'Free'}
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                    {result.is_keeper ? (
-                                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        Keeper
-                                      </span>
-                                    ) : (
-                                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                        Draft
-                                      </span>
-                                    )}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
+                        <DataTable<DraftResult>
+                          columns={[
+                            {
+                              key: 'seasons.name',
+                              header: 'Season',
+                              render: (_, result) => `${result.seasons.name} (${result.seasons.year})`,
+                              className: 'font-medium'
+                            },
+                            {
+                              key: 'managers.manager_name',
+                              header: 'Manager',
+                              render: (_, result) => (
+                                <>
+                                  {result.managers.manager_name}
+                                  {result.is_topper && <span className="ml-1">🎩</span>}
+                                </>
+                              )
+                            },
+                            {
+                              key: 'draft_price',
+                              header: 'Price',
+                              render: (price) => price ? `$${price}` : 'Free'
+                            },
+                            {
+                              key: 'is_keeper',
+                              header: 'Type',
+                              render: (_, result) => result.is_keeper ? (
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                  Keeper
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                  Draft
+                                </span>
+                              )
+                            }
+                          ]}
+                          data={playerHistory.draft_history}
+                          className="shadow-none"
+                        />
                       </div>
                     )}
 

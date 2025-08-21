@@ -44,7 +44,7 @@ export default function PlayerSearch({
     loading,
     error,
     handleInputChange,
-    handleKeyPress,
+    handleKeyDown,
     handleSuggestionClick,
     handleInputBlur,
     handleInputFocus
@@ -86,7 +86,7 @@ export default function PlayerSearch({
             type="text"
             value={inputValue}
             onChange={handleChange}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
             onBlur={handleInputBlur}
             onFocus={handleInputFocus}
             placeholder={placeholder}

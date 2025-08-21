@@ -66,31 +66,38 @@ export default function LSLPage() {
       key: 'draft_order',
       header: 'Pick',
       render: (value) => `#${value}`,
-      className: 'font-medium'
+      className: 'font-medium text-center w-16',
+      headerClassName: 'text-center w-16'
     },
     {
       key: 'players.name',
       header: 'Player',
-      className: 'font-medium'
+      className: 'font-medium w-32'
     },
     {
       key: 'original_managers.manager_name',
       header: 'LSL Draft Team',
-      render: (value) => value || 'Unknown'
+      render: (value) => value || 'Unknown',
+      className: 'w-24'
     },
     {
       key: 'draft_managers.manager_name',
       header: 'Draft Team',
-      render: (value) => value || 'Unknown'
+      render: (value) => value || 'Unknown',
+      className: 'w-24'
     },
     {
       key: 'draft_price',
       header: 'Price',
-      render: (value) => `$${value}`
+      render: (value) => `$${value}`,
+      className: 'text-center w-20',
+      headerClassName: 'text-center w-20'
     },
     {
       key: 'status',
       header: 'Status',
+      className: 'w-20',
+      headerClassName: 'text-center w-20',
       render: (value) => (
         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
           value === 'Kept' 
@@ -129,26 +136,30 @@ export default function LSLPage() {
         <Header />
 
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Lone Star League</h2>
-          <p className="text-sm text-gray-500">
-            Total picks: {lslData.length} | 
-            Kept: {lslData.filter(r => r.status === 'Kept').length} | 
-            Unkept: {lslData.filter(r => r.status === 'Unkept').length}
-          </p>
+          <div className="flex items-center space-x-4">
+            <h2 className="text-2xl font-semibold text-gray-800">Lone Star League</h2>
+            <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
+              <span className="text-sm font-medium text-blue-900">
+                {lslData.length} total LSL picks | {lslData.filter(r => r.status === 'Kept').length} kept | {lslData.filter(r => r.status === 'Unkept').length} unkept
+              </span>
+            </div>
+          </div>
         </div>
 
-        {years.map(year => (
-          <div key={year} className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">{year} LSL Draft</h2>
-            
-            <DataTable
-              columns={columns}
-              data={groupedByYear[year]}
-              emptyMessage={`No LSL data found for ${year}.`}
-              size="sm"
-            />
-          </div>
-        ))}
+        <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-8">
+          {years.map(year => (
+            <div key={year} className="min-w-0">
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">{year} LSL Draft</h2>
+              
+              <DataTable
+                columns={columns}
+                data={groupedByYear[year]}
+                emptyMessage={`No LSL data found for ${year}.`}
+                size="md"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

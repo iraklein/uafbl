@@ -32,44 +32,49 @@ export async function GET(request: NextRequest) {
 
     // For now, use the first matching player (we can improve this later)
     const player = players[0]
+    const playerId = (player as any).id
 
-    // Get draft history
-    const { data: draftHistory, error: draftError } = await supabase
-      .from('draft_results')
-      .select(`
-        id,
-        draft_price,
-        is_keeper,
-        managers(manager_name),
-        seasons(year, name)
-      `)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .eq('player_id', (player as any).id)
-      .order('seasons(year)', { ascending: false })
+    // Execute all history queries in parallel for better performance
+    const [
+      { data: draftHistory, error: draftError },
+      { data: topperHistory, error: topperError },
+      { data: lslHistory, error: lslError }
+    ] = await Promise.all([
+      // Get draft history
+      supabase
+        .from('draft_results')
+        .select(`
+          id,
+          draft_price,
+          is_keeper,
+          managers(manager_name),
+          seasons(year, name)
+        `)
+        .eq('player_id', playerId)
+        .order('seasons(year)', { ascending: false }),
 
-    // Get topper history
-    const { data: topperHistory, error: topperError } = await supabase
-      .from('toppers')
-      .select(`
-        *,
-        managers(manager_name),
-        seasons(year, name)
-      `)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .eq('player_id', (player as any).id)
-      .order('seasons(year)', { ascending: false })
+      // Get topper history
+      supabase
+        .from('toppers')
+        .select(`
+          *,
+          managers(manager_name),
+          seasons(year, name)
+        `)
+        .eq('player_id', playerId)
+        .order('seasons(year)', { ascending: false }),
 
-    // Get LSL history
-    const { data: lslHistory, error: lslError } = await supabase
-      .from('lsl')
-      .select(`
-        *,
-        original_managers:managers!original_manager_id(manager_name),
-        draft_managers:managers!draft_manager_id(manager_name)
-      `)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .eq('player_id', (player as any).id)
-      .order('year', { ascending: false })
+      // Get LSL history
+      supabase
+        .from('lsl')
+        .select(`
+          *,
+          original_managers:managers!original_manager_id(manager_name),
+          draft_managers:managers!draft_manager_id(manager_name)
+        `)
+        .eq('player_id', playerId)
+        .order('year', { ascending: false })
+    ])
 
     if (draftError || topperError || lslError) {
       console.error('Error fetching player history:', { draftError, topperError, lslError })

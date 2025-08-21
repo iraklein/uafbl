@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import ErrorAlert from '../../components/ErrorAlert'
 import Modal from '../../components/Modal'
-import Select from '../../components/Select'
 import FormInput from '../../components/FormInput'
 import PlayerSearch from '../../components/PlayerSearch'
+import ManagerSearch from '../../components/ManagerSearch'
+import ManagerHeader from '../../components/ManagerHeader'
 
 interface Player {
   id: number
@@ -16,6 +17,7 @@ interface Player {
 interface Manager {
   id: number
   manager_name: string
+  team_name?: string
 }
 
 interface DraftPick {
@@ -24,6 +26,7 @@ interface DraftPick {
   player_name: string
   manager_id: number
   manager_name: string
+  team_name?: string
   draft_price: number
   is_keeper: boolean
   is_topper: boolean
@@ -40,9 +43,11 @@ export default function DraftPage() {
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
 
   // Form states
-  const [selectedManager, setSelectedManager] = useState('')
+  const [selectedManager, setSelectedManager] = useState<Manager | null>(null)
+  const [managerQuery, setManagerQuery] = useState('')
   const [isKeeper, setIsKeeper] = useState(false)
-  const [draftPrice, setDraftPrice] = useState('')
+  const [draftPrice, setDraftPrice] = useState('0')
+  const [draftPriceTouched, setDraftPriceTouched] = useState(false)
   const [calculatedKeeperPrice, setCalculatedKeeperPrice] = useState<number | null>(null)
   const [isTopper, setIsTopper] = useState(false)
   const [selectedTopperManagers, setSelectedTopperManagers] = useState<string[]>([])
@@ -66,6 +71,9 @@ export default function DraftPage() {
   const [showCreatePlayerModal, setShowCreatePlayerModal] = useState(false)
   const [newPlayerName, setNewPlayerName] = useState('')
   const [creatingPlayer, setCreatingPlayer] = useState(false)
+  
+  // Sorting states
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
 
   // Fetch managers
   useEffect(() => {
@@ -178,7 +186,8 @@ export default function DraftPage() {
       if (response.ok) {
         const data = await response.json()
         setCalculatedKeeperPrice(data.keeper_price)
-        setDraftPrice(data.keeper_price?.toString() || '')
+        setDraftPrice(data.keeper_price?.toString() || '0')
+        setDraftPriceTouched(true) // Keeper prices are considered "touched"
       }
     } catch (error) {
       console.error('Error fetching keeper price:', error)
@@ -192,7 +201,8 @@ export default function DraftPage() {
       await fetchKeeperPrice(selectedPlayer.id)
     } else {
       setCalculatedKeeperPrice(null)
-      setDraftPrice('')
+      setDraftPrice('0')
+      setDraftPriceTouched(false)
     }
   }
 
@@ -218,7 +228,7 @@ export default function DraftPage() {
     try {
       const draftPick = {
         player_id: selectedPlayer.id,
-        manager_id: parseInt(selectedManager),
+        manager_id: selectedManager.id,
         draft_price: parseInt(draftPrice),
         is_keeper: isKeeper,
         is_topper: isTopper,
@@ -232,14 +242,29 @@ export default function DraftPage() {
         body: JSON.stringify(draftPick)
       })
 
-      if (!response.ok) throw new Error('Failed to save draft pick')
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        const errorMessage = errorData.error || errorData.message || ''
+        
+        // Check for duplicate player error
+        if (errorMessage.toLowerCase().includes('already') || 
+            errorMessage.toLowerCase().includes('duplicate') ||
+            errorMessage.toLowerCase().includes('unique') ||
+            response.status === 409) {
+          throw new Error('Failed to save - player already drafted!')
+        }
+        
+        throw new Error('Failed to save draft pick - player already drafted!')
+      }
 
       // Reset form
       setSelectedPlayer(null)
       setPlayerSearchQuery('')
-      setSelectedManager('')
+      setSelectedManager(null)
+      setManagerQuery('')
       setIsKeeper(false)
-      setDraftPrice('')
+      setDraftPrice('0')
+      setDraftPriceTouched(false)
       setCalculatedKeeperPrice(null)
       setIsTopper(false)
       setSelectedTopperManagers([])
@@ -252,7 +277,7 @@ export default function DraftPage() {
       }
 
     } catch (error) {
-      setError(error instanceof Error ? error.message : 'Failed to save draft pick')
+      setError(error instanceof Error ? error.message : 'Failed to save draft pick - player already drafted!')
     } finally {
       setSaving(false)
     }
@@ -283,6 +308,23 @@ export default function DraftPage() {
       setError('Failed to delete draft pick')
     }
   }
+
+  // Handle sorting by pick number
+  const handleSortByPickNumber = () => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+  }
+
+  // Sort draft picks by pick number (latest picks have highest index)
+  const sortedDraftPicks = [...draftPicks].sort((a, b) => {
+    const pickA = draftPicks.length - draftPicks.indexOf(a) // Convert index to pick number
+    const pickB = draftPicks.length - draftPicks.indexOf(b) // Convert index to pick number
+    
+    if (sortOrder === 'asc') {
+      return pickA - pickB // Pick 1, 2, 3... (ascending)
+    } else {
+      return pickB - pickA // Latest picks first (descending, default)
+    }
+  })
 
   // Start editing a draft pick
   const handleEdit = (pick: DraftPick) => {
@@ -385,11 +427,11 @@ export default function DraftPage() {
           
           <ErrorAlert error={error} className="mb-4" />
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-8 gap-4">
             {/* Player Search */}
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Player *
+                Player <span className="text-red-500 ml-1">*</span>
               </label>
               <PlayerSearch
                 value={playerSearchQuery}
@@ -403,67 +445,96 @@ export default function DraftPage() {
 
             {/* Manager Selection */}
             <div className="md:col-span-2">
-              <Select
-                label="Manager"
-                value={selectedManager}
-                onChange={(e) => setSelectedManager(e.target.value)}
-                placeholder="Select manager..."
-                required
-                options={managers.map(manager => ({
-                  value: manager.id.toString(),
-                  label: manager.manager_name
-                }))}
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Manager <span className="text-red-500 ml-1">*</span>
+              </label>
+              <ManagerSearch
+                value={managerQuery}
+                onChange={setManagerQuery}
+                managers={managers}
+                onManagerSelect={(manager) => {
+                  setSelectedManager(manager)
+                  setManagerQuery(manager.manager_name)
+                }}
+                placeholder="Search for manager..."
               />
             </div>
 
-            {/* Topper Checkbox */}
-            <div className="md:col-span-2">
-              <div className="flex items-center">
+            {/* Price - half size */}
+            <div className="md:col-span-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Price <span className="text-red-500 ml-1">*</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <span className={`text-base ${(draftPriceTouched || isKeeper) && draftPrice !== '0' ? 'text-gray-900' : 'text-gray-400'}`}>$</span>
+                </div>
                 <input
-                  id="is-topper"
-                  type="checkbox"
-                  checked={isTopper}
-                  onChange={(e) => setIsTopper(e.target.checked)}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  type="number"
+                  value={draftPrice}
+                  onChange={(e) => {
+                    setDraftPrice(e.target.value)
+                    setDraftPriceTouched(true)
+                  }}
+                  onFocus={() => setDraftPriceTouched(true)}
+                  disabled={isKeeper}
+                  className={`block w-full pl-6 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-base disabled:bg-gray-100 disabled:cursor-not-allowed ${
+                    (draftPriceTouched || isKeeper) && draftPrice !== '0' ? 'text-gray-900' : 'text-gray-400'
+                  }`}
+                  placeholder="0"
+                  min="0"
+                  step="1"
+                  required
                 />
-                <label htmlFor="is-topper" className="ml-2 block text-sm text-gray-900">
-                  This player was topped
-                </label>
               </div>
             </div>
 
-            {/* Keeper Checkbox */}
-            <div className="md:col-span-2">
-              <div className="flex items-center">
-                <input
-                  id="is-keeper"
-                  type="checkbox"
-                  checked={isKeeper}
-                  onChange={(e) => handleKeeperChange(e.target.checked)}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="is-keeper" className="ml-2 block text-sm text-gray-900">
-                  This is a keeper
-                  {calculatedKeeperPrice !== null && (
-                    <span className="ml-2 text-green-600 font-medium">
-                      (Keeper price: ${calculatedKeeperPrice})
-                    </span>
-                  )}
-                </label>
-              </div>
-            </div>
+            {/* Checkboxes and Save Button combined */}
+            <div className="md:col-span-3 flex items-end space-x-4">
+              {/* Checkboxes - vertical layout */}
+              <div className="flex flex-col space-y-2">
+                {/* Keeper Checkbox */}
+                <div className="flex items-center">
+                  <input
+                    id="is-keeper"
+                    type="checkbox"
+                    checked={isKeeper}
+                    onChange={(e) => handleKeeperChange(e.target.checked)}
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor="is-keeper" className="ml-2 block text-sm text-gray-900">
+                    Keeper
+                    {calculatedKeeperPrice !== null && (
+                      <span className="ml-2 text-green-600 font-medium">
+                        (${calculatedKeeperPrice})
+                      </span>
+                    )}
+                  </label>
+                </div>
 
-            {/* Draft Price */}
-            <div>
-              <FormInput
-                label={`Draft Price ${isKeeper ? '(Auto-filled for keepers)' : ''}`}
-                type="number"
-                value={draftPrice}
-                onChange={(e) => setDraftPrice(e.target.value)}
-                disabled={isKeeper}
-                placeholder="Enter draft price..."
-                required
-              />
+                {/* Topper Checkbox */}
+                <div className="flex items-center">
+                  <input
+                    id="is-topper"
+                    type="checkbox"
+                    checked={isTopper}
+                    onChange={(e) => setIsTopper(e.target.checked)}
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor="is-topper" className="ml-2 block text-sm text-gray-900">
+                    Topper
+                  </label>
+                </div>
+              </div>
+
+              {/* Save Button */}
+              <button
+                onClick={handleSave}
+                disabled={saving || !selectedPlayer || !selectedManager || !draftPrice}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-center"
+              >
+                {saving ? 'Saving...' : 'Save'}
+              </button>
             </div>
 
             {/* Topper Managers */}
@@ -491,17 +562,6 @@ export default function DraftPage() {
               </div>
             )}
           </div>
-
-          {/* Save Button */}
-          <div className="mt-6">
-            <button
-              onClick={handleSave}
-              disabled={saving || !selectedPlayer || !selectedManager || !draftPrice}
-              className="w-full md:w-auto px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {saving ? 'Saving...' : 'Save Draft Pick'}
-            </button>
-          </div>
         </div>
 
         {/* Draft Picks Table */}
@@ -515,8 +575,16 @@ export default function DraftPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Pick #
+                  <th 
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 select-none"
+                    onClick={handleSortByPickNumber}
+                  >
+                    <div className="flex items-center">
+                      Pick #
+                      <span className="ml-1">
+                        {sortOrder === 'asc' ? '↑' : '↓'}
+                      </span>
+                    </div>
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Player
@@ -539,12 +607,14 @@ export default function DraftPage() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {draftPicks.map((pick, index) => {
+                {sortedDraftPicks.map((pick, sortedIndex) => {
                   const isEditing = editingPickId === pick.id
+                  const originalIndex = draftPicks.indexOf(pick)
+                  const pickNumber = draftPicks.length - originalIndex
                   return (
                     <tr key={pick.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {draftPicks.length - index}
+                        {pickNumber}
                       </td>
                       {/* Player Column */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -586,7 +656,13 @@ export default function DraftPage() {
                             ))}
                           </select>
                         ) : (
-                          pick.manager_name
+                          <ManagerHeader
+                            managerName={pick.manager_name}
+                            teamName={pick.team_name}
+                            showLogo={true}
+                            logoSize="sm"
+                            textSize="sm"
+                          />
                         )}
                       </td>
                       

@@ -8,7 +8,8 @@ export async function GET(request: NextRequest) {
   const seasonId = searchParams.get('season_id')
 
   try {
-    let query = supabase
+    // Build draft results query
+    let draftQuery = supabase
       .from('draft_results')
       .select(`
         id,
@@ -16,66 +17,74 @@ export async function GET(request: NextRequest) {
         is_keeper,
         player_id,
         players(name),
-        managers(manager_name),
+        managers(manager_name, team_name),
         seasons(year, name)
       `)
       .order('managers(manager_name)', { ascending: true })
       .order('draft_price', { ascending: false })
 
     if (seasonId) {
-      query = query.eq('season_id', seasonId)
+      draftQuery = draftQuery.eq('season_id', seasonId)
     }
 
-    const { data: draftResults, error } = await query
-
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
-    }
-
-    // Get topper information for the same season (only used toppers)
-    let topperData: { player_id: number }[] = []
-    if (seasonId && draftResults && draftResults.length > 0) {
-      const { data: toppers, error: topperError } = await supabase
-        .from('toppers')
-        .select('player_id')
-        .eq('season_id', seasonId)
-        .eq('is_unused', false)
-
-      if (!topperError && toppers) {
-        topperData = toppers as { player_id: number }[]
-      }
-    }
-
-    // Create a set of player IDs that are toppers
-    const topperPlayerIds = new Set(topperData.map(t => t.player_id))
-
-    // Get trade counts for all players in this season
-    const tradeCountMap: Record<number, number> = {}
+    // Execute all queries in parallel for better performance
+    const queries: any[] = [draftQuery]
+    
     if (seasonId) {
-      const { data: tradesData, error: tradesError } = await supabase
-        .from('trades')
-        .select('player_id')
-        .eq('season_id', seasonId)
+      queries.push(
+        supabase
+          .from('toppers')
+          .select('player_id')
+          .eq('season_id', seasonId)
+          .eq('is_unused', false),
+        supabase
+          .from('trades')
+          .select('player_id')
+          .eq('season_id', seasonId),
+        supabase
+          .from('rosters')
+          .select('player_id, consecutive_keeps')
+          .eq('season_id', seasonId)
+      )
+    }
 
-      if (!tradesError && tradesData) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        tradesData.forEach((trade: any) => {
+    const results = await Promise.all(queries)
+    
+    const { data: draftResults, error: draftError } = results[0]
+
+    if (draftError) {
+      return NextResponse.json({ error: draftError.message }, { status: 500 })
+    }
+
+    // Early return if no draft results
+    if (!draftResults || draftResults.length === 0) {
+      return NextResponse.json([])
+    }
+
+    // Process parallel query results
+    let topperPlayerIds = new Set<number>()
+    let tradeCountMap: Record<number, number> = {}
+    let consecutiveKeepsMap: Record<number, number | null> = {}
+
+    if (seasonId && results.length > 1) {
+      // Process toppers data
+      const toppersResult = results[1]
+      if (toppersResult && !toppersResult.error && toppersResult.data) {
+        topperPlayerIds = new Set(toppersResult.data.map((t: any) => t.player_id))
+      }
+
+      // Process trades data  
+      const tradesResult = results[2]
+      if (tradesResult && !tradesResult.error && tradesResult.data) {
+        tradesResult.data.forEach((trade: any) => {
           tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
         })
       }
-    }
 
-    // Get consecutive keeps data from rosters table for this season
-    const consecutiveKeepsMap: Record<number, number | null> = {}
-    if (seasonId) {
-      const { data: rostersData, error: rostersError } = await supabase
-        .from('rosters')
-        .select('player_id, consecutive_keeps')
-        .eq('season_id', seasonId)
-
-      if (!rostersError && rostersData) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        rostersData.forEach((roster: any) => {
+      // Process rosters data
+      const rostersResult = results[3]
+      if (rostersResult && !rostersResult.error && rostersResult.data) {
+        rostersResult.data.forEach((roster: any) => {
           consecutiveKeepsMap[roster.player_id] = roster.consecutive_keeps
         })
       }

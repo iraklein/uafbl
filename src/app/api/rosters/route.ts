@@ -10,6 +10,7 @@ interface Player {
 interface Manager {
   id: number
   manager_name: string
+  team_name?: string
 }
 
 interface _RosterData {
@@ -31,52 +32,73 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Season ID is required' }, { status: 400 })
     }
 
-    // Fetch rosters with player, manager, and draft price information
-    // We need to join with draft_results to get the draft price from the previous season (2024)
-    const { data: rosters, error } = await supabase
-      .from('rosters')
-      .select(`
-        id,
-        keeper_cost,
-        consecutive_keeps,
-        players (
+    // Execute all queries in parallel for better performance
+    const [
+      { data: rosters, error: rostersError },
+      { data: draftPrices, error: draftError },
+      { data: tradesData, error: tradesError }
+    ] = await Promise.all([
+      // Fetch rosters with player and manager information
+      supabase
+        .from('rosters')
+        .select(`
           id,
-          name
-        ),
-        managers (
-          id,
-          manager_name
-        )
-      `)
-      .eq('season_id', seasonId)
+          keeper_cost,
+          consecutive_keeps,
+          players (
+            id,
+            name
+          ),
+          managers (
+            id,
+            manager_name,
+            team_name
+          )
+        `)
+        .eq('season_id', seasonId),
+      
+      // Get draft prices and keeper status from CURRENT season for each player
+      supabase
+        .from('draft_results')
+        .select(`
+          player_id,
+          draft_price,
+          is_keeper,
+          seasons!inner (
+            id
+          )
+        `)
+        .eq('seasons.id', seasonId),
+      
+      // Get trade counts for all players in this season
+      supabase
+        .from('trades')
+        .select('player_id')
+        .eq('season_id', seasonId)
+    ])
 
-    if (error) {
-      console.error('Database error:', error)
+    if (rostersError) {
+      console.error('Database error:', rostersError)
       return NextResponse.json({ error: 'Failed to fetch rosters' }, { status: 500 })
     }
-
-    // Get draft prices and keeper status from CURRENT season for each player
-    // This shows what they were drafted for THIS season and calculates next year's keeper cost
-    const { data: draftPrices, error: draftError } = await supabase
-      .from('draft_results')
-      .select(`
-        player_id,
-        draft_price,
-        is_keeper,
-        seasons!inner (
-          id
-        )
-      `)
-      .eq('seasons.id', seasonId)
 
     if (draftError) {
       console.error('Draft prices error:', draftError)
       return NextResponse.json({ error: 'Failed to fetch draft prices' }, { status: 500 })
     }
 
+    if (tradesError) {
+      console.error('Trades error:', tradesError)
+      return NextResponse.json({ error: 'Failed to fetch trades' }, { status: 500 })
+    }
+
+    // Early return if no rosters found
+    if (!rosters || rosters.length === 0) {
+      return NextResponse.json([])
+    }
+
     // Create a map of player_id to draft info (price and keeper status)
     const draftInfoMap: Record<number, { draft_price: number | null; is_keeper: boolean }> = {}
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     draftPrices?.forEach((dp: any) => {
       draftInfoMap[dp.player_id] = {
         draft_price: dp.draft_price,
@@ -84,20 +106,8 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Get trade counts for all players in this season
-    const { data: tradesData, error: tradesError } = await supabase
-      .from('trades')
-      .select('player_id')
-      .eq('season_id', seasonId)
-
-    if (tradesError) {
-      console.error('Trades error:', tradesError)
-      return NextResponse.json({ error: 'Failed to fetch trades' }, { status: 500 })
-    }
-
     // Create a map of player_id to trade count
     const tradeCountMap: Record<number, number> = {}
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tradesData?.forEach((trade: any) => {
       tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
     })

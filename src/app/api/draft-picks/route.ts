@@ -9,6 +9,7 @@ interface Player {
 interface Manager {
   id: number
   manager_name: string
+  team_name?: string
 }
 
 interface _DraftResult {
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
         is_keeper,
         created_at,
         players(id, name),
-        managers(id, manager_name)
+        managers(id, manager_name, team_name)
       `)
       .eq('season_id', seasonId)
       .order('created_at', { ascending: false }) // Most recent first

@@ -6,7 +6,7 @@ import SeasonSelector from "../../components/SeasonSelector"
 import LoadingState from "../../components/LoadingState"
 import ErrorAlert from "../../components/ErrorAlert"
 import Select from "../../components/Select"
-import FormInput from "../../components/FormInput"
+import PlayerSearch from "../../components/PlayerSearch"
 import { useSeasons } from "../../hooks/useSeasons"
 import { Season, TopperRecord } from "../../types"
 
@@ -143,30 +143,19 @@ export default function ToppersPage() {
         ) : (
           <>
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Toppers</h2>
-          
-          {selectedSeasonName && (
-            <div className="bg-white p-4 rounded-lg shadow mb-6">
-              <h3 className="text-xl font-semibold text-gray-800">{selectedSeasonName}</h3>
-              <p className="text-gray-600">
-                Showing {statistics.totalToppers} toppers: Used: {statistics.usedCount} | Unused: {statistics.unusedCount} | Lost: {statistics.lostCount}
-              </p>
+              <div className="flex items-center space-x-4">
+                <h2 className="text-2xl font-semibold text-gray-800">Toppers</h2>
+                <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
+                  <span className="text-sm font-medium text-blue-900">
+                    {statistics.totalToppers} toppers: Used: {statistics.usedCount} | Unused: {statistics.unusedCount} | Lost: {statistics.lostCount}
+                  </span>
+                </div>
+              </div>
             </div>
-          )}
-        </div>
 
         {!toppersLoading && (
           <div className="mb-6">
             <div className="bg-white p-4 rounded-lg shadow mb-4">
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-medium text-gray-900">Filters</h4>
-                <button
-                  onClick={clearFilters}
-                  className="text-sm text-indigo-600 hover:text-indigo-800 font-medium"
-                >
-                  Clear All
-                </button>
-              </div>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
@@ -178,7 +167,7 @@ export default function ToppersPage() {
                     selectedSeason={selectedSeason}
                     onSeasonChange={setSelectedSeason}
                     placeholder="Choose a season..."
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-900"
+                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-900 bg-white"
                     additionalOptions={[
                       { value: 'all', label: 'All Seasons' }
                     ]}
@@ -190,7 +179,8 @@ export default function ToppersPage() {
                     value={filters.manager}
                     onChange={(e) => handleFilterChange('manager', e.target.value)}
                     placeholder="All Managers"
-                    className="text-sm"
+                    size="md"
+                    className="text-sm text-gray-900"
                     options={managerOptions.map(managerName => ({
                       value: managerName,
                       label: managerName
@@ -199,13 +189,16 @@ export default function ToppersPage() {
                 </div>
                 
                 <div>
-                  <FormInput
-                    label="Player"
-                    type="text"
+                  <div className="mb-1">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Player
+                    </label>
+                  </div>
+                  <PlayerSearch
                     placeholder="Search players..."
                     value={filters.player}
-                    onChange={(e) => handleFilterChange('player', e.target.value)}
-                    size="sm"
+                    onChange={(value) => handleFilterChange('player', value)}
+                    className="text-sm"
                   />
                 </div>
                 
@@ -215,7 +208,8 @@ export default function ToppersPage() {
                     value={filters.status}
                     onChange={(e) => handleFilterChange('status', e.target.value)}
                     placeholder="All Statuses"
-                    className="text-sm"
+                    size="md"
+                    className="text-sm text-gray-900"
                     options={[
                       { value: 'Used', label: 'Used' },
                       { value: 'Unused', label: 'Unused' },
@@ -229,40 +223,47 @@ export default function ToppersPage() {
             <div className="bg-white shadow rounded-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-indigo-600">
                     <tr>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
                         Season
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
                         Manager
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
                         Player
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
                         Status
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white divide-y divide-gray-100">
                     {filteredToppersData
-                      .sort((a, b) => (a.managers?.manager_name || '').localeCompare(b.managers?.manager_name || ''))
+                      .sort((a, b) => {
+                        // First sort by season (descending - newest first)
+                        const seasonCompare = b.seasons.year - a.seasons.year
+                        if (seasonCompare !== 0) return seasonCompare
+                        
+                        // Then sort by manager name (ascending)
+                        return (a.managers?.manager_name || '').localeCompare(b.managers?.manager_name || '')
+                      })
                       .map((record) => {
                         const status = getPlayerStatus(record)
                         
                         return (
-                          <tr key={record.id} className="hover:bg-gray-50">
-                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">
+                          <tr key={record.id} className="hover:bg-indigo-50 transition-colors duration-150">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                               {record.seasons.year}
                             </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                               {record.managers?.manager_name || 'Unknown'}
                             </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                               {record.players.name}
                             </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
+                            <td className="px-6 py-4 whitespace-nowrap">
                               <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                                 status === 'Used' 
                                   ? 'bg-green-100 text-green-800'

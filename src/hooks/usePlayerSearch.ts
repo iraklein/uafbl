@@ -24,7 +24,7 @@ interface UsePlayerSearchReturn {
   error: string
   searchPlayers: (query: string) => Promise<void>
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void
   handleSuggestionClick: (player: Player) => void
   handleInputBlur: () => void
   handleInputFocus: () => void
@@ -89,7 +89,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     }
   }, [minQueryLength, searchPlayers])
 
-  const handleKeyPress = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault()
       const trimmedQuery = query.trim()
@@ -143,6 +143,16 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     } else if (e.key === 'Escape') {
       setShowSuggestions(false)
       setHighlightedIndex(0)
+    } else if (e.key === 'Tab') {
+      // If there are suggestions, populate with the top result (highlighted one)
+      if (showSuggestions && filteredPlayers.length > 0) {
+        const topResult = filteredPlayers[highlightedIndex >= 0 && highlightedIndex < filteredPlayers.length ? highlightedIndex : 0]
+        setQuery(topResult.name)
+        setSelectedPlayer(topResult)
+        setShowSuggestions(false)
+        onPlayerSelect?.(topResult)
+        // Don't prevent default - let Tab continue to next field
+      }
     }
   }, [query, minQueryLength, filteredPlayers, allowCreateNew, onExactMatch, onPlayerSelect, showSuggestions, highlightedIndex])
 
@@ -202,7 +212,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     error,
     searchPlayers,
     handleInputChange,
-    handleKeyPress,
+    handleKeyDown,
     handleSuggestionClick,
     handleInputBlur,
     handleInputFocus,

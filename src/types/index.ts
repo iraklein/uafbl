@@ -15,6 +15,7 @@ export interface Player {
 export interface Manager {
   id: number
   manager_name: string
+  team_name?: string
   active?: boolean
   is_admin?: boolean
   email?: string

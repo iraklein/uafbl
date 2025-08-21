@@ -6,6 +6,7 @@ import SeasonSelector from '../../components/SeasonSelector'
 import LoadingState from '../../components/LoadingState'
 import ErrorAlert from '../../components/ErrorAlert'
 import DataTable, { Column } from '../../components/DataTable'
+import ManagerHeader from '../../components/ManagerHeader'
 import { useSeasons } from '../../hooks/useSeasons'
 import { Roster } from '../../types'
 
@@ -80,7 +81,7 @@ export default function Rosters() {
       key: 'players.name',
       header: 'Player',
       className: 'font-medium',
-      headerClassName: 'w-1/2'
+      headerClassName: 'w-2/5'
     },
     {
       key: 'draft_price',
@@ -106,7 +107,7 @@ export default function Rosters() {
     {
       key: 'calculated_keeper_cost',
       header: 'Keep $',
-      headerClassName: 'text-center w-1/8',
+      headerClassName: 'text-center w-24 whitespace-nowrap',
       className: 'text-center',
       render: (value) => value ? `$${value}` : '-'
     }
@@ -155,7 +156,13 @@ export default function Rosters() {
                   <div key={managerName}>
                     <div className="bg-indigo-600 text-white px-3 py-2 rounded-t-lg">
                       <div className="flex justify-between items-center">
-                        <h3 className="text-sm font-semibold">{managerName}</h3>
+                        <ManagerHeader
+                          managerName={managerName}
+                          teamName={players[0]?.managers?.team_name}
+                          showLogo={true}
+                          logoSize="md"
+                          textSize="sm"
+                        />
                         <div className="text-xs">
                           <span>{players.length}</span>
                         </div>

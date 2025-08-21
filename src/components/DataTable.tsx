@@ -29,7 +29,7 @@ export default function DataTable<T = any>({
   emptyComponent,
   onRowClick,
   rowClassName = '',
-  headerClassName = 'bg-gray-50',
+  headerClassName = 'bg-indigo-600',
   size = 'md'
 }: DataTableProps<T>) {
   const sizeClasses = {
@@ -49,7 +49,7 @@ export default function DataTable<T = any>({
   }
 
   const getRowClassName = (row: T, index: number): string => {
-    const baseClass = onRowClick ? 'cursor-pointer hover:bg-gray-50' : 'hover:bg-gray-50'
+    const baseClass = onRowClick ? 'cursor-pointer hover:bg-indigo-50 transition-colors duration-150' : 'hover:bg-indigo-50 transition-colors duration-150'
     if (typeof rowClassName === 'function') {
       return `${baseClass} ${rowClassName(row, index)}`
     }
@@ -68,26 +68,26 @@ export default function DataTable<T = any>({
   }
 
   return (
-    <div className={`bg-white shadow rounded-lg overflow-hidden ${className}`}>
+    <div className={`bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 ${className}`}>
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full">
           <thead className={headerClassName}>
             <tr>
               {columns.map((column) => (
                 <th
                   key={column.key}
-                  className={`${paddingClasses[size]} text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${column.headerClassName || ''}`}
+                  className={`${paddingClasses[size]} ${column.headerClassName?.includes('text-center') ? 'text-center' : 'text-left'} text-xs font-semibold uppercase tracking-wider ${headerClassName.includes('text-') ? '' : 'text-white border-r border-indigo-700 last:border-r-0'} ${column.headerClassName || ''}`}
                 >
                   {column.header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-gray-100">
             {data.map((row, index) => (
               <tr
                 key={index}
-                className={getRowClassName(row, index)}
+                className={`${getRowClassName(row, index)} border-b border-gray-100 last:border-b-0`}
                 onClick={onRowClick ? () => onRowClick(row, index) : undefined}
               >
                 {columns.map((column) => {
@@ -99,7 +99,7 @@ export default function DataTable<T = any>({
                   return (
                     <td
                       key={column.key}
-                      className={`${paddingClasses[size]} whitespace-nowrap ${sizeClasses[size]} text-gray-900 ${column.className || ''}`}
+                      className={`${paddingClasses[size]} whitespace-nowrap ${sizeClasses[size]} text-gray-900 border-r border-gray-100 last:border-r-0 ${column.className || ''}`}
                     >
                       {cellContent}
                     </td>

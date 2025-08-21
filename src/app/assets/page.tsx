@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import ErrorAlert from '../../components/ErrorAlert'
 import LoadingState from '../../components/LoadingState'
+import StatsCard from '../../components/StatsCard'
 import { useAuth } from '../../contexts/AuthContext'
 
 interface Manager {
@@ -152,42 +153,67 @@ export default function Assets() {
               <div className="lg:col-span-3 space-y-2">
                 {/* Row 1: Pre-Draft */}
                 <div className="flex gap-2">
-                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
-                    <div className="text-lg font-bold text-gray-600">Pre-Draft Cash: ${totalPreDraftCash.toLocaleString()}</div>
-                  </div>
-                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
-                    <div className="text-lg font-bold text-gray-600">Pre-Draft Slots: {totalPreDraftSlots}</div>
-                  </div>
+                  <StatsCard
+                    title="Pre-Draft Cash"
+                    value={`$${totalPreDraftCash.toLocaleString()}`}
+                    variant="default"
+                    size="sm"
+                    className="w-[250px]"
+                  />
+                  <StatsCard
+                    title="Pre-Draft Slots"
+                    value={totalPreDraftSlots}
+                    variant="default"
+                    size="sm"
+                    className="w-[250px]"
+                  />
                 </div>
                 
                 {/* Row 2: Spent */}
                 <div className="flex gap-2">
-                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
-                    <div className="text-lg font-bold text-red-600">Cash Spent: ${totalCashSpent.toLocaleString()}</div>
-                  </div>
-                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
-                    <div className="text-lg font-bold text-red-600">Slots Used: {totalSlotsUsed}</div>
-                  </div>
+                  <StatsCard
+                    title="Cash Spent"
+                    value={`$${totalCashSpent.toLocaleString()}`}
+                    variant="red"
+                    size="sm"
+                    className="w-[250px]"
+                  />
+                  <StatsCard
+                    title="Slots Used"
+                    value={totalSlotsUsed}
+                    variant="red"
+                    size="sm"
+                    className="w-[250px]"
+                  />
                 </div>
                 
                 {/* Row 3: Remaining */}
                 <div className="flex gap-2">
-                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
-                    <div className="text-lg font-bold text-green-600">Cash Remaining: ${totalCashRemaining.toLocaleString()}</div>
-                  </div>
-                  <div className="bg-white p-2 rounded-lg shadow" style={{width: '250px'}}>
-                    <div className="text-lg font-bold text-green-600">Slots Remaining: {totalSlotsRemaining}</div>
-                  </div>
+                  <StatsCard
+                    title="Cash Remaining"
+                    value={`$${totalCashRemaining.toLocaleString()}`}
+                    variant="green"
+                    size="sm"
+                    className="w-[250px]"
+                  />
+                  <StatsCard
+                    title="Slots Remaining"
+                    value={totalSlotsRemaining}
+                    variant="green"
+                    size="sm"
+                    className="w-[250px]"
+                  />
                 </div>
               </div>
               
               {/* Right side - Drafted Players */}
-              <div className="bg-white p-2 rounded-lg shadow flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600">{totalDraftedPlayers}</div>
-                  <div className="text-sm text-gray-600">Drafted Players</div>
-                </div>
-              </div>
+              <StatsCard
+                title="Drafted Players"
+                value={totalDraftedPlayers}
+                variant="purple"
+                size="sm"
+                className="flex items-center justify-center"
+              />
             </div>
 
             {/* Assets Table */}

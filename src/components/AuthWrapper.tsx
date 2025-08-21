@@ -14,6 +14,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const [loading, setLoading] = useState(true)
   const [isAdmin, setIsAdmin] = useState(false)
   const [isSigningOut, setIsSigningOut] = useState(false)
+  const [managerName, setManagerName] = useState<string>('')
   
   // Login form states
   const [email, setEmail] = useState('')
@@ -35,7 +36,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     try {
       const { data, error } = await supabase
         .from('managers')
-        .select('is_admin, email, manager_name')
+        .select('is_admin, email, manager_name, team_name')
         .eq('email', userEmail)
         .single()
 
@@ -49,9 +50,19 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
         dataType: typeof data?.is_admin 
       })
 
-      if (!error && data && data.is_admin === true) {
-        console.log('✅ User is admin - showing admin tab')
-        setIsAdmin(true)
+      if (!error && data) {
+        if (data.is_admin === true) {
+          console.log('✅ User is admin - showing admin tab')
+          setIsAdmin(true)
+        } else {
+          console.log('❌ User is not admin - no admin rights')
+          setIsAdmin(false)
+        }
+        
+        // Set team name for display
+        if (data.team_name) {
+          setManagerName(data.team_name)
+        }
       } else {
         console.log('❌ User is not admin or error occurred:', error?.message || 'No admin rights')
         setIsAdmin(false)
@@ -185,6 +196,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           console.log('🚪 Handling sign out - clearing all state')
           setUser(null)
           setIsAdmin(false)
+          setManagerName('')
           setShowPasswordSetup(false)
           setLoginError('')
           setEmail('')
@@ -307,6 +319,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       console.log('🗑️ Immediately clearing component state...')
       setUser(null)
       setIsAdmin(false)
+      setManagerName('')
       setShowPasswordSetup(false)
       setLoginError('')
       setEmail('')
@@ -523,7 +536,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-12">
             <div className="text-sm text-gray-600">
-              Welcome, {user.email}
+              Welcome, {managerName || user.email}
             </div>
             <button
               onClick={handleLogout}

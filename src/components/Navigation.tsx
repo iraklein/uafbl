@@ -20,8 +20,8 @@ export default function Navigation() {
     { href: '/trades', label: 'Trades' },
     { href: '/draft', label: 'Draft' },
     { href: '/draft-results', label: 'Draft Results' },
-    { href: '/lsl', label: 'LSL' },
     { href: '/toppers', label: 'Toppers' },
+    { href: '/lsl', label: 'LSL' },
   ]
 
   // Check if we're on any draft-related page
