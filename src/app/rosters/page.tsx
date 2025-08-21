@@ -114,30 +114,30 @@ export default function Rosters() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 sm:px-6 lg:px-8">
         <Header />
 
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           
-          {/* Header with inline season selector */}
-          <div className="flex items-center space-x-6 mb-4">
-            <h2 className="text-2xl font-semibold text-gray-800">Team Rosters</h2>
-            
-            {/* Season Selector */}
-            <SeasonSelector
-              seasons={seasons}
-              selectedSeason={selectedSeason}
-              onSeasonChange={setSelectedSeason}
-              loading={loading}
-            />
+          {/* Controls section */}
+          <div className="mb-4">
+            <div className="flex flex-row space-x-3 sm:space-x-4">
+              {/* Season Selector */}
+              <SeasonSelector
+                seasons={seasons}
+                selectedSeason={selectedSeason}
+                onSeasonChange={setSelectedSeason}
+                loading={loading}
+              />
 
-            {/* Player count info box */}
-            {selectedSeason && (
-              <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
-                <span className="text-sm font-medium text-blue-900">{rosters.length} total players</span>
-              </div>
-            )}
+              {/* Player count info box */}
+              {selectedSeason && (
+                <div className="bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg flex-shrink-0">
+                  <span className="text-xs font-medium text-blue-900 sm:text-sm">{rosters.length} total players</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -151,10 +151,10 @@ export default function Rosters() {
         ) : selectedSeason ? (
           <>
             {sortedManagers.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {sortedManagers.map(({ managerName, players }) => (
                   <div key={managerName}>
-                    <div className="bg-indigo-600 text-white px-3 py-2 rounded-t-lg">
+                    <div className="bg-indigo-600 text-white px-2 py-2 rounded-t-lg sm:px-3">
                       <div className="flex justify-between items-center">
                         <ManagerHeader
                           managerName={managerName}

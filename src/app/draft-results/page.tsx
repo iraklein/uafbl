@@ -169,23 +169,21 @@ export default function DraftResults() {
   const selectedSeasonName = seasons.find(s => s.id.toString() === selectedSeason)?.name || ''
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 sm:px-6 lg:px-8">
         <Header />
 
         <ErrorAlert error={seasonsError} />
 
-        <div className="mb-8">
-          
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Draft Results</h2>
+        <div className="mb-6 sm:mb-8">
           
           {/* Tab Navigation with Controls */}
-          <div className="flex items-center space-x-6 mb-6">
+          <div className="space-y-4 mb-6">
             {/* Tab buttons */}
-            <div className="flex space-x-2 bg-gray-100 p-1 rounded-lg">
+            <div className="flex space-x-2 bg-gray-100 p-1 rounded-lg w-fit">
               <button
                 onClick={() => setActiveTab('team')}
-                className={`px-6 py-3 text-sm font-semibold rounded-md transition-colors ${
+                className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors tap-target sm:px-6 sm:py-3 sm:text-sm ${
                   activeTab === 'team'
                     ? 'bg-indigo-600 text-white shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
@@ -195,7 +193,7 @@ export default function DraftResults() {
               </button>
               <button
                 onClick={() => setActiveTab('player')}
-                className={`px-6 py-3 text-sm font-semibold rounded-md transition-colors ${
+                className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors tap-target sm:px-6 sm:py-3 sm:text-sm ${
                   activeTab === 'player'
                     ? 'bg-indigo-600 text-white shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
@@ -206,27 +204,29 @@ export default function DraftResults() {
             </div>
 
             {/* Season selector & stats OR Player search */}
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
               {activeTab === 'team' ? (
                 <>
-                  <SeasonSelector
-                    seasons={seasons}
-                    selectedSeason={selectedSeason}
-                    onSeasonChange={setSelectedSeason}
-                    placeholder="Choose a season..."
-                  />
-                  
-                  {/* Draft records info pill */}
-                  {selectedSeason && (
-                    <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
-                      <span className="text-sm font-medium text-blue-900">
-                        {draftResults.length} total draft records | {draftResults.filter(r => !r.is_keeper).length} drafted | {draftResults.filter(r => r.is_keeper).length} kept
-                      </span>
-                    </div>
-                  )}
+                  <div className="flex flex-row space-x-3 sm:space-x-4">
+                    <SeasonSelector
+                      seasons={seasons}
+                      selectedSeason={selectedSeason}
+                      onSeasonChange={setSelectedSeason}
+                      placeholder="Choose a season..."
+                    />
+                    
+                    {/* Draft records info pill */}
+                    {selectedSeason && (
+                      <div className="bg-blue-50 border border-blue-200 px-3 py-2 rounded-lg flex-shrink-0">
+                        <span className="text-xs font-medium text-blue-900 sm:text-sm">
+                          {draftResults.length} total | {draftResults.filter(r => !r.is_keeper).length} drafted | {draftResults.filter(r => r.is_keeper).length} kept
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </>
               ) : (
-                <div className="w-80">
+                <div className="w-full sm:w-80">
                   <PlayerSearch
                     value={playerSearchQuery}
                     onChange={setPlayerSearchQuery}
@@ -255,10 +255,10 @@ export default function DraftResults() {
             {loading ? (
               <LoadingState message="Loading draft results..." />
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {managerTotals.map(({ managerName, totalSpent, draftCount, keeperCount, results }) => (
                   <div key={managerName} className="bg-white shadow rounded-lg overflow-hidden">
-                    <div className="bg-indigo-600 text-white px-3 py-2">
+                    <div className="bg-indigo-600 text-white px-2 py-2 sm:px-3">
                       <div className="flex flex-col">
                         <ManagerHeader
                           managerName={managerName}
@@ -328,28 +328,32 @@ export default function DraftResults() {
               <div className="space-y-6">
                 {playerHistory.player ? (
                   <>
-                    <div className="bg-white p-6 rounded-lg shadow">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">{playerHistory.player.name}</h2>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+                      <h2 className="text-xl font-bold text-gray-900 mb-4 sm:text-2xl">{playerHistory.player.name}</h2>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                         <StatsCard
                           title="Draft Records"
                           value={playerHistory.draft_history.length}
                           variant="blue"
+                          size="sm"
                         />
                         <StatsCard
                           title="Total Draft Dollars"
                           value={`$${playerHistory.draft_history.reduce((total, record) => total + (record.draft_price || 0), 0)}`}
                           variant="orange"
+                          size="sm"
                         />
                         <StatsCard
                           title="Topper Records"
                           value={playerHistory.topper_history.length}
                           variant="green"
+                          size="sm"
                         />
                         <StatsCard
                           title="LSL Records"
                           value={playerHistory.lsl_history.length}
                           variant="purple"
+                          size="sm"
                         />
                       </div>
                     </div>
@@ -357,8 +361,8 @@ export default function DraftResults() {
                     {/* Draft History */}
                     {playerHistory.draft_history.length > 0 && (
                       <div className="bg-white shadow rounded-lg overflow-hidden">
-                        <div className="bg-blue-600 text-white px-6 py-4">
-                          <h3 className="text-lg font-semibold">Draft History</h3>
+                        <div className="bg-blue-600 text-white px-4 py-3 sm:px-6 sm:py-4">
+                          <h3 className="text-base font-semibold sm:text-lg">Draft History</h3>
                         </div>
                         <DataTable<DraftResult>
                           columns={[
@@ -406,11 +410,11 @@ export default function DraftResults() {
                     {/* Topper History */}
                     {playerHistory.topper_history.length > 0 && (
                       <div className="bg-white shadow rounded-lg overflow-hidden">
-                        <div className="bg-green-600 text-white px-6 py-4">
-                          <h3 className="text-lg font-semibold">Topper History</h3>
+                        <div className="bg-green-600 text-white px-4 py-3 sm:px-6 sm:py-4">
+                          <h3 className="text-base font-semibold sm:text-lg">Topper History</h3>
                         </div>
-                        <div className="px-6 py-4">
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="px-4 py-4 sm:px-6">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                             {playerHistory.topper_history.map((result) => (
                               <div key={result.id} className="p-3 rounded border bg-green-50 border-green-200">
                                 <div className="font-medium text-gray-900">{result.seasons.name} ({result.seasons.year})</div>
@@ -425,11 +429,11 @@ export default function DraftResults() {
                     {/* LSL History */}
                     {playerHistory.lsl_history.length > 0 && (
                       <div className="bg-white shadow rounded-lg overflow-hidden">
-                        <div className="bg-purple-600 text-white px-6 py-4">
-                          <h3 className="text-lg font-semibold">LSL History</h3>
+                        <div className="bg-purple-600 text-white px-4 py-3 sm:px-6 sm:py-4">
+                          <h3 className="text-base font-semibold sm:text-lg">LSL History</h3>
                         </div>
-                        <div className="px-6 py-4">
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="px-4 py-4 sm:px-6">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                             {playerHistory.lsl_history.map((result) => (
                               <div key={result.id} className="p-3 rounded border bg-purple-50 border-purple-200">
                                 <div className="font-medium text-gray-900">Year: {result.year}</div>

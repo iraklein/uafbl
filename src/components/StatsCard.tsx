@@ -59,7 +59,7 @@ export default function StatsCard({
       <div className={`${sizeClasses[size].value} font-bold ${valueColorClasses[variant]}`}>
         {value}
       </div>
-      <div className={`${sizeClasses[size].title} text-gray-600 font-medium`}>
+      <div className={`${sizeClasses[size].title} text-gray-600 font-medium mt-1`}>
         {title}
       </div>
       {subtitle && (

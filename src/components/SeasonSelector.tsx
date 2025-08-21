@@ -23,7 +23,7 @@ export default function SeasonSelector({
   onSeasonChange,
   loading = false,
   placeholder = "Choose a season...",
-  className = "px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-sm",
+  className = "px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-xs sm:text-sm w-22 sm:w-26",
   disabled = false,
   additionalOptions = [],
   seasonLabelFormatter
@@ -44,7 +44,7 @@ export default function SeasonSelector({
       ))}
       {seasons.map((season) => (
         <option key={season.id} value={season.id}>
-          {seasonLabelFormatter ? seasonLabelFormatter(season) : `${season.name} (${season.year})`}
+          {seasonLabelFormatter ? seasonLabelFormatter(season) : season.name.replace(/\s*Season\s*/gi, '')}
         </option>
       ))}
     </select>

@@ -143,13 +143,10 @@ export default function ToppersPage() {
         ) : (
           <>
             <div className="mb-8">
-              <div className="flex items-center space-x-4">
-                <h2 className="text-2xl font-semibold text-gray-800">Toppers</h2>
-                <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
-                  <span className="text-sm font-medium text-blue-900">
-                    {statistics.totalToppers} toppers: Used: {statistics.usedCount} | Unused: {statistics.unusedCount} | Lost: {statistics.lostCount}
-                  </span>
-                </div>
+              <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg w-fit">
+                <span className="text-sm font-medium text-blue-900">
+                  {statistics.totalToppers} toppers: Used: {statistics.usedCount} | Unused: {statistics.unusedCount} | Lost: {statistics.lostCount}
+                </span>
               </div>
             </div>
 

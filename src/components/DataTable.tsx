@@ -69,7 +69,7 @@ export default function DataTable<T = any>({
 
   return (
     <div className={`bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 ${className}`}>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
         <table className="min-w-full">
           <thead className={headerClassName}>
             <tr>

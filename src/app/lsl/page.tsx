@@ -136,13 +136,10 @@ export default function LSLPage() {
         <Header />
 
         <div className="mb-8">
-          <div className="flex items-center space-x-4">
-            <h2 className="text-2xl font-semibold text-gray-800">Lone Star League</h2>
-            <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
-              <span className="text-sm font-medium text-blue-900">
-                {lslData.length} total LSL picks | {lslData.filter(r => r.status === 'Kept').length} kept | {lslData.filter(r => r.status === 'Unkept').length} unkept
-              </span>
-            </div>
+          <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg w-fit">
+            <span className="text-sm font-medium text-blue-900">
+              {lslData.length} total LSL picks | {lslData.filter(r => r.status === 'Kept').length} kept | {lslData.filter(r => r.status === 'Unkept').length} unkept
+            </span>
           </div>
         </div>
 

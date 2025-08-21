@@ -82,39 +82,42 @@ export default function Trades() {
     {
       key: 'player_name',
       header: 'Player',
-      className: 'font-medium'
+      className: 'font-medium',
+      headerClassName: 'w-3/4'
     },
     {
       key: 'trade_count',
-      header: 'Trade Count'
+      header: 'Trades',
+      className: 'text-center',
+      headerClassName: 'text-center w-1/4'
     }
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 sm:px-6 lg:px-8">
         <Header />
 
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           
-          {/* Header with inline season selector */}
-          <div className="flex items-center space-x-6 mb-4">
-            <h2 className="text-2xl font-semibold text-gray-800">Player Trades</h2>
-            
-            {/* Season Selector */}
-            <SeasonSelector
-              seasons={seasons}
-              selectedSeason={selectedSeason}
-              onSeasonChange={setSelectedSeason}
-              loading={loading}
-            />
+          {/* Controls section */}
+          <div className="mb-4">
+            <div className="flex flex-row space-x-3 sm:space-x-4">
+              {/* Season Selector */}
+              <SeasonSelector
+                seasons={seasons}
+                selectedSeason={selectedSeason}
+                onSeasonChange={setSelectedSeason}
+                loading={loading}
+              />
 
-            {/* Trade count info box */}
-            {selectedSeason && (
-              <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg">
-                <span className="text-sm font-medium text-blue-900">{trades.length} total trades | {sortedPlayerTradeCounts.length} players traded</span>
-              </div>
-            )}
+              {/* Trade count info box */}
+              {selectedSeason && (
+                <div className="bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg flex-shrink-0">
+                  <span className="text-xs font-medium text-blue-900 sm:text-sm">{trades.length} total trades | {sortedPlayerTradeCounts.length} players</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -131,7 +134,7 @@ export default function Trades() {
               columns={columns}
               data={sortedPlayerTradeCounts}
               emptyMessage="No trades found for this season."
-              size="md"
+              size="sm"
             />
           </>
         ) : (

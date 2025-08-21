@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import ErrorAlert from '../../components/ErrorAlert'
 import LoadingState from '../../components/LoadingState'
-import StatsCard from '../../components/StatsCard'
 import { useAuth } from '../../contexts/AuthContext'
 
 interface Manager {
@@ -37,7 +36,7 @@ interface Season {
 export default function Assets() {
   const { isAdmin } = useAuth()
   const [assets, setAssets] = useState<ManagerAsset[]>([])
-  const [activeSeason, setActiveSeason] = useState<Season | null>(null)
+  const [, setActiveSeason] = useState<Season | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [refreshing, setRefreshing] = useState(false)
@@ -130,16 +129,10 @@ export default function Assets() {
   const totalDraftedPlayers = assets.reduce((sum, asset) => sum + (asset.drafted_players || 0), 0)
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 sm:px-6 lg:px-8">
         <Header />
 
-        <div className="mb-8">
-          
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Manager Assets for {activeSeason ? activeSeason.name : 'Current Season'}
-          </h2>
-        </div>
 
         <ErrorAlert error={error} />
 
@@ -147,79 +140,11 @@ export default function Assets() {
           <LoadingState message="Loading manager assets..." />
         ) : (
           <>
-            {/* Summary Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
-              {/* Left side - 3 rows stacked */}
-              <div className="lg:col-span-3 space-y-2">
-                {/* Row 1: Pre-Draft */}
-                <div className="flex gap-2">
-                  <StatsCard
-                    title="Pre-Draft Cash"
-                    value={`$${totalPreDraftCash.toLocaleString()}`}
-                    variant="default"
-                    size="sm"
-                    className="w-[250px]"
-                  />
-                  <StatsCard
-                    title="Pre-Draft Slots"
-                    value={totalPreDraftSlots}
-                    variant="default"
-                    size="sm"
-                    className="w-[250px]"
-                  />
-                </div>
-                
-                {/* Row 2: Spent */}
-                <div className="flex gap-2">
-                  <StatsCard
-                    title="Cash Spent"
-                    value={`$${totalCashSpent.toLocaleString()}`}
-                    variant="red"
-                    size="sm"
-                    className="w-[250px]"
-                  />
-                  <StatsCard
-                    title="Slots Used"
-                    value={totalSlotsUsed}
-                    variant="red"
-                    size="sm"
-                    className="w-[250px]"
-                  />
-                </div>
-                
-                {/* Row 3: Remaining */}
-                <div className="flex gap-2">
-                  <StatsCard
-                    title="Cash Remaining"
-                    value={`$${totalCashRemaining.toLocaleString()}`}
-                    variant="green"
-                    size="sm"
-                    className="w-[250px]"
-                  />
-                  <StatsCard
-                    title="Slots Remaining"
-                    value={totalSlotsRemaining}
-                    variant="green"
-                    size="sm"
-                    className="w-[250px]"
-                  />
-                </div>
-              </div>
-              
-              {/* Right side - Drafted Players */}
-              <StatsCard
-                title="Drafted Players"
-                value={totalDraftedPlayers}
-                variant="purple"
-                size="sm"
-                className="flex items-center justify-center"
-              />
-            </div>
 
             {/* Assets Table */}
             <div className="bg-white shadow rounded-lg overflow-hidden">
               <div className="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center">
-                <h3 className="text-lg font-semibold">Manager Assets</h3>
+                <h3 className="text-lg font-semibold">Manager Assets - {totalDraftedPlayers} Drafted Players</h3>
                 <button
                   onClick={() => fetchAssets(true)}
                   disabled={refreshing}
@@ -229,7 +154,19 @@ export default function Assets() {
                 </button>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full" style={{tableLayout: 'fixed'}}>
+                  <colgroup>
+                    <col style={{width: '180px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                  </colgroup>
                   <thead className="bg-gray-50">
                     {/* Category Row */}
                     <tr className="border-b border-gray-200">
@@ -393,6 +330,65 @@ export default function Assets() {
                       </tr>
                       )
                     })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Sticky Totals Bar */}
+            <div className="sticky bottom-0 bg-gray-100 border-t-2 border-gray-300 shadow-lg z-10">
+              <div className="overflow-x-auto">
+                <table className="w-full" style={{tableLayout: 'fixed'}}>
+                  <colgroup>
+                    <col style={{width: '180px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                    <col style={{width: '80px'}} />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                        TOTALS
+                      </td>
+                      {/* Trades Group */}
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-blue-600">
+                        ${assets.reduce((sum, asset) => sum + (asset.trades_cash || 0), 0).toLocaleString()}
+                      </td>
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-blue-600">
+                        {assets.reduce((sum, asset) => sum + (asset.trades_slots || 0), 0)}
+                      </td>
+                      {/* Pre-Draft Group */}
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-gray-600">
+                        ${totalPreDraftCash.toLocaleString()}
+                      </td>
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-gray-600">
+                        {totalPreDraftSlots}
+                      </td>
+                      {/* Spent Group */}
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-red-600">
+                        ${totalCashSpent.toLocaleString()}
+                      </td>
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-red-600">
+                        {totalSlotsUsed}
+                      </td>
+                      {/* Remaining Group */}
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-green-600">
+                        ${totalCashRemaining.toLocaleString()}
+                      </td>
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-green-600">
+                        {totalSlotsRemaining}
+                      </td>
+                      {/* Drafted Group */}
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-purple-600">
+                        {totalDraftedPlayers}
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
