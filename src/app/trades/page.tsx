@@ -23,7 +23,10 @@ export default function Trades() {
     defaultSeasonFilter: 'active_playing',
     excludeFutureSeasons: true
   })
-  const { currentManagerId } = useAuth()
+  const { currentManagerId, isAdmin } = useAuth()
+  
+  // Debug admin status
+  console.log('🔑 Auth Status:', { currentManagerId, isAdmin, type: typeof isAdmin })
   const [trades, setTrades] = useState<Trade[]>([])
   const [tradesLoading, setTradesLoading] = useState(false)
   const [tradesError, setTradesError] = useState('')
@@ -581,6 +584,60 @@ export default function Trades() {
     }
   }
 
+  // Handle trade revert (admin only)
+  const handleTradeRevert = async (tradeId: number) => {
+    if (!isAdmin) {
+      setDialogMessage('Only administrators can revert trades.')
+      setShowErrorDialog(true)
+      return
+    }
+
+    const confirmMessage = 'Are you sure you want to revert this trade back to pending? This will return all traded players to their original teams.'
+    
+    if (!window.confirm(confirmMessage)) {
+      return
+    }
+
+    try {
+      const apiUrl = `${window.location.origin}/api/trades/${tradeId}/revert`
+      console.log('Making POST request to:', apiUrl)
+      
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+
+      if (response.ok) {
+        setDialogMessage('Trade successfully reverted to pending status!')
+        setShowSuccessDialog(true)
+
+        // Refresh manager assets cache since trade affects cash/slots
+        try {
+          await fetch(`/api/manager-assets?refresh=true&t=${Date.now()}`)
+          console.log('Manager assets cache refreshed after trade revert')
+        } catch (error) {
+          console.warn('Failed to refresh manager assets cache:', error)
+        }
+
+        // Refresh trade proposals
+        const refreshResponse = await fetch(`/api/trades?season_id=${selectedSeason}`)
+        if (refreshResponse.ok) {
+          const refreshData = await refreshResponse.json()
+          setTradeProposals(refreshData)
+        }
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }))
+        console.error('API response error:', response.status, errorData)
+        setDialogMessage(`Failed to revert trade: ${errorData.error || 'Please try again.'}`)
+        setShowErrorDialog(true)
+      }
+    } catch (error) {
+      console.error('Error reverting trade:', error)
+      setDialogMessage(`Failed to revert trade. Network error: ${error instanceof Error ? error.message : 'Please try again.'}`)
+      setShowErrorDialog(true)
+    }
+  }
+
   // Define columns for pending trades (with action buttons)
   const pendingColumns: Column<TradeProposal>[] = [
     {
@@ -655,44 +712,75 @@ export default function Trades() {
       className: 'text-center',
       headerClassName: 'text-center w-1/6',
       render: (value, trade) => {
-        console.log('Rendering action buttons:', { tradeId: trade.id, receiverId: trade.receiver.id, proposerId: trade.proposer.id, currentManagerId })
+        console.log('🔍 Rendering action buttons:', { 
+          tradeId: trade.id, 
+          status: trade.status, 
+          statusType: typeof trade.status,
+          isAdmin, 
+          isAdminType: typeof isAdmin,
+          shouldShowRevert: trade.status === 'accepted' && isAdmin 
+        })
         
-        // If current user is the receiver, show Accept/Reject buttons
-        if (trade.receiver.id === currentManagerId) {
-          return (
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-1 justify-center">
-              <button
-                onClick={() => {
-                  console.log('Accept button clicked for trade:', trade.id)
-                  handleTradeResponse(trade.id, 'accept')
-                }}
-                className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  console.log('Reject button clicked for trade:', trade.id)
-                  handleTradeResponse(trade.id, 'reject')
-                }}
-                className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
-              >
-                Reject
-              </button>
-            </div>
-          )
-        }
-        // If current user is the proposer, show cancel button
-        else if (trade.proposer.id === currentManagerId) {
+        // For accepted trades, show admin revert button
+        if (trade.status === 'accepted' && isAdmin) {
+          console.log('✅ Showing revert button for trade:', trade.id)
           return (
             <button
-              onClick={() => handleTradeCancel(trade.id)}
-              className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
+              onClick={() => {
+                console.log('Revert button clicked for trade:', trade.id)
+                handleTradeRevert(trade.id)
+              }}
+              className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
+              title="Revert trade back to pending status"
             >
-              Cancel
+              Revert
             </button>
           )
+        } else if (trade.status === 'accepted') {
+          console.log('❌ Not showing revert button - not admin:', { tradeId: trade.id, isAdmin })
+          return <span className="text-gray-500 text-sm">-</span>
         }
+        
+        // For pending trades, show user action buttons
+        if (trade.status === 'pending') {
+          // If current user is the receiver, show Accept/Reject buttons
+          if (trade.receiver.id === currentManagerId) {
+            return (
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-1 justify-center">
+                <button
+                  onClick={() => {
+                    console.log('Accept button clicked for trade:', trade.id)
+                    handleTradeResponse(trade.id, 'accept')
+                  }}
+                  className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={() => {
+                    console.log('Reject button clicked for trade:', trade.id)
+                    handleTradeResponse(trade.id, 'reject')
+                  }}
+                  className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
+                >
+                  Reject
+                </button>
+              </div>
+            )
+          }
+          // If current user is the proposer, show cancel button
+          else if (trade.proposer.id === currentManagerId) {
+            return (
+              <button
+                onClick={() => handleTradeCancel(trade.id)}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
+              >
+                Cancel
+              </button>
+            )
+          }
+        }
+        
         return null
       }
     }
@@ -792,6 +880,34 @@ export default function Trades() {
             ))}
           </div>
         )
+      }
+    },
+    {
+      key: 'id',
+      header: '',
+      className: 'text-center',
+      headerClassName: 'w-8',
+      render: (value, trade) => {
+        // For accepted trades, show admin revert icon
+        if (trade.status === 'accepted' && isAdmin) {
+          return (
+            <button
+              onClick={() => {
+                console.log('Revert button clicked for trade:', trade.id)
+                handleTradeRevert(trade.id)
+              }}
+              className="text-orange-600 hover:text-orange-700 p-1 rounded hover:bg-orange-50"
+              title="Revert trade back to pending status"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+              </svg>
+            </button>
+          )
+        }
+        
+        // For other cases, return empty cell
+        return null
       }
     }
   ]
@@ -905,7 +1021,10 @@ export default function Trades() {
 
             {/* Accepted Trades Section */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Accepted Trades</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Accepted Trades
+                {isAdmin && <span className="text-sm text-blue-600 ml-2">(Admin Mode)</span>}
+              </h3>
               <DataTable
                 columns={proposalColumns}
                 data={tradeProposals.filter(trade => trade.status === 'accepted')}
