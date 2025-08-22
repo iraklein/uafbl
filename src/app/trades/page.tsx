@@ -424,13 +424,13 @@ export default function Trades() {
         // If current user is the receiver, show Accept/Reject buttons
         if (trade.receiver.id === currentManagerId) {
           return (
-            <div className="flex gap-1 justify-center">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-1 justify-center">
               <button
                 onClick={() => {
                   console.log('Accept button clicked for trade:', trade.id)
                   handleTradeResponse(trade.id, 'accept')
                 }}
-                className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded text-xs font-medium"
+                className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
               >
                 Accept
               </button>
@@ -439,7 +439,7 @@ export default function Trades() {
                   console.log('Reject button clicked for trade:', trade.id)
                   handleTradeResponse(trade.id, 'reject')
                 }}
-                className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium"
+                className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
               >
                 Reject
               </button>
@@ -451,7 +451,7 @@ export default function Trades() {
           return (
             <button
               onClick={() => handleTradeCancel(trade.id)}
-              className="bg-gray-600 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs font-medium"
+              className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
             >
               Cancel
             </button>
@@ -585,26 +585,34 @@ export default function Trades() {
           
           {/* Controls section */}
           <div className="mb-4">
-            <div className="flex flex-row space-x-3 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
               {/* Season Selector */}
-              <SeasonSelector
-                seasons={seasons}
-                selectedSeason={selectedSeason}
-                onSeasonChange={setSelectedSeason}
-                loading={loading}
-              />
+              <div className="flex-shrink-0">
+                <SeasonSelector
+                  seasons={seasons}
+                  selectedSeason={selectedSeason}
+                  onSeasonChange={setSelectedSeason}
+                  loading={loading}
+                />
+              </div>
 
               {/* Trade count info box */}
               {selectedSeason && (
-                <div className="bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg flex-shrink-0">
-                  <span className="text-xs font-medium text-blue-900 sm:text-sm">{tradeProposals.length} accepted trades | {trades.length} player trades | {sortedPlayerTradeCounts.length} players</span>
+                <div className="bg-blue-50 border border-blue-200 px-3 py-2 rounded-lg flex-shrink-0">
+                  <div className="text-xs font-medium text-blue-900 sm:text-sm">
+                    <span>{tradeProposals.length} accepted</span>
+                    <span className="mx-1">|</span>
+                    <span>{sortedPlayerTradeCounts.length} players</span>
+                    <span className="mx-1">|</span>
+                    <span>{trades.length} player trades</span>
+                  </div>
                 </div>
               )}
 
-              {/* Propose Trade Button */}
+              {/* Propose Trade Button - full width on mobile */}
               <button
                 onClick={() => setShowProposeModal(true)}
-                className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-xs sm:text-sm font-medium transition-colors flex-shrink-0"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors w-full sm:w-auto flex-shrink-0"
               >
                 Propose Trade
               </button>
@@ -678,17 +686,17 @@ export default function Trades() {
 
         {/* Propose Trade Modal */}
         {showProposeModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Propose Trade</h2>
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50">
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+              <div className="p-4 sm:p-6">
+                <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Propose Trade</h2>
                   <button
                     onClick={() => {
                       setShowProposeModal(false)
                       resetTradeForm()
                     }}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 p-2 sm:p-1"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -724,20 +732,21 @@ export default function Trades() {
                     {selectedPartner && (
                       <>
                         {/* Trade Section Headers */}
-                        <div className="grid grid-cols-2 gap-4 mb-4">
-                          <h3 className="text-lg font-medium text-gray-900 text-center">My Trade</h3>
-                          <h3 className="text-lg font-medium text-gray-900 text-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                          <h3 className="text-lg font-medium text-gray-900 text-center bg-blue-50 py-2 rounded">My Trade</h3>
+                          <h3 className="text-lg font-medium text-gray-900 text-center bg-green-50 py-2 rounded">
                             {selectedPartner?.manager_name}'s Trade
                           </h3>
                         </div>
                         
                         {/* Cash/Slots Section */}
-                        <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-4 mb-6">
                           {/* My Cash/Slots */}
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-2 gap-2">
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <h4 className="text-sm font-medium text-blue-900 mb-3">My Assets</h4>
+                            <div className="grid grid-cols-2 gap-3">
                               <div>
-                                <label className="block text-xs font-medium text-gray-700 mb-1">Cash</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Cash</label>
                                 <input
                                   type="number"
                                   min="0"
@@ -749,11 +758,11 @@ export default function Trades() {
                                     }
                                   }}
                                   placeholder="$0"
-                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                                 />
                               </div>
                               <div>
-                                <label className="block text-xs font-medium text-gray-700 mb-1">Slots</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Slots</label>
                                 <input
                                   type="number"
                                   min="0"
@@ -765,17 +774,18 @@ export default function Trades() {
                                     }
                                   }}
                                   placeholder="0"
-                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                                 />
                               </div>
                             </div>
                           </div>
                           
                           {/* Partner Cash/Slots */}
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-2 gap-2">
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <h4 className="text-sm font-medium text-green-900 mb-3">Their Assets</h4>
+                            <div className="grid grid-cols-2 gap-3">
                               <div>
-                                <label className="block text-xs font-medium text-gray-700 mb-1">Cash</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Cash</label>
                                 <input
                                   type="number"
                                   min="0"
@@ -787,11 +797,11 @@ export default function Trades() {
                                     }
                                   }}
                                   placeholder="$0"
-                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
                                 />
                               </div>
                               <div>
-                                <label className="block text-xs font-medium text-gray-700 mb-1">Slots</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Slots</label>
                                 <input
                                   type="number"
                                   min="0"
@@ -803,7 +813,7 @@ export default function Trades() {
                                     }
                                   }}
                                   placeholder="0"
-                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
                                 />
                               </div>
                             </div>
@@ -811,15 +821,15 @@ export default function Trades() {
                         </div>
 
                         {/* Players Section */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-6 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-4">
                           {/* My Players */}
-                          <div>
-                            <label className="block text-xs font-medium text-gray-700 mb-2">My Players</label>
-                            <div className="border border-gray-300 rounded max-h-40 overflow-y-auto">
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <label className="block text-sm font-medium text-blue-900 mb-3">My Players</label>
+                            <div className="border border-blue-200 rounded-md max-h-48 sm:max-h-40 overflow-y-auto bg-white">
                               {myRoster.length > 0 ? (
                                 <div className="divide-y divide-gray-200">
                                   {myRoster.map(player => (
-                                    <label key={player.id} className="flex items-center p-2 hover:bg-gray-50 cursor-pointer">
+                                    <label key={player.id} className="flex items-center p-3 hover:bg-blue-50 cursor-pointer">
                                       <input
                                         type="checkbox"
                                         checked={selectedMyPlayers.includes(player.players.id)}
@@ -830,26 +840,26 @@ export default function Trades() {
                                             setSelectedMyPlayers(selectedMyPlayers.filter(id => id !== player.players.id))
                                           }
                                         }}
-                                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                                        className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                                       />
-                                      <span className="ml-2 text-xs text-gray-900">{player.players.name}</span>
+                                      <span className="ml-3 text-sm text-gray-900">{player.players.name}</span>
                                     </label>
                                   ))}
                                 </div>
                               ) : (
-                                <div className="p-3 text-center text-gray-500 text-xs">No players on roster</div>
+                                <div className="p-4 text-center text-gray-500 text-sm">No players on roster</div>
                               )}
                             </div>
                           </div>
 
                           {/* Partner Players */}
-                          <div>
-                            <label className="block text-xs font-medium text-gray-700 mb-2">Their Players</label>
-                            <div className="border border-gray-300 rounded max-h-40 overflow-y-auto">
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <label className="block text-sm font-medium text-green-900 mb-3">Their Players</label>
+                            <div className="border border-green-200 rounded-md max-h-48 sm:max-h-40 overflow-y-auto bg-white">
                               {partnerRoster.length > 0 ? (
                                 <div className="divide-y divide-gray-200">
                                   {partnerRoster.map(player => (
-                                    <label key={player.id} className="flex items-center p-2 hover:bg-gray-50 cursor-pointer">
+                                    <label key={player.id} className="flex items-center p-3 hover:bg-green-50 cursor-pointer">
                                       <input
                                         type="checkbox"
                                         checked={selectedPartnerPlayers.includes(player.players.id)}
@@ -860,14 +870,14 @@ export default function Trades() {
                                             setSelectedPartnerPlayers(selectedPartnerPlayers.filter(id => id !== player.players.id))
                                           }
                                         }}
-                                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                                        className="h-5 w-5 text-green-600 focus:ring-green-500 border-gray-300 rounded"
                                       />
-                                      <span className="ml-2 text-xs text-gray-900">{player.players.name}</span>
+                                      <span className="ml-3 text-sm text-gray-900">{player.players.name}</span>
                                     </label>
                                   ))}
                                 </div>
                               ) : (
-                                <div className="p-3 text-center text-gray-500 text-xs">
+                                <div className="p-4 text-center text-gray-500 text-sm">
                                   {partnerRoster.length === 0 ? 'Loading players...' : 'No players on roster'}
                                 </div>
                               )}
@@ -877,20 +887,20 @@ export default function Trades() {
                       </>
                     )}
                     
-                    <div className="flex justify-end space-x-3">
+                    <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3 pt-4 border-t border-gray-200">
                       <button
                         onClick={() => {
                           setShowProposeModal(false)
                           resetTradeForm()
                         }}
-                        className="px-4 py-2 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50"
+                        className="w-full sm:w-auto px-6 py-3 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 font-medium"
                       >
                         Cancel
                       </button>
                       <button
                         onClick={handleTradeSubmit}
                         disabled={!selectedPartner || tradeFormLoading}
-                        className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full sm:w-auto px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                       >
                         {tradeFormLoading ? 'Creating Trade...' : 'Propose Trade'}
                       </button>
