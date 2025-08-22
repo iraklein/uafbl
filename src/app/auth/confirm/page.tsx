@@ -54,6 +54,13 @@ export default function ConfirmEmail() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/uafbl-logo.png" 
+              alt="UAFBL Logo" 
+              className="h-16 w-auto"
+            />
+          </div>
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Confirming your email...</p>
         </div>
@@ -64,6 +71,13 @@ export default function ConfirmEmail() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 text-center">
+        <div className="flex justify-center mb-6">
+          <img 
+            src="/uafbl-logo.png" 
+            alt="UAFBL Logo" 
+            className="h-16 w-auto"
+          />
+        </div>
         {error ? (
           <div>
             <h2 className="text-2xl font-bold text-red-600 mb-4">Confirmation Failed</h2>
