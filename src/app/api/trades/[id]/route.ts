@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../../lib/supabase'
+import { recalculateKeeperCosts } from '../../../../../lib/recalculate-keeper-costs'
 
 export async function PATCH(
   request: NextRequest,
@@ -97,6 +98,18 @@ export async function PATCH(
           if (transferError2) {
             console.error('Failed to transfer receiver players:', transferError2)
             return NextResponse.json({ error: 'Failed to transfer receiver players' }, { status: 500 })
+          }
+        }
+        
+        // Recalculate keeper costs for all traded players (trade kicker applies)
+        const allTradedPlayers = [...proposerPlayers, ...receiverPlayers].map(id => parseInt(id))
+        if (allTradedPlayers.length > 0) {
+          try {
+            await recalculateKeeperCosts(allTradedPlayers, activeSeason.id as number)
+            console.log(`Updated keeper costs for ${allTradedPlayers.length} traded players`)
+          } catch (error) {
+            console.error('Failed to recalculate keeper costs after trade:', error)
+            // Don't fail the trade if keeper cost update fails, just log the error
           }
         }
       }

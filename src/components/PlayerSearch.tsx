@@ -43,6 +43,7 @@ export default function PlayerSearch({
     highlightedIndex,
     loading,
     error,
+    isSelectingPlayer,
     handleInputChange,
     handleKeyDown,
     handleSuggestionClick,
@@ -53,7 +54,8 @@ export default function PlayerSearch({
     onPlayerSelect,
     onExactMatch,
     allowCreateNew,
-    externalQuery: value
+    externalQuery: value,
+    onChange
   })
 
   // Use controlled value if provided, but ensure autocomplete still works
@@ -66,12 +68,14 @@ export default function PlayerSearch({
         // Then update internal state for autocomplete
         setQuery(e.target.value)
         
-        // Trigger search for autocomplete
-        const newQuery = e.target.value
-        if (newQuery.trim().length >= minQueryLength) {
-          handleInputChange(e)
-        } else {
-          setShowSuggestions(false)
+        // Only trigger search if we're not in the middle of selecting a player
+        if (!isSelectingPlayer) {
+          const newQuery = e.target.value
+          if (newQuery.trim().length >= minQueryLength) {
+            handleInputChange(e)
+          } else {
+            setShowSuggestions(false)
+          }
         }
       }
     : handleInputChange

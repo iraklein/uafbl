@@ -183,14 +183,31 @@ export default function DraftPage() {
   const fetchKeeperPrice = async (playerId: number) => {
     try {
       const response = await fetch(`/api/keeper-price?player_id=${playerId}&season_id=${CURRENT_SEASON_ID}`)
+      
       if (response.ok) {
         const data = await response.json()
-        setCalculatedKeeperPrice(data.keeper_price)
-        setDraftPrice(data.keeper_price?.toString() || '0')
-        setDraftPriceTouched(true) // Keeper prices are considered "touched"
+        if (data.keeper_price !== null) {
+          setCalculatedKeeperPrice(data.keeper_price)
+          setDraftPrice(data.keeper_price?.toString() || '0')
+          setDraftPriceTouched(true) // Keeper prices are considered "touched"
+        } else {
+          // Player not eligible to be kept (not on roster last season)
+          setCalculatedKeeperPrice(null)
+          setDraftPrice('0')
+          setDraftPriceTouched(true)
+        }
+      } else {
+        // Handle API errors
+        console.error('Error fetching keeper price:', response.status)
+        setCalculatedKeeperPrice(null)
+        setDraftPrice('0')
+        setDraftPriceTouched(true)
       }
     } catch (error) {
       console.error('Error fetching keeper price:', error)
+      setCalculatedKeeperPrice(null)
+      setDraftPrice('0')
+      setDraftPriceTouched(true)
     }
   }
 
@@ -344,13 +361,29 @@ export default function DraftPage() {
   }
 
   // Handle player selection for editing
-  const handleEditPlayerSelect = (player: Player) => {
+  const handleEditPlayerSelect = async (player: Player) => {
     setEditPlayerSearchQuery(player.name)
     setEditingPick(prev => ({
       ...prev!,
       player_id: player.id,
       player_name: player.name
     }))
+    
+    // If keeper checkbox is checked, fetch the keeper price for the new player
+    if (editingPick?.is_keeper) {
+      try {
+        const response = await fetch(`/api/keeper-price?player_id=${player.id}&season_id=${CURRENT_SEASON_ID}`)
+        if (response.ok) {
+          const data = await response.json()
+          setEditingPick(prev => ({
+            ...prev!,
+            draft_price: data.keeper_price || 0
+          }))
+        }
+      } catch (error) {
+        console.error('Error fetching keeper price for new player:', error)
+      }
+    }
   }
 
   // Handle exact match or enter press for editing
@@ -681,10 +714,35 @@ export default function DraftPage() {
                           <input
                             type="checkbox"
                             checked={editingPick?.is_keeper || false}
-                            onChange={(e) => setEditingPick(prev => ({
-                              ...prev!,
-                              is_keeper: e.target.checked
-                            }))}
+                            onChange={async (e) => {
+                              const isKeeperChecked = e.target.checked
+                              setEditingPick(prev => ({
+                                ...prev!,
+                                is_keeper: isKeeperChecked
+                              }))
+                              
+                              // If keeper is checked and we have a player, fetch the keeper price
+                              if (isKeeperChecked && editingPick?.player_id) {
+                                try {
+                                  const response = await fetch(`/api/keeper-price?player_id=${editingPick.player_id}&season_id=${CURRENT_SEASON_ID}`)
+                                  if (response.ok) {
+                                    const data = await response.json()
+                                    setEditingPick(prev => ({
+                                      ...prev!,
+                                      draft_price: data.keeper_price || 0
+                                    }))
+                                  }
+                                } catch (error) {
+                                  console.error('Error fetching keeper price for edit:', error)
+                                }
+                              } else if (!isKeeperChecked) {
+                                // Reset price to 0 when unchecking keeper
+                                setEditingPick(prev => ({
+                                  ...prev!,
+                                  draft_price: 0
+                                }))
+                              }
+                            }}
                             className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                           />
                         ) : (

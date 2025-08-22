@@ -4,6 +4,8 @@ import { createContext, useContext } from 'react'
 
 interface AuthContextType {
   isAdmin: boolean
+  currentManagerId?: number
+  managerEmail?: string
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -19,11 +21,13 @@ export function useAuth() {
 interface AuthProviderProps {
   children: React.ReactNode
   isAdmin: boolean
+  currentManagerId?: number
+  managerEmail?: string
 }
 
-export function AuthProvider({ children, isAdmin }: AuthProviderProps) {
+export function AuthProvider({ children, isAdmin, currentManagerId, managerEmail }: AuthProviderProps) {
   return (
-    <AuthContext.Provider value={{ isAdmin }}>
+    <AuthContext.Provider value={{ isAdmin, currentManagerId, managerEmail }}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
-import { calculateKeeperCost } from '../../../../lib/keeper-utils'
 
 interface Player {
   id: number
@@ -78,11 +77,13 @@ export async function GET(request: NextRequest) {
         `)
         .eq('seasons.id', seasonId),
       
-      // Get trade counts for all players in this season
+      // Get trade counts for all players from trades table (only in-season trades)
       supabase
-        .from('trades_old')
-        .select('player_id')
+        .from('trades')
+        .select('proposer_players, receiver_players')
         .eq('season_id', seasonId)
+        .eq('status', 'accepted')
+        .eq('was_offseason', false)
     ])
 
     if (rostersError) {
@@ -114,10 +115,24 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Create a map of player_id to trade count
+    // Create a map of player_id to trade count from trades table
     const tradeCountMap: Record<number, number> = {}
     tradesData?.forEach((trade: any) => {
-      tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
+      // Count players from proposer_players array
+      if (trade.proposer_players && Array.isArray(trade.proposer_players)) {
+        trade.proposer_players.forEach((playerId: string) => {
+          const id = parseInt(playerId)
+          tradeCountMap[id] = (tradeCountMap[id] || 0) + 1
+        })
+      }
+      
+      // Count players from receiver_players array
+      if (trade.receiver_players && Array.isArray(trade.receiver_players)) {
+        trade.receiver_players.forEach((playerId: string) => {
+          const id = parseInt(playerId)
+          tradeCountMap[id] = (tradeCountMap[id] || 0) + 1
+        })
+      }
     })
 
     // Add draft prices, keeper status, and calculated keeper costs to roster data
@@ -128,26 +143,11 @@ export async function GET(request: NextRequest) {
       const isKeeper = draftInfoMap[playerId]?.is_keeper || false
       const tradeCount = tradeCountMap[playerId] || 0
       
-      // Calculate the keeper cost using the utility function
-      let keeperEscalationYear = 0; // Default for non-keepers (first time keep = +$10)
-      
-      if (roster.consecutive_keeps !== null) {
-        // For players who were kept, calculate cost for the NEXT keep
-        keeperEscalationYear = roster.consecutive_keeps + 1;
-      }
-      
-      const calculatedKeeperCost = calculateKeeperCost(
-        draftPrice, 
-        keeperEscalationYear, 
-        tradeCount
-      )
-      
       return {
         ...roster,
         draft_price: draftPrice,
         is_keeper: isKeeper,
-        trade_count: tradeCount,
-        calculated_keeper_cost: calculatedKeeperCost
+        trade_count: tradeCount
       }
     })
 

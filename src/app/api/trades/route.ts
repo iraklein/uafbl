@@ -12,13 +12,27 @@ export async function POST(request: NextRequest) {
       proposer_cash = 0, 
       proposer_slots = 0, 
       receiver_cash = 0, 
-      receiver_slots = 0
+      receiver_slots = 0,
+      proposer_players = [],
+      receiver_players = []
     } = body
 
     if (!season_id || !proposer_manager_id || !receiver_manager_id) {
       return NextResponse.json({ 
         error: 'Season ID, proposer manager ID, and receiver manager ID are required' 
       }, { status: 400 })
+    }
+
+    // Get the current season's offseason status
+    const { data: season, error: seasonError } = await supabase
+      .from('seasons')
+      .select('is_offseason')
+      .eq('id', season_id)
+      .single()
+
+    if (seasonError) {
+      console.error('Error fetching season:', seasonError)
+      return NextResponse.json({ error: 'Failed to fetch season information' }, { status: 500 })
     }
 
     // Insert the trade proposal
@@ -32,7 +46,10 @@ export async function POST(request: NextRequest) {
         proposer_slots,
         receiver_cash,
         receiver_slots,
+        proposer_players,
+        receiver_players,
         status: 'pending',
+        was_offseason: season?.is_offseason || false,
         created_at: new Date().toISOString()
       })
       .select()

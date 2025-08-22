@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
-import { calculateKeeperCost } from '../../../../lib/keeper-utils'
 
 export async function GET(request: NextRequest) {
   const supabase = createServerSupabaseClient()
@@ -38,10 +37,6 @@ export async function GET(request: NextRequest) {
           .eq('season_id', seasonId)
           .eq('is_unused', false),
         supabase
-          .from('trades_old')
-          .select('player_id')
-          .eq('season_id', seasonId),
-        supabase
           .from('rosters')
           .select('player_id, consecutive_keeps')
           .eq('season_id', seasonId)
@@ -63,7 +58,6 @@ export async function GET(request: NextRequest) {
 
     // Process parallel query results
     let topperPlayerIds = new Set<number>()
-    let tradeCountMap: Record<number, number> = {}
     let consecutiveKeepsMap: Record<number, number | null> = {}
 
     if (seasonId && results.length > 1) {
@@ -73,16 +67,8 @@ export async function GET(request: NextRequest) {
         topperPlayerIds = new Set(toppersResult.data.map((t: any) => t.player_id))
       }
 
-      // Process trades data  
-      const tradesResult = results[2]
-      if (tradesResult && !tradesResult.error && tradesResult.data) {
-        tradesResult.data.forEach((trade: any) => {
-          tradeCountMap[trade.player_id] = (tradeCountMap[trade.player_id] || 0) + 1
-        })
-      }
-
       // Process rosters data
-      const rostersResult = results[3]
+      const rostersResult = results[2]
       if (rostersResult && !rostersResult.error && rostersResult.data) {
         rostersResult.data.forEach((roster: any) => {
           consecutiveKeepsMap[roster.player_id] = roster.consecutive_keeps
@@ -90,32 +76,15 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Add topper information and calculated keeper costs to draft results
+    // Add topper information to draft results
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const resultsWithToppers = draftResults?.map((result: any) => {
-      const tradeCount = tradeCountMap[result.player_id] || 0
       const consecutiveKeeps = consecutiveKeepsMap[result.player_id]
-      
-      // Calculate the keeper cost using the utility function
-      let keeperEscalationYear = 0; // Default for non-keepers (first time keep = +$10)
-      
-      if (consecutiveKeeps !== null && consecutiveKeeps !== undefined) {
-        // For players who were kept, calculate cost for the NEXT keep
-        keeperEscalationYear = consecutiveKeeps + 1;
-      }
-      
-      const calculatedKeeperCost = calculateKeeperCost(
-        result.draft_price,
-        keeperEscalationYear,
-        tradeCount
-      )
       
       return {
         ...result,
         is_topper: topperPlayerIds.has(result.player_id),
-        trade_count: tradeCount,
-        consecutive_keeps: consecutiveKeeps,
-        calculated_keeper_cost: calculatedKeeperCost
+        consecutive_keeps: consecutiveKeeps
       }
     }) || []
 

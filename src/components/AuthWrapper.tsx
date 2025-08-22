@@ -15,6 +15,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isSigningOut, setIsSigningOut] = useState(false)
   const [managerName, setManagerName] = useState<string>('')
+  const [currentManagerId, setCurrentManagerId] = useState<number | undefined>(undefined)
+  const [managerEmail, setManagerEmail] = useState<string | undefined>(undefined)
   
   // Login form states
   const [email, setEmail] = useState('')
@@ -36,7 +38,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     try {
       const { data, error } = await supabase
         .from('managers')
-        .select('is_admin, email, manager_name, team_name')
+        .select('id, is_admin, email, manager_name, team_name')
         .eq('email', userEmail)
         .single()
 
@@ -47,6 +49,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
         userEmail,
         hasData: !!data,
         isAdmin: data?.is_admin,
+        managerId: data?.id,
         dataType: typeof data?.is_admin 
       })
 
@@ -59,6 +62,10 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           setIsAdmin(false)
         }
         
+        // Set manager information for use in trade modal and other features
+        setCurrentManagerId(data.id)
+        setManagerEmail(userEmail)
+        
         // Set team name for display
         if (data.team_name) {
           setManagerName(data.team_name)
@@ -66,6 +73,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       } else {
         console.log('❌ User is not admin or error occurred:', error?.message || 'No admin rights')
         setIsAdmin(false)
+        setCurrentManagerId(undefined)
+        setManagerEmail(undefined)
       }
     } catch (error) {
       const adminTime = performance.now() - adminStart
@@ -197,6 +206,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           setUser(null)
           setIsAdmin(false)
           setManagerName('')
+          setCurrentManagerId(undefined)
+          setManagerEmail(undefined)
           setShowPasswordSetup(false)
           setLoginError('')
           setEmail('')
@@ -320,6 +331,8 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
       setUser(null)
       setIsAdmin(false)
       setManagerName('')
+      setCurrentManagerId(undefined)
+      setManagerEmail(undefined)
       setShowPasswordSetup(false)
       setLoginError('')
       setEmail('')
@@ -547,7 +560,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           </div>
         </div>
       </div>
-      <AuthProvider isAdmin={isAdmin}>
+      <AuthProvider isAdmin={isAdmin} currentManagerId={currentManagerId} managerEmail={managerEmail}>
         {children}
       </AuthProvider>
     </div>

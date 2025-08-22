@@ -6,6 +6,7 @@ export interface Season {
   name: string
   is_active?: boolean
   is_active_assets?: boolean
+  is_offseason?: boolean
 }
 
 export interface Player {
@@ -68,10 +69,13 @@ export interface TradeProposal {
   proposer_slots: number
   receiver_cash: number
   receiver_slots: number
+  proposer_players?: Player[]
+  receiver_players?: Player[]
   status: string
   message: string | null
   created_at: string
   responded_at: string
+  was_offseason?: boolean
   proposer: {
     id: number
     manager_name: string
@@ -110,7 +114,6 @@ export interface Roster {
   draft_price: number | null
   is_keeper: boolean
   trade_count: number
-  calculated_keeper_cost: number | null
   players: Player
   managers: Manager
 }

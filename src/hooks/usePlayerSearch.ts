@@ -8,6 +8,7 @@ interface UsePlayerSearchOptions {
   onExactMatch?: (player: Player) => void
   allowCreateNew?: boolean
   externalQuery?: string
+  onChange?: (value: string) => void
 }
 
 interface UsePlayerSearchReturn {
@@ -22,6 +23,7 @@ interface UsePlayerSearchReturn {
   setHighlightedIndex: (index: number) => void
   loading: boolean
   error: string
+  isSelectingPlayer: boolean
   searchPlayers: (query: string) => Promise<void>
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void
@@ -38,7 +40,8 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     onPlayerSelect,
     onExactMatch,
     allowCreateNew = false,
-    externalQuery
+    externalQuery,
+    onChange
   } = options
 
   const [query, setQuery] = useState(externalQuery || '')
@@ -48,6 +51,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
   const [highlightedIndex, setHighlightedIndex] = useState(0)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [isSelectingPlayer, setIsSelectingPlayer] = useState(false)
 
   const searchPlayers = useCallback(async (searchQuery: string) => {
     if (searchQuery.length < minQueryLength) {
@@ -96,13 +100,18 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       
       if (trimmedQuery.length < minQueryLength) return
       
-      // If there are suggestions and one is highlighted, select it
-      if (showSuggestions && filteredPlayers.length > 0 && highlightedIndex >= 0 && highlightedIndex < filteredPlayers.length) {
-        const selectedPlayer = filteredPlayers[highlightedIndex]
+      // If there are suggestions, always select the top result (first item or highlighted item)
+      if (showSuggestions && filteredPlayers.length > 0) {
+        const indexToSelect = (highlightedIndex >= 0 && highlightedIndex < filteredPlayers.length) ? highlightedIndex : 0
+        const selectedPlayer = filteredPlayers[indexToSelect]
+        setIsSelectingPlayer(true)
         setSelectedPlayer(selectedPlayer)
         setShowSuggestions(false)
         setQuery(selectedPlayer.name)
+        onChange?.(selectedPlayer.name) // Update external controlled state
         onPlayerSelect?.(selectedPlayer)
+        // Reset the flag after a brief delay
+        setTimeout(() => setIsSelectingPlayer(false), 100)
         return
       }
       
@@ -114,6 +123,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       if (exactMatch) {
         setSelectedPlayer(exactMatch)
         setShowSuggestions(false)
+        onChange?.(exactMatch.name) // Update external controlled state
         onExactMatch?.(exactMatch)
         onPlayerSelect?.(exactMatch)
       } else if (allowCreateNew && trimmedQuery.length > 0) {
@@ -147,21 +157,29 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       // If there are suggestions, populate with the top result (highlighted one)
       if (showSuggestions && filteredPlayers.length > 0) {
         const topResult = filteredPlayers[highlightedIndex >= 0 && highlightedIndex < filteredPlayers.length ? highlightedIndex : 0]
+        setIsSelectingPlayer(true)
         setQuery(topResult.name)
         setSelectedPlayer(topResult)
         setShowSuggestions(false)
+        onChange?.(topResult.name) // Update external controlled state
         onPlayerSelect?.(topResult)
+        // Reset the flag after a brief delay
+        setTimeout(() => setIsSelectingPlayer(false), 100)
         // Don't prevent default - let Tab continue to next field
       }
     }
-  }, [query, minQueryLength, filteredPlayers, allowCreateNew, onExactMatch, onPlayerSelect, showSuggestions, highlightedIndex])
+  }, [query, minQueryLength, filteredPlayers, allowCreateNew, onExactMatch, onPlayerSelect, showSuggestions, highlightedIndex, onChange])
 
   const handleSuggestionClick = useCallback((player: Player) => {
+    setIsSelectingPlayer(true)
     setQuery(player.name)
     setSelectedPlayer(player)
     setShowSuggestions(false)
+    onChange?.(player.name) // Update external controlled state
     onPlayerSelect?.(player)
-  }, [onPlayerSelect])
+    // Reset the flag after a brief delay
+    setTimeout(() => setIsSelectingPlayer(false), 100)
+  }, [onPlayerSelect, onChange])
 
   const handleInputBlur = useCallback(() => {
     // Delay hiding suggestions to allow for clicks
@@ -210,6 +228,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     setHighlightedIndex,
     loading,
     error,
+    isSelectingPlayer,
     searchPlayers,
     handleInputChange,
     handleKeyDown,

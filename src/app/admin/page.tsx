@@ -5,6 +5,7 @@ import Header from "../../components/Header"
 import SeasonSelector from "../../components/SeasonSelector"
 import ErrorAlert from "../../components/ErrorAlert"
 import LoadingState from "../../components/LoadingState"
+import PlayerSearch from "../../components/PlayerSearch"
 
 interface Season {
   id: number
@@ -12,6 +13,11 @@ interface Season {
   name: string
   is_active: boolean
   is_active_assets: boolean
+}
+
+interface Player {
+  id: number
+  name: string
 }
 
 
@@ -24,6 +30,14 @@ export default function Admin() {
   // Start New Season states
   const [startSeasonLoading, setStartSeasonLoading] = useState(false)
   const [startSeasonResult, setStartSeasonResult] = useState<string>('')
+  
+  // Start Offseason states
+  const [startOffseasonLoading, setStartOffseasonLoading] = useState(false)
+  const [startOffseasonResult, setStartOffseasonResult] = useState<string>('')
+  
+  // Player ID Lookup states
+  const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
+  const [playerSearchQuery, setPlayerSearchQuery] = useState('')
   
 
   useEffect(() => {
@@ -45,6 +59,16 @@ export default function Admin() {
     fetchSeasons()
   }, [])
 
+
+  const handlePlayerSelect = (player: Player) => {
+    setSelectedPlayer(player)
+    setPlayerSearchQuery(player.name)
+  }
+
+  const clearPlayerLookup = () => {
+    setSelectedPlayer(null)
+    setPlayerSearchQuery('')
+  }
 
   const handleStartNewSeason = async () => {
     setStartSeasonLoading(true)
@@ -78,6 +102,37 @@ export default function Admin() {
     }
   }
 
+  const handleStartOffseason = async () => {
+    setStartOffseasonLoading(true)
+    setStartOffseasonResult('')
+
+    try {
+      const response = await fetch('/api/admin/start-offseason', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setStartOffseasonResult(`✅ ${data.message}`)
+        // Refresh seasons list
+        const seasonsResponse = await fetch('/api/seasons')
+        const seasonsData = await seasonsResponse.json()
+        setSeasons(seasonsData)
+      } else {
+        setStartOffseasonResult(`❌ ${data.error}`)
+      }
+    } catch (error) {
+      console.error('Error starting offseason:', error)
+      setStartOffseasonResult('❌ Failed to start offseason')
+    } finally {
+      setStartOffseasonLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -136,9 +191,121 @@ export default function Admin() {
                     <li>Clean slate for the new draft year</li>
                   </ul>
                   <div className="mt-2 font-medium text-green-800">
-                    ⚠️ Use this button to advance to the next league year.
+                    ⚠️ Use this button to advance to the next league year, as soon as the draft ends.
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Start Offseason */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-orange-200">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                  2
+                </div>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Start Offseason</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                <strong>Activate offseason mode:</strong> Marks the current active season as being in offseason, which will enable offseason-specific trade rules and restrictions.
+              </p>
+
+              <div className="flex items-center space-x-4 mb-4">
+                <button
+                  onClick={handleStartOffseason}
+                  disabled={startOffseasonLoading}
+                  className="px-4 py-2 bg-orange-600 text-white text-sm font-medium rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {startOffseasonLoading ? 'Starting...' : 'Start Offseason'}
+                </button>
+                
+                {startOffseasonResult && (
+                  <div className={`text-sm ${
+                    startOffseasonResult.includes('✅') ? 'text-green-600' : 'text-red-600'
+                  }`}>
+                    {startOffseasonResult}
+                  </div>
+                )}
+              </div>
+
+              <div className="bg-orange-50 border border-orange-200 rounded-md p-4">
+                <div className="text-sm text-orange-700">
+                  <strong>This will:</strong>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Set is_offseason = true for the current active season</li>
+                    <li>Enable offseason trade rules and restrictions</li>
+                    <li>Allow different trading logic during the offseason period</li>
+                    <li>Turn off Yahoo API sync (when enabled)</li>
+                  </ul>
+                  <div className="mt-2 font-medium text-orange-800">
+                    ⚠️ Use this when the season ends but before starting a new season.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Player ID Lookup */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-blue-200">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                  3
+                </div>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Player ID Lookup</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Search for a player to get their database ID for debugging purposes.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-end space-x-4">
+                  <div className="flex-1">
+                    <label htmlFor="playerSearch" className="block text-sm font-medium text-gray-700 mb-2">
+                      Player Name
+                    </label>
+                    <PlayerSearch
+                      placeholder="Search for player..."
+                      onPlayerSelect={handlePlayerSelect}
+                      value={playerSearchQuery}
+                      onChange={setPlayerSearchQuery}
+                      className="w-full"
+                    />
+                  </div>
+                  {selectedPlayer && (
+                    <button
+                      onClick={clearPlayerLookup}
+                      className="px-4 py-2 bg-gray-500 text-white text-sm font-medium rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+
+                {selectedPlayer && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="text-lg font-semibold text-blue-900">{selectedPlayer.name}</h4>
+                        <div className="flex items-center space-x-4 mt-2">
+                          <div className="text-sm text-blue-700">
+                            <span className="font-medium">Player ID:</span>
+                            <span className="ml-2 font-mono text-lg font-bold text-blue-900">{selectedPlayer.id}</span>
+                          </div>
+                          <button
+                            onClick={() => navigator.clipboard.writeText(selectedPlayer.id.toString())}
+                            className="inline-flex items-center px-2 py-1 border border-blue-300 text-xs font-medium rounded text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          >
+                            📋 Copy ID
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!selectedPlayer && playerSearchQuery && (
+                  <div className="text-sm text-gray-500 italic">
+                    Select a player from the search results to see their ID
+                  </div>
+                )}
               </div>
             </div>
 

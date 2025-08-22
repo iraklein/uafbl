@@ -107,7 +107,7 @@ export default function Rosters() {
       render: (value) => value ? value : '-'
     },
     {
-      key: 'calculated_keeper_cost',
+      key: 'keeper_cost',
       header: 'Keep $',
       headerClassName: 'text-center w-24 whitespace-nowrap',
       className: 'text-center',
