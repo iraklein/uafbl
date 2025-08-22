@@ -159,6 +159,19 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           if (data.user) {
             setUser(data.user)
             
+            // For email confirmation, redirect to password setup instead of showing login
+            if (window.location.pathname.includes('/auth/confirm')) {
+              // Don't interfere with confirm page - let it handle the redirect
+              setLoading(false)
+              clearTimeout(timeoutId)
+              
+              // Run admin check in background
+              if (data.user.email) {
+                checkAdminStatus(data.user.email).catch(console.error)
+              }
+              return
+            }
+            
             // Show password setup for first-time logins
             const hasSetPassword = localStorage.getItem('password_setup_complete') || 
                                  localStorage.getItem(`password_setup_complete_${data.user.id}`)
@@ -540,6 +553,18 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           </div>
         </div>
       </div>
+    )
+  }
+
+  // Special handling for auth pages - render without wrapper
+  if (typeof window !== 'undefined' && 
+      (window.location.pathname.includes('/auth/confirm') || 
+       window.location.pathname.includes('/auth/setup-password') || 
+       window.location.pathname.includes('/auth/signup'))) {
+    return (
+      <AuthProvider isAdmin={isAdmin} currentManagerId={currentManagerId} managerEmail={managerEmail}>
+        {children}
+      </AuthProvider>
     )
   }
 

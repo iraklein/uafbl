@@ -55,6 +55,7 @@ export default function Admin() {
   const [isEditingAssets, setIsEditingAssets] = useState(false)
   const [editValues, setEditValues] = useState<Record<number, { cash: string, slots: string, reason: string }>>({})
   
+  
 
   useEffect(() => {
     async function fetchSeasons() {
@@ -248,6 +249,7 @@ export default function Admin() {
     }
   }
 
+
   return (
     <div className="min-h-screen bg-gray-50 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -310,6 +312,7 @@ export default function Admin() {
                 </div>
               </div>
             </div>
+
 
             {/* Start Offseason */}
             <div className="bg-white shadow rounded-lg p-6 border-2 border-orange-200">
