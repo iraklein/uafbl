@@ -159,9 +159,10 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
           if (data.user) {
             setUser(data.user)
             
-            // For email confirmation, redirect to password setup instead of showing login
-            if (window.location.pathname.includes('/auth/confirm')) {
-              // Don't interfere with confirm page - let it handle the redirect
+            // For email confirmation pages, let them handle the flow
+            if (window.location.pathname.includes('/auth/confirm') || 
+                window.location.pathname.includes('/auth/signup')) {
+              // Don't interfere with auth pages - let them handle the redirect
               setLoading(false)
               clearTimeout(timeoutId)
               

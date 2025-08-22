@@ -13,14 +13,15 @@ export default function ConfirmEmail() {
   useEffect(() => {
     const handleEmailConfirmation = async () => {
       try {
-        const token_hash = searchParams.get('token_hash')
+        // Handle both token formats for different confirmation types
+        const token_hash = searchParams.get('token_hash') || searchParams.get('token')
         const type = searchParams.get('type')
 
-        if (token_hash && type === 'email') {
+        if (token_hash && (type === 'email' || type === 'signup')) {
           // Verify the email confirmation token
           const { data, error } = await supabase.auth.verifyOtp({
             token_hash,
-            type: 'email'
+            type: type === 'signup' ? 'email' : type
           })
 
           if (error) {
