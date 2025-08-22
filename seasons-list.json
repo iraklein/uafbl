@@ -1,116 +1,275 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "year": 2007,
     "name": "2007-08 Season",
-    "is_active": false
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 2,
+    "year": 2008,
+    "name": "2008-09 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 3,
-    "year": 2008,
-    "name": "2008-09 Season",
-    "is_active": false
+    "year": 2009,
+    "name": "2009-10 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 4,
-    "year": 2009,
-    "name": "2009-10 Season",
-    "is_active": false
+    "year": 2010,
+    "name": "2010-11 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 5,
-    "year": 2010,
-    "name": "2010-11 Season",
-    "is_active": false
+    "year": 2011,
+    "name": "2011-12 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 6,
-    "year": 2011,
-    "name": "2011-12 Season",
-    "is_active": false
+    "year": 2012,
+    "name": "2012-13 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 7,
-    "year": 2012,
-    "name": "2012-13 Season",
-    "is_active": false
+    "year": 2013,
+    "name": "2013-14 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 8,
-    "year": 2013,
-    "name": "2013-14 Season",
-    "is_active": false
+    "year": 2014,
+    "name": "2014-15 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 9,
-    "year": 2014,
-    "name": "2014-15 Season",
-    "is_active": false
+    "year": 2015,
+    "name": "2015-16 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 10,
-    "year": 2015,
-    "name": "2015-16 Season",
-    "is_active": false
+    "year": 2016,
+    "name": "2016-17 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 11,
-    "year": 2016,
-    "name": "2016-17 Season",
-    "is_active": false
+    "year": 2017,
+    "name": "2017-18 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 12,
-    "year": 2017,
-    "name": "2017-18 Season",
-    "is_active": false
+    "year": 2018,
+    "name": "2018-19 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 13,
-    "year": 2018,
-    "name": "2018-19 Season",
-    "is_active": false
+    "year": 2019,
+    "name": "2019-20 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 14,
-    "year": 2019,
-    "name": "2019-20 Season",
-    "is_active": false
+    "year": 2020,
+    "name": "2020-21 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 15,
-    "year": 2020,
-    "name": "2020-21 Season",
-    "is_active": false
+    "year": 2021,
+    "name": "2021-22 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 16,
-    "year": 2021,
-    "name": "2021-22 Season",
-    "is_active": false
+    "year": 2022,
+    "name": "2022-23 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 17,
-    "year": 2022,
-    "name": "2022-23 Season",
-    "is_active": false
+    "year": 2023,
+    "name": "2023-24 Season",
+    "is_active": false,
+    "is_active_assets": false
   },
   {
     "id": 18,
-    "year": 2023,
-    "name": "2023-24 Season",
-    "is_active": false
+    "year": 2024,
+    "name": "2024-25 Season",
+    "is_active": true,
+    "is_active_assets": false
   },
   {
     "id": 19,
-    "year": 2024,
-    "name": "2024-25 Season",
-    "is_active": false
-  },
-  {
-    "id": 1,
     "year": 2025,
     "name": "2025-26 Season",
-    "is_active": true
+    "is_active": false,
+    "is_active_assets": true
+  },
+  {
+    "id": 20,
+    "year": 2026,
+    "name": "2026-27 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 21,
+    "year": 2027,
+    "name": "2027-28 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 22,
+    "year": 2028,
+    "name": "2028-29 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 23,
+    "year": 2029,
+    "name": "2029-30 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 24,
+    "year": 2030,
+    "name": "2030-31 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 30,
+    "year": 2031,
+    "name": "2031-32 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 31,
+    "year": 2032,
+    "name": "2032-33 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 32,
+    "year": 2033,
+    "name": "2033-34 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 33,
+    "year": 2034,
+    "name": "2034-35 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 34,
+    "year": 2035,
+    "name": "2035-36 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 35,
+    "year": 2036,
+    "name": "2036-37 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 36,
+    "year": 2037,
+    "name": "2037-38 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 37,
+    "year": 2038,
+    "name": "2038-39 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 38,
+    "year": 2039,
+    "name": "2039-40 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 39,
+    "year": 2040,
+    "name": "2040-41 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 40,
+    "year": 2041,
+    "name": "2041-42 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 41,
+    "year": 2042,
+    "name": "2042-43 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 42,
+    "year": 2043,
+    "name": "2043-44 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 43,
+    "year": 2044,
+    "name": "2044-45 Season",
+    "is_active": false,
+    "is_active_assets": false
+  },
+  {
+    "id": 44,
+    "year": 2045,
+    "name": "2045-46 Season",
+    "is_active": false,
+    "is_active_assets": false
   }
 ]

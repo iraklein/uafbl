@@ -239,13 +239,13 @@ export default function Assets() {
                           </td>
                         {/* Trades Group */}
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center">
-                          <span className="font-semibold text-blue-600">
-                            ${(asset.trades_cash || 0).toLocaleString()}
+                          <span className={`font-semibold ${(asset.trades_cash || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                            {(asset.trades_cash || 0) >= 0 ? '+' : ''}${(asset.trades_cash || 0).toLocaleString()}
                           </span>
                         </td>
                         <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200">
-                          <span className="font-semibold text-blue-600">
-                            {asset.trades_slots || 0}
+                          <span className={`font-semibold ${(asset.trades_slots || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                            {(asset.trades_slots || 0) >= 0 ? '+' : ''}{asset.trades_slots || 0}
                           </span>
                         </td>
                         {/* Pre-Draft Group */}
@@ -301,23 +301,23 @@ export default function Assets() {
                         </td>
                         {/* Spent Group */}
                         <td className="px-3 py-4 whitespace-nowrap text-sm text-center">
-                          <span className="font-semibold text-red-600">
+                          <span className="font-semibold text-orange-600">
                             ${(asset.cash_spent || 0).toLocaleString()}
                           </span>
                         </td>
                         <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200">
-                          <span className="font-semibold text-red-600">
+                          <span className="font-semibold text-orange-600">
                             {asset.slots_used || 0}
                           </span>
                         </td>
                         {/* Remaining Group */}
                         <td className={`px-3 py-4 whitespace-nowrap text-sm text-center ${((asset.available_cash || 0) - (asset.cash_spent || 0)) < 0 ? 'bg-red-800' : ''}`}>
-                          <span className={`font-semibold ${((asset.available_cash || 0) - (asset.cash_spent || 0)) < 0 ? 'text-white' : 'text-green-600'}`}>
+                          <span className={`font-semibold ${((asset.available_cash || 0) - (asset.cash_spent || 0)) < 0 ? 'text-white' : 'text-blue-600'}`}>
                             ${((asset.available_cash || 0) - (asset.cash_spent || 0)).toLocaleString()}
                           </span>
                         </td>
                         <td className={`px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 ${((asset.available_slots || 0) - (asset.slots_used || 0)) < 0 ? 'bg-red-800' : ''}`}>
-                          <span className={`font-semibold ${((asset.available_slots || 0) - (asset.slots_used || 0)) < 0 ? 'text-white' : 'text-green-600'}`}>
+                          <span className={`font-semibold ${((asset.available_slots || 0) - (asset.slots_used || 0)) < 0 ? 'text-white' : 'text-blue-600'}`}>
                             {(asset.available_slots || 0) - (asset.slots_used || 0)}
                           </span>
                         </td>
@@ -357,11 +357,15 @@ export default function Assets() {
                         TOTALS
                       </td>
                       {/* Trades Group */}
-                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-blue-600">
-                        ${assets.reduce((sum, asset) => sum + (asset.trades_cash || 0), 0).toLocaleString()}
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold">
+                        <span className={`${assets.reduce((sum, asset) => sum + (asset.trades_cash || 0), 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          {assets.reduce((sum, asset) => sum + (asset.trades_cash || 0), 0) >= 0 ? '+' : ''}${assets.reduce((sum, asset) => sum + (asset.trades_cash || 0), 0).toLocaleString()}
+                        </span>
                       </td>
-                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-blue-600">
-                        {assets.reduce((sum, asset) => sum + (asset.trades_slots || 0), 0)}
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold">
+                        <span className={`${assets.reduce((sum, asset) => sum + (asset.trades_slots || 0), 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          {assets.reduce((sum, asset) => sum + (asset.trades_slots || 0), 0) >= 0 ? '+' : ''}{assets.reduce((sum, asset) => sum + (asset.trades_slots || 0), 0)}
+                        </span>
                       </td>
                       {/* Pre-Draft Group */}
                       <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-gray-600">
@@ -371,17 +375,17 @@ export default function Assets() {
                         {totalPreDraftSlots}
                       </td>
                       {/* Spent Group */}
-                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-red-600">
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-orange-600">
                         ${totalCashSpent.toLocaleString()}
                       </td>
-                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-red-600">
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-orange-600">
                         {totalSlotsUsed}
                       </td>
                       {/* Remaining Group */}
-                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-green-600">
+                      <td className="px-3 py-4 whitespace-nowrap text-sm text-center font-bold text-blue-600">
                         ${totalCashRemaining.toLocaleString()}
                       </td>
-                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-green-600">
+                      <td className="px-3 pr-8 py-4 whitespace-nowrap text-sm text-center border-r border-gray-200 font-bold text-blue-600">
                         {totalSlotsRemaining}
                       </td>
                       {/* Drafted Group */}

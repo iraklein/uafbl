@@ -6,8 +6,9 @@ import SeasonSelector from '../../components/SeasonSelector'
 import LoadingState from '../../components/LoadingState'
 import ErrorAlert from '../../components/ErrorAlert'
 import DataTable, { Column } from '../../components/DataTable'
+import ManagerSearch from '../../components/ManagerSearch'
 import { useSeasons } from '../../hooks/useSeasons'
-import { Trade } from '../../types'
+import { Trade, TradeProposal, Manager, Roster } from '../../types'
 
 
 interface PlayerTradeCount {
@@ -17,10 +18,30 @@ interface PlayerTradeCount {
 }
 
 export default function Trades() {
-  const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons()
+  const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons({
+    defaultSeasonFilter: 'active_playing'
+  })
   const [trades, setTrades] = useState<Trade[]>([])
   const [tradesLoading, setTradesLoading] = useState(false)
   const [tradesError, setTradesError] = useState('')
+  const [tradeProposals, setTradeProposals] = useState<TradeProposal[]>([])
+  const [proposalsLoading, setProposalsLoading] = useState(false)
+  const [proposalsError, setProposalsError] = useState('')
+  const [showProposeModal, setShowProposeModal] = useState(false)
+
+  // Trade form state
+  const [managers, setManagers] = useState<Manager[]>([])
+  const [selectedPartner, setSelectedPartner] = useState<Manager | null>(null)
+  const [partnerQuery, setPartnerQuery] = useState<string>('')
+  const [myRoster, setMyRoster] = useState<Roster[]>([])
+  const [partnerRoster, setPartnerRoster] = useState<Roster[]>([])
+  const [selectedMyPlayers, setSelectedMyPlayers] = useState<number[]>([])
+  const [selectedPartnerPlayers, setSelectedPartnerPlayers] = useState<number[]>([])
+  const [myCash, setMyCash] = useState<string>('')
+  const [mySlots, setMySlots] = useState<string>('')
+  const [partnerCash, setPartnerCash] = useState<string>('')
+  const [partnerSlots, setPartnerSlots] = useState<string>('')
+  const [tradeFormLoading, setTradeFormLoading] = useState(false)
 
   // Fetch trades when season changes
   useEffect(() => {
@@ -50,8 +71,100 @@ export default function Trades() {
       }
     }
 
+    async function fetchTradeProposals() {
+      setProposalsLoading(true)
+      setProposalsError('')
+
+      try {
+        // Trade proposals are stored in the playing season
+        const response = await fetch(`/api/trades?season_id=${selectedSeason}`)
+        
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ error: 'Unknown error' }))
+          console.error('API error response:', response.status, errorData)
+          throw new Error(`API Error ${response.status}: ${errorData.error || 'Failed to fetch trade proposals'}`)
+        }
+        
+        const data = await response.json()
+        console.log('Trade proposals data received:', data)
+        setTradeProposals(data)
+      } catch (error) {
+        console.error('Error fetching trade proposals:', error)
+        setProposalsError(error instanceof Error ? error.message : 'Failed to load trade proposals')
+      } finally {
+        setProposalsLoading(false)
+      }
+    }
+
     fetchTrades()
+    fetchTradeProposals()
   }, [selectedSeason])
+
+  // Load managers and current user's roster when modal opens or season changes
+  useEffect(() => {
+    if (showProposeModal && selectedSeason) {
+      loadTradeFormData()
+    }
+  }, [showProposeModal, selectedSeason])
+
+  // Load partner roster when partner is selected or season changes
+  useEffect(() => {
+    if (selectedPartner?.id && selectedSeason) {
+      loadPartnerRoster()
+    }
+  }, [selectedPartner, selectedSeason])
+
+  const loadTradeFormData = async () => {
+    setTradeFormLoading(true)
+    try {
+      // Load managers
+      const managersResponse = await fetch('/api/managers')
+      if (managersResponse.ok) {
+        const managersData = await managersResponse.json()
+        setManagers(managersData)
+      }
+
+      // Load current user's roster using selected season
+      if (selectedSeason) {
+        const myRosterResponse = await fetch(`/api/rosters?season_id=${selectedSeason}&manager_id=6`) // TODO: Get current user ID
+        if (myRosterResponse.ok) {
+          const myRosterData = await myRosterResponse.json()
+          setMyRoster(myRosterData)
+        }
+      }
+    } catch (error) {
+      console.error('Error loading trade form data:', error)
+    } finally {
+      setTradeFormLoading(false)
+    }
+  }
+
+  const loadPartnerRoster = async () => {
+    if (!selectedPartner?.id || !selectedSeason) return
+    
+    try {
+      const partnerRosterResponse = await fetch(`/api/rosters?season_id=${selectedSeason}&manager_id=${selectedPartner.id}`)
+      if (partnerRosterResponse.ok) {
+        const partnerRosterData = await partnerRosterResponse.json()
+        setPartnerRoster(partnerRosterData)
+      }
+    } catch (error) {
+      console.error('Error loading partner roster:', error)
+    }
+  }
+
+  const resetTradeForm = () => {
+    setSelectedPartner(null)
+    setPartnerQuery('')
+    setMyRoster([])
+    setPartnerRoster([])
+    setSelectedMyPlayers([])
+    setSelectedPartnerPlayers([])
+    setMyCash('')
+    setMySlots('')
+    setPartnerCash('')
+    setPartnerSlots('')
+  }
 
   // Calculate player trade counts
   const playerTradeCounts: PlayerTradeCount[] = trades.reduce((acc, trade) => {
@@ -77,7 +190,223 @@ export default function Trades() {
   })
 
 
-  // Define columns for the DataTable
+  // Handle trade response
+  const handleTradeResponse = async (tradeId: number, action: 'accept' | 'reject') => {
+    try {
+      const response = await fetch(`/api/trades/${tradeId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          status: action === 'accept' ? 'accepted' : 'rejected',
+          responded_at: new Date().toISOString()
+        })
+      })
+
+      if (response.ok) {
+        // Refresh trade proposals
+        const seasonForProposals = selectedSeason
+        const refreshResponse = await fetch(`/api/trades?season_id=${seasonForProposals}`)
+        if (refreshResponse.ok) {
+          const refreshData = await refreshResponse.json()
+          setTradeProposals(refreshData)
+        }
+      }
+    } catch (error) {
+      console.error('Error responding to trade:', error)
+    }
+  }
+
+  // Handle trade cancellation
+  const handleTradeCancel = async (tradeId: number) => {
+    if (!confirm('Are you sure you want to cancel this trade proposal?')) {
+      return
+    }
+
+    try {
+      const response = await fetch(`/api/trades/${tradeId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          status: 'canceled',
+          responded_at: new Date().toISOString()
+        })
+      })
+
+      if (response.ok) {
+        // Refresh trade proposals
+        const seasonForProposals = selectedSeason
+        const refreshResponse = await fetch(`/api/trades?season_id=${seasonForProposals}`)
+        if (refreshResponse.ok) {
+          const refreshData = await refreshResponse.json()
+          setTradeProposals(refreshData)
+        }
+      }
+    } catch (error) {
+      console.error('Error canceling trade:', error)
+    }
+  }
+
+  // Define columns for pending trades (with action buttons)
+  const pendingColumns: Column<TradeProposal>[] = [
+    {
+      key: 'proposer.manager_name',
+      header: 'Manager',
+      className: 'font-medium text-sm',
+      headerClassName: 'w-1/6',
+      render: (value, trade) => {
+        // Show the other manager's name
+        return trade.proposer.id === 6 ? trade.receiver.manager_name : trade.proposer.manager_name
+      }
+    },
+    {
+      key: 'proposer_cash',
+      header: 'You Give',
+      className: 'text-left text-sm',
+      headerClassName: 'text-left w-1/3',
+      render: (value, trade) => {
+        // Show what YOU are giving (cash, slots, and players)
+        const items: string[] = []
+        
+        if (trade.proposer.id === 6) {
+          // You're the proposer
+          if (trade.proposer_cash) items.push(`$${trade.proposer_cash}`)
+          if (trade.proposer_slots) items.push(`${trade.proposer_slots} slot${trade.proposer_slots > 1 ? 's' : ''}`)
+          if ((trade as any).proposer_players && Array.isArray((trade as any).proposer_players) && (trade as any).proposer_players.length > 0) {
+            items.push(...(trade as any).proposer_players.map((p: any) => p.name))
+          }
+        } else {
+          // You're the receiver
+          if (trade.receiver_cash) items.push(`$${trade.receiver_cash}`)
+          if (trade.receiver_slots) items.push(`${trade.receiver_slots} slot${trade.receiver_slots > 1 ? 's' : ''}`)
+          if ((trade as any).receiver_players && Array.isArray((trade as any).receiver_players) && (trade as any).receiver_players.length > 0) {
+            items.push(...(trade as any).receiver_players.map((p: any) => p.name))
+          }
+        }
+        
+        return items.length > 0 ? items.join(', ') : '-'
+      }
+    },
+    {
+      key: 'receiver_cash',
+      header: 'You Get',
+      className: 'text-left text-sm',
+      headerClassName: 'text-left w-1/3',
+      render: (value, trade) => {
+        // Show what YOU are getting (cash, slots, and players)
+        const items: string[] = []
+        
+        if (trade.proposer.id === 6) {
+          // You're the proposer
+          if (trade.receiver_cash) items.push(`$${trade.receiver_cash}`)
+          if (trade.receiver_slots) items.push(`${trade.receiver_slots} slot${trade.receiver_slots > 1 ? 's' : ''}`)
+          if ((trade as any).receiver_players && (trade as any).receiver_players.length > 0) {
+            items.push(...(trade as any).receiver_players.map((p: any) => p.name))
+          }
+        } else {
+          // You're the receiver
+          if (trade.proposer_cash) items.push(`$${trade.proposer_cash}`)
+          if (trade.proposer_slots) items.push(`${trade.proposer_slots} slot${trade.proposer_slots > 1 ? 's' : ''}`)
+          if ((trade as any).proposer_players && (trade as any).proposer_players.length > 0) {
+            items.push(...(trade as any).proposer_players.map((p: any) => p.name))
+          }
+        }
+        
+        return items.length > 0 ? items.join(', ') : '-'
+      }
+    },
+    {
+      key: 'id',
+      header: 'Actions',
+      className: 'text-center',
+      headerClassName: 'text-center w-1/6',
+      render: (value, trade) => {
+        // If current user (ID 6) is the receiver, show Accept/Reject buttons
+        if (trade.receiver.id === 6) {
+          return (
+            <div className="flex gap-1 justify-center">
+              <button
+                onClick={() => handleTradeResponse(trade.id, 'accept')}
+                className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded text-xs font-medium"
+              >
+                Accept
+              </button>
+              <button
+                onClick={() => handleTradeResponse(trade.id, 'reject')}
+                className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium"
+              >
+                Reject
+              </button>
+            </div>
+          )
+        }
+        // If current user is the proposer, show cancel button
+        else if (trade.proposer.id === 6) {
+          return (
+            <button
+              onClick={() => handleTradeCancel(trade.id)}
+              className="bg-gray-600 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs font-medium"
+            >
+              Cancel
+            </button>
+          )
+        }
+        return null
+      }
+    }
+  ]
+
+  // Define columns for the trade proposals table
+  const proposalColumns: Column<TradeProposal>[] = [
+    {
+      key: 'proposer.manager_name',
+      header: 'From',
+      className: 'font-medium text-sm',
+      headerClassName: 'w-1/6'
+    },
+    {
+      key: 'proposer_cash',
+      header: 'Cash',
+      className: 'text-center text-sm',
+      headerClassName: 'text-center w-1/12',
+      render: (value) => value ? `$${value}` : '-'
+    },
+    {
+      key: 'proposer_slots',
+      header: 'Slots',
+      className: 'text-center text-sm',
+      headerClassName: 'text-center w-1/12',
+      render: (value) => value || '-'
+    },
+    {
+      key: 'receiver.manager_name',
+      header: 'To',
+      className: 'font-medium text-sm',
+      headerClassName: 'w-1/6'
+    },
+    {
+      key: 'receiver_cash',
+      header: 'Cash',
+      className: 'text-center text-sm',
+      headerClassName: 'text-center w-1/12',
+      render: (value) => value ? `$${value}` : '-'
+    },
+    {
+      key: 'receiver_slots',
+      header: 'Slots',
+      className: 'text-center text-sm',
+      headerClassName: 'text-center w-1/12',
+      render: (value) => value || '-'
+    },
+    {
+      key: 'created_at',
+      header: 'Proposed',
+      className: 'text-sm text-gray-600',
+      headerClassName: 'w-1/4',
+      render: (value) => new Date(value).toLocaleDateString()
+    }
+  ]
+
+  // Define columns for the player trade counts table
   const columns: Column<PlayerTradeCount>[] = [
     {
       key: 'player_name',
@@ -114,31 +443,288 @@ export default function Trades() {
               {/* Trade count info box */}
               {selectedSeason && (
                 <div className="bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg flex-shrink-0">
-                  <span className="text-xs font-medium text-blue-900 sm:text-sm">{trades.length} total trades | {sortedPlayerTradeCounts.length} players</span>
+                  <span className="text-xs font-medium text-blue-900 sm:text-sm">{tradeProposals.length} accepted trades | {trades.length} player trades | {sortedPlayerTradeCounts.length} players</span>
                 </div>
               )}
+
+              {/* Propose Trade Button */}
+              <button
+                onClick={() => setShowProposeModal(true)}
+                className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-xs sm:text-sm font-medium transition-colors flex-shrink-0"
+              >
+                Propose Trade
+              </button>
             </div>
           </div>
         </div>
 
         <ErrorAlert error={error} />
         <ErrorAlert error={tradesError} />
+        <ErrorAlert error={proposalsError} />
 
         {loading ? (
           <LoadingState message="Loading seasons..." />
-        ) : tradesLoading ? (
+        ) : (tradesLoading || proposalsLoading) ? (
           <LoadingState message="Loading trades..." />
         ) : selectedSeason ? (
           <>
-            <DataTable
-              columns={columns}
-              data={sortedPlayerTradeCounts}
-              emptyMessage="No trades found for this season."
-              size="sm"
-            />
+            {/* Pending Trades Section - Only for involved managers */}
+            {tradeProposals.filter(trade => 
+              trade.status === 'pending' && 
+              (trade.receiver.id === 6 || trade.proposer.id === 6)
+            ).length > 0 && (
+              <div className="mb-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">Your Pending Trades</h3>
+                  <span className="bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full">
+                    {tradeProposals.filter(trade => 
+                      trade.status === 'pending' && 
+                      (trade.receiver.id === 6 || trade.proposer.id === 6)
+                    ).length} Pending
+                  </span>
+                </div>
+                <DataTable
+                  columns={pendingColumns}
+                  data={tradeProposals.filter(trade => 
+                    trade.status === 'pending' && 
+                    (trade.receiver.id === 6 || trade.proposer.id === 6)
+                  )}
+                  emptyMessage="No pending trades involving you."
+                  size="sm"
+                />
+              </div>
+            )}
+
+            {/* Accepted Trades Section */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Accepted Trades</h3>
+              <DataTable
+                columns={proposalColumns}
+                data={tradeProposals.filter(trade => trade.status === 'accepted')}
+                emptyMessage="No accepted trades found for this season."
+                size="sm"
+              />
+            </div>
+
+            {/* Player Trade Counts Table */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Player Trade Activity</h3>
+              <DataTable
+                columns={columns}
+                data={sortedPlayerTradeCounts}
+                emptyMessage="No trades found for this season."
+                size="sm"
+              />
+            </div>
           </>
         ) : (
           <LoadingState message="Please select a season to view trades." />
+        )}
+
+        {/* Propose Trade Modal */}
+        {showProposeModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-xl font-semibold text-gray-900">Propose Trade</h2>
+                  <button
+                    onClick={() => {
+                      setShowProposeModal(false)
+                      resetTradeForm()
+                    }}
+                    className="text-gray-400 hover:text-gray-600"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Trade Form Content */}
+                {tradeFormLoading ? (
+                  <div className="text-center py-8">
+                    <div className="text-gray-500">Loading trade form...</div>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {/* Manager Selector */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Select Manager to Trade With:
+                      </label>
+                      <ManagerSearch
+                        value={partnerQuery}
+                        onChange={setPartnerQuery}
+                        managers={managers.filter(m => m.id !== 6)} // TODO: Filter out current user
+                        onManagerSelect={(manager) => {
+                          setSelectedPartner(manager)
+                          setPartnerQuery(manager.manager_name)
+                        }}
+                        placeholder="Search for manager..."
+                        className="w-full"
+                      />
+                    </div>
+
+                    {selectedPartner && (
+                      <>
+                        {/* Trade Section Headers */}
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                          <h3 className="text-lg font-medium text-gray-900 text-center">My Trade</h3>
+                          <h3 className="text-lg font-medium text-gray-900 text-center">
+                            {selectedPartner?.manager_name}'s Trade
+                          </h3>
+                        </div>
+                        
+                        {/* Cash/Slots Section */}
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                          {/* My Cash/Slots */}
+                          <div className="space-y-3">
+                            <div className="grid grid-cols-2 gap-2">
+                              <div>
+                                <label className="block text-xs font-medium text-gray-700 mb-1">Cash</label>
+                                <input
+                                  type="number"
+                                  value={myCash}
+                                  onChange={(e) => setMyCash(e.target.value)}
+                                  placeholder="$0"
+                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-xs font-medium text-gray-700 mb-1">Slots</label>
+                                <input
+                                  type="number"
+                                  value={mySlots}
+                                  onChange={(e) => setMySlots(e.target.value)}
+                                  placeholder="0"
+                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Partner Cash/Slots */}
+                          <div className="space-y-3">
+                            <div className="grid grid-cols-2 gap-2">
+                              <div>
+                                <label className="block text-xs font-medium text-gray-700 mb-1">Cash</label>
+                                <input
+                                  type="number"
+                                  value={partnerCash}
+                                  onChange={(e) => setPartnerCash(e.target.value)}
+                                  placeholder="$0"
+                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-xs font-medium text-gray-700 mb-1">Slots</label>
+                                <input
+                                  type="number"
+                                  value={partnerSlots}
+                                  onChange={(e) => setPartnerSlots(e.target.value)}
+                                  placeholder="0"
+                                  className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-900"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Players Section */}
+                        <div className="grid grid-cols-2 gap-4">
+                          {/* My Players */}
+                          <div>
+                            <label className="block text-xs font-medium text-gray-700 mb-2">My Players</label>
+                            <div className="border border-gray-300 rounded max-h-40 overflow-y-auto">
+                              {myRoster.length > 0 ? (
+                                <div className="divide-y divide-gray-200">
+                                  {myRoster.map(player => (
+                                    <label key={player.id} className="flex items-center p-2 hover:bg-gray-50 cursor-pointer">
+                                      <input
+                                        type="checkbox"
+                                        checked={selectedMyPlayers.includes(player.players.id)}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setSelectedMyPlayers([...selectedMyPlayers, player.players.id])
+                                          } else {
+                                            setSelectedMyPlayers(selectedMyPlayers.filter(id => id !== player.players.id))
+                                          }
+                                        }}
+                                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                                      />
+                                      <span className="ml-2 text-xs text-gray-900">{player.players.name}</span>
+                                    </label>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div className="p-3 text-center text-gray-500 text-xs">No players on roster</div>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Partner Players */}
+                          <div>
+                            <label className="block text-xs font-medium text-gray-700 mb-2">Their Players</label>
+                            <div className="border border-gray-300 rounded max-h-40 overflow-y-auto">
+                              {partnerRoster.length > 0 ? (
+                                <div className="divide-y divide-gray-200">
+                                  {partnerRoster.map(player => (
+                                    <label key={player.id} className="flex items-center p-2 hover:bg-gray-50 cursor-pointer">
+                                      <input
+                                        type="checkbox"
+                                        checked={selectedPartnerPlayers.includes(player.players.id)}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setSelectedPartnerPlayers([...selectedPartnerPlayers, player.players.id])
+                                          } else {
+                                            setSelectedPartnerPlayers(selectedPartnerPlayers.filter(id => id !== player.players.id))
+                                          }
+                                        }}
+                                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                                      />
+                                      <span className="ml-2 text-xs text-gray-900">{player.players.name}</span>
+                                    </label>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div className="p-3 text-center text-gray-500 text-xs">
+                                  {partnerRoster.length === 0 ? 'Loading players...' : 'No players on roster'}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    
+                    <div className="flex justify-end space-x-3">
+                      <button
+                        onClick={() => {
+                          setShowProposeModal(false)
+                          resetTradeForm()
+                        }}
+                        className="px-4 py-2 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={() => {
+                          // TODO: Submit trade proposal
+                          setShowProposeModal(false)
+                          resetTradeForm()
+                        }}
+                        disabled={!selectedPartner}
+                        className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        Propose Trade
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>

@@ -68,7 +68,7 @@ interface PlayerHistory {
 export default function DraftResults() {
   const [activeTab, setActiveTab] = useState<'team' | 'player'>('team')
   const { seasons, selectedSeason, setSelectedSeason, loading: seasonsLoading, error: seasonsError } = useSeasons({
-    defaultSeasonFilter: '2024-25'
+    defaultSeasonFilter: 'active_playing'
   })
   const [draftResults, setDraftResults] = useState<DraftResult[]>([])
   const [loading, setLoading] = useState(false)

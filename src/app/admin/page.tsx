@@ -5,13 +5,13 @@ import Header from "../../components/Header"
 import SeasonSelector from "../../components/SeasonSelector"
 import ErrorAlert from "../../components/ErrorAlert"
 import LoadingState from "../../components/LoadingState"
-import FormInput from "../../components/FormInput"
 
 interface Season {
   id: number
   year: number
   name: string
   is_active: boolean
+  is_active_assets: boolean
 }
 
 
@@ -21,16 +21,9 @@ export default function Admin() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   
-  // Add Season states
-  const [seasonName, setSeasonName] = useState('')
-  const [seasonYear, setSeasonYear] = useState('')
-  const [makeActive, setMakeActive] = useState(false)
-  const [addSeasonLoading, setAddSeasonLoading] = useState(false)
-  const [addSeasonResult, setAddSeasonResult] = useState<string>('')
-  
-  // Initialize Assets states
-  const [initializeLoading, setInitializeLoading] = useState(false)
-  const [initializeResult, setInitializeResult] = useState<string>('')
+  // Start New Season states
+  const [startSeasonLoading, setStartSeasonLoading] = useState(false)
+  const [startSeasonResult, setStartSeasonResult] = useState<string>('')
   
 
   useEffect(() => {
@@ -53,80 +46,35 @@ export default function Admin() {
   }, [])
 
 
-  const handleAddSeason = async () => {
-    if (!seasonName.trim() || !seasonYear.trim()) {
-      setAddSeasonResult('❌ Please enter both season name and year')
-      return
-    }
-
-    setAddSeasonLoading(true)
-    setAddSeasonResult('')
+  const handleStartNewSeason = async () => {
+    setStartSeasonLoading(true)
+    setStartSeasonResult('')
 
     try {
-      const response = await fetch('/api/admin/add-season', {
+      const response = await fetch('/api/admin/start-new-season', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          name: seasonName.trim(), 
-          year: parseInt(seasonYear),
-          isActive: makeActive
-        }),
+        body: JSON.stringify({}), // No longer need name/year input
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        setAddSeasonResult(`✅ ${data.message}`)
-        setSeasonName('')
-        setSeasonYear('')
-        setMakeActive(false)
+        setStartSeasonResult(`✅ ${data.message}`)
         // Refresh seasons list
         const seasonsResponse = await fetch('/api/seasons')
         const seasonsData = await seasonsResponse.json()
         setSeasons(seasonsData)
       } else {
-        setAddSeasonResult(`❌ ${data.error}`)
+        setStartSeasonResult(`❌ ${data.error}`)
       }
     } catch (error) {
-      console.error('Error adding season:', error)
-      setAddSeasonResult('❌ Failed to add season')
+      console.error('Error starting new season:', error)
+      setStartSeasonResult('❌ Failed to start new season')
     } finally {
-      setAddSeasonLoading(false)
-    }
-  }
-
-  const handleInitializeSeason = async () => {
-    if (!selectedSeason) {
-      setInitializeResult('Please select a season first')
-      return
-    }
-
-    setInitializeLoading(true)
-    setInitializeResult('')
-
-    try {
-      const response = await fetch('/api/admin/initialize-season', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ seasonId: parseInt(selectedSeason) }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setInitializeResult(`✅ ${data.message}`)
-      } else {
-        setInitializeResult(`❌ ${data.error}`)
-      }
-    } catch (error) {
-      console.error('Error initializing season:', error)
-      setInitializeResult('❌ Failed to initialize season assets')
-    } finally {
-      setInitializeLoading(false)
+      setStartSeasonLoading(false)
     }
   }
 
@@ -148,127 +96,51 @@ export default function Admin() {
           <LoadingState message="Loading admin tools..." />
         ) : (
           <div className="space-y-8">
-            {/* Step 1: Add New Season */}
-            <div className="bg-white shadow rounded-lg p-6">
+            {/* Start New Season */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-green-200">
               <div className="flex items-center mb-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
                   1
                 </div>
-                <h3 className="ml-3 text-lg font-semibold text-gray-900">Add New Season</h3>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Start New Season</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                Create a new season in the database. Mark as active to make it the current season.
+                <strong>Automatically advance seasons:</strong> Moves is_active and is_active_assets flags to the next sequential season IDs. All trades are cleared for the new assets season, resetting everyone to $400/3 slots.
               </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div>
-                  <FormInput
-                    label="Season Name"
-                    type="text"
-                    value={seasonName}
-                    onChange={(e) => setSeasonName(e.target.value)}
-                    placeholder="e.g., 2025-26 Season"
-                  />
-                </div>
-                <div>
-                  <FormInput
-                    label="Year"
-                    type="number"
-                    value={seasonYear}
-                    onChange={(e) => setSeasonYear(e.target.value)}
-                    placeholder="2025"
-                  />
-                </div>
-                <div className="flex items-end">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={makeActive}
-                      onChange={(e) => setMakeActive(e.target.checked)}
-                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                    />
-                    <span className="ml-2 text-sm text-gray-700">Make Active</span>
-                  </label>
-                </div>
-              </div>
 
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4 mb-4">
                 <button
-                  onClick={handleAddSeason}
-                  disabled={addSeasonLoading}
-                  className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={handleStartNewSeason}
+                  disabled={startSeasonLoading}
+                  className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {addSeasonLoading ? 'Adding...' : 'Add Season'}
+                  {startSeasonLoading ? 'Starting...' : 'Start New Season'}
                 </button>
                 
-                {addSeasonResult && (
+                {startSeasonResult && (
                   <div className={`text-sm ${
-                    addSeasonResult.includes('✅') ? 'text-green-600' : 'text-red-600'
+                    startSeasonResult.includes('✅') ? 'text-green-600' : 'text-red-600'
                   }`}>
-                    {addSeasonResult}
+                    {startSeasonResult}
                   </div>
                 )}
               </div>
-            </div>
 
-            {/* Step 2: Initialize Season Assets */}
-            <div className="bg-white shadow rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                  2
-                </div>
-                <h3 className="ml-3 text-lg font-semibold text-gray-900">Initialize Season Assets</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                After creating a new season, initialize manager assets with $400 cash and 3 slots for all active managers.
-              </p>
-              
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="season-select" className="block text-sm font-medium text-gray-700 mb-2">
-                    Select Season:
-                  </label>
-                  <SeasonSelector
-                    seasons={seasons}
-                    selectedSeason={selectedSeason}
-                    onSeasonChange={setSelectedSeason}
-                    placeholder="Choose a season..."
-                    className="block w-64 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
-                    seasonLabelFormatter={(season) => `${season.name} (${season.year}) ${season.is_active ? '(Active)' : ''}`}
-                  />
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <button
-                    onClick={handleInitializeSeason}
-                    disabled={initializeLoading || !selectedSeason}
-                    className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {initializeLoading ? 'Initializing...' : 'Initialize Manager Assets'}
-                  </button>
-                  
-                  {initializeResult && (
-                    <div className={`text-sm ${
-                      initializeResult.includes('✅') ? 'text-green-600' : 'text-red-600'
-                    }`}>
-                      {initializeResult}
-                    </div>
-                  )}
-                </div>
-
-                <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
-                  <div className="text-sm text-blue-700">
-                    <strong>Note:</strong> This will create new asset records for all active managers with:
-                    <ul className="list-disc list-inside mt-2 space-y-1">
-                      <li>$400 available cash</li>
-                      <li>3 available slots</li>
-                    </ul>
-                    This operation will fail if assets already exist for the selected season.
+              <div className="bg-green-50 border border-green-200 rounded-md p-4">
+                <div className="text-sm text-green-700">
+                  <strong>This will automatically:</strong>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Move is_active flag to the next season ID (current playing season)</li>
+                    <li>Move is_active_assets flag to the next season ID (current draft/assets season)</li>
+                    <li>Reset all manager assets to $400 cash and 3 slots (no trades in new assets season)</li>
+                    <li>Clean slate for the new draft year</li>
+                  </ul>
+                  <div className="mt-2 font-medium text-green-800">
+                    ⚠️ Use this button to advance to the next league year.
                   </div>
                 </div>
               </div>
             </div>
-
 
           </div>
         )}

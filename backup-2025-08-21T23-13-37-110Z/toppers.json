@@ -1,0 +1,1050 @@
+[
+  {
+    "id": 1,
+    "manager_id": 1,
+    "player_id": 6149,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 2,
+    "manager_id": 2,
+    "player_id": 3367,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": true
+  },
+  {
+    "id": 3,
+    "manager_id": 3,
+    "player_id": 6276,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 4,
+    "manager_id": 4,
+    "player_id": 6940,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 5,
+    "manager_id": 5,
+    "player_id": 6936,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 6,
+    "manager_id": 6,
+    "player_id": 6500,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 7,
+    "manager_id": 7,
+    "player_id": 6276,
+    "season_id": 19,
+    "is_winner": true,
+    "is_unused": false
+  },
+  {
+    "id": 8,
+    "manager_id": 8,
+    "player_id": 6275,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 9,
+    "manager_id": 9,
+    "player_id": 6276,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 10,
+    "manager_id": 11,
+    "player_id": 6147,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": true
+  },
+  {
+    "id": 11,
+    "manager_id": 12,
+    "player_id": 6498,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 12,
+    "manager_id": 13,
+    "player_id": 6942,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": true
+  },
+  {
+    "id": 13,
+    "manager_id": 14,
+    "player_id": 3111,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 14,
+    "manager_id": 15,
+    "player_id": 6276,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 15,
+    "manager_id": 1,
+    "player_id": 6728,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 16,
+    "manager_id": 2,
+    "player_id": 6728,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 17,
+    "manager_id": 3,
+    "player_id": 5936,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 18,
+    "manager_id": 6,
+    "player_id": 6121,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 19,
+    "manager_id": 7,
+    "player_id": 3701,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 20,
+    "manager_id": 9,
+    "player_id": 5053,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 21,
+    "manager_id": 10,
+    "player_id": 5664,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 22,
+    "manager_id": 11,
+    "player_id": 6728,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 23,
+    "manager_id": 12,
+    "player_id": 5450,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 24,
+    "manager_id": 14,
+    "player_id": 5354,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 25,
+    "manager_id": 15,
+    "player_id": 6121,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 26,
+    "manager_id": 1,
+    "player_id": 3930,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 27,
+    "manager_id": 3,
+    "player_id": 5053,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 28,
+    "manager_id": 4,
+    "player_id": 5465,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 29,
+    "manager_id": 5,
+    "player_id": 6498,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 30,
+    "manager_id": 6,
+    "player_id": 3001,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 31,
+    "manager_id": 7,
+    "player_id": 5461,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 32,
+    "manager_id": 8,
+    "player_id": 6500,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 33,
+    "manager_id": 10,
+    "player_id": 6498,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 34,
+    "manager_id": 11,
+    "player_id": 5053,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 35,
+    "manager_id": 12,
+    "player_id": 5658,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 36,
+    "manager_id": 14,
+    "player_id": 5047,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 37,
+    "manager_id": 15,
+    "player_id": 5433,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 38,
+    "manager_id": 1,
+    "player_id": 6281,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 39,
+    "manager_id": 2,
+    "player_id": 5716,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 40,
+    "manager_id": 3,
+    "player_id": 6281,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 41,
+    "manager_id": 4,
+    "player_id": 6121,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 42,
+    "manager_id": 5,
+    "player_id": 5664,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 43,
+    "manager_id": 6,
+    "player_id": 5345,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 44,
+    "manager_id": 7,
+    "player_id": 5902,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 45,
+    "manager_id": 8,
+    "player_id": 3551,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 46,
+    "manager_id": 9,
+    "player_id": 6281,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 47,
+    "manager_id": 10,
+    "player_id": 3369,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 48,
+    "manager_id": 11,
+    "player_id": 5961,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 49,
+    "manager_id": 12,
+    "player_id": 3001,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 50,
+    "manager_id": 14,
+    "player_id": 3551,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 51,
+    "manager_id": 15,
+    "player_id": 5043,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 52,
+    "manager_id": 2,
+    "player_id": 2730,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 53,
+    "manager_id": 3,
+    "player_id": 3439,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 54,
+    "manager_id": 4,
+    "player_id": 5345,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 55,
+    "manager_id": 5,
+    "player_id": 6152,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 56,
+    "manager_id": 17,
+    "player_id": 3542,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 57,
+    "manager_id": 9,
+    "player_id": 3640,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 58,
+    "manager_id": 10,
+    "player_id": 5308,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 59,
+    "manager_id": 11,
+    "player_id": 6149,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 60,
+    "manager_id": 12,
+    "player_id": 3001,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 61,
+    "manager_id": 14,
+    "player_id": 2464,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 62,
+    "manager_id": 15,
+    "player_id": 5913,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 63,
+    "manager_id": 1,
+    "player_id": 3711,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 64,
+    "manager_id": 2,
+    "player_id": 5308,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 65,
+    "manager_id": 3,
+    "player_id": 6112,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 66,
+    "manager_id": 4,
+    "player_id": 5052,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 67,
+    "manager_id": 5,
+    "player_id": 5002,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 68,
+    "manager_id": 17,
+    "player_id": 5052,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 69,
+    "manager_id": 7,
+    "player_id": 3916,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 70,
+    "manager_id": 8,
+    "player_id": 6067,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 71,
+    "manager_id": 9,
+    "player_id": 3932,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 72,
+    "manager_id": 10,
+    "player_id": 3930,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 73,
+    "manager_id": 11,
+    "player_id": 99,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 74,
+    "manager_id": 12,
+    "player_id": 5961,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 75,
+    "manager_id": 14,
+    "player_id": 2464,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 76,
+    "manager_id": 15,
+    "player_id": 2718,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 77,
+    "manager_id": 1,
+    "player_id": 50,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 78,
+    "manager_id": 2,
+    "player_id": 5046,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 79,
+    "manager_id": 3,
+    "player_id": 5693,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 80,
+    "manager_id": 4,
+    "player_id": 3402,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 81,
+    "manager_id": 5,
+    "player_id": 490,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 82,
+    "manager_id": 17,
+    "player_id": 3542,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 83,
+    "manager_id": 6,
+    "player_id": 3542,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 84,
+    "manager_id": 7,
+    "player_id": 56,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 85,
+    "manager_id": 8,
+    "player_id": 3729,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 86,
+    "manager_id": 9,
+    "player_id": 3729,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 87,
+    "manager_id": 12,
+    "player_id": 3004,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 88,
+    "manager_id": 15,
+    "player_id": 19,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 89,
+    "manager_id": 1,
+    "player_id": 5473,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 90,
+    "manager_id": 2,
+    "player_id": 2848,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 91,
+    "manager_id": 3,
+    "player_id": 2730,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 92,
+    "manager_id": 5,
+    "player_id": 5465,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 93,
+    "manager_id": 6,
+    "player_id": 459,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 94,
+    "manager_id": 7,
+    "player_id": 5271,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 95,
+    "manager_id": 8,
+    "player_id": 3001,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 96,
+    "manager_id": 9,
+    "player_id": 2718,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 97,
+    "manager_id": 12,
+    "player_id": 87,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 98,
+    "manager_id": 14,
+    "player_id": 2848,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 99,
+    "manager_id": 15,
+    "player_id": 56,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 100,
+    "manager_id": 1,
+    "player_id": 2810,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 101,
+    "manager_id": 2,
+    "player_id": 3001,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 102,
+    "manager_id": 3,
+    "player_id": 2464,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 103,
+    "manager_id": 4,
+    "player_id": 3370,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 104,
+    "manager_id": 17,
+    "player_id": 2464,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 105,
+    "manager_id": 6,
+    "player_id": 5342,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 106,
+    "manager_id": 7,
+    "player_id": 3399,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 107,
+    "manager_id": 8,
+    "player_id": 5271,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 108,
+    "manager_id": 9,
+    "player_id": 46,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 109,
+    "manager_id": 12,
+    "player_id": 5271,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 110,
+    "manager_id": 14,
+    "player_id": 81,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 111,
+    "manager_id": 15,
+    "player_id": 3402,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 125,
+    "manager_id": 6,
+    "player_id": 3701,
+    "season_id": 14,
+    "is_winner": false,
+    "is_unused": true
+  },
+  {
+    "id": 117,
+    "manager_id": 2,
+    "player_id": 5693,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": true
+  },
+  {
+    "id": 112,
+    "manager_id": 10,
+    "player_id": 1800,
+    "season_id": 19,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 122,
+    "manager_id": 6,
+    "player_id": 2999,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 128,
+    "manager_id": 4,
+    "player_id": 2011,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 127,
+    "manager_id": 14,
+    "player_id": 5705,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 124,
+    "manager_id": 8,
+    "player_id": 555,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 114,
+    "manager_id": 5,
+    "player_id": 5716,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 126,
+    "manager_id": 11,
+    "player_id": 10,
+    "season_id": 13,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 115,
+    "manager_id": 8,
+    "player_id": 592,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 116,
+    "manager_id": 13,
+    "player_id": 592,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 121,
+    "manager_id": 1,
+    "player_id": 6153,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 130,
+    "manager_id": 5,
+    "player_id": 14,
+    "season_id": 11,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 119,
+    "manager_id": 13,
+    "player_id": 5452,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 120,
+    "manager_id": 17,
+    "player_id": 5698,
+    "season_id": 16,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 129,
+    "manager_id": 17,
+    "player_id": 5036,
+    "season_id": 12,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 113,
+    "manager_id": 4,
+    "player_id": 6330,
+    "season_id": 18,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 123,
+    "manager_id": 7,
+    "player_id": 6057,
+    "season_id": 15,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 118,
+    "manager_id": 9,
+    "player_id": 6505,
+    "season_id": 17,
+    "is_winner": false,
+    "is_unused": false
+  },
+  {
+    "id": 160,
+    "manager_id": 3,
+    "player_id": 2999,
+    "season_id": 1,
+    "is_winner": false,
+    "is_unused": false
+  }
+]

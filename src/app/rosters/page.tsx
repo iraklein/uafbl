@@ -16,7 +16,9 @@ interface GroupedRosters {
 }
 
 export default function Rosters() {
-  const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons()
+  const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons({
+    defaultSeasonFilter: 'active_playing'
+  })
   const [rosters, setRosters] = useState<Roster[]>([])
   const [rostersLoading, setRostersLoading] = useState(false)
   const [rostersError, setRostersError] = useState('')

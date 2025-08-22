@@ -3,21 +3,48 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '../contexts/AuthContext'
+import { useState, useEffect } from 'react'
 
 export default function Navigation() {
   const pathname = usePathname()
   const { isAdmin } = useAuth()
+  const [pendingTradeCount, setPendingTradeCount] = useState(0)
   
+  // Fetch pending trade count for current user (Haight = ID 6)
+  useEffect(() => {
+    async function fetchPendingTrades() {
+      try {
+        const response = await fetch('/api/trades?season_id=18')
+        if (response.ok) {
+          const trades = await response.json()
+          // Only count pending trades where I'm the receiver (need to respond)
+          const pendingForMe = trades.filter((trade: any) => 
+            trade.status === 'pending' && trade.receiver?.id === 6
+          )
+          setPendingTradeCount(pendingForMe.length)
+        }
+      } catch (error) {
+        console.error('Error fetching pending trades:', error)
+      }
+    }
+
+    fetchPendingTrades()
+    // Refresh every 30 seconds
+    const interval = setInterval(fetchPendingTrades, 30000)
+    return () => clearInterval(interval)
+  }, [])
+
   console.log('🧭 Navigation render:', { 
     isAdmin, 
     pathname,
     type: typeof isAdmin,
-    willShowAdminTab: isAdmin === true
+    willShowAdminTab: isAdmin === true,
+    pendingTradeCount
   })
 
-  const navItems = [
+  const navItems: Array<{ href: string; label: string; badge?: number }> = [
     { href: '/rosters', label: 'Rosters' },
-    { href: '/trades', label: 'Trades' },
+    { href: '/trades', label: 'Trades', badge: pendingTradeCount > 0 ? pendingTradeCount : undefined },
     { href: '/draft', label: 'Draft' },
     { href: '/draft-results', label: 'Draft Results' },
     { href: '/toppers', label: 'Toppers' },
@@ -42,13 +69,18 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`py-2 px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
+                className={`py-2 px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap flex items-center gap-1 ${
                   item.href === '/draft' ? 
                     (isDraftSection ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300') :
                     (pathname === item.href ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300')
                 }`}
               >
                 {item.label}
+                {item.badge && (
+                  <span className="bg-red-500 text-white text-xs font-medium px-1.5 py-0.5 rounded-full min-w-[1.25rem] h-5 flex items-center justify-center">
+                    {item.badge}
+                  </span>
+                )}
               </Link>
             ))}
           </nav>

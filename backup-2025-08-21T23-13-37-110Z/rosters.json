@@ -1,0 +1,2102 @@
+[
+  {
+    "id": 714,
+    "season_id": 19,
+    "player_id": 6280,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 616,
+    "season_id": 19,
+    "player_id": 6976,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 617,
+    "season_id": 19,
+    "player_id": 6940,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 715,
+    "season_id": 19,
+    "player_id": 6080,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 724,
+    "season_id": 19,
+    "player_id": 6301,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 768,
+    "season_id": 19,
+    "player_id": 6746,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 769,
+    "season_id": 19,
+    "player_id": 6747,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 770,
+    "season_id": 19,
+    "player_id": 6501,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 771,
+    "season_id": 19,
+    "player_id": 6935,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 772,
+    "season_id": 19,
+    "player_id": 6565,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 722,
+    "season_id": 19,
+    "player_id": 5048,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 726,
+    "season_id": 19,
+    "player_id": 6936,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 753,
+    "season_id": 19,
+    "player_id": 6114,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 782,
+    "season_id": 19,
+    "player_id": 6785,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:25:35.715458",
+    "updated_at": "2025-08-19T22:25:35.715458",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 573,
+    "season_id": 19,
+    "player_id": 3946,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 740,
+    "season_id": 19,
+    "player_id": 6300,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 741,
+    "season_id": 19,
+    "player_id": 5345,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 742,
+    "season_id": 19,
+    "player_id": 6115,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 743,
+    "season_id": 19,
+    "player_id": 5475,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 744,
+    "season_id": 19,
+    "player_id": 2011,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 745,
+    "season_id": 19,
+    "player_id": 5043,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 746,
+    "season_id": 19,
+    "player_id": 5355,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 747,
+    "season_id": 19,
+    "player_id": 6741,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 633,
+    "season_id": 19,
+    "player_id": 6498,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 748,
+    "season_id": 19,
+    "player_id": 6957,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 716,
+    "season_id": 19,
+    "player_id": 6163,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 717,
+    "season_id": 19,
+    "player_id": 6076,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 718,
+    "season_id": 19,
+    "player_id": 6948,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 719,
+    "season_id": 19,
+    "player_id": 6771,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 720,
+    "season_id": 19,
+    "player_id": 6941,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 761,
+    "season_id": 19,
+    "player_id": 6934,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 762,
+    "season_id": 19,
+    "player_id": 6514,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 763,
+    "season_id": 19,
+    "player_id": 6944,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 764,
+    "season_id": 19,
+    "player_id": 6503,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 765,
+    "season_id": 19,
+    "player_id": 6555,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 766,
+    "season_id": 19,
+    "player_id": 6729,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 749,
+    "season_id": 19,
+    "player_id": 5473,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 767,
+    "season_id": 19,
+    "player_id": 6282,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 683,
+    "season_id": 19,
+    "player_id": 1834,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:15:31.298457",
+    "updated_at": "2025-08-19T22:15:31.298457",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 780,
+    "season_id": 19,
+    "player_id": 6326,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:25:35.715458",
+    "updated_at": "2025-08-19T22:25:35.715458",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 781,
+    "season_id": 19,
+    "player_id": 6297,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:25:35.715458",
+    "updated_at": "2025-08-19T22:25:35.715458",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 684,
+    "season_id": 19,
+    "player_id": 1835,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:15:31.298457",
+    "updated_at": "2025-08-19T22:15:31.298457",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 773,
+    "season_id": 19,
+    "player_id": 612,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 774,
+    "season_id": 19,
+    "player_id": 5469,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 775,
+    "season_id": 19,
+    "player_id": 5052,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 588,
+    "season_id": 19,
+    "player_id": 3377,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 603,
+    "season_id": 19,
+    "player_id": 5700,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 618,
+    "season_id": 19,
+    "player_id": 6784,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 648,
+    "season_id": 19,
+    "player_id": 6117,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 663,
+    "season_id": 19,
+    "player_id": 6339,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 699,
+    "season_id": 19,
+    "player_id": 3932,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 677,
+    "season_id": 19,
+    "player_id": 6125,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:08:41.812327",
+    "updated_at": "2025-08-19T22:08:41.812327",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 725,
+    "season_id": 19,
+    "player_id": 6195,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 662,
+    "season_id": 19,
+    "player_id": 6742,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 682,
+    "season_id": 19,
+    "player_id": 6298,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:12:43.309937",
+    "updated_at": "2025-08-19T22:12:43.309937",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 680,
+    "season_id": 19,
+    "player_id": 6057,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:11:29.471851",
+    "updated_at": "2025-08-19T22:11:29.471851",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 750,
+    "season_id": 19,
+    "player_id": 6289,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 751,
+    "season_id": 19,
+    "player_id": 5029,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 752,
+    "season_id": 19,
+    "player_id": 6170,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 758,
+    "season_id": 19,
+    "player_id": 5266,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 759,
+    "season_id": 19,
+    "player_id": 3723,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 760,
+    "season_id": 19,
+    "player_id": 6542,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 738,
+    "season_id": 19,
+    "player_id": 6171,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 739,
+    "season_id": 19,
+    "player_id": 6312,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 776,
+    "season_id": 19,
+    "player_id": 5677,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 777,
+    "season_id": 19,
+    "player_id": 6499,
+    "manager_id": 15,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 721,
+    "season_id": 19,
+    "player_id": 6946,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 712,
+    "season_id": 19,
+    "player_id": 6980,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 713,
+    "season_id": 19,
+    "player_id": 5902,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 754,
+    "season_id": 19,
+    "player_id": 6292,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 755,
+    "season_id": 19,
+    "player_id": 6112,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 756,
+    "season_id": 19,
+    "player_id": 6363,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 757,
+    "season_id": 19,
+    "player_id": 5706,
+    "manager_id": 14,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 727,
+    "season_id": 19,
+    "player_id": 6308,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 728,
+    "season_id": 19,
+    "player_id": 6521,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 729,
+    "season_id": 19,
+    "player_id": 6975,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 730,
+    "season_id": 19,
+    "player_id": 6333,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 731,
+    "season_id": 19,
+    "player_id": 6740,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 732,
+    "season_id": 19,
+    "player_id": 6945,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 733,
+    "season_id": 19,
+    "player_id": 6505,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 734,
+    "season_id": 19,
+    "player_id": 5489,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 735,
+    "season_id": 19,
+    "player_id": 6518,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 736,
+    "season_id": 19,
+    "player_id": 6974,
+    "manager_id": 12,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 737,
+    "season_id": 19,
+    "player_id": 6188,
+    "manager_id": 13,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 723,
+    "season_id": 19,
+    "player_id": 6329,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 778,
+    "season_id": 19,
+    "player_id": 610,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:23:19.267674",
+    "updated_at": "2025-08-19T22:23:19.267674",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 779,
+    "season_id": 19,
+    "player_id": 5719,
+    "manager_id": 11,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:25:35.715458",
+    "updated_at": "2025-08-19T22:25:35.715458",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 583,
+    "season_id": 19,
+    "player_id": 6728,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 584,
+    "season_id": 19,
+    "player_id": 6558,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 585,
+    "season_id": 19,
+    "player_id": 5976,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 586,
+    "season_id": 19,
+    "player_id": 6147,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 587,
+    "season_id": 19,
+    "player_id": 6079,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 589,
+    "season_id": 19,
+    "player_id": 3930,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 590,
+    "season_id": 19,
+    "player_id": 5361,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 591,
+    "season_id": 19,
+    "player_id": 6763,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 592,
+    "season_id": 19,
+    "player_id": 5474,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 593,
+    "season_id": 19,
+    "player_id": 6733,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 594,
+    "season_id": 19,
+    "player_id": 6284,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 2
+  },
+  {
+    "id": 595,
+    "season_id": 19,
+    "player_id": 5673,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 596,
+    "season_id": 19,
+    "player_id": 6949,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 597,
+    "season_id": 19,
+    "player_id": 6299,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 598,
+    "season_id": 19,
+    "player_id": 5044,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 599,
+    "season_id": 19,
+    "player_id": 2999,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 600,
+    "season_id": 19,
+    "player_id": 5668,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 601,
+    "season_id": 19,
+    "player_id": 6973,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 602,
+    "season_id": 19,
+    "player_id": 3404,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 604,
+    "season_id": 19,
+    "player_id": 6164,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 605,
+    "season_id": 19,
+    "player_id": 5967,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 606,
+    "season_id": 19,
+    "player_id": 6185,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 607,
+    "season_id": 19,
+    "player_id": 2846,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 608,
+    "season_id": 19,
+    "player_id": 6731,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 609,
+    "season_id": 19,
+    "player_id": 6730,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 610,
+    "season_id": 19,
+    "player_id": 5460,
+    "manager_id": 3,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 611,
+    "season_id": 19,
+    "player_id": 5693,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 612,
+    "season_id": 19,
+    "player_id": 6526,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 613,
+    "season_id": 19,
+    "player_id": 5913,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 614,
+    "season_id": 19,
+    "player_id": 5364,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 615,
+    "season_id": 19,
+    "player_id": 6322,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 619,
+    "season_id": 19,
+    "player_id": 6962,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 620,
+    "season_id": 19,
+    "player_id": 6979,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 621,
+    "season_id": 19,
+    "player_id": 5021,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 622,
+    "season_id": 19,
+    "player_id": 5465,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 623,
+    "season_id": 19,
+    "player_id": 5716,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 624,
+    "season_id": 19,
+    "player_id": 5360,
+    "manager_id": 4,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 625,
+    "season_id": 19,
+    "player_id": 6184,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 675,
+    "season_id": 19,
+    "player_id": 3709,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:51.652128",
+    "updated_at": "2025-08-19T22:03:51.652128",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 627,
+    "season_id": 19,
+    "player_id": 3001,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 628,
+    "season_id": 19,
+    "player_id": 5427,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 629,
+    "season_id": 19,
+    "player_id": 5698,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 630,
+    "season_id": 19,
+    "player_id": 5354,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 631,
+    "season_id": 19,
+    "player_id": 5053,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 632,
+    "season_id": 19,
+    "player_id": 5679,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 2
+  },
+  {
+    "id": 634,
+    "season_id": 19,
+    "player_id": 6155,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 635,
+    "season_id": 19,
+    "player_id": 5936,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 636,
+    "season_id": 19,
+    "player_id": 5458,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 637,
+    "season_id": 19,
+    "player_id": 6523,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 638,
+    "season_id": 19,
+    "player_id": 3542,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 639,
+    "season_id": 19,
+    "player_id": 6124,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 640,
+    "season_id": 19,
+    "player_id": 6533,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 641,
+    "season_id": 19,
+    "player_id": 3701,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 642,
+    "season_id": 19,
+    "player_id": 6500,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 643,
+    "season_id": 19,
+    "player_id": 5389,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 644,
+    "season_id": 19,
+    "player_id": 6504,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 645,
+    "season_id": 19,
+    "player_id": 6512,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 646,
+    "season_id": 19,
+    "player_id": 5271,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 647,
+    "season_id": 19,
+    "player_id": 6754,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 649,
+    "season_id": 19,
+    "player_id": 6283,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 650,
+    "season_id": 19,
+    "player_id": 6950,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 651,
+    "season_id": 19,
+    "player_id": 6531,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 652,
+    "season_id": 19,
+    "player_id": 6276,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 653,
+    "season_id": 19,
+    "player_id": 6942,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 654,
+    "season_id": 19,
+    "player_id": 6937,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 655,
+    "season_id": 19,
+    "player_id": 6775,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 656,
+    "season_id": 19,
+    "player_id": 6330,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 657,
+    "season_id": 19,
+    "player_id": 6954,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 658,
+    "season_id": 19,
+    "player_id": 6736,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 659,
+    "season_id": 19,
+    "player_id": 6735,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 660,
+    "season_id": 19,
+    "player_id": 6290,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 661,
+    "season_id": 19,
+    "player_id": 6160,
+    "manager_id": 7,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 2
+  },
+  {
+    "id": 664,
+    "season_id": 19,
+    "player_id": 6275,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 665,
+    "season_id": 19,
+    "player_id": 5662,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 666,
+    "season_id": 19,
+    "player_id": 6743,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 667,
+    "season_id": 19,
+    "player_id": 6967,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 668,
+    "season_id": 19,
+    "player_id": 5105,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 669,
+    "season_id": 19,
+    "player_id": 3914,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 670,
+    "season_id": 19,
+    "player_id": 5042,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 671,
+    "season_id": 19,
+    "player_id": 6511,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.935179",
+    "updated_at": "2025-08-19T22:03:27.935179",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 672,
+    "season_id": 19,
+    "player_id": 6212,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.935179",
+    "updated_at": "2025-08-19T22:03:27.935179",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 673,
+    "season_id": 19,
+    "player_id": 6295,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.935179",
+    "updated_at": "2025-08-19T22:03:27.935179",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 674,
+    "season_id": 19,
+    "player_id": 6586,
+    "manager_id": 6,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:51.652128",
+    "updated_at": "2025-08-19T22:03:51.652128",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 676,
+    "season_id": 19,
+    "player_id": 6328,
+    "manager_id": 8,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:51.652128",
+    "updated_at": "2025-08-19T22:03:51.652128",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 678,
+    "season_id": 19,
+    "player_id": 6111,
+    "manager_id": 2,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:09:47.769911",
+    "updated_at": "2025-08-19T22:09:47.769911",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 685,
+    "season_id": 19,
+    "player_id": 6732,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 686,
+    "season_id": 19,
+    "player_id": 6993,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 687,
+    "season_id": 19,
+    "player_id": 6519,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 688,
+    "season_id": 19,
+    "player_id": 6285,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 2
+  },
+  {
+    "id": 689,
+    "season_id": 19,
+    "player_id": 6968,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 690,
+    "season_id": 19,
+    "player_id": 6191,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 691,
+    "season_id": 19,
+    "player_id": 6161,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 692,
+    "season_id": 19,
+    "player_id": 5476,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 693,
+    "season_id": 19,
+    "player_id": 6490,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 694,
+    "season_id": 19,
+    "player_id": 5988,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 695,
+    "season_id": 19,
+    "player_id": 6121,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 696,
+    "season_id": 19,
+    "player_id": 6274,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 697,
+    "season_id": 19,
+    "player_id": 6145,
+    "manager_id": 9,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 698,
+    "season_id": 19,
+    "player_id": 6513,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 700,
+    "season_id": 19,
+    "player_id": 6502,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 701,
+    "season_id": 19,
+    "player_id": 3357,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 702,
+    "season_id": 19,
+    "player_id": 6507,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": 1
+  },
+  {
+    "id": 703,
+    "season_id": 19,
+    "player_id": 3729,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 704,
+    "season_id": 19,
+    "player_id": 3920,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 705,
+    "season_id": 19,
+    "player_id": 5977,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 706,
+    "season_id": 19,
+    "player_id": 3006,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 707,
+    "season_id": 19,
+    "player_id": 6152,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 708,
+    "season_id": 19,
+    "player_id": 5002,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 709,
+    "season_id": 19,
+    "player_id": 5450,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 710,
+    "season_id": 19,
+    "player_id": 6193,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 711,
+    "season_id": 19,
+    "player_id": 6790,
+    "manager_id": 10,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:20:06.473384",
+    "updated_at": "2025-08-19T22:20:06.473384",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 571,
+    "season_id": 19,
+    "player_id": 6537,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 572,
+    "season_id": 19,
+    "player_id": 6961,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 574,
+    "season_id": 19,
+    "player_id": 5717,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 575,
+    "season_id": 19,
+    "player_id": 6149,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 576,
+    "season_id": 19,
+    "player_id": 6327,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 577,
+    "season_id": 19,
+    "player_id": 6751,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": 0
+  },
+  {
+    "id": 578,
+    "season_id": 19,
+    "player_id": 5609,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 579,
+    "season_id": 19,
+    "player_id": 6154,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 580,
+    "season_id": 19,
+    "player_id": 5267,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 581,
+    "season_id": 19,
+    "player_id": 5452,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 626,
+    "season_id": 19,
+    "player_id": 3674,
+    "manager_id": 5,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  },
+  {
+    "id": 582,
+    "season_id": 19,
+    "player_id": 3916,
+    "manager_id": 1,
+    "keeper_cost": null,
+    "created_at": "2025-08-19T22:03:27.825021",
+    "updated_at": "2025-08-19T22:03:27.825021",
+    "consecutive_keeps": null
+  }
+]

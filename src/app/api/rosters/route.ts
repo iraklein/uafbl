@@ -27,9 +27,34 @@ export async function GET(request: NextRequest) {
     const supabase = createServerSupabaseClient()
     const { searchParams } = new URL(request.url)
     const seasonId = searchParams.get('season_id')
+    const managerId = searchParams.get('manager_id')
 
     if (!seasonId) {
       return NextResponse.json({ error: 'Season ID is required' }, { status: 400 })
+    }
+
+    // Build rosters query with optional manager filter
+    let rostersQuery = supabase
+      .from('rosters')
+      .select(`
+        id,
+        keeper_cost,
+        consecutive_keeps,
+        players (
+          id,
+          name
+        ),
+        managers (
+          id,
+          manager_name,
+          team_name
+        )
+      `)
+      .eq('season_id', seasonId)
+    
+    // Add manager filter if provided
+    if (managerId) {
+      rostersQuery = rostersQuery.eq('manager_id', managerId)
     }
 
     // Execute all queries in parallel for better performance
@@ -38,24 +63,7 @@ export async function GET(request: NextRequest) {
       { data: draftPrices, error: draftError },
       { data: tradesData, error: tradesError }
     ] = await Promise.all([
-      // Fetch rosters with player and manager information
-      supabase
-        .from('rosters')
-        .select(`
-          id,
-          keeper_cost,
-          consecutive_keeps,
-          players (
-            id,
-            name
-          ),
-          managers (
-            id,
-            manager_name,
-            team_name
-          )
-        `)
-        .eq('season_id', seasonId),
+      rostersQuery,
       
       // Get draft prices and keeper status from CURRENT season for each player
       supabase

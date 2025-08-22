@@ -4,7 +4,7 @@ import { Season } from '../types'
 interface UseSeasonsOptions {
   autoSelectDefault?: boolean
   filterFunction?: (seasons: Season[]) => Season[]
-  defaultSeasonFilter?: 'latest' | '2024-25' | 'first'
+  defaultSeasonFilter?: 'latest' | '2024-25' | 'first' | 'active_playing' | 'active_assets'
 }
 
 interface UseSeasonsReturn {
@@ -53,6 +53,18 @@ export function useSeasons(options: UseSeasonsOptions = {}): UseSeasonsReturn {
           let defaultSeason: Season | undefined
 
           switch (defaultSeasonFilter) {
+            case 'active_playing':
+              defaultSeason = data.find((season: Season) => season.is_active === true)
+              if (!defaultSeason) {
+                defaultSeason = data[0] // Fallback to first season
+              }
+              break
+            case 'active_assets':
+              defaultSeason = data.find((season: Season) => season.is_active_assets === true)
+              if (!defaultSeason) {
+                defaultSeason = data[data.length - 1] // Fallback to latest season
+              }
+              break
             case '2024-25':
               defaultSeason = data.find((season: Season) => 
                 season.name.includes('2024-25') || season.year === 2024

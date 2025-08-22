@@ -5,6 +5,7 @@ export interface Season {
   name: string
   year: number
   is_active: boolean
+  is_active_assets: boolean
   created_at: string
   updated_at: string
 }

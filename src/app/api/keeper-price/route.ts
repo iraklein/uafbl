@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
 
   try {
     // Get player's previous season roster info to calculate keeper price
-    const previousSeasonId = parseInt(seasonId) === 1 ? 19 : parseInt(seasonId) - 1 // For 2025-26 (ID 1), previous is 2024-25 (ID 19)
+    const previousSeasonId = parseInt(seasonId) === 19 ? 18 : parseInt(seasonId) - 1 // For 2025-26 (ID 19), previous is 2024-25 (ID 18)
     
     const { data: rosterData, error: rosterError } = await supabase
       .from('rosters')

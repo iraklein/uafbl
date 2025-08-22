@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "year": 2025,
+    "name": "2025-26 Season",
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "year": 2007,
+    "name": "2007-08 Season",
+    "is_active": false
+  },
+  {
+    "id": 3,
+    "year": 2008,
+    "name": "2008-09 Season",
+    "is_active": false
+  },
+  {
+    "id": 4,
+    "year": 2009,
+    "name": "2009-10 Season",
+    "is_active": false
+  },
+  {
+    "id": 5,
+    "year": 2010,
+    "name": "2010-11 Season",
+    "is_active": false
+  },
+  {
+    "id": 6,
+    "year": 2011,
+    "name": "2011-12 Season",
+    "is_active": false
+  },
+  {
+    "id": 7,
+    "year": 2012,
+    "name": "2012-13 Season",
+    "is_active": false
+  },
+  {
+    "id": 8,
+    "year": 2013,
+    "name": "2013-14 Season",
+    "is_active": false
+  },
+  {
+    "id": 9,
+    "year": 2014,
+    "name": "2014-15 Season",
+    "is_active": false
+  },
+  {
+    "id": 10,
+    "year": 2015,
+    "name": "2015-16 Season",
+    "is_active": false
+  },
+  {
+    "id": 11,
+    "year": 2016,
+    "name": "2016-17 Season",
+    "is_active": false
+  },
+  {
+    "id": 12,
+    "year": 2017,
+    "name": "2017-18 Season",
+    "is_active": false
+  },
+  {
+    "id": 13,
+    "year": 2018,
+    "name": "2018-19 Season",
+    "is_active": false
+  },
+  {
+    "id": 14,
+    "year": 2019,
+    "name": "2019-20 Season",
+    "is_active": false
+  },
+  {
+    "id": 15,
+    "year": 2020,
+    "name": "2020-21 Season",
+    "is_active": false
+  },
+  {
+    "id": 16,
+    "year": 2021,
+    "name": "2021-22 Season",
+    "is_active": false
+  },
+  {
+    "id": 17,
+    "year": 2022,
+    "name": "2022-23 Season",
+    "is_active": false
+  },
+  {
+    "id": 18,
+    "year": 2023,
+    "name": "2023-24 Season",
+    "is_active": false
+  },
+  {
+    "id": 19,
+    "year": 2024,
+    "name": "2024-25 Season",
+    "is_active": false
+  }
+]

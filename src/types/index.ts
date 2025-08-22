@@ -5,6 +5,7 @@ export interface Season {
   year: number
   name: string
   is_active?: boolean
+  is_active_assets?: boolean
 }
 
 export interface Player {
@@ -56,6 +57,29 @@ export interface Trade {
   player_id: number
   created_at: string
   players: Player
+}
+
+export interface TradeProposal {
+  id: number
+  season_id: number
+  proposer_manager_id: number
+  receiver_manager_id: number
+  proposer_cash: number
+  proposer_slots: number
+  receiver_cash: number
+  receiver_slots: number
+  status: string
+  message: string | null
+  created_at: string
+  responded_at: string
+  proposer: {
+    id: number
+    manager_name: string
+  }
+  receiver: {
+    id: number
+    manager_name: string
+  }
 }
 
 export interface LSLRecord {

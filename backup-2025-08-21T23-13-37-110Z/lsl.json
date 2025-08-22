@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "draft_order": 1,
+    "year": 2017,
+    "draft_price": 24,
+    "status": "Kept",
+    "original_manager_id": 14,
+    "draft_manager_id": 6,
+    "player_id": 5449
+  },
+  {
+    "id": 2,
+    "draft_order": 2,
+    "year": 2017,
+    "draft_price": 31,
+    "status": "Kept",
+    "original_manager_id": 12,
+    "draft_manager_id": 1,
+    "player_id": 490
+  },
+  {
+    "id": 3,
+    "draft_order": 3,
+    "year": 2017,
+    "draft_price": 16,
+    "status": "Kept",
+    "original_manager_id": 17,
+    "draft_manager_id": 17,
+    "player_id": 491
+  },
+  {
+    "id": 6,
+    "draft_order": 6,
+    "year": 2017,
+    "draft_price": 24,
+    "status": "Unkept",
+    "original_manager_id": 13,
+    "draft_manager_id": 14,
+    "player_id": 5721
+  },
+  {
+    "id": 7,
+    "draft_order": 7,
+    "year": 2017,
+    "draft_price": 5,
+    "status": "Kept",
+    "original_manager_id": 15,
+    "draft_manager_id": 1,
+    "player_id": 493
+  },
+  {
+    "id": 8,
+    "draft_order": 8,
+    "year": 2017,
+    "draft_price": 31,
+    "status": "Kept",
+    "original_manager_id": 4,
+    "draft_manager_id": 14,
+    "player_id": 6121
+  },
+  {
+    "id": 9,
+    "draft_order": 9,
+    "year": 2017,
+    "draft_price": 5,
+    "status": "Kept",
+    "original_manager_id": 6,
+    "draft_manager_id": 6,
+    "player_id": 5458
+  },
+  {
+    "id": 10,
+    "draft_order": 10,
+    "year": 2017,
+    "draft_price": 11,
+    "status": "Kept",
+    "original_manager_id": 3,
+    "draft_manager_id": 5,
+    "player_id": 5453
+  },
+  {
+    "id": 11,
+    "draft_order": 11,
+    "year": 2017,
+    "draft_price": 12,
+    "status": "Kept",
+    "original_manager_id": 8,
+    "draft_manager_id": 5,
+    "player_id": 5452
+  },
+  {
+    "id": 14,
+    "draft_order": 14,
+    "year": 2017,
+    "draft_price": 11,
+    "status": "Kept",
+    "original_manager_id": 1,
+    "draft_manager_id": 1,
+    "player_id": 5711
+  },
+  {
+    "id": 15,
+    "draft_order": 1,
+    "year": 2018,
+    "draft_price": 19,
+    "status": "Kept",
+    "original_manager_id": 4,
+    "draft_manager_id": 4,
+    "player_id": 5658
+  },
+  {
+    "id": 16,
+    "draft_order": 2,
+    "year": 2018,
+    "draft_price": 12,
+    "status": "Kept",
+    "original_manager_id": 3,
+    "draft_manager_id": 3,
+    "player_id": 5664
+  },
+  {
+    "id": 21,
+    "draft_order": 7,
+    "year": 2018,
+    "draft_price": 5,
+    "status": "Unkept",
+    "original_manager_id": 7,
+    "draft_manager_id": 4,
+    "player_id": 5717
+  },
+  {
+    "id": 22,
+    "draft_order": 8,
+    "year": 2018,
+    "draft_price": 24,
+    "status": "Kept",
+    "original_manager_id": 1,
+    "draft_manager_id": 15,
+    "player_id": 6146
+  },
+  {
+    "id": 29,
+    "draft_order": 1,
+    "year": 2019,
+    "draft_price": 24,
+    "status": "Kept",
+    "original_manager_id": 1,
+    "draft_manager_id": 1,
+    "player_id": 6117
+  },
+  {
+    "id": 30,
+    "draft_order": 2,
+    "year": 2019,
+    "draft_price": 31,
+    "status": "Unkept",
+    "original_manager_id": 9,
+    "draft_manager_id": 9,
+    "player_id": 6147
+  },
+  {
+    "id": 31,
+    "draft_order": 3,
+    "year": 2019,
+    "draft_price": 24,
+    "status": "Kept",
+    "original_manager_id": 7,
+    "draft_manager_id": 7,
+    "player_id": 6280
+  },
+  {
+    "id": 32,
+    "draft_order": 4,
+    "year": 2019,
+    "draft_price": 19,
+    "status": "Kept",
+    "original_manager_id": 6,
+    "draft_manager_id": 5,
+    "player_id": 6276
+  },
+  {
+    "id": 34,
+    "draft_order": 6,
+    "year": 2019,
+    "draft_price": 3,
+    "status": "Unkept",
+    "original_manager_id": 14,
+    "draft_manager_id": 14,
+    "player_id": 6162
+  },
+  {
+    "id": 35,
+    "draft_order": 7,
+    "year": 2019,
+    "draft_price": 3,
+    "status": "Unkept",
+    "original_manager_id": 2,
+    "draft_manager_id": 2,
+    "player_id": 6188
+  },
+  {
+    "id": 36,
+    "draft_order": 8,
+    "year": 2019,
+    "draft_price": 5,
+    "status": "Unkept",
+    "original_manager_id": 5,
+    "draft_manager_id": 5,
+    "player_id": 527
+  },
+  {
+    "id": 39,
+    "draft_order": 11,
+    "year": 2019,
+    "draft_price": 3,
+    "status": "Unkept",
+    "original_manager_id": 4,
+    "draft_manager_id": 4,
+    "player_id": 6170
+  },
+  {
+    "id": 40,
+    "draft_order": 12,
+    "year": 2019,
+    "draft_price": 1,
+    "status": "Unkept",
+    "original_manager_id": 11,
+    "draft_manager_id": 11,
+    "player_id": 530
+  },
+  {
+    "id": 41,
+    "draft_order": 13,
+    "year": 2019,
+    "draft_price": 11,
+    "status": "Unkept",
+    "original_manager_id": 15,
+    "draft_manager_id": 14,
+    "player_id": 531
+  },
+  {
+    "id": 24,
+    "draft_order": 10,
+    "year": 2018,
+    "draft_price": 5,
+    "status": "Kept",
+    "original_manager_id": 9,
+    "draft_manager_id": 6,
+    "player_id": 6109
+  },
+  {
+    "id": 4,
+    "draft_order": 4,
+    "year": 2017,
+    "draft_price": 31,
+    "status": "Kept",
+    "original_manager_id": 7,
+    "draft_manager_id": 3,
+    "player_id": 5716
+  },
+  {
+    "id": 12,
+    "draft_order": 12,
+    "year": 2017,
+    "draft_price": 5,
+    "status": "Kept",
+    "original_manager_id": 2,
+    "draft_manager_id": 2,
+    "player_id": 501
+  },
+  {
+    "id": 19,
+    "draft_order": 5,
+    "year": 2018,
+    "draft_price": 19,
+    "status": "Kept",
+    "original_manager_id": 12,
+    "draft_manager_id": 10,
+    "player_id": 6057
+  },
+  {
+    "id": 38,
+    "draft_order": 10,
+    "year": 2019,
+    "draft_price": 3,
+    "status": "Unkept",
+    "original_manager_id": 17,
+    "draft_manager_id": 17,
+    "player_id": 529
+  },
+  {
+    "id": 17,
+    "draft_order": 3,
+    "year": 2018,
+    "draft_price": 16,
+    "status": "Kept",
+    "original_manager_id": 15,
+    "draft_manager_id": 15,
+    "player_id": 5698
+  },
+  {
+    "id": 5,
+    "draft_order": 5,
+    "year": 2017,
+    "draft_price": 5,
+    "status": "Kept",
+    "original_manager_id": 5,
+    "draft_manager_id": 1,
+    "player_id": 5682
+  },
+  {
+    "id": 42,
+    "draft_order": 14,
+    "year": 2019,
+    "draft_price": 3,
+    "status": "Unkept",
+    "original_manager_id": 12,
+    "draft_manager_id": 12,
+    "player_id": 6536
+  },
+  {
+    "id": 27,
+    "draft_order": 13,
+    "year": 2018,
+    "draft_price": 5,
+    "status": "Kept",
+    "original_manager_id": 17,
+    "draft_manager_id": 9,
+    "player_id": 5677
+  },
+  {
+    "id": 28,
+    "draft_order": 14,
+    "year": 2018,
+    "draft_price": 3,
+    "status": "Unkept",
+    "original_manager_id": 5,
+    "draft_manager_id": 2,
+    "player_id": 507
+  },
+  {
+    "id": 26,
+    "draft_order": 12,
+    "year": 2018,
+    "draft_price": 2,
+    "status": "Unkept",
+    "original_manager_id": 6,
+    "draft_manager_id": 6,
+    "player_id": 506
+  },
+  {
+    "id": 18,
+    "draft_order": 4,
+    "year": 2018,
+    "draft_price": 9,
+    "status": "Kept",
+    "original_manager_id": 2,
+    "draft_manager_id": 2,
+    "player_id": 5675
+  },
+  {
+    "id": 13,
+    "draft_order": 13,
+    "year": 2017,
+    "draft_price": 1,
+    "status": "Unkept",
+    "original_manager_id": 9,
+    "draft_manager_id": 7,
+    "player_id": 1819
+  },
+  {
+    "id": 25,
+    "draft_order": 11,
+    "year": 2018,
+    "draft_price": 2,
+    "status": "Unkept",
+    "original_manager_id": 14,
+    "draft_manager_id": 12,
+    "player_id": 1826
+  },
+  {
+    "id": 33,
+    "draft_order": 5,
+    "year": 2019,
+    "draft_price": 2,
+    "status": "Unkept",
+    "original_manager_id": 3,
+    "draft_manager_id": 6,
+    "player_id": 1830
+  },
+  {
+    "id": 37,
+    "draft_order": 9,
+    "year": 2019,
+    "draft_price": 0,
+    "status": "Unkept",
+    "original_manager_id": 8,
+    "draft_manager_id": 9,
+    "player_id": 6988
+  },
+  {
+    "id": 23,
+    "draft_order": 9,
+    "year": 2018,
+    "draft_price": 5,
+    "status": "Unkept",
+    "original_manager_id": 13,
+    "draft_manager_id": null,
+    "player_id": 5705
+  },
+  {
+    "id": 20,
+    "draft_order": 6,
+    "year": 2018,
+    "draft_price": 2,
+    "status": "Unkept",
+    "original_manager_id": 8,
+    "draft_manager_id": 7,
+    "player_id": 6114
+  }
+]

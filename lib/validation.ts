@@ -44,7 +44,8 @@ export const TradeSchema = z.object({
 export const SeasonSchema = z.object({
   name: NonEmptyStringSchema,
   year: z.number().int().min(2020).max(2050),
-  is_active: z.boolean()
+  is_active: z.boolean(),
+  is_active_assets: z.boolean()
 })
 
 export const PlayerSearchSchema = z.object({
@@ -125,6 +126,7 @@ export const SeasonResponseSchema = z.object({
   name: NonEmptyStringSchema,
   year: z.number().int(),
   is_active: z.boolean(),
+  is_active_assets: z.boolean(),
   created_at: DateStringSchema,
   updated_at: DateStringSchema.optional()
 })

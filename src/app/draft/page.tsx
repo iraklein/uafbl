@@ -35,7 +35,7 @@ interface DraftPick {
   created_at?: string
 }
 
-const CURRENT_SEASON_ID = 1 // 2025-26 Season
+const CURRENT_SEASON_ID = 19 // 2025-26 Season
 
 export default function DraftPage() {
   // Search states

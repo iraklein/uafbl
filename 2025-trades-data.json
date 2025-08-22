@@ -1,0 +1,321 @@
+[
+  {
+    "Date": "April 14, 2025, 9:55:23 AM PDT",
+    "Trade Id": 1
+  },
+  {
+    "Proposed On": "January 6, 2025, 11:50:48 AM PST",
+    "Trade From:": "Weeg",
+    "Other": "Lavine, Lively",
+    "Trade To": "MikeMac",
+    "Other_1": "Dyson, Dick",
+    "Cash_1": 3,
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:25 AM PDT",
+    "Trade Id": 5
+  },
+  {
+    "Proposed On": "January 10, 2025, 1:08:51 PM PST",
+    "Trade From:": "MikeMac",
+    "Other": "Mathurin/JJJ #2",
+    "Cash": 6,
+    "Trade To": "Peskin",
+    "Other_1": "DeMar",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:26 AM PDT",
+    "Trade Id": 6
+  },
+  {
+    "Proposed On": "January 13, 2025, 9:24:48 AM PST",
+    "Trade From:": "Gabe",
+    "Other": "Knecht",
+    "Cash": 5,
+    "Trade To": "Peskin",
+    "Other_1": "Chet",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:34 AM PDT",
+    "Trade Id": 7
+  },
+  {
+    "Proposed On": "January 22, 2025, 7:31:39 PM PST",
+    "Trade From:": "Phil",
+    "Other": "Jalen Johnson\nKlay Thompson\nSpencer Dinwiddie\nMarcus Smart\nScottie Pippen Jr",
+    "Cash": 3,
+    "Trade To": "Jones",
+    "Other_1": "Trae Young\nOG Anunoby\nDerrick White\nLauri Markanen",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:34 AM PDT",
+    "Trade Id": 8
+  },
+  {
+    "Proposed On": "January 23, 2025, 4:43:02 PM PST",
+    "Trade From:": "MikeMac",
+    "Other": "Amen/Hart",
+    "Cash": 5,
+    "Slots": 1,
+    "Trade To": "Luskey",
+    "Other_1": "AD/Book/Jaden McD/Keegan",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:34 AM PDT",
+    "Trade Id": 9
+  },
+  {
+    "Proposed On": "January 24, 2025, 6:32:08 AM PST",
+    "Trade From:": "Phil",
+    "Other": "Matas Buzelis",
+    "Cash": 5,
+    "Trade To": "Weeg",
+    "Other_1": "Daniel Gafford",
+    "Status": "Accepted",
+    "Date": "April 23, 2025, 12:12:31 PM PDT",
+    "Trade Id": 10
+  },
+  {
+    "Proposed On": "January 24, 2025, 6:01:55 PM PST",
+    "Trade From:": "Peskin",
+    "Other": "James Harden\nHarrison Barnes",
+    "Trade To": "Gabe",
+    "Other_1": "Noah Clowney\nReed Sheppard",
+    "Cash_1": 2,
+    "Slots_1": 1,
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:39 AM PDT",
+    "Trade Id": 11
+  },
+  {
+    "Proposed On": "January 26, 2025, 12:46:45 PM PST",
+    "Trade From:": "Buchs",
+    "Other": "Mccain/Castle",
+    "Cash": 5,
+    "Slots": 1,
+    "Trade To": "Bier",
+    "Other_1": "Steph",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:42 AM PDT",
+    "Trade Id": 12
+  },
+  {
+    "Proposed On": "February 5, 2025, 9:05:17 AM PST",
+    "Trade From:": "Horn",
+    "Other": "Bilal, Christie, the Tunnel",
+    "Cash": 12,
+    "Trade To": "Weeg",
+    "Other_1": "Bam, Ja, Reaves",
+    "Status": "Accepted",
+    "Date": "April 23, 2025, 12:12:31 PM PDT",
+    "Trade Id": 14
+  },
+  {
+    "Proposed On": "February 6, 2025, 9:41:08 AM PST",
+    "Trade From:": "Gabe",
+    "Other": "Superman Ware, Devin \"Trae Young's Hairline West\" Carter, Dilly Dilly, Sharpe",
+    "Cash": 13,
+    "Trade To": "Mitch",
+    "Other_1": "Boner, Big Head Brunson, Sure-to-be-healthy Embiid, The Lego Collector",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:49 AM PDT",
+    "Trade Id": 15
+  },
+  {
+    "Proposed On": "February 8, 2025, 6:15:42 PM PST",
+    "Trade From:": "Buchs",
+    "Other": "Ty Jerome, Shaedon Sharpe, Jeremy Sochan",
+    "Cash": 15,
+    "Trade To": "Haight",
+    "Other_1": "Luka, Norm Powell, Beal",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:55 AM PDT",
+    "Trade Id": 16
+  },
+  {
+    "Proposed On": "February 11, 2025, 11:04:14 AM PST",
+    "Trade From:": "Bier",
+    "Other": "Shead",
+    "Cash": 5,
+    "Trade To": "Mitch",
+    "Other_1": "Kawhi",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:56 AM PDT",
+    "Trade Id": 17
+  },
+  {
+    "Proposed On": "February 12, 2025, 4:53:39 PM PST",
+    "Trade From:": "MikeMac",
+    "Other": "DominAyton",
+    "Cash": 3,
+    "Trade To": "Emmer",
+    "Other_1": "Duren",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:55:58 AM PDT",
+    "Trade Id": 18
+  },
+  {
+    "Proposed On": "February 24, 2025, 9:23:56 PM PST",
+    "Trade From:": "MikeMac",
+    "Other": "D Lo",
+    "Cash": 1,
+    "Trade To": "Mitch",
+    "Other_1": "Donte",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:56:00 AM PDT",
+    "Trade Id": 19
+  },
+  {
+    "Proposed On": "March 3, 2025, 4:31:00 AM PST",
+    "Trade From:": "Phil",
+    "Other": "Payton Pritchard, Kyshawn George, Bol Bol",
+    "Cash": 8,
+    "Slots": 1,
+    "Trade To": "Tmac",
+    "Other_1": "Lebron, Kyrie, PG13",
+    "Status": "Accepted",
+    "Date": "April 14, 2025, 9:56:02 AM PDT",
+    "Trade Id": 20
+  },
+  {
+    "Proposed On": "March 3, 2025, 8:02:23 AM PST",
+    "Trade From:": "MikeMac",
+    "Other": "Dunn",
+    "Cash": 2,
+    "Trade To": "Tmac",
+    "Other_1": "Gobert",
+    "Status": "Accepted",
+    "Date": "April 23, 2025, 12:12:30 PM PDT",
+    "Trade Id": 21
+  },
+  {
+    "Proposed On": "March 4, 2025, 6:53:36 PM PST",
+    "Trade From:": "Phil",
+    "Other": "Kyrie Irving",
+    "Cash": 1,
+    "Trade To": "Tmac",
+    "Other_1": "Jonas Valanciunas",
+    "Status": "Accepted",
+    "Date": "March 4, 2025, 7:47:54 PM PST",
+    "Trade Id": 22
+  },
+  {
+    "Proposed On": "March 5, 2025, 2:27:41 PM PST",
+    "Trade From:": "Horn",
+    "Other": "Black Tony",
+    "Cash": 1,
+    "Trade To": "Tmac",
+    "Other_1": "MPJ",
+    "Status": "Accepted",
+    "Date": "March 5, 2025, 2:37:28 PM PST",
+    "Trade Id": 23
+  },
+  {
+    "Proposed On": "March 9, 2025, 7:03:46 AM PDT",
+    "Trade From:": "Emmer",
+    "Other": "Mikal Bridges",
+    "Trade To": "Bier",
+    "Other_1": "Jalen Smith",
+    "Cash_1": 2,
+    "Status": "Accepted",
+    "Date": "March 9, 2025, 8:22:14 AM PDT",
+    "Trade Id": 24
+  },
+  {
+    "Proposed On": "March 10, 2025, 5:24:27 PM PDT",
+    "Trade From:": "Horn",
+    "Other": "Kevin Durant",
+    "Trade To": "Bier",
+    "Other_1": "Stephon Castle",
+    "Cash_1": 6,
+    "Slots_1": 1,
+    "Status": "Accepted",
+    "Date": "March 10, 2025, 5:33:45 PM PDT",
+    "Trade Id": 25
+  },
+  {
+    "Proposed On": "March 11, 2025, 7:53:06 PM PDT",
+    "Trade From:": "Amish",
+    "Other": "Franz, FVV",
+    "Trade To": "Bier",
+    "Other_1": "Keyonte, Conley, Seating priority",
+    "Cash_1": 6,
+    "Status": "Accepted",
+    "Date": "March 11, 2025, 9:14:50 PM PDT",
+    "Trade Id": 26
+  },
+  {
+    "Proposed On": "March 13, 2025, 5:53:59 PM PDT",
+    "Trade From:": "Horn",
+    "Other": "Bam Adebayo",
+    "Trade To": "Bier",
+    "Slots_1": 1,
+    "Status": "Accepted",
+    "Date": "March 13, 2025, 6:33:42 PM PDT",
+    "Trade Id": 27
+  },
+  {
+    "Proposed On": "March 15, 2025, 12:23:16 PM PDT",
+    "Trade From:": "Phil",
+    "Other": "Cam Thomas",
+    "Cash": 2,
+    "Trade To": "Haight",
+    "Other_1": "Nic Claxton",
+    "Status": "Accepted",
+    "Date": "March 15, 2025, 12:30:53 PM PDT",
+    "Trade Id": 28
+  },
+  {
+    "Proposed On": "March 22, 2025, 12:55:56 PM PDT",
+    "Trade From:": "Buchs",
+    "Other": "Naji Marshall (No Trade Clause)",
+    "Trade To": "Peskin",
+    "Other_1": "De'Andre Hunter",
+    "Status": "Accepted",
+    "Date": "March 22, 2025, 3:32:51 PM PDT",
+    "Trade Id": 29
+  },
+  {
+    "Date": "April 14, 2025, 10:00:48 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:07:49 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:07:51 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:07 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:15 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:15 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:15 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:20 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:23 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:26 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 3:00:18 PM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:31 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 10:08:33 AM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 3:00:21 PM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 2:58:24 PM PDT"
+  },
+  {
+    "Date": "April 14, 2025, 3:00:22 PM PDT"
+  }
+]
