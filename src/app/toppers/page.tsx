@@ -19,7 +19,8 @@ export default function ToppersPage() {
 
   const { seasons, loading, error } = useSeasons({ 
     autoSelectDefault: false,
-    filterFunction: seasonsFilter
+    filterFunction: seasonsFilter,
+    excludeFutureSeasons: true
   })
   const [toppersData, setToppersData] = useState<TopperRecord[]>([])
   const [selectedSeason, setSelectedSeason] = useState<string>('all')

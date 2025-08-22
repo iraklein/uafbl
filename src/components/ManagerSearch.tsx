@@ -1,6 +1,7 @@
 import { useManagerSearch } from '../hooks/useManagerSearch'
 import { Manager } from '../types'
 import ErrorAlert from './ErrorAlert'
+import { forwardRef, useRef } from 'react'
 
 interface ManagerSearchProps {
   onManagerSelect?: (manager: Manager) => void
@@ -11,9 +12,10 @@ interface ManagerSearchProps {
   value?: string
   onChange?: (value: string) => void
   managers?: Manager[]
+  autoFocus?: boolean
 }
 
-export default function ManagerSearch({
+const ManagerSearch = forwardRef<HTMLInputElement, ManagerSearchProps>(({
   onManagerSelect,
   placeholder = "Search for manager...",
   className = "",
@@ -21,8 +23,11 @@ export default function ManagerSearch({
   minQueryLength = 1,
   value,
   onChange,
-  managers
-}: ManagerSearchProps) {
+  managers,
+  autoFocus = false
+}, ref) => {
+  const justSelectedRef = useRef(false)
+  
   const {
     query,
     setQuery,
@@ -48,6 +53,14 @@ export default function ManagerSearch({
   const inputValue = value !== undefined ? value : query
   const handleChange = value !== undefined && onChange 
     ? (e: React.ChangeEvent<HTMLInputElement>) => {
+        // Don't show suggestions if we just selected a manager
+        if (justSelectedRef.current) {
+          justSelectedRef.current = false
+          onChange(e.target.value)
+          setQuery(e.target.value)
+          return
+        }
+        
         // Update external state first
         onChange(e.target.value)
         
@@ -64,12 +77,19 @@ export default function ManagerSearch({
       }
     : handleInputChange
 
+  // Wrap the suggestion click to set our flag
+  const wrappedSuggestionClick = (manager: Manager) => {
+    justSelectedRef.current = true
+    handleSuggestionClick(manager)
+  }
+
   return (
     <div className={`relative ${className}`}>
       <ErrorAlert error={error} className="mb-2" />
       
       <div className="relative">
         <input
+          ref={ref}
           type="text"
           value={inputValue}
           onChange={handleChange}
@@ -78,6 +98,7 @@ export default function ManagerSearch({
           onFocus={handleInputFocus}
           placeholder={placeholder}
           disabled={disabled}
+          autoFocus={autoFocus}
           className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 disabled:bg-gray-100 disabled:cursor-not-allowed text-base"
           autoComplete="off"
         />
@@ -95,7 +116,7 @@ export default function ManagerSearch({
               <button
                 key={manager.id}
                 type="button"
-                onClick={() => handleSuggestionClick(manager)}
+                onClick={() => wrappedSuggestionClick(manager)}
                 className={`w-full text-left px-3 py-2 focus:outline-none text-gray-900 border-none ${
                   index === highlightedIndex 
                     ? 'bg-indigo-50 text-indigo-900' 
@@ -110,4 +131,8 @@ export default function ManagerSearch({
       </div>
     </div>
   )
-}
+})
+
+ManagerSearch.displayName = 'ManagerSearch'
+
+export default ManagerSearch

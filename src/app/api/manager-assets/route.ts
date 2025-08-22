@@ -182,9 +182,9 @@ export async function GET(request: NextRequest) {
     const enhancedAssets = (assetsResult.data || []).map((asset: any) => {
       const stats = managerStats.get(asset.manager_id) || { cashSpent: 0, slotsUsed: 0, draftedPlayers: 0, netTradeCash: 0, netTradeSlots: 0 }
       
-      // Pre-draft amounts = base amount (400 cash, 3 slots) + net trade impacts
-      const preDraftCash = 400 + stats.netTradeCash
-      const preDraftSlots = 3 + stats.netTradeSlots
+      // Pre-draft amounts = stored admin values + net trade impacts
+      const preDraftCash = (asset.available_cash || 400) + stats.netTradeCash
+      const preDraftSlots = (asset.available_slots || 3) + stats.netTradeSlots
       
       const cashLeft = preDraftCash - stats.cashSpent
       const slotsLeft = preDraftSlots - stats.slotsUsed
@@ -204,8 +204,13 @@ export async function GET(request: NextRequest) {
       }
     })
 
+    // Sort the enhanced assets alphabetically by manager name
+    const sortedEnhancedAssets = enhancedAssets.sort((a: any, b: any) => 
+      a.managers.manager_name.localeCompare(b.managers.manager_name)
+    )
+
     const responseData = {
-      assets: enhancedAssets,
+      assets: sortedEnhancedAssets,
       activeSeason: assetsSeason.data || null
     }
 

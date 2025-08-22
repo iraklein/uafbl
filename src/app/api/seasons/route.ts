@@ -21,7 +21,7 @@ export async function GET() {
     
     const { data, error } = await supabase
       .from('seasons')
-      .select('id, year, name, is_active, is_active_assets')
+      .select('id, year, name, is_active, is_active_assets, is_offseason')
       .order('year', { ascending: false })
 
     if (error) {

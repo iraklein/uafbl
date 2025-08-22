@@ -227,7 +227,9 @@ export default function Assets() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {assets.map((asset) => {
+                    {assets
+                      .sort((a, b) => (a.managers?.manager_name || '').localeCompare(b.managers?.manager_name || ''))
+                      .map((asset) => {
                       const isDraftComplete = (asset.drafted_players || 0) >= 14 || (asset.cash_left || 0) <= 0
                       return (
                         <tr key={asset.id} className={`hover:bg-gray-50 ${isDraftComplete ? 'bg-red-50' : ''}`}>
@@ -259,10 +261,7 @@ export default function Assets() {
                               min="0"
                             />
                           ) : (
-                            <span 
-                              className={`font-semibold text-gray-600 ${isAdmin ? 'cursor-pointer hover:bg-gray-100 px-2 py-1 rounded' : ''}`}
-                              onClick={() => isAdmin && startEditing(asset.id, asset.available_cash || 0, asset.available_slots || 0)}
-                            >
+                            <span className="font-semibold text-gray-600">
                               ${(asset.available_cash || 0).toLocaleString()}
                             </span>
                           )}
@@ -291,10 +290,7 @@ export default function Assets() {
                               </button>
                             </div>
                           ) : (
-                            <span 
-                              className={`font-semibold text-gray-600 ${isAdmin ? 'cursor-pointer hover:bg-gray-100 px-2 py-1 rounded' : ''}`}
-                              onClick={() => isAdmin && startEditing(asset.id, asset.available_cash || 0, asset.available_slots || 0)}
-                            >
+                            <span className="font-semibold text-gray-600">
                               {asset.available_slots || 0}
                             </span>
                           )}

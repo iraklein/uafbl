@@ -5,6 +5,7 @@ interface UseSeasonsOptions {
   autoSelectDefault?: boolean
   filterFunction?: (seasons: Season[]) => Season[]
   defaultSeasonFilter?: 'latest' | '2024-25' | 'first' | 'active_playing' | 'active_assets'
+  excludeFutureSeasons?: boolean
 }
 
 interface UseSeasonsReturn {
@@ -20,7 +21,8 @@ export function useSeasons(options: UseSeasonsOptions = {}): UseSeasonsReturn {
   const {
     autoSelectDefault = true,
     filterFunction,
-    defaultSeasonFilter = '2024-25'
+    defaultSeasonFilter = '2024-25',
+    excludeFutureSeasons = false
   } = options
 
   const [seasons, setSeasons] = useState<Season[]>([])
@@ -40,6 +42,17 @@ export function useSeasons(options: UseSeasonsOptions = {}): UseSeasonsReturn {
         if (!response.ok) throw new Error('Failed to fetch seasons')
         
         let data = await response.json()
+        
+        // Apply future seasons filter if enabled
+        if (excludeFutureSeasons) {
+          // Find the current active season ID
+          const activeSeason = data.find((season: Season) => season.is_active === true)
+          if (activeSeason) {
+            // Filter to include only seasons with ID <= activeSeason.id + 1
+            const maxSeasonId = activeSeason.id + 1
+            data = data.filter((season: Season) => season.id <= maxSeasonId)
+          }
+        }
         
         // Apply custom filter if provided
         if (filterFunction) {
@@ -96,7 +109,7 @@ export function useSeasons(options: UseSeasonsOptions = {}): UseSeasonsReturn {
     }
 
     fetchSeasons()
-  }, [autoSelectDefault, defaultSeasonFilter, filterFunction])
+  }, [autoSelectDefault, defaultSeasonFilter, filterFunction, excludeFutureSeasons])
 
   return {
     seasons,

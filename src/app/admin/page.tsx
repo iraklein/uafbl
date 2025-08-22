@@ -20,6 +20,16 @@ interface Player {
   name: string
 }
 
+interface ManagerAsset {
+  id: number
+  manager_id: number
+  available_cash: number
+  available_slots: number
+  managers: {
+    manager_name: string
+  }
+}
+
 
 export default function Admin() {
   const [seasons, setSeasons] = useState<Season[]>([])
@@ -38,6 +48,12 @@ export default function Admin() {
   // Player ID Lookup states
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
   const [playerSearchQuery, setPlayerSearchQuery] = useState('')
+  
+  // Manager Base Assets states
+  const [managerAssets, setManagerAssets] = useState<ManagerAsset[]>([])
+  const [assetsLoading, setAssetsLoading] = useState(false)
+  const [isEditingAssets, setIsEditingAssets] = useState(false)
+  const [editValues, setEditValues] = useState<Record<number, { cash: string, slots: string, reason: string }>>({})
   
 
   useEffect(() => {
@@ -68,6 +84,104 @@ export default function Admin() {
   const clearPlayerLookup = () => {
     setSelectedPlayer(null)
     setPlayerSearchQuery('')
+  }
+
+  const fetchManagerAssets = async () => {
+    setAssetsLoading(true)
+    try {
+      const response = await fetch('/api/admin/manager-base-assets')
+      if (!response.ok) throw new Error('Failed to fetch manager assets')
+      const data = await response.json()
+      
+      // Ensure sorting on the client side as well
+      const sortedAssets = (data.assets || []).sort((a: ManagerAsset, b: ManagerAsset) => 
+        a.managers.manager_name.localeCompare(b.managers.manager_name)
+      )
+      
+      console.log('Sorted assets:', sortedAssets.map(a => a.managers.manager_name))
+      setManagerAssets(sortedAssets)
+      
+      // Initialize edit values with current values
+      const initialValues: Record<number, { cash: string, slots: string, reason: string }> = {}
+      sortedAssets.forEach((asset: ManagerAsset) => {
+        initialValues[asset.manager_id] = {
+          cash: asset.available_cash.toString(),
+          slots: asset.available_slots.toString(),
+          reason: ''
+        }
+      })
+      setEditValues(initialValues)
+      setIsEditingAssets(true)
+    } catch (error) {
+      console.error('Error fetching manager assets:', error)
+      setError('Failed to load manager assets')
+    } finally {
+      setAssetsLoading(false)
+    }
+  }
+
+  const updateEditValue = (managerId: number, field: 'cash' | 'slots' | 'reason', value: string) => {
+    setEditValues(prev => ({
+      ...prev,
+      [managerId]: {
+        ...prev[managerId],
+        [field]: value
+      }
+    }))
+  }
+
+  const saveManagerAsset = async (assetId: number, managerId: number) => {
+    const values = editValues[managerId]
+    if (!values) return
+    
+    const cash = parseInt(values.cash)
+    const slots = parseInt(values.slots)
+    
+    if (isNaN(cash) || isNaN(slots) || cash < 0 || slots < 0) {
+      alert('Please enter valid positive numbers')
+      return
+    }
+
+    try {
+      const response = await fetch('/api/update-manager-assets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          assetId,
+          availableCash: cash,
+          availableSlots: slots,
+          reason: values.reason
+        })
+      })
+
+      if (!response.ok) throw new Error('Failed to update manager assets')
+      
+      // Refresh the data from the API to ensure proper sorting
+      const refreshResponse = await fetch('/api/admin/manager-base-assets')
+      if (refreshResponse.ok) {
+        const refreshData = await refreshResponse.json()
+        setManagerAssets(refreshData.assets || [])
+        
+        // Update edit values with fresh data
+        const updatedValues = { ...editValues }
+        refreshData.assets.forEach((asset: ManagerAsset) => {
+          updatedValues[asset.manager_id] = {
+            cash: asset.available_cash.toString(),
+            slots: asset.available_slots.toString(),
+            reason: editValues[asset.manager_id]?.reason || ''
+          }
+        })
+        setEditValues(updatedValues)
+      }
+      
+      // Clear the reason field
+      updateEditValue(managerId, 'reason', '')
+      
+      alert('Manager assets updated successfully')
+    } catch (error) {
+      console.error('Error updating manager assets:', error)
+      alert('Failed to update manager assets')
+    }
   }
 
   const handleStartNewSeason = async () => {
@@ -243,11 +357,110 @@ export default function Admin() {
               </div>
             </div>
 
+            {/* Manager Base Assets */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-purple-200">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                  3
+                </div>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Manager Base Assets</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                <strong>Use this to make adjustments to manager's assets to account for draft day trades, winner bonus ($15), and #chasing790.</strong>
+              </p>
+
+              <div className="flex items-center space-x-4 mb-4">
+                <button
+                  onClick={fetchManagerAssets}
+                  disabled={assetsLoading}
+                  className="px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {assetsLoading ? 'Loading...' : 'Edit Manager Assets'}
+                </button>
+              </div>
+
+              {managerAssets.length > 0 && isEditingAssets && (
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Manager
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Base Cash
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Base Slots
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Reason
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {managerAssets.map((asset) => {
+                        const values = editValues[asset.manager_id] || { cash: asset.available_cash.toString(), slots: asset.available_slots.toString(), reason: '' }
+                        return (
+                          <tr key={asset.id}>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              {asset.managers.manager_name}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                              <input
+                                type="number"
+                                value={values.cash}
+                                onChange={(e) => updateEditValue(asset.manager_id, 'cash', e.target.value)}
+                                className="w-20 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                min="0"
+                                step="1"
+                              />
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                              <input
+                                type="number"
+                                value={values.slots}
+                                onChange={(e) => updateEditValue(asset.manager_id, 'slots', e.target.value)}
+                                className="w-16 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                min="0"
+                                step="1"
+                              />
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                              <input
+                                type="text"
+                                value={values.reason}
+                                onChange={(e) => updateEditValue(asset.manager_id, 'reason', e.target.value)}
+                                placeholder="e.g., winner bonus, trade"
+                                className="w-32 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                              />
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                              <button
+                                onClick={() => saveManagerAsset(asset.id, asset.manager_id)}
+                                className="text-green-600 hover:text-green-900"
+                              >
+                                Save
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+            </div>
+
             {/* Player ID Lookup */}
             <div className="bg-white shadow rounded-lg p-6 border-2 border-blue-200">
               <div className="flex items-center mb-4">
                 <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                  3
+                  4
                 </div>
                 <h3 className="ml-3 text-lg font-semibold text-gray-900">Player ID Lookup</h3>
               </div>

@@ -20,7 +20,8 @@ interface PlayerTradeCount {
 
 export default function Trades() {
   const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons({
-    defaultSeasonFilter: 'active_playing'
+    defaultSeasonFilter: 'active_playing',
+    excludeFutureSeasons: true
   })
   const { currentManagerId } = useAuth()
   const [trades, setTrades] = useState<Trade[]>([])
@@ -48,6 +49,16 @@ export default function Trades() {
   // Dialog states
   const [showSuccessDialog, setShowSuccessDialog] = useState(false)
   const [showErrorDialog, setShowErrorDialog] = useState(false)
+  
+  // Validation state
+  const [currentSeason, setCurrentSeason] = useState<any>(null)
+  const [managerAssets, setManagerAssets] = useState<any[]>([])
+  const [validationErrors, setValidationErrors] = useState<{
+    myCash?: string
+    mySlots?: string
+    partnerCash?: string
+    partnerSlots?: string
+  }>({})
   const [dialogMessage, setDialogMessage] = useState('')
 
   // Fetch trades when season changes
@@ -121,6 +132,12 @@ export default function Trades() {
     }
   }, [selectedPartner, selectedSeason])
 
+  useEffect(() => {
+    if (showProposeModal) {
+      loadValidationData()
+    }
+  }, [showProposeModal, selectedSeason])
+
   const loadTradeFormData = async () => {
     setTradeFormLoading(true)
     try {
@@ -160,6 +177,183 @@ export default function Trades() {
     }
   }
 
+  const loadValidationData = async () => {
+    if (!selectedSeason) return
+
+    try {
+      // Load manager assets for validation
+      const assetsResponse = await fetch('/api/manager-assets')
+      if (assetsResponse.ok) {
+        const assetsData = await assetsResponse.json()
+        setManagerAssets(assetsData.assets || [])
+      }
+
+      // Load current season info to check if offseason
+      const seasonsResponse = await fetch('/api/seasons')
+      if (seasonsResponse.ok) {
+        const seasonsData = await seasonsResponse.json()
+        const activeSeason = seasonsData.find((s: any) => s.is_active)
+        setCurrentSeason(activeSeason)
+      }
+    } catch (error) {
+      console.error('Error loading validation data:', error)
+    }
+  }
+
+  const getMaxTradeableAmounts = (managerId: number): { maxCash: number, maxSlots: number } => {
+    const managerAsset = managerAssets.find(asset => asset.manager_id === managerId)
+    if (!managerAsset) {
+      return { maxCash: 0, maxSlots: 0 }
+    }
+
+    const currentCash = managerAsset.available_cash || 400
+    const currentSlots = managerAsset.available_slots || 3
+
+    // Max cash they can give = current cash - minimum allowed
+    const isOffseason = currentSeason?.is_offseason || false
+    const minCash = isOffseason ? 350 : 380
+    const maxCash = Math.max(0, currentCash - minCash)
+
+    // Max slots they can give = current slots - minimum allowed (2 keeper slots)
+    const maxSlots = Math.max(0, currentSlots - 2)
+
+    return { maxCash, maxSlots }
+  }
+
+  const validateTradeAssets = (managerId: number, cashChange: number, slotsChange: number): { isValid: boolean, error?: string } => {
+    const managerAsset = managerAssets.find(asset => asset.manager_id === managerId)
+    if (!managerAsset) {
+      return { isValid: false, error: `Manager assets not found for manager ID ${managerId}` }
+    }
+
+    // Calculate new totals after trade
+    const newCash = (managerAsset.available_cash || 400) + cashChange
+    const newSlots = (managerAsset.available_slots || 3) + slotsChange
+
+    // Check slot limits (always 2-5 per UAFBL Constitution)
+    if (newSlots < 2 || newSlots > 5) {
+      return { isValid: false, error: `Trade would result in ${newSlots} slots (must be 2-5)` }
+    }
+
+    // Check cash limits based on season/offseason status
+    const isOffseason = currentSeason?.is_offseason || false
+    const minCash = isOffseason ? 350 : 380
+    const maxCashLimit = isOffseason ? 450 : 420
+
+    if (newCash < minCash || newCash > maxCashLimit) {
+      const seasonType = isOffseason ? 'offseason' : 'in-season'
+      return { 
+        isValid: false, 
+        error: `Trade would result in $${newCash} (${seasonType} limit: $${minCash}-$${maxCashLimit})` 
+      }
+    }
+
+    return { isValid: true }
+  }
+
+  const getMaxReceivableAmounts = (managerId: number): { maxCash: number, maxSlots: number } => {
+    const managerAsset = managerAssets.find(asset => asset.manager_id === managerId)
+    if (!managerAsset) {
+      return { maxCash: 0, maxSlots: 0 }
+    }
+
+    const currentCash = managerAsset.available_cash || 400
+    const currentSlots = managerAsset.available_slots || 3
+
+    // Max cash they can receive = maximum allowed - current cash
+    const isOffseason = currentSeason?.is_offseason || false
+    const maxCashLimit = isOffseason ? 450 : 420
+    const maxCash = Math.max(0, maxCashLimit - currentCash)
+
+    // Max slots they can receive = maximum allowed (5) - current slots
+    const maxSlots = Math.max(0, 5 - currentSlots)
+
+    return { maxCash, maxSlots }
+  }
+
+  const validateInput = (value: string, type: 'myCash' | 'mySlots' | 'partnerCash' | 'partnerSlots'): string | null => {
+    if (!value || value === '') return null
+    
+    const numValue = parseInt(value)
+    if (isNaN(numValue) || numValue < 0) return null
+    
+    let maxAllowed = 0
+    let errorMessage = ''
+    
+    if (type === 'myCash' && currentManagerId && selectedPartner) {
+      maxAllowed = Math.min(
+        getMaxTradeableAmounts(currentManagerId).maxCash,
+        getMaxReceivableAmounts(selectedPartner.id).maxCash
+      )
+      const canGive = getMaxTradeableAmounts(currentManagerId).maxCash
+      const theyCanReceive = getMaxReceivableAmounts(selectedPartner.id).maxCash
+      if (canGive < theyCanReceive) {
+        errorMessage = `You can only give $${canGive} cash`
+      } else {
+        errorMessage = `They can only receive $${theyCanReceive} cash`
+      }
+    } else if (type === 'mySlots' && currentManagerId && selectedPartner) {
+      maxAllowed = Math.min(
+        getMaxTradeableAmounts(currentManagerId).maxSlots,
+        getMaxReceivableAmounts(selectedPartner.id).maxSlots
+      )
+      const canGive = getMaxTradeableAmounts(currentManagerId).maxSlots
+      const theyCanReceive = getMaxReceivableAmounts(selectedPartner.id).maxSlots
+      if (canGive < theyCanReceive) {
+        errorMessage = `You can only give ${canGive} slots`
+      } else {
+        errorMessage = `They can only receive ${theyCanReceive} slots`
+      }
+    } else if (type === 'partnerCash' && currentManagerId && selectedPartner) {
+      maxAllowed = Math.min(
+        getMaxTradeableAmounts(selectedPartner.id).maxCash,
+        getMaxReceivableAmounts(currentManagerId).maxCash
+      )
+      const theyCanGive = getMaxTradeableAmounts(selectedPartner.id).maxCash
+      const youCanReceive = getMaxReceivableAmounts(currentManagerId).maxCash
+      if (theyCanGive < youCanReceive) {
+        errorMessage = `They can only give $${theyCanGive} cash`
+      } else {
+        errorMessage = `You can only receive $${youCanReceive} cash`
+      }
+    } else if (type === 'partnerSlots' && currentManagerId && selectedPartner) {
+      maxAllowed = Math.min(
+        getMaxTradeableAmounts(selectedPartner.id).maxSlots,
+        getMaxReceivableAmounts(currentManagerId).maxSlots
+      )
+      const theyCanGive = getMaxTradeableAmounts(selectedPartner.id).maxSlots
+      const youCanReceive = getMaxReceivableAmounts(currentManagerId).maxSlots
+      if (theyCanGive < youCanReceive) {
+        errorMessage = `They can only give ${theyCanGive} slots`
+      } else {
+        errorMessage = `You can only receive ${youCanReceive} slots`
+      }
+    }
+    
+    if (numValue > maxAllowed) {
+      return errorMessage
+    }
+    
+    return null
+  }
+
+  const isTradeValid = () => {
+    // Check if at least one asset is being traded from BOTH sides
+    const myAssetsSelected = (
+      (myCash && parseInt(myCash) > 0) ||
+      (mySlots && parseInt(mySlots) > 0) ||
+      selectedMyPlayers.length > 0
+    )
+    
+    const theirAssetsSelected = (
+      (partnerCash && parseInt(partnerCash) > 0) ||
+      (partnerSlots && parseInt(partnerSlots) > 0) ||
+      selectedPartnerPlayers.length > 0
+    )
+    
+    return myAssetsSelected && theirAssetsSelected
+  }
+
   const resetTradeForm = () => {
     setSelectedPartner(null)
     setPartnerQuery('')
@@ -182,19 +376,48 @@ export default function Trades() {
 
     setTradeFormLoading(true)
     try {
+      const proposerCash = myCash ? parseInt(myCash) : 0
+      const proposerSlots = mySlots ? parseInt(mySlots) : 0
+      const receiverCash = partnerCash ? parseInt(partnerCash) : 0
+      const receiverSlots = partnerSlots ? parseInt(partnerSlots) : 0
+
+      // Validate trade for proposer (me)
+      // Net change: receiving - giving
+      const proposerCashChange = receiverCash - proposerCash
+      const proposerSlotsChange = receiverSlots - proposerSlots
+      const proposerValidation = validateTradeAssets(currentManagerId, proposerCashChange, proposerSlotsChange)
+      
+      if (!proposerValidation.isValid) {
+        setDialogMessage(`Invalid trade for you: ${proposerValidation.error}`)
+        setShowErrorDialog(true)
+        return
+      }
+
+      // Validate trade for receiver (partner)
+      // Net change: receiving - giving (opposite of proposer)
+      const receiverCashChange = proposerCash - receiverCash
+      const receiverSlotsChange = proposerSlots - receiverSlots
+      const receiverValidation = validateTradeAssets(selectedPartner.id, receiverCashChange, receiverSlotsChange)
+      
+      if (!receiverValidation.isValid) {
+        setDialogMessage(`Invalid trade for ${selectedPartner.manager_name}: ${receiverValidation.error}`)
+        setShowErrorDialog(true)
+        return
+      }
+
       const tradeData = {
         season_id: selectedSeason,
         proposer_manager_id: currentManagerId,
         receiver_manager_id: selectedPartner.id,
-        proposer_cash: myCash ? parseInt(myCash) : 0,
-        proposer_slots: mySlots ? parseInt(mySlots) : 0,
-        receiver_cash: partnerCash ? parseInt(partnerCash) : 0,
-        receiver_slots: partnerSlots ? parseInt(partnerSlots) : 0,
+        proposer_cash: proposerCash,
+        proposer_slots: proposerSlots,
+        receiver_cash: receiverCash,
+        receiver_slots: receiverSlots,
         proposer_players: selectedMyPlayers,
         receiver_players: selectedPartnerPlayers
       }
 
-      console.log('Submitting trade proposal:', tradeData)
+      console.log('Submitting validated trade proposal:', tradeData)
 
       const response = await fetch('/api/trades', {
         method: 'POST',
@@ -286,6 +509,19 @@ export default function Trades() {
         // Show success message
         setDialogMessage(`Trade ${action === 'accept' ? 'accepted' : 'rejected'} successfully!`)
         setShowSuccessDialog(true)
+
+        // If trade was accepted, refresh manager assets cache and reload validation data
+        if (action === 'accept') {
+          try {
+            await fetch(`/api/manager-assets?refresh=true&t=${Date.now()}`)
+            console.log('Manager assets cache refreshed after trade acceptance')
+            // Reload validation data to update the current page's manager assets state
+            await loadValidationData()
+            console.log('Validation data reloaded after trade acceptance')
+          } catch (error) {
+            console.warn('Failed to refresh manager assets cache or validation data:', error)
+          }
+        }
 
         // Refresh trade proposals
         const seasonForProposals = selectedSeason
@@ -585,7 +821,8 @@ export default function Trades() {
           
           {/* Controls section */}
           <div className="mb-4">
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+            {/* Season Selector and Trade Info Row */}
+            <div className="flex flex-row space-x-3 sm:space-x-4 mb-3 sm:mb-0">
               {/* Season Selector */}
               <div className="flex-shrink-0">
                 <SeasonSelector
@@ -593,6 +830,7 @@ export default function Trades() {
                   selectedSeason={selectedSeason}
                   onSeasonChange={setSelectedSeason}
                   loading={loading}
+                  className="px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-xs sm:text-sm w-22 sm:w-26"
                 />
               </div>
 
@@ -609,14 +847,22 @@ export default function Trades() {
                 </div>
               )}
 
-              {/* Propose Trade Button - full width on mobile */}
+              {/* Propose Trade Button - positioned for desktop */}
               <button
                 onClick={() => setShowProposeModal(true)}
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors w-full sm:w-auto flex-shrink-0"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors w-auto flex-shrink-0 hidden sm:block"
               >
                 Propose Trade
               </button>
             </div>
+            
+            {/* Propose Trade Button - full width on mobile only */}
+            <button
+              onClick={() => setShowProposeModal(true)}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors w-full block sm:hidden"
+            >
+              Propose Trade
+            </button>
           </div>
         </div>
 
@@ -687,10 +933,31 @@ export default function Trades() {
         {/* Propose Trade Modal */}
         {showProposeModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
-              <div className="p-4 sm:p-6">
-                <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Propose Trade</h2>
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] flex flex-col">
+              {/* Header - Fixed */}
+              <div className="p-4 sm:p-6 border-b border-gray-200 flex-shrink-0">
+                <div className="flex justify-between items-center">
+                  {!tradeFormLoading ? (
+                    <div className="flex items-center space-x-3">
+                      <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Propose Trade with</h2>
+                      <div className="w-64">
+                        <ManagerSearch
+                          value={partnerQuery}
+                          onChange={setPartnerQuery}
+                          managers={managers.filter(m => m.id !== currentManagerId)}
+                          onManagerSelect={(manager) => {
+                            setSelectedPartner(manager)
+                            setPartnerQuery(manager.manager_name)
+                          }}
+                          placeholder="Select Manager"
+                          className="w-full"
+                          autoFocus={true}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Propose Trade</h2>
+                  )}
                   <button
                     onClick={() => {
                       setShowProposeModal(false)
@@ -703,7 +970,10 @@ export default function Trades() {
                     </svg>
                   </button>
                 </div>
+              </div>
 
+              {/* Scrollable Content Area */}
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
                 {/* Trade Form Content */}
                 {tradeFormLoading ? (
                   <div className="text-center py-8">
@@ -711,121 +981,98 @@ export default function Trades() {
                   </div>
                 ) : (
                   <div className="space-y-6">
-                    {/* Manager Selector */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Select Manager to Trade With:
-                      </label>
-                      <ManagerSearch
-                        value={partnerQuery}
-                        onChange={setPartnerQuery}
-                        managers={managers.filter(m => m.id !== currentManagerId)}
-                        onManagerSelect={(manager) => {
-                          setSelectedPartner(manager)
-                          setPartnerQuery(manager.manager_name)
-                        }}
-                        placeholder="Search for manager..."
-                        className="w-full"
-                      />
-                    </div>
-
-                    {selectedPartner && (
-                      <>
-                        {/* Trade Section Headers */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                          <h3 className="text-lg font-medium text-gray-900 text-center bg-blue-50 py-2 rounded">My Trade</h3>
-                          <h3 className="text-lg font-medium text-gray-900 text-center bg-green-50 py-2 rounded">
-                            {selectedPartner?.manager_name}'s Trade
+                        {/* Trade Packages Container */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          {/* My Trade Section */}
+                          <div className="mb-8 lg:mb-0">
+                          <h3 className="text-lg font-medium text-gray-900 text-center bg-blue-50 py-3 rounded-lg mb-4">
+                            My Trade Package
                           </h3>
-                        </div>
-                        
-                        {/* Cash/Slots Section */}
-                        <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-4 mb-6">
-                          {/* My Cash/Slots */}
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h4 className="text-sm font-medium text-blue-900 mb-3">My Assets</h4>
+                          
+                          {/* My Assets */}
+                          <div className="bg-blue-50 p-4 rounded-lg mb-4">
                             <div className="grid grid-cols-2 gap-3">
                               <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Cash</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Cash</label>
+                                {currentManagerId && (
+                                  <p className="text-xs text-gray-600 mb-2">
+                                    Max: ${getMaxTradeableAmounts(currentManagerId).maxCash}
+                                  </p>
+                                )}
                                 <input
                                   type="number"
                                   min="0"
+                                  max={currentManagerId && selectedPartner ? Math.min(
+                                    getMaxTradeableAmounts(currentManagerId).maxCash,
+                                    getMaxReceivableAmounts(selectedPartner.id).maxCash
+                                  ) : undefined}
                                   value={myCash}
                                   onChange={(e) => {
                                     const value = e.target.value
-                                    if (value === '' || parseFloat(value) >= 0) {
-                                      setMyCash(value)
-                                    }
+                                    setMyCash(value)
+                                    
+                                    // Validate and set error
+                                    const error = validateInput(value, 'myCash')
+                                    setValidationErrors(prev => ({
+                                      ...prev,
+                                      myCash: error || undefined
+                                    }))
                                   }}
                                   placeholder="$0"
-                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                  className={`w-full px-3 py-2 text-base border rounded-md focus:outline-none focus:ring-2 text-gray-900 ${
+                                    validationErrors.myCash 
+                                      ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
+                                      : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                                  }`}
                                 />
+                                {validationErrors.myCash && (
+                                  <p className="text-red-600 text-xs mt-1">{validationErrors.myCash}</p>
+                                )}
                               </div>
                               <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Slots</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Slots</label>
+                                {currentManagerId && (
+                                  <p className="text-xs text-gray-600 mb-2">
+                                    Max: {getMaxTradeableAmounts(currentManagerId).maxSlots}
+                                  </p>
+                                )}
                                 <input
                                   type="number"
                                   min="0"
+                                  max={currentManagerId && selectedPartner ? Math.min(
+                                    getMaxTradeableAmounts(currentManagerId).maxSlots,
+                                    getMaxReceivableAmounts(selectedPartner.id).maxSlots
+                                  ) : undefined}
                                   value={mySlots}
                                   onChange={(e) => {
                                     const value = e.target.value
-                                    if (value === '' || parseFloat(value) >= 0) {
-                                      setMySlots(value)
-                                    }
+                                    setMySlots(value)
+                                    
+                                    // Validate and set error
+                                    const error = validateInput(value, 'mySlots')
+                                    setValidationErrors(prev => ({
+                                      ...prev,
+                                      mySlots: error || undefined
+                                    }))
                                   }}
                                   placeholder="0"
-                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                  className={`w-full px-3 py-2 text-base border rounded-md focus:outline-none focus:ring-2 text-gray-900 ${
+                                    validationErrors.mySlots 
+                                      ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
+                                      : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                                  }`}
                                 />
+                                {validationErrors.mySlots && (
+                                  <p className="text-red-600 text-xs mt-1">{validationErrors.mySlots}</p>
+                                )}
                               </div>
                             </div>
                           </div>
                           
-                          {/* Partner Cash/Slots */}
-                          <div className="bg-green-50 p-4 rounded-lg">
-                            <h4 className="text-sm font-medium text-green-900 mb-3">Their Assets</h4>
-                            <div className="grid grid-cols-2 gap-3">
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Cash</label>
-                                <input
-                                  type="number"
-                                  min="0"
-                                  value={partnerCash}
-                                  onChange={(e) => {
-                                    const value = e.target.value
-                                    if (value === '' || parseFloat(value) >= 0) {
-                                      setPartnerCash(value)
-                                    }
-                                  }}
-                                  placeholder="$0"
-                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Slots</label>
-                                <input
-                                  type="number"
-                                  min="0"
-                                  value={partnerSlots}
-                                  onChange={(e) => {
-                                    const value = e.target.value
-                                    if (value === '' || parseFloat(value) >= 0) {
-                                      setPartnerSlots(value)
-                                    }
-                                  }}
-                                  placeholder="0"
-                                  className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Players Section */}
-                        <div className="space-y-6 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-4">
                           {/* My Players */}
                           <div className="bg-blue-50 p-4 rounded-lg">
                             <label className="block text-sm font-medium text-blue-900 mb-3">My Players</label>
-                            <div className="border border-blue-200 rounded-md max-h-48 sm:max-h-40 overflow-y-auto bg-white">
+                            <div className="border border-blue-200 rounded-md min-h-96 bg-white">
                               {myRoster.length > 0 ? (
                                 <div className="divide-y divide-gray-200">
                                   {myRoster.map(player => (
@@ -851,11 +1098,98 @@ export default function Trades() {
                               )}
                             </div>
                           </div>
+                        </div>
 
+                          {/* Partner Trade Section */}
+                          <div className="mb-6 lg:mb-0">
+                          <h3 className="text-lg font-medium text-gray-900 text-center bg-green-50 py-3 rounded-lg mb-4">
+                            {selectedPartner?.manager_name ? `${selectedPartner.manager_name}'s Trade Package` : 'Their Trade Package'}
+                          </h3>
+                          
+                          {/* Partner Assets */}
+                          <div className="bg-green-50 p-4 rounded-lg mb-4">
+                            <div className="grid grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Cash</label>
+                                {selectedPartner && currentManagerId && (
+                                  <p className="text-xs text-gray-600 mb-2">
+                                    Max you can receive: ${getMaxReceivableAmounts(currentManagerId).maxCash}
+                                  </p>
+                                )}
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max={selectedPartner && currentManagerId ? Math.min(
+                                    getMaxTradeableAmounts(selectedPartner.id).maxCash,
+                                    getMaxReceivableAmounts(currentManagerId).maxCash
+                                  ) : undefined}
+                                  value={partnerCash}
+                                  onChange={(e) => {
+                                    const value = e.target.value
+                                    setPartnerCash(value)
+                                    
+                                    // Validate and set error
+                                    const error = validateInput(value, 'partnerCash')
+                                    setValidationErrors(prev => ({
+                                      ...prev,
+                                      partnerCash: error || undefined
+                                    }))
+                                  }}
+                                  placeholder="$0"
+                                  className={`w-full px-3 py-2 text-base border rounded-md focus:outline-none focus:ring-2 text-gray-900 ${
+                                    validationErrors.partnerCash 
+                                      ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
+                                      : 'border-gray-300 focus:ring-green-500 focus:border-green-500'
+                                  }`}
+                                />
+                                {validationErrors.partnerCash && (
+                                  <p className="text-red-600 text-xs mt-1">{validationErrors.partnerCash}</p>
+                                )}
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Slots</label>
+                                {selectedPartner && currentManagerId && (
+                                  <p className="text-xs text-gray-600 mb-2">
+                                    Max you can receive: {getMaxReceivableAmounts(currentManagerId).maxSlots}
+                                  </p>
+                                )}
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max={selectedPartner && currentManagerId ? Math.min(
+                                    getMaxTradeableAmounts(selectedPartner.id).maxSlots,
+                                    getMaxReceivableAmounts(currentManagerId).maxSlots
+                                  ) : undefined}
+                                  value={partnerSlots}
+                                  onChange={(e) => {
+                                    const value = e.target.value
+                                    setPartnerSlots(value)
+                                    
+                                    // Validate and set error
+                                    const error = validateInput(value, 'partnerSlots')
+                                    setValidationErrors(prev => ({
+                                      ...prev,
+                                      partnerSlots: error || undefined
+                                    }))
+                                  }}
+                                  placeholder="0"
+                                  className={`w-full px-3 py-2 text-base border rounded-md focus:outline-none focus:ring-2 text-gray-900 ${
+                                    validationErrors.partnerSlots 
+                                      ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
+                                      : 'border-gray-300 focus:ring-green-500 focus:border-green-500'
+                                  }`}
+                                />
+                                {validationErrors.partnerSlots && (
+                                  <p className="text-red-600 text-xs mt-1">{validationErrors.partnerSlots}</p>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                          
                           {/* Partner Players */}
                           <div className="bg-green-50 p-4 rounded-lg">
                             <label className="block text-sm font-medium text-green-900 mb-3">Their Players</label>
-                            <div className="border border-green-200 rounded-md max-h-48 sm:max-h-40 overflow-y-auto bg-white">
+                            <div className="border border-green-200 rounded-md min-h-96 bg-white">
                               {partnerRoster.length > 0 ? (
                                 <div className="divide-y divide-gray-200">
                                   {partnerRoster.map(player => (
@@ -884,29 +1218,31 @@ export default function Trades() {
                             </div>
                           </div>
                         </div>
-                      </>
-                    )}
-                    
-                    <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3 pt-4 border-t border-gray-200">
-                      <button
-                        onClick={() => {
-                          setShowProposeModal(false)
-                          resetTradeForm()
-                        }}
-                        className="w-full sm:w-auto px-6 py-3 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 font-medium"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        onClick={handleTradeSubmit}
-                        disabled={!selectedPartner || tradeFormLoading}
-                        className="w-full sm:w-auto px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
-                      >
-                        {tradeFormLoading ? 'Creating Trade...' : 'Propose Trade'}
-                      </button>
-                    </div>
+                        </div>
                   </div>
                 )}
+              </div>
+
+              {/* Sticky Footer */}
+              <div className="border-t border-gray-200 p-4 sm:p-6 flex-shrink-0">
+                <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                  <button
+                    onClick={() => {
+                      setShowProposeModal(false)
+                      resetTradeForm()
+                    }}
+                    className="w-full sm:w-auto px-6 py-3 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 font-medium"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleTradeSubmit}
+                    disabled={!selectedPartner || tradeFormLoading || !isTradeValid()}
+                    className="w-full sm:w-auto px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                  >
+                    {tradeFormLoading ? 'Creating Trade...' : 'Propose Trade'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
