@@ -13,40 +13,31 @@ export default function ConfirmEmail() {
   useEffect(() => {
     const handleEmailConfirmation = async () => {
       try {
-        // Handle both token formats for different confirmation types
-        const token_hash = searchParams.get('token_hash') || searchParams.get('token')
-        const type = searchParams.get('type')
+        // Check if user is already signed in from the confirmation
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+        
+        if (sessionError) {
+          console.error('Session error:', sessionError)
+          setError('Failed to confirm email')
+          setLoading(false)
+          return
+        }
 
-        if (token_hash && (type === 'email' || type === 'signup')) {
-          // Verify the email confirmation token
-          const { data, error } = await supabase.auth.verifyOtp({
-            token_hash,
-            type: type === 'signup' ? 'email' : type
-          })
+        if (session?.user) {
+          // User is confirmed and signed in, link to manager record
+          const { error: updateError } = await supabase
+            .from('managers')
+            .update({ auth_id: session.user.id })
+            .eq('email', session.user.email)
 
-          if (error) {
-            console.error('Email confirmation error:', error)
-            setError('Invalid or expired confirmation link')
-            setLoading(false)
-            return
+          if (updateError) {
+            console.error('Error linking user to manager:', updateError)
           }
 
-          if (data.user) {
-            // Link the auth user to the manager record
-            const { error: updateError } = await supabase
-              .from('managers')
-              .update({ auth_id: data.user.id })
-              .eq('email', data.user.email)
-
-            if (updateError) {
-              console.error('Error linking user to manager:', updateError)
-            }
-
-            // Redirect to the main app - user is now confirmed and logged in
-            router.push('/')
-          }
+          // Redirect to the main app
+          router.push('/')
         } else {
-          setError('Missing confirmation parameters')
+          setError('Email confirmation failed. Please try signing up again.')
           setLoading(false)
         }
       } catch (error) {
@@ -57,7 +48,7 @@ export default function ConfirmEmail() {
     }
 
     handleEmailConfirmation()
-  }, [searchParams, router])
+  }, [router])
 
   if (loading) {
     return (
