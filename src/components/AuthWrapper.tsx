@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '../../lib/supabase'
 import type { User } from '@supabase/supabase-js'
 import { AuthProvider } from '../contexts/AuthContext'
@@ -544,25 +545,114 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
 
   return (
     <div>
-      {/* Auth header with logout */}
+      {/* Auth header with UAFBL branding and team logo */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-12">
-            <div className="text-sm text-gray-600">
-              Welcome, {managerName || user.email}
-            </div>
-            <button
-              onClick={handleLogout}
-              className="text-sm text-gray-500 hover:text-gray-700 font-medium"
-            >
-              Sign Out
-            </button>
+            {/* UAFBL Logo and Text (left side) */}
+            <Link href="/rosters" className="flex items-center hover:opacity-80 transition-opacity">
+              <img 
+                src="/uafbl-logo.png" 
+                alt="UAFBL Logo" 
+                className="h-6 w-auto mr-2"
+              />
+              <h1 className="text-lg font-bold text-gray-900">UAFBL</h1>
+            </Link>
+            
+            {/* Team Logo with Flyout (right side) */}
+            <TeamLogoDropdown 
+              managerName={managerName} 
+              currentManagerId={currentManagerId}
+              onSignOut={handleLogout}
+            />
           </div>
         </div>
       </div>
       <AuthProvider isAdmin={isAdmin} currentManagerId={currentManagerId} managerEmail={managerEmail}>
         {children}
       </AuthProvider>
+    </div>
+  )
+}
+
+// Team Logo Dropdown Component
+interface TeamLogoDropdownProps {
+  managerName: string
+  currentManagerId?: number
+  onSignOut: () => void
+}
+
+function TeamLogoDropdown({ managerName, currentManagerId, onSignOut }: TeamLogoDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  // Map manager IDs to team logo files
+  const getTeamLogo = (managerId?: number): string => {
+    if (!managerId) return '/uafbl-logo.png' // fallback
+    
+    const logoMap: { [key: number]: string } = {
+      1: '/Amish.png',
+      2: '/Bier.png', 
+      3: '/Buchs.png',
+      4: '/Gabe.png',
+      5: '/Haight.png',
+      6: '/Haight.png', // Duplicate of 5 for now
+      7: '/Horn.png',
+      8: '/Jones.png',
+      9: '/Leonine Facies.png',
+      10: '/Luskey.png',
+      11: '/MikeMac.png',
+      12: '/Mitch.png',
+      13: '/Peskin.png',
+      14: '/Phil.png',
+      15: '/Tmac.png',
+      16: '/Weeg.png'
+    }
+    
+    return logoMap[managerId] || '/uafbl-logo.png'
+  }
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center space-x-2 text-sm text-gray-600 hover:text-gray-800 focus:outline-none"
+      >
+        <img 
+          src={getTeamLogo(currentManagerId)} 
+          alt={`${managerName} team logo`}
+          className="h-8 w-8 rounded-full object-cover border border-gray-300"
+        />
+        <span className="hidden sm:block">{managerName}</span>
+      </button>
+      
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 z-10" 
+            onClick={() => setIsOpen(false)}
+          />
+          
+          {/* Dropdown Menu */}
+          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-20">
+            <div className="py-1">
+              <div className="px-4 py-2 border-b border-gray-100">
+                <div className="text-sm font-medium text-gray-900">{managerName}</div>
+                <div className="text-xs text-gray-500">Team Manager</div>
+              </div>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  onSignOut()
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

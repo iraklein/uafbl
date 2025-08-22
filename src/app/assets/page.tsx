@@ -129,7 +129,7 @@ export default function Assets() {
   const totalDraftedPlayers = assets.reduce((sum, asset) => sum + (asset.drafted_players || 0), 0)
 
   return (
-    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+    <div className="min-h-screen bg-gray-50 pb-4 sm:pb-8">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 sm:px-6 lg:px-8">
         <Header />
 
@@ -395,7 +395,7 @@ export default function Assets() {
             </div>
 
             {assets.length === 0 && (
-              <div className="text-center py-8">
+              <div className="text-center pb-8">
                 <div className="text-lg text-gray-600">No manager assets found.</div>
               </div>
             )}

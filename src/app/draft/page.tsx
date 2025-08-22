@@ -441,7 +441,7 @@ export default function DraftPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Header />
 
@@ -852,7 +852,7 @@ export default function DraftPage() {
           </div>
           
           {draftPicks.length === 0 && (
-            <div className="text-center py-8">
+            <div className="text-center pb-8">
               <div className="text-gray-500">No draft picks yet. Start drafting!</div>
             </div>
           )}

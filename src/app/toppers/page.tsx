@@ -132,7 +132,7 @@ export default function ToppersPage() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Header />
 
@@ -283,7 +283,7 @@ export default function ToppersPage() {
         )}
 
         {!toppersLoading && filteredToppersData.length === 0 && toppersData.length > 0 && (
-          <div className="text-center py-8">
+          <div className="text-center pb-8">
             <div className="text-lg text-gray-600">No toppers match the current filters.</div>
             <button
               onClick={clearFilters}
