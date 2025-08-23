@@ -493,11 +493,13 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     )
   }
 
-  // Allow unauthenticated access to auth pages
+  // Allow unauthenticated access to auth pages and Yahoo test pages
   if (!user && typeof window !== 'undefined' && 
       (window.location.pathname.includes('/auth/confirm') || 
        window.location.pathname.includes('/auth/setup-password') || 
-       window.location.pathname.includes('/auth/signup'))) {
+       window.location.pathname.includes('/auth/signup') ||
+       window.location.pathname.includes('/yahoo-test') ||
+       window.location.pathname.includes('/yahoo-success'))) {
     return (
       <AuthProvider isAdmin={isAdmin} currentManagerId={currentManagerId} managerEmail={managerEmail}>
         {children}

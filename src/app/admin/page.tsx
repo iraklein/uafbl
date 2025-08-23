@@ -49,6 +49,11 @@ export default function Admin() {
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
   const [playerSearchQuery, setPlayerSearchQuery] = useState('')
   
+  // Create Player states
+  const [newPlayerName, setNewPlayerName] = useState('')
+  const [creatingPlayer, setCreatingPlayer] = useState(false)
+  const [createPlayerResult, setCreatePlayerResult] = useState('')
+  
   // Manager Base Assets states
   const [managerAssets, setManagerAssets] = useState<ManagerAsset[]>([])
   const [assetsLoading, setAssetsLoading] = useState(false)
@@ -85,6 +90,39 @@ export default function Admin() {
   const clearPlayerLookup = () => {
     setSelectedPlayer(null)
     setPlayerSearchQuery('')
+  }
+
+  const handleCreatePlayer = async () => {
+    if (!newPlayerName.trim()) {
+      setCreatePlayerResult('❌ Player name is required')
+      return
+    }
+    
+    setCreatingPlayer(true)
+    setCreatePlayerResult('')
+    
+    try {
+      const response = await fetch('/api/players', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: newPlayerName.trim() })
+      })
+      
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to create player')
+      }
+      
+      const newPlayer = await response.json()
+      setCreatePlayerResult(`✅ Created player: ${newPlayer.name} (ID: ${newPlayer.id})`)
+      setNewPlayerName('')
+      
+    } catch (error) {
+      console.error('Error creating player:', error)
+      setCreatePlayerResult(`❌ ${error instanceof Error ? error.message : 'Failed to create player'}`)
+    } finally {
+      setCreatingPlayer(false)
+    }
   }
 
   const fetchManagerAssets = async () => {
@@ -459,11 +497,48 @@ export default function Admin() {
 
             </div>
 
+            {/* Yahoo Player Mappings */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-yellow-200">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-yellow-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                  4
+                </div>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Yahoo Player Mappings</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                <strong>Map Yahoo Fantasy players to UAFBL players</strong> for roster sync integration. This allows the system to match players between Yahoo's API and your internal database.
+              </p>
+
+              <div className="flex items-center space-x-4 mb-4">
+                <a
+                  href="/admin/yahoo-mappings"
+                  className="px-4 py-2 bg-yellow-600 text-white text-sm font-medium rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                >
+                  Manage Yahoo Mappings
+                </a>
+              </div>
+
+              <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
+                <div className="text-sm text-yellow-700">
+                  <strong>Yahoo Integration Features:</strong>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Map top fantasy players to UAFBL database</li>
+                    <li>Enable daily roster sync from Yahoo during season</li>
+                    <li>Support for trade processing and roster updates</li>
+                    <li>Handle player name variations and character encoding</li>
+                  </ul>
+                  <div className="mt-2 font-medium text-yellow-800">
+                    💡 Start by mapping the top 25-50 most relevant players for your league.
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Player ID Lookup */}
             <div className="bg-white shadow rounded-lg p-6 border-2 border-blue-200">
               <div className="flex items-center mb-4">
                 <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                  4
+                  5
                 </div>
                 <h3 className="ml-3 text-lg font-semibold text-gray-900">Player ID Lookup</h3>
               </div>
@@ -522,6 +597,74 @@ export default function Admin() {
                     Select a player from the search results to see their ID
                   </div>
                 )}
+              </div>
+            </div>
+
+            {/* Create Player */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-indigo-200">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                  6
+                </div>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Create Player</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Manually add a new player to the database when they're not found in existing player lists.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-end space-x-4">
+                  <div className="flex-1">
+                    <label htmlFor="newPlayerName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Player Name
+                    </label>
+                    <input
+                      id="newPlayerName"
+                      type="text"
+                      value={newPlayerName}
+                      onChange={(e) => setNewPlayerName(e.target.value)}
+                      placeholder="Enter new player name..."
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                      disabled={creatingPlayer}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          handleCreatePlayer()
+                        }
+                      }}
+                    />
+                  </div>
+                  <button
+                    onClick={handleCreatePlayer}
+                    disabled={creatingPlayer || !newPlayerName.trim()}
+                    className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {creatingPlayer ? 'Creating...' : 'Create Player'}
+                  </button>
+                </div>
+
+                {createPlayerResult && (
+                  <div className={`text-sm ${
+                    createPlayerResult.includes('✅') ? 'text-green-600' : 'text-red-600'
+                  }`}>
+                    {createPlayerResult}
+                  </div>
+                )}
+              </div>
+
+              <div className="bg-indigo-50 border border-indigo-200 rounded-md p-4 mt-4">
+                <div className="text-sm text-indigo-700">
+                  <strong>Use this when:</strong>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Adding rookies or new players not in the database</li>
+                    <li>Creating players for manual draft entries</li>
+                    <li>Adding international or lesser-known players</li>
+                    <li>Fixing missing players during roster imports</li>
+                  </ul>
+                  <div className="mt-2 font-medium text-indigo-800">
+                    💡 The created player will be immediately available for draft picks and rosters.
+                  </div>
+                </div>
               </div>
             </div>
 
