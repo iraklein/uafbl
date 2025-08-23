@@ -643,18 +643,23 @@ export default function Trades() {
     {
       key: 'proposer.manager_name',
       header: 'Manager',
-      className: 'font-medium text-sm',
-      headerClassName: 'w-1/6',
+      className: 'font-medium text-sm sm:text-base',
+      headerClassName: 'w-16 sm:w-1/6 text-xs sm:text-sm',
       render: (value, trade) => {
         // Show the other manager's name
-        return trade.proposer.id === currentManagerId ? trade.receiver.manager_name : trade.proposer.manager_name
+        const managerName = trade.proposer.id === currentManagerId ? trade.receiver.manager_name : trade.proposer.manager_name
+        return (
+          <div className="break-words">
+            {managerName}
+          </div>
+        )
       }
     },
     {
       key: 'proposer_cash',
       header: 'You Give',
-      className: 'text-left text-sm',
-      headerClassName: 'text-left w-1/3',
+      className: 'text-left text-xs sm:text-sm break-words',
+      headerClassName: 'text-left w-32 sm:w-1/3 text-xs sm:text-sm',
       render: (value, trade) => {
         // Show what YOU are giving (cash, slots, and players)
         const items: string[] = []
@@ -675,14 +680,19 @@ export default function Trades() {
           }
         }
         
-        return items.length > 0 ? items.join(', ') : '-'
+        const itemsText = items.length > 0 ? items.join(', ') : '-'
+        return (
+          <div className="break-words whitespace-pre-wrap">
+            {itemsText}
+          </div>
+        )
       }
     },
     {
       key: 'receiver_cash',
       header: 'You Get',
-      className: 'text-left text-sm',
-      headerClassName: 'text-left w-1/3',
+      className: 'text-left text-xs sm:text-sm break-words',
+      headerClassName: 'text-left w-32 sm:w-1/3 text-xs sm:text-sm',
       render: (value, trade) => {
         // Show what YOU are getting (cash, slots, and players)
         const items: string[] = []
@@ -703,43 +713,25 @@ export default function Trades() {
           }
         }
         
-        return items.length > 0 ? items.join(', ') : '-'
+        const itemsText = items.length > 0 ? items.join(', ') : '-'
+        return (
+          <div className="break-words whitespace-pre-wrap">
+            {itemsText}
+          </div>
+        )
       }
     },
     {
       key: 'id',
       header: 'Actions',
       className: 'text-center',
-      headerClassName: 'text-center w-1/6',
+      headerClassName: 'text-center w-20 sm:w-1/6 text-xs sm:text-sm',
       render: (value, trade) => {
-        console.log('🔍 Rendering action buttons:', { 
+        console.log('🔍 Rendering action buttons for pending trade:', { 
           tradeId: trade.id, 
           status: trade.status, 
-          statusType: typeof trade.status,
-          isAdmin, 
-          isAdminType: typeof isAdmin,
-          shouldShowRevert: trade.status === 'accepted' && isAdmin 
+          statusType: typeof trade.status
         })
-        
-        // For accepted trades, show admin revert button
-        if (trade.status === 'accepted' && isAdmin) {
-          console.log('✅ Showing revert button for trade:', trade.id)
-          return (
-            <button
-              onClick={() => {
-                console.log('Revert button clicked for trade:', trade.id)
-                handleTradeRevert(trade.id)
-              }}
-              className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-2 sm:px-2 sm:py-1 rounded text-sm sm:text-xs font-medium min-w-0"
-              title="Revert trade back to pending status"
-            >
-              Revert
-            </button>
-          )
-        } else if (trade.status === 'accepted') {
-          console.log('❌ Not showing revert button - not admin:', { tradeId: trade.id, isAdmin })
-          return <span className="text-gray-500 text-sm">-</span>
-        }
         
         // For pending trades, show user action buttons
         if (trade.status === 'pending') {
@@ -1007,15 +999,17 @@ export default function Trades() {
                     ).length} Pending
                   </span>
                 </div>
-                <DataTable
-                  columns={pendingColumns}
-                  data={tradeProposals.filter(trade => 
-                    trade.status === 'pending' && 
-                    (trade.receiver.id === currentManagerId || trade.proposer.id === currentManagerId)
-                  )}
-                  emptyMessage="No pending trades involving you."
-                  size="sm"
-                />
+                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                  <DataTable
+                    columns={pendingColumns}
+                    data={tradeProposals.filter(trade => 
+                      trade.status === 'pending' && 
+                      (trade.receiver.id === currentManagerId || trade.proposer.id === currentManagerId)
+                    )}
+                    emptyMessage="No pending trades involving you."
+                    size="sm"
+                  />
+                </div>
               </div>
             )}
 
