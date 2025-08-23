@@ -129,6 +129,7 @@ export default function SignUp() {
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email address
             </label>
+            <p className="mt-1 text-xs text-gray-500">Must use email associated with Franchise Record.</p>
             <input
               id="email"
               name="email"
