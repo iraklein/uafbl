@@ -493,6 +493,18 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
     )
   }
 
+  // Allow unauthenticated access to auth pages
+  if (!user && typeof window !== 'undefined' && 
+      (window.location.pathname.includes('/auth/confirm') || 
+       window.location.pathname.includes('/auth/setup-password') || 
+       window.location.pathname.includes('/auth/signup'))) {
+    return (
+      <AuthProvider isAdmin={isAdmin} currentManagerId={currentManagerId} managerEmail={managerEmail}>
+        {children}
+      </AuthProvider>
+    )
+  }
+
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
