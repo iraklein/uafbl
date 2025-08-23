@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Transform the data to flatten the player name
-    const mappings = data.map(mapping => ({
+    const mappings = data.map((mapping: any) => ({
       ...mapping,
       uafbl_player_name: mapping.uafbl_player_name?.name || null
     }))

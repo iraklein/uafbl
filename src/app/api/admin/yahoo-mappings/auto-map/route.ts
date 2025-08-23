@@ -13,7 +13,7 @@ function similarity(s1: string, s2: string): number {
 }
 
 function levenshteinDistance(s1: string, s2: string): number {
-  const matrix = []
+  const matrix: number[][] = []
   
   for (let i = 0; i <= s2.length; i++) {
     matrix[i] = [i]
@@ -79,16 +79,16 @@ export async function POST(request: NextRequest) {
     
     console.log(`Found ${yahooPlayers.length} unmapped Yahoo players and ${uafblPlayers.length} UAFBL players`)
     
-    const suggestions = []
+    const suggestions: any[] = []
     
     // For each Yahoo player, find the best UAFBL match
     for (const yahooPlayer of yahooPlayers) {
-      const yahooName = yahooPlayer.yahoo_name_full.toLowerCase().trim()
-      let bestMatch = null
+      const yahooName = (yahooPlayer as any).yahoo_name_full?.toLowerCase()?.trim() || ''
+      let bestMatch: any = null
       let bestScore = 0
       
       for (const uafblPlayer of uafblPlayers) {
-        const uafblName = uafblPlayer.name.toLowerCase().trim()
+        const uafblName = (uafblPlayer as any).name?.toLowerCase()?.trim() || ''
         const score = similarity(yahooName, uafblName)
         
         if (score > bestScore) {
@@ -100,10 +100,10 @@ export async function POST(request: NextRequest) {
       // Only suggest matches with decent confidence (>= 0.8 similarity)
       if (bestMatch && bestScore >= 0.8) {
         suggestions.push({
-          yahoo_mapping_id: yahooPlayer.id,
-          yahoo_name: yahooPlayer.yahoo_name_full,
-          uafbl_player_id: bestMatch.id,
-          uafbl_name: bestMatch.name,
+          yahoo_mapping_id: (yahooPlayer as any).id,
+          yahoo_name: (yahooPlayer as any).yahoo_name_full,
+          uafbl_player_id: (bestMatch as any).id,
+          uafbl_name: (bestMatch as any).name,
           confidence: Math.round(bestScore * 100)
         })
       }

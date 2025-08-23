@@ -75,32 +75,6 @@ export default function YahooPlayerMappings() {
     }
   }
 
-  const importTopPlayers = async (start = 0, count = 25) => {
-    setImportLoading(true)
-    setImportResult('')
-
-    try {
-      const response = await fetch('/api/admin/yahoo-mappings/import-top-players', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ start, count })
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setImportResult(`✅ ${data.message}`)
-        await fetchMappings() // Refresh the list
-      } else {
-        setImportResult(`❌ ${data.error}`)
-      }
-    } catch (error) {
-      console.error('Error importing players:', error)
-      setImportResult('❌ Failed to import top players')
-    } finally {
-      setImportLoading(false)
-    }
-  }
 
   const handlePlayerSelect = (player: Player) => {
     setSelectedPlayer(player)
@@ -164,7 +138,6 @@ export default function YahooPlayerMappings() {
 
   const generateAutoMappings = async () => {
     setAutoMapLoading(true)
-    setImportResult('')
 
     try {
       const response = await fetch('/api/admin/yahoo-mappings/auto-map', {
@@ -177,13 +150,11 @@ export default function YahooPlayerMappings() {
       if (response.ok) {
         setSuggestions(data.suggestions || [])
         setShowSuggestions(true)
-        setImportResult(`✅ Generated ${data.suggestions?.length || 0} mapping suggestions`)
       } else {
-        setImportResult(`❌ ${data.error}`)
+        console.error('Auto-mapping error:', data.error)
       }
     } catch (error) {
       console.error('Error generating auto mappings:', error)
-      setImportResult('❌ Failed to generate mapping suggestions')
     } finally {
       setAutoMapLoading(false)
     }
@@ -216,17 +187,15 @@ export default function YahooPlayerMappings() {
       const data = await response.json()
 
       if (response.ok) {
-        setImportResult(`✅ ${data.message}`)
         await fetchMappings() // Refresh the main list
         setShowSuggestions(false) // Hide suggestions
         setSuggestions([])
         setApprovedSuggestions(new Set())
       } else {
-        setImportResult(`❌ ${data.error}`)
+        console.error('Apply suggestions error:', data.error)
       }
     } catch (error) {
       console.error('Error applying suggestions:', error)
-      setImportResult('❌ Failed to apply mapping suggestions')
     } finally {
       setAutoMapLoading(false)
     }
