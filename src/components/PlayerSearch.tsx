@@ -1,6 +1,5 @@
 import { usePlayerSearch } from '../hooks/usePlayerSearch'
 import { Player } from '../types'
-import LoadingState from './LoadingState'
 import ErrorAlert from './ErrorAlert'
 
 interface PlayerSearchProps {
@@ -38,14 +37,13 @@ export default function PlayerSearch({
 }: PlayerSearchProps) {
   const {
     query,
-    setQuery,
     filteredPlayers,
     showSuggestions,
-    setShowSuggestions,
+    selectedPlayer,
     highlightedIndex,
     loading,
     error,
-    isSelectingPlayer,
+    hasExcludedResults,
     handleInputChange,
     handleKeyDown,
     handleSuggestionClick,
@@ -68,23 +66,9 @@ export default function PlayerSearch({
         // Update external state first
         onChange(e.target.value)
         
-        // Then update internal state for autocomplete
-        setQuery(e.target.value)
-        
-        // Only trigger search if we're not in the middle of selecting a player
-        // and the input change is from user typing (not programmatic)
-        if (!isSelectingPlayer) {
-          const newQuery = e.target.value
-          if (newQuery.trim().length >= minQueryLength) {
-            // Use the hook's handleInputChange to maintain consistency
-            handleInputChange(e)
-          } else {
-            setShowSuggestions(false)
-          }
-        } else {
-          // If we're selecting a player, force hide suggestions
-          setShowSuggestions(false)
-        }
+        // Use the hook's handleInputChange to maintain consistency
+        // This will handle setting query and triggering search
+        handleInputChange(e)
       }
     : handleInputChange
 
@@ -145,9 +129,15 @@ export default function PlayerSearch({
         )}
       </div>
       
-      {allowCreateNew && inputValue && filteredPlayers.length === 0 && !loading && (
+      {inputValue && filteredPlayers.length === 0 && !loading && (!selectedPlayer || selectedPlayer.id === -1) && (
         <div className="mt-2 text-sm text-gray-600">
-          Press Enter to create new player: <strong>{inputValue}</strong>
+          {hasExcludedResults ? (
+            <span>Player "{inputValue}" found but already drafted</span>
+          ) : allowCreateNew ? (
+            <span>Press Enter to create new player: <strong>{inputValue}</strong></span>
+          ) : (
+            <span>No players found matching "{inputValue}"</span>
+          )}
         </div>
       )}
     </div>

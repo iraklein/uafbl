@@ -881,33 +881,66 @@ export default function DraftPage() {
         isOpen={showCreatePlayerModal}
         onClose={handleCancelCreatePlayer}
         title="Create New Player"
-        size="sm"
+        size="xl"
       >
-        <div className="mb-4">
-          <p className="text-sm text-gray-600 mb-3">
-            Player &quot;{newPlayerName}&quot; was not found in the database. Would you like to create this player?
+        <div style={{ marginBottom: '20px' }}>
+          <p style={{ marginBottom: '15px', color: '#333' }}>
+            Player "{newPlayerName}" was not found in the database. Would you like to create this player?
           </p>
           
-          <FormInput
-            label="Player Name"
-            type="text"
-            value={newPlayerName}
-            onChange={(e) => setNewPlayerName(e.target.value)}
-            placeholder="Enter player name"
-          />
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#000' }}>
+              Player Name
+            </label>
+            <input
+              type="text"
+              value={newPlayerName}
+              onChange={(e) => setNewPlayerName(e.target.value)}
+              placeholder="Enter player name"
+              style={{
+                width: '100%',
+                padding: '8px 12px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                fontSize: '14px',
+                color: '#000',
+                backgroundColor: '#fff'
+              }}
+            />
+          </div>
         </div>
         
-        <div className="flex space-x-3">
+        <div style={{ display: 'flex', gap: '10px' }}>
           <button
             onClick={handleCreatePlayer}
             disabled={creatingPlayer || !newPlayerName.trim()}
-            className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              flex: 1,
+              padding: '10px 20px',
+              backgroundColor: creatingPlayer || !newPlayerName.trim() ? '#ccc' : '#4F46E5',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: creatingPlayer || !newPlayerName.trim() ? 'not-allowed' : 'pointer',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}
           >
             {creatingPlayer ? 'Creating...' : 'Create Player'}
           </button>
           <button
             onClick={handleCancelCreatePlayer}
-            className="flex-1 bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            style={{
+              flex: 1,
+              padding: '10px 20px',
+              backgroundColor: '#6B7280',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}
           >
             Cancel
           </button>

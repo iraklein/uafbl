@@ -180,70 +180,70 @@ export default function DraftResults() {
         <div className="mb-6 sm:mb-8">
           
           {/* Tab Navigation with Controls */}
-          <div className="space-y-4 mb-6">
-            {/* Tab buttons */}
-            <div className="flex space-x-2 bg-gray-100 p-1 rounded-lg w-fit">
-              <button
-                onClick={() => setActiveTab('team')}
-                className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors tap-target sm:px-6 sm:py-3 sm:text-sm ${
-                  activeTab === 'team'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
-                }`}
-              >
-                By Team
-              </button>
-              <button
-                onClick={() => setActiveTab('player')}
-                className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors tap-target sm:px-6 sm:py-3 sm:text-sm ${
-                  activeTab === 'player'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
-                }`}
-              >
-                By Player
-              </button>
+          <div className="mb-6">
+            {/* Row 1: Tabs and Season selector */}
+            <div className="flex flex-row space-x-3 sm:space-x-4 items-center mb-4">
+              {/* Left side: Tab buttons */}
+              <div className="flex space-x-2 bg-gray-100 p-1 rounded-lg w-fit flex-shrink-0">
+                <button
+                  onClick={() => setActiveTab('team')}
+                  className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors tap-target sm:px-6 sm:py-3 sm:text-sm ${
+                    activeTab === 'team'
+                      ? 'bg-indigo-600 text-white shadow-md'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+                  }`}
+                >
+                  By Team
+                </button>
+                <button
+                  onClick={() => setActiveTab('player')}
+                  className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors tap-target sm:px-6 sm:py-3 sm:text-sm ${
+                    activeTab === 'player'
+                      ? 'bg-indigo-600 text-white shadow-md'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+                  }`}
+                >
+                  By Player
+                </button>
+              </div>
+
+              {/* Right side: Season selector OR Player search */}
+              <div className="flex flex-row space-x-2 sm:space-x-3 items-center min-w-0 flex-1">
+                {activeTab === 'team' ? (
+                  <SeasonSelector
+                    seasons={seasons}
+                    selectedSeason={selectedSeason}
+                    onSeasonChange={setSelectedSeason}
+                    loading={seasonsLoading}
+                    className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 text-xs sm:text-sm w-22 sm:w-26"
+                  />
+                ) : (
+                  <div className="w-full sm:w-80">
+                    <PlayerSearch
+                      value={playerSearchQuery}
+                      onChange={setPlayerSearchQuery}
+                      onPlayerSelect={handlePlayerSelect}
+                      onExactMatch={handlePlayerSelect}
+                      placeholder="Enter player name..."
+                      showSearchButton={true}
+                      searchButtonText="Search"
+                      onSearchButtonClick={() => searchPlayerHistory()}
+                      searchButtonLoading={playerLoading}
+                      className="text-sm"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Season selector & stats OR Player search */}
-            <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-              {activeTab === 'team' ? (
-                <>
-                  <div className="flex flex-row space-x-3 sm:space-x-4">
-                    <SeasonSelector
-                      seasons={seasons}
-                      selectedSeason={selectedSeason}
-                      onSeasonChange={setSelectedSeason}
-                      placeholder="Choose a season..."
-                    />
-                    
-                    {/* Draft records info pill */}
-                    {selectedSeason && (
-                      <div className="bg-blue-50 border border-blue-200 px-3 py-2 rounded-lg flex-shrink-0">
-                        <span className="text-xs font-medium text-blue-900 sm:text-sm">
-                          {draftResults.length} total | {draftResults.filter(r => !r.is_keeper).length} drafted | {draftResults.filter(r => r.is_keeper).length} kept
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </>
-              ) : (
-                <div className="w-full sm:w-80">
-                  <PlayerSearch
-                    value={playerSearchQuery}
-                    onChange={setPlayerSearchQuery}
-                    onPlayerSelect={handlePlayerSelect}
-                    onExactMatch={handlePlayerSelect}
-                    placeholder="Enter player name..."
-                    showSearchButton={true}
-                    searchButtonText="Search"
-                    onSearchButtonClick={() => searchPlayerHistory()}
-                    searchButtonLoading={playerLoading}
-                    className="text-sm"
-                  />
-                </div>
-              )}
-            </div>
+            {/* Row 2: Stats pill (only for team tab) */}
+            {activeTab === 'team' && selectedSeason && (
+              <div className="bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg w-fit">
+                <span className="text-xs font-medium text-blue-900 sm:text-sm">
+                  {draftResults.length} total | {draftResults.filter(r => !r.is_keeper).length} drafted | {draftResults.filter(r => r.is_keeper).length} kept
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

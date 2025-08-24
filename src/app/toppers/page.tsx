@@ -103,9 +103,6 @@ export default function ToppersPage() {
     return { totalToppers, usedCount, unusedCount, lostCount }
   }, [filteredToppersData, getPlayerStatus])
 
-  const selectedSeasonName = selectedSeason === 'all' 
-    ? 'All Seasons' 
-    : seasons.find(s => s.id.toString() === selectedSeason)?.name || ''
 
   // Memoize manager options
   const managerOptions = useMemo(() => {
@@ -253,7 +250,7 @@ export default function ToppersPage() {
                         return (
                           <tr key={record.id} className="hover:bg-indigo-50 transition-colors duration-150">
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              {record.seasons.year}
+                              {record.seasons.name}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                               {record.managers?.manager_name || 'Unknown'}

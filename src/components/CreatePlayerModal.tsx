@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Modal from './Modal'
 import FormInput from './FormInput'
-import { Player } from '../types'
 
 interface CreatePlayerModalProps {
   isOpen: boolean

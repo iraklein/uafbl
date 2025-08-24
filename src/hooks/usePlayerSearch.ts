@@ -25,6 +25,7 @@ interface UsePlayerSearchReturn {
   loading: boolean
   error: string
   isSelectingPlayer: boolean
+  hasExcludedResults: boolean
   searchPlayers: (query: string) => Promise<void>
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void
@@ -54,19 +55,27 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [isSelectingPlayer, setIsSelectingPlayer] = useState(false)
+  const [hasExcludedResults, setHasExcludedResults] = useState(false)
   const lastSelectedPlayerNameRef = useRef<string>('')
   const lastExternalQueryRef = useRef<string>('')
 
+  const searchCounterRef = useRef<number>(0)
+
   const searchPlayers = useCallback(async (searchQuery: string) => {
+    // Increment counter and store this search's ID to prevent race conditions
+    const searchId = ++searchCounterRef.current
+    
     if (searchQuery.length < minQueryLength) {
       setFilteredPlayers([])
+      setHasExcludedResults(false)
       setHighlightedIndex(0)
       return
     }
 
-    // Don't search if this is exactly the same as the last selected player name
-    if (searchQuery.trim() === lastSelectedPlayerNameRef.current.trim()) {
+    // Don't search if this is exactly the same as the last selected player name AND we have a selected player
+    if (searchQuery.trim() === lastSelectedPlayerNameRef.current.trim() && selectedPlayer) {
       setFilteredPlayers([])
+      setHasExcludedResults(false)
       setHighlightedIndex(0)
       setShowSuggestions(false)
       return
@@ -79,16 +88,28 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       const response = await fetch(`/api/players/search?q=${encodeURIComponent(searchQuery)}`)
       if (!response.ok) throw new Error('Failed to search players')
       
+      // Check if this search is still current - prevent race conditions
+      if (searchId !== searchCounterRef.current) {
+        return
+      }
+      
       const data = await response.json()
       // Filter out excluded player IDs
       const filteredData = data.filter((player: Player) => !excludePlayerIds.includes(player.id))
+      // Track if we had results but they were all excluded
+      const hasExcluded = data.length > 0 && filteredData.length === 0
+      setHasExcludedResults(hasExcluded)
       setFilteredPlayers(filteredData)
       setHighlightedIndex(0) // Auto-highlight first result
     } catch (error) {
-      console.error('Error searching players:', error)
-      setError('Failed to search players')
-      setFilteredPlayers([])
-      setHighlightedIndex(0)
+      // Only handle error if this search is still current
+      if (searchId === searchCounterRef.current) {
+        console.error('Error searching players:', error)
+        setError('Failed to search players')
+        setFilteredPlayers([])
+        setHasExcludedResults(false)
+        setHighlightedIndex(0)
+      }
     } finally {
       setLoading(false)
     }
@@ -253,6 +274,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     setQuery('')
     setSelectedPlayer(null)
     setFilteredPlayers([])
+    setHasExcludedResults(false)
     setShowSuggestions(false)
     setError('')
     lastSelectedPlayerNameRef.current = '' // Clear the tracking ref
@@ -267,8 +289,8 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       const trimmedQuery = externalQuery.trim()
       
       if (trimmedQuery.length >= minQueryLength) {
-        // Don't search if this is exactly the same as the last selected player name
-        if (trimmedQuery !== lastSelectedPlayerNameRef.current.trim()) {
+        // Don't search if this is exactly the same as the last selected player name AND we have a selected player
+        if (trimmedQuery !== lastSelectedPlayerNameRef.current.trim() || !selectedPlayer) {
           // Inline search logic to avoid dependency issues
           setLoading(true)
           setError('')
@@ -281,6 +303,8 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
             .then(data => {
               // Filter out excluded player IDs
               const filteredData = data.filter((player: Player) => !excludePlayerIds.includes(player.id))
+              // Track if we had results but they were all excluded
+              setHasExcludedResults(data.length > 0 && filteredData.length === 0)
               setFilteredPlayers(filteredData)
               setHighlightedIndex(0)
               setShowSuggestions(true)
@@ -289,6 +313,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
               console.error('Error searching players:', error)
               setError('Failed to search players')
               setFilteredPlayers([])
+              setHasExcludedResults(false)
               setHighlightedIndex(0)
             })
             .finally(() => {
@@ -298,6 +323,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       } else {
         setShowSuggestions(false)
         setFilteredPlayers([])
+        setHasExcludedResults(false)
       }
     }
   }, [externalQuery, minQueryLength, isSelectingPlayer, excludePlayerIds])
@@ -315,6 +341,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     loading,
     error,
     isSelectingPlayer,
+    hasExcludedResults,
     searchPlayers,
     handleInputChange,
     handleKeyDown,

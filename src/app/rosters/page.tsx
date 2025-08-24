@@ -76,7 +76,6 @@ export default function Rosters() {
       })
     }))
 
-  const selectedSeasonName = seasons.find(s => s.id.toString() === selectedSeason)?.name || ''
 
   // Define columns for the roster DataTable
   const rosterColumns: Column<Roster>[] = [
