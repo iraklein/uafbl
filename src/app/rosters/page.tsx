@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
-import SeasonSelector from '../../components/SeasonSelector'
 import LoadingState from '../../components/LoadingState'
 import ErrorAlert from '../../components/ErrorAlert'
 import DataTable, { Column } from '../../components/DataTable'
 import ManagerHeader from '../../components/ManagerHeader'
-import { useSeasons } from '../../hooks/useSeasons'
-import { Roster } from '../../types'
+import { Roster, Season } from '../../types'
 
 
 interface GroupedRosters {
@@ -16,38 +14,54 @@ interface GroupedRosters {
 }
 
 export default function Rosters() {
-  const { seasons, selectedSeason, setSelectedSeason, loading, error } = useSeasons({
-    defaultSeasonFilter: 'active_playing',
-    excludeFutureSeasons: true
-  })
   const [rosters, setRosters] = useState<Roster[]>([])
+  const [currentSeason, setCurrentSeason] = useState<Season | null>(null)
+  const [loading, setLoading] = useState(true)
   const [rostersLoading, setRostersLoading] = useState(false)
+  const [error, setError] = useState('')
   const [rostersError, setRostersError] = useState('')
 
-  // Fetch rosters when season changes
+  // Fetch current active season and rosters on mount
   useEffect(() => {
-    if (!selectedSeason) return
-
-    async function fetchRosters() {
-      setRostersLoading(true)
-      setRostersError('')
+    async function fetchCurrentSeasonAndRosters() {
+      setLoading(true)
+      setError('')
 
       try {
-        const response = await fetch(`/api/rosters?season_id=${selectedSeason}`)
-        if (!response.ok) throw new Error('Failed to fetch rosters')
+        // Get current active season
+        const seasonsResponse = await fetch('/api/seasons')
+        if (!seasonsResponse.ok) throw new Error('Failed to fetch seasons')
         
-        const data = await response.json()
-        setRosters(data)
+        const seasons = await seasonsResponse.json()
+        const activeSeason = seasons.find((season: Season) => season.is_active === true)
+        
+        if (!activeSeason) {
+          setError('No active season found')
+          return
+        }
+
+        setCurrentSeason(activeSeason)
+
+        // Fetch rosters for active season
+        setRostersLoading(true)
+        setRostersError('')
+
+        const rostersResponse = await fetch(`/api/rosters?season_id=${activeSeason.id}`)
+        if (!rostersResponse.ok) throw new Error('Failed to fetch rosters')
+        
+        const rostersData = await rostersResponse.json()
+        setRosters(rostersData)
       } catch (error) {
-        console.error('Error fetching rosters:', error)
-        setRostersError('Failed to load rosters')
+        console.error('Error:', error)
+        setError('Failed to load data')
       } finally {
+        setLoading(false)
         setRostersLoading(false)
       }
     }
 
-    fetchRosters()
-  }, [selectedSeason])
+    fetchCurrentSeasonAndRosters()
+  }, [])
 
   // Group rosters by manager
   const groupedRosters: GroupedRosters = rosters.reduce((acc, roster) => {
@@ -125,18 +139,17 @@ export default function Rosters() {
           {/* Controls section */}
           <div className="mb-4">
             <div className="flex flex-row space-x-3 sm:space-x-4">
-              {/* Season Selector */}
-              <SeasonSelector
-                seasons={seasons}
-                selectedSeason={selectedSeason}
-                onSeasonChange={setSelectedSeason}
-                loading={loading}
-              />
+              {/* Current Season Pill */}
+              {currentSeason && (
+                <div className="bg-indigo-100 border border-indigo-300 px-3 py-2 rounded-lg flex-shrink-0">
+                  <span className="text-sm font-medium text-indigo-900">{currentSeason.name} Season</span>
+                </div>
+              )}
 
               {/* Player count info box */}
-              {selectedSeason && (
-                <div className="bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg flex-shrink-0">
-                  <span className="text-xs font-medium text-blue-900 sm:text-sm">{rosters.length} total players</span>
+              {currentSeason && (
+                <div className="bg-blue-50 border border-blue-200 px-3 py-2 rounded-lg flex-shrink-0">
+                  <span className="text-sm font-medium text-blue-900">{rosters.length} total players</span>
                 </div>
               )}
             </div>
@@ -147,10 +160,10 @@ export default function Rosters() {
         <ErrorAlert error={rostersError} />
 
         {loading ? (
-          <LoadingState message="Loading seasons..." />
+          <LoadingState message="Loading current season..." />
         ) : rostersLoading ? (
           <LoadingState message="Loading rosters..." />
-        ) : selectedSeason ? (
+        ) : currentSeason ? (
           <>
             {sortedManagers.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
@@ -186,7 +199,7 @@ export default function Rosters() {
             )}
           </>
         ) : (
-          <LoadingState message="Please select a season to view rosters." />
+          <LoadingState message="No active season found." />
         )}
       </div>
     </div>
