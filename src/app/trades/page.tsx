@@ -1057,7 +1057,7 @@ export default function Trades() {
                         <ManagerSearch
                           value={partnerQuery}
                           onChange={setPartnerQuery}
-                          managers={managers.filter(m => m.id !== currentManagerId)}
+                          managers={managers.filter(m => m.id !== currentManagerId && m.is_active !== false)}
                           onManagerSelect={(manager) => {
                             setSelectedPartner(manager)
                             setPartnerQuery(manager.manager_name)
