@@ -18,8 +18,14 @@ if (!authCode) {
 }
 
 // Configuration
-const YAHOO_CLIENT_ID = process.env.YAHOO_CLIENT_ID || 'dj0yJmk9cEtMdnI3cE56bmFhJmQ9WVdrOVYySk5hMDAwVVhNbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWZh'
-const YAHOO_CLIENT_SECRET = process.env.YAHOO_CLIENT_SECRET || 'b656ac05b9263cb24bf13892ebe46c4a91772aa8'
+const YAHOO_CLIENT_ID = process.env.YAHOO_CLIENT_ID
+const YAHOO_CLIENT_SECRET = process.env.YAHOO_CLIENT_SECRET
+
+if (!YAHOO_CLIENT_ID || !YAHOO_CLIENT_SECRET) {
+  console.error('❌ YAHOO_CLIENT_ID and YAHOO_CLIENT_SECRET must be set in environment variables')
+  console.error('Please add them to your .env.local file')
+  process.exit(1)
+}
 
 console.log('🏀 Completing Yahoo Fantasy OAuth')
 console.log('===================================')
