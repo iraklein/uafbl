@@ -1,0 +1,6278 @@
+{
+  "metadata": {
+    "processedAt": "2025-08-24T18:16:24.591Z",
+    "sourceAPI": "Yahoo Fantasy API (Fixed Bulk Import)",
+    "workingEndpoint": "/fantasy/v2/game/466/players?format=json&count=1&start={START}",
+    "totalProcessed": 626,
+    "totalSkipped": 0,
+    "stats": {
+      "totalPlayers": 626,
+      "playersWithTeams": 626,
+      "playersWithPositions": 626,
+      "uniqueTeams": 30,
+      "uniqueNames": 626
+    }
+  },
+  "players": [
+    {
+      "yahoo_player_id": "5352",
+      "yahoo_name_full": "Nikola Jokić",
+      "yahoo_first_name": "Nikola",
+      "yahoo_last_name": "Jokić",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5352",
+      "row_number": 1
+    },
+    {
+      "yahoo_player_id": "5185",
+      "yahoo_name_full": "Giannis Antetokounmpo",
+      "yahoo_first_name": "Giannis",
+      "yahoo_last_name": "Antetokounmpo",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5185",
+      "row_number": 2
+    },
+    {
+      "yahoo_player_id": "10094",
+      "yahoo_name_full": "Victor Wembanyama",
+      "yahoo_first_name": "Victor",
+      "yahoo_last_name": "Wembanyama",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10094",
+      "row_number": 3
+    },
+    {
+      "yahoo_player_id": "6022",
+      "yahoo_name_full": "Shai Gilgeous-Alexander",
+      "yahoo_first_name": "Shai",
+      "yahoo_last_name": "Gilgeous-Alexander",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6022",
+      "row_number": 4
+    },
+    {
+      "yahoo_player_id": "6014",
+      "yahoo_name_full": "Luka Dončić",
+      "yahoo_first_name": "Luka",
+      "yahoo_last_name": "Dončić",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6014",
+      "row_number": 5
+    },
+    {
+      "yahoo_player_id": "6355",
+      "yahoo_name_full": "Anthony Edwards",
+      "yahoo_first_name": "Anthony",
+      "yahoo_last_name": "Edwards",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6355",
+      "row_number": 6
+    },
+    {
+      "yahoo_player_id": "6512",
+      "yahoo_name_full": "Cade Cunningham",
+      "yahoo_first_name": "Cade",
+      "yahoo_last_name": "Cunningham",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6512",
+      "row_number": 7
+    },
+    {
+      "yahoo_player_id": "5007",
+      "yahoo_name_full": "Anthony Davis",
+      "yahoo_first_name": "Anthony",
+      "yahoo_last_name": "Davis",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5007",
+      "row_number": 8
+    },
+    {
+      "yahoo_player_id": "5432",
+      "yahoo_name_full": "Karl-Anthony Towns",
+      "yahoo_first_name": "Karl-Anthony",
+      "yahoo_last_name": "Towns",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5432",
+      "row_number": 9
+    },
+    {
+      "yahoo_player_id": "5642",
+      "yahoo_name_full": "Domantas Sabonis",
+      "yahoo_first_name": "Domantas",
+      "yahoo_last_name": "Sabonis",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5642",
+      "row_number": 10
+    },
+    {
+      "yahoo_player_id": "6016",
+      "yahoo_name_full": "Trae Young",
+      "yahoo_first_name": "Trae",
+      "yahoo_last_name": "Young",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6016",
+      "row_number": 11
+    },
+    {
+      "yahoo_player_id": "6691",
+      "yahoo_name_full": "Paolo Banchero",
+      "yahoo_first_name": "Paolo",
+      "yahoo_last_name": "Banchero",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6691",
+      "row_number": 12
+    },
+    {
+      "yahoo_player_id": "5473",
+      "yahoo_name_full": "Devin Booker",
+      "yahoo_first_name": "Devin",
+      "yahoo_last_name": "Booker",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5473",
+      "row_number": 13
+    },
+    {
+      "yahoo_player_id": "6413",
+      "yahoo_name_full": "Tyrese Maxey",
+      "yahoo_first_name": "Tyrese",
+      "yahoo_last_name": "Maxey",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6413",
+      "row_number": 14
+    },
+    {
+      "yahoo_player_id": "4563",
+      "yahoo_name_full": "James Harden",
+      "yahoo_first_name": "James",
+      "yahoo_last_name": "Harden",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.4563",
+      "row_number": 15
+    },
+    {
+      "yahoo_player_id": "6702",
+      "yahoo_name_full": "Jalen Williams",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6702",
+      "row_number": 16
+    },
+    {
+      "yahoo_player_id": "6395",
+      "yahoo_name_full": "LaMelo Ball",
+      "yahoo_first_name": "LaMelo",
+      "yahoo_last_name": "Ball",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6395",
+      "row_number": 17
+    },
+    {
+      "yahoo_player_id": "6562",
+      "yahoo_name_full": "Jalen Johnson",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6562",
+      "row_number": 18
+    },
+    {
+      "yahoo_player_id": "6044",
+      "yahoo_name_full": "Jalen Brunson",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Brunson",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6044",
+      "row_number": 19
+    },
+    {
+      "yahoo_player_id": "5602",
+      "yahoo_name_full": "Jaylen Brown",
+      "yahoo_first_name": "Jaylen",
+      "yahoo_last_name": "Brown",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5602",
+      "row_number": 20
+    },
+    {
+      "yahoo_player_id": "5767",
+      "yahoo_name_full": "De'Aaron Fox",
+      "yahoo_first_name": "De'Aaron",
+      "yahoo_last_name": "Fox",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5767",
+      "row_number": 21
+    },
+    {
+      "yahoo_player_id": "3704",
+      "yahoo_name_full": "LeBron James",
+      "yahoo_first_name": "LeBron",
+      "yahoo_last_name": "James",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.3704",
+      "row_number": 22
+    },
+    {
+      "yahoo_player_id": "6558",
+      "yahoo_name_full": "Alperen Sengun",
+      "yahoo_first_name": "Alperen",
+      "yahoo_last_name": "Sengun",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6558",
+      "row_number": 23
+    },
+    {
+      "yahoo_player_id": "6514",
+      "yahoo_name_full": "Evan Mobley",
+      "yahoo_first_name": "Evan",
+      "yahoo_last_name": "Mobley",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6514",
+      "row_number": 24
+    },
+    {
+      "yahoo_player_id": "6515",
+      "yahoo_name_full": "Scottie Barnes",
+      "yahoo_first_name": "Scottie",
+      "yahoo_last_name": "Barnes",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PF,SF,SG",
+      "yahoo_player_key": "466.p.6515",
+      "row_number": 25
+    },
+    {
+      "yahoo_player_id": "4612",
+      "yahoo_name_full": "Stephen Curry",
+      "yahoo_first_name": "Stephen",
+      "yahoo_last_name": "Curry",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4612",
+      "row_number": 26
+    },
+    {
+      "yahoo_player_id": "5658",
+      "yahoo_name_full": "Pascal Siakam",
+      "yahoo_first_name": "Pascal",
+      "yahoo_last_name": "Siakam",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5658",
+      "row_number": 27
+    },
+    {
+      "yahoo_player_id": "5826",
+      "yahoo_name_full": "Donovan Mitchell",
+      "yahoo_first_name": "Donovan",
+      "yahoo_last_name": "Mitchell",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5826",
+      "row_number": 28
+    },
+    {
+      "yahoo_player_id": "5663",
+      "yahoo_name_full": "Ivica Zubac",
+      "yahoo_first_name": "Ivica",
+      "yahoo_last_name": "Zubac",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5663",
+      "row_number": 29
+    },
+    {
+      "yahoo_player_id": "6692",
+      "yahoo_name_full": "Chet Holmgren",
+      "yahoo_first_name": "Chet",
+      "yahoo_last_name": "Holmgren",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6692",
+      "row_number": 30
+    },
+    {
+      "yahoo_player_id": "6550",
+      "yahoo_name_full": "Franz Wagner",
+      "yahoo_first_name": "Franz",
+      "yahoo_last_name": "Wagner",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6550",
+      "row_number": 31
+    },
+    {
+      "yahoo_player_id": "4244",
+      "yahoo_name_full": "Kevin Durant",
+      "yahoo_first_name": "Kevin",
+      "yahoo_last_name": "Durant",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.4244",
+      "row_number": 32
+    },
+    {
+      "yahoo_player_id": "6559",
+      "yahoo_name_full": "Trey Murphy III",
+      "yahoo_first_name": "Trey",
+      "yahoo_last_name": "Murphy III",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6559",
+      "row_number": 33
+    },
+    {
+      "yahoo_player_id": "4896",
+      "yahoo_name_full": "Kawhi Leonard",
+      "yahoo_first_name": "Kawhi",
+      "yahoo_last_name": "Leonard",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.4896",
+      "row_number": 34
+    },
+    {
+      "yahoo_player_id": "10108",
+      "yahoo_name_full": "Amen Thompson",
+      "yahoo_first_name": "Amen",
+      "yahoo_last_name": "Thompson",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PG,SF,SG",
+      "yahoo_player_key": "466.p.10108",
+      "row_number": 35
+    },
+    {
+      "yahoo_player_id": "5827",
+      "yahoo_name_full": "Bam Adebayo",
+      "yahoo_first_name": "Bam",
+      "yahoo_last_name": "Adebayo",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5827",
+      "row_number": 36
+    },
+    {
+      "yahoo_player_id": "6548",
+      "yahoo_name_full": "Josh Giddey",
+      "yahoo_first_name": "Josh",
+      "yahoo_last_name": "Giddey",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6548",
+      "row_number": 37
+    },
+    {
+      "yahoo_player_id": "5638",
+      "yahoo_name_full": "Jamal Murray",
+      "yahoo_first_name": "Jamal",
+      "yahoo_last_name": "Murray",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5638",
+      "row_number": 38
+    },
+    {
+      "yahoo_player_id": "6163",
+      "yahoo_name_full": "Zion Williamson",
+      "yahoo_first_name": "Zion",
+      "yahoo_last_name": "Williamson",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6163",
+      "row_number": 39
+    },
+    {
+      "yahoo_player_id": "6164",
+      "yahoo_name_full": "Ja Morant",
+      "yahoo_first_name": "Ja",
+      "yahoo_last_name": "Morant",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6164",
+      "row_number": 40
+    },
+    {
+      "yahoo_player_id": "5769",
+      "yahoo_name_full": "Lauri Markkanen",
+      "yahoo_first_name": "Lauri",
+      "yahoo_last_name": "Markkanen",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5769",
+      "row_number": 41
+    },
+    {
+      "yahoo_player_id": "6422",
+      "yahoo_name_full": "Desmond Bane",
+      "yahoo_first_name": "Desmond",
+      "yahoo_last_name": "Bane",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6422",
+      "row_number": 42
+    },
+    {
+      "yahoo_player_id": "5294",
+      "yahoo_name_full": "Joel Embiid",
+      "yahoo_first_name": "Joel",
+      "yahoo_last_name": "Embiid",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5294",
+      "row_number": 43
+    },
+    {
+      "yahoo_player_id": "6175",
+      "yahoo_name_full": "Tyler Herro",
+      "yahoo_first_name": "Tyler",
+      "yahoo_last_name": "Herro",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6175",
+      "row_number": 44
+    },
+    {
+      "yahoo_player_id": "5842",
+      "yahoo_name_full": "Derrick White",
+      "yahoo_first_name": "Derrick",
+      "yahoo_last_name": "White",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5842",
+      "row_number": 45
+    },
+    {
+      "yahoo_player_id": "5843",
+      "yahoo_name_full": "Josh Hart",
+      "yahoo_first_name": "Josh",
+      "yahoo_last_name": "Hart",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF,SF,SG",
+      "yahoo_player_key": "466.p.5843",
+      "row_number": 46
+    },
+    {
+      "yahoo_player_id": "6015",
+      "yahoo_name_full": "Jaren Jackson Jr.",
+      "yahoo_first_name": "Jaren",
+      "yahoo_last_name": "Jackson Jr.",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6015",
+      "row_number": 47
+    },
+    {
+      "yahoo_player_id": "6698",
+      "yahoo_name_full": "Dyson Daniels",
+      "yahoo_first_name": "Dyson",
+      "yahoo_last_name": "Daniels",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PG,SF,SG",
+      "yahoo_player_key": "466.p.6698",
+      "row_number": 48
+    },
+    {
+      "yahoo_player_id": "5464",
+      "yahoo_name_full": "Kristaps Porziņģis",
+      "yahoo_first_name": "Kristaps",
+      "yahoo_last_name": "Porziņģis",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5464",
+      "row_number": 49
+    },
+    {
+      "yahoo_player_id": "10468",
+      "yahoo_name_full": "Cooper Flagg",
+      "yahoo_first_name": "Cooper",
+      "yahoo_last_name": "Flagg",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10468",
+      "row_number": 50
+    },
+    {
+      "yahoo_player_id": "4912",
+      "yahoo_name_full": "Jimmy Butler III",
+      "yahoo_first_name": "Jimmy",
+      "yahoo_last_name": "Butler III",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.4912",
+      "row_number": 51
+    },
+    {
+      "yahoo_player_id": "10104",
+      "yahoo_name_full": "Brandon Miller",
+      "yahoo_first_name": "Brandon",
+      "yahoo_last_name": "Miller",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10104",
+      "row_number": 52
+    },
+    {
+      "yahoo_player_id": "6025",
+      "yahoo_name_full": "Michael Porter Jr.",
+      "yahoo_first_name": "Michael",
+      "yahoo_last_name": "Porter Jr.",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6025",
+      "row_number": 53
+    },
+    {
+      "yahoo_player_id": "6712",
+      "yahoo_name_full": "Walker Kessler",
+      "yahoo_first_name": "Walker",
+      "yahoo_last_name": "Kessler",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6712",
+      "row_number": 54
+    },
+    {
+      "yahoo_player_id": "5835",
+      "yahoo_name_full": "Jarrett Allen",
+      "yahoo_first_name": "Jarrett",
+      "yahoo_last_name": "Allen",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5835",
+      "row_number": 55
+    },
+    {
+      "yahoo_player_id": "6023",
+      "yahoo_name_full": "Miles Bridges",
+      "yahoo_first_name": "Miles",
+      "yahoo_last_name": "Bridges",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6023",
+      "row_number": 56
+    },
+    {
+      "yahoo_player_id": "6167",
+      "yahoo_name_full": "Darius Garland",
+      "yahoo_first_name": "Darius",
+      "yahoo_last_name": "Garland",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6167",
+      "row_number": 57
+    },
+    {
+      "yahoo_player_id": "6703",
+      "yahoo_name_full": "Jalen Duren",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Duren",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6703",
+      "row_number": 58
+    },
+    {
+      "yahoo_player_id": "6606",
+      "yahoo_name_full": "Austin Reaves",
+      "yahoo_first_name": "Austin",
+      "yahoo_last_name": "Reaves",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6606",
+      "row_number": 59
+    },
+    {
+      "yahoo_player_id": "4614",
+      "yahoo_name_full": "DeMar DeRozan",
+      "yahoo_first_name": "DeMar",
+      "yahoo_last_name": "DeRozan",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.4614",
+      "row_number": 60
+    },
+    {
+      "yahoo_player_id": "4725",
+      "yahoo_name_full": "Paul George",
+      "yahoo_first_name": "Paul",
+      "yahoo_last_name": "George",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PF,SF,SG",
+      "yahoo_player_key": "466.p.4725",
+      "row_number": 61
+    },
+    {
+      "yahoo_player_id": "6401",
+      "yahoo_name_full": "Deni Avdija",
+      "yahoo_first_name": "Deni",
+      "yahoo_last_name": "Avdija",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6401",
+      "row_number": 62
+    },
+    {
+      "yahoo_player_id": "5324",
+      "yahoo_name_full": "Zach LaVine",
+      "yahoo_first_name": "Zach",
+      "yahoo_last_name": "LaVine",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5324",
+      "row_number": 63
+    },
+    {
+      "yahoo_player_id": "6569",
+      "yahoo_name_full": "Cam Thomas",
+      "yahoo_first_name": "Cam",
+      "yahoo_last_name": "Thomas",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6569",
+      "row_number": 64
+    },
+    {
+      "yahoo_player_id": "5958",
+      "yahoo_name_full": "Deandre Ayton",
+      "yahoo_first_name": "Deandre",
+      "yahoo_last_name": "Ayton",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5958",
+      "row_number": 65
+    },
+    {
+      "yahoo_player_id": "4897",
+      "yahoo_name_full": "Nikola Vučević",
+      "yahoo_first_name": "Nikola",
+      "yahoo_last_name": "Vučević",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.4897",
+      "row_number": 66
+    },
+    {
+      "yahoo_player_id": "5318",
+      "yahoo_name_full": "Julius Randle",
+      "yahoo_first_name": "Julius",
+      "yahoo_last_name": "Randle",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5318",
+      "row_number": 67
+    },
+    {
+      "yahoo_player_id": "6169",
+      "yahoo_name_full": "Coby White",
+      "yahoo_first_name": "Coby",
+      "yahoo_last_name": "White",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6169",
+      "row_number": 68
+    },
+    {
+      "yahoo_player_id": "6216",
+      "yahoo_name_full": "Jordan Poole",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "Poole",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6216",
+      "row_number": 69
+    },
+    {
+      "yahoo_player_id": "6165",
+      "yahoo_name_full": "RJ Barrett",
+      "yahoo_first_name": "RJ",
+      "yahoo_last_name": "Barrett",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6165",
+      "row_number": 70
+    },
+    {
+      "yahoo_player_id": "6721",
+      "yahoo_name_full": "Andrew Nembhard",
+      "yahoo_first_name": "Andrew",
+      "yahoo_last_name": "Nembhard",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6721",
+      "row_number": 71
+    },
+    {
+      "yahoo_player_id": "6513",
+      "yahoo_name_full": "Jalen Green",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Green",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6513",
+      "row_number": 72
+    },
+    {
+      "yahoo_player_id": "5471",
+      "yahoo_name_full": "Myles Turner",
+      "yahoo_first_name": "Myles",
+      "yahoo_last_name": "Turner",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5471",
+      "row_number": 73
+    },
+    {
+      "yahoo_player_id": "10294",
+      "yahoo_name_full": "Alex Sarr",
+      "yahoo_first_name": "Alex",
+      "yahoo_last_name": "Sarr",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10294",
+      "row_number": 74
+    },
+    {
+      "yahoo_player_id": "5836",
+      "yahoo_name_full": "OG Anunoby",
+      "yahoo_first_name": "OG",
+      "yahoo_last_name": "Anunoby",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5836",
+      "row_number": 75
+    },
+    {
+      "yahoo_player_id": "6173",
+      "yahoo_name_full": "Cameron Johnson",
+      "yahoo_first_name": "Cameron",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6173",
+      "row_number": 76
+    },
+    {
+      "yahoo_player_id": "5601",
+      "yahoo_name_full": "Brandon Ingram",
+      "yahoo_first_name": "Brandon",
+      "yahoo_last_name": "Ingram",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PF,SF,SG",
+      "yahoo_player_key": "466.p.5601",
+      "row_number": 77
+    },
+    {
+      "yahoo_player_id": "5197",
+      "yahoo_name_full": "Rudy Gobert",
+      "yahoo_first_name": "Rudy",
+      "yahoo_last_name": "Gobert",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5197",
+      "row_number": 78
+    },
+    {
+      "yahoo_player_id": "6417",
+      "yahoo_name_full": "Immanuel Quickley",
+      "yahoo_first_name": "Immanuel",
+      "yahoo_last_name": "Quickley",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6417",
+      "row_number": 79
+    },
+    {
+      "yahoo_player_id": "6696",
+      "yahoo_name_full": "Bennedict Mathurin",
+      "yahoo_first_name": "Bennedict",
+      "yahoo_last_name": "Mathurin",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6696",
+      "row_number": 80
+    },
+    {
+      "yahoo_player_id": "5832",
+      "yahoo_name_full": "John Collins",
+      "yahoo_first_name": "John",
+      "yahoo_last_name": "Collins",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5832",
+      "row_number": 81
+    },
+    {
+      "yahoo_player_id": "6403",
+      "yahoo_name_full": "Devin Vassell",
+      "yahoo_first_name": "Devin",
+      "yahoo_last_name": "Vassell",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6403",
+      "row_number": 82
+    },
+    {
+      "yahoo_player_id": "5292",
+      "yahoo_name_full": "Andrew Wiggins",
+      "yahoo_first_name": "Andrew",
+      "yahoo_last_name": "Wiggins",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5292",
+      "row_number": 83
+    },
+    {
+      "yahoo_player_id": "6035",
+      "yahoo_name_full": "Anfernee Simons",
+      "yahoo_first_name": "Anfernee",
+      "yahoo_last_name": "Simons",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6035",
+      "row_number": 84
+    },
+    {
+      "yahoo_player_id": "5824",
+      "yahoo_name_full": "Malik Monk",
+      "yahoo_first_name": "Malik",
+      "yahoo_last_name": "Monk",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.5824",
+      "row_number": 85
+    },
+    {
+      "yahoo_player_id": "5506",
+      "yahoo_name_full": "Norman Powell",
+      "yahoo_first_name": "Norman",
+      "yahoo_last_name": "Powell",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5506",
+      "row_number": 86
+    },
+    {
+      "yahoo_player_id": "5727",
+      "yahoo_name_full": "Fred VanVleet",
+      "yahoo_first_name": "Fred",
+      "yahoo_last_name": "VanVleet",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5727",
+      "row_number": 87
+    },
+    {
+      "yahoo_player_id": "10274",
+      "yahoo_name_full": "Kel'el Ware",
+      "yahoo_first_name": "Kel'el",
+      "yahoo_last_name": "Ware",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10274",
+      "row_number": 88
+    },
+    {
+      "yahoo_player_id": "5856",
+      "yahoo_name_full": "Isaiah Hartenstein",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Hartenstein",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5856",
+      "row_number": 89
+    },
+    {
+      "yahoo_player_id": "6705",
+      "yahoo_name_full": "Mark Williams",
+      "yahoo_first_name": "Mark",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6705",
+      "row_number": 90
+    },
+    {
+      "yahoo_player_id": "5640",
+      "yahoo_name_full": "Jakob Poeltl",
+      "yahoo_first_name": "Jakob",
+      "yahoo_last_name": "Poeltl",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5640",
+      "row_number": 91
+    },
+    {
+      "yahoo_player_id": "6516",
+      "yahoo_name_full": "Jalen Suggs",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Suggs",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6516",
+      "row_number": 92
+    },
+    {
+      "yahoo_player_id": "5009",
+      "yahoo_name_full": "Bradley Beal",
+      "yahoo_first_name": "Bradley",
+      "yahoo_last_name": "Beal",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5009",
+      "row_number": 93
+    },
+    {
+      "yahoo_player_id": "6418",
+      "yahoo_name_full": "Payton Pritchard",
+      "yahoo_first_name": "Payton",
+      "yahoo_last_name": "Pritchard",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6418",
+      "row_number": 94
+    },
+    {
+      "yahoo_player_id": "6697",
+      "yahoo_name_full": "Shaedon Sharpe",
+      "yahoo_first_name": "Shaedon",
+      "yahoo_last_name": "Sharpe",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6697",
+      "row_number": 95
+    },
+    {
+      "yahoo_player_id": "6398",
+      "yahoo_name_full": "Onyeka Okongwu",
+      "yahoo_first_name": "Onyeka",
+      "yahoo_last_name": "Okongwu",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6398",
+      "row_number": 96
+    },
+    {
+      "yahoo_player_id": "5161",
+      "yahoo_name_full": "CJ McCollum",
+      "yahoo_first_name": "CJ",
+      "yahoo_last_name": "McCollum",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5161",
+      "row_number": 97
+    },
+    {
+      "yahoo_player_id": "10100",
+      "yahoo_name_full": "Keyonte George",
+      "yahoo_first_name": "Keyonte",
+      "yahoo_last_name": "George",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10100",
+      "row_number": 98
+    },
+    {
+      "yahoo_player_id": "6021",
+      "yahoo_name_full": "Mikal Bridges",
+      "yahoo_first_name": "Mikal",
+      "yahoo_last_name": "Bridges",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6021",
+      "row_number": 99
+    },
+    {
+      "yahoo_player_id": "10285",
+      "yahoo_name_full": "Donovan Clingan",
+      "yahoo_first_name": "Donovan",
+      "yahoo_last_name": "Clingan",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10285",
+      "row_number": 100
+    },
+    {
+      "yahoo_player_id": "6420",
+      "yahoo_name_full": "Jaden McDaniels",
+      "yahoo_first_name": "Jaden",
+      "yahoo_last_name": "McDaniels",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6420",
+      "row_number": 101
+    },
+    {
+      "yahoo_player_id": "4901",
+      "yahoo_name_full": "Tobias Harris",
+      "yahoo_first_name": "Tobias",
+      "yahoo_last_name": "Harris",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.4901",
+      "row_number": 102
+    },
+    {
+      "yahoo_player_id": "6253",
+      "yahoo_name_full": "Naz Reid",
+      "yahoo_first_name": "Naz",
+      "yahoo_last_name": "Reid",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6253",
+      "row_number": 103
+    },
+    {
+      "yahoo_player_id": "6711",
+      "yahoo_name_full": "Christian Braun",
+      "yahoo_first_name": "Christian",
+      "yahoo_last_name": "Braun",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6711",
+      "row_number": 104
+    },
+    {
+      "yahoo_player_id": "10065",
+      "yahoo_name_full": "Toumani Camara",
+      "yahoo_first_name": "Toumani",
+      "yahoo_last_name": "Camara",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10065",
+      "row_number": 105
+    },
+    {
+      "yahoo_player_id": "10096",
+      "yahoo_name_full": "Ausar Thompson",
+      "yahoo_first_name": "Ausar",
+      "yahoo_last_name": "Thompson",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10096",
+      "row_number": 106
+    },
+    {
+      "yahoo_player_id": "5295",
+      "yahoo_name_full": "Aaron Gordon",
+      "yahoo_first_name": "Aaron",
+      "yahoo_last_name": "Gordon",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5295",
+      "row_number": 107
+    },
+    {
+      "yahoo_player_id": "5433",
+      "yahoo_name_full": "D'Angelo Russell",
+      "yahoo_first_name": "D'Angelo",
+      "yahoo_last_name": "Russell",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5433",
+      "row_number": 108
+    },
+    {
+      "yahoo_player_id": "5069",
+      "yahoo_name_full": "Draymond Green",
+      "yahoo_first_name": "Draymond",
+      "yahoo_last_name": "Green",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5069",
+      "row_number": 109
+    },
+    {
+      "yahoo_player_id": "10287",
+      "yahoo_name_full": "Zach Edey",
+      "yahoo_first_name": "Zach",
+      "yahoo_last_name": "Edey",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10287",
+      "row_number": 110
+    },
+    {
+      "yahoo_player_id": "6219",
+      "yahoo_name_full": "Nic Claxton",
+      "yahoo_first_name": "Nic",
+      "yahoo_last_name": "Claxton",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6219",
+      "row_number": 111
+    },
+    {
+      "yahoo_player_id": "10097",
+      "yahoo_name_full": "Dereck Lively II",
+      "yahoo_first_name": "Dereck",
+      "yahoo_last_name": "Lively II",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10097",
+      "row_number": 112
+    },
+    {
+      "yahoo_player_id": "10115",
+      "yahoo_name_full": "Brandin Podziemski",
+      "yahoo_first_name": "Brandin",
+      "yahoo_last_name": "Podziemski",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10115",
+      "row_number": 113
+    },
+    {
+      "yahoo_player_id": "10290",
+      "yahoo_name_full": "Stephon Castle",
+      "yahoo_first_name": "Stephon",
+      "yahoo_last_name": "Castle",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10290",
+      "row_number": 114
+    },
+    {
+      "yahoo_player_id": "10265",
+      "yahoo_name_full": "Matas Buzelis",
+      "yahoo_first_name": "Matas",
+      "yahoo_last_name": "Buzelis",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10265",
+      "row_number": 115
+    },
+    {
+      "yahoo_player_id": "6694",
+      "yahoo_name_full": "Keegan Murray",
+      "yahoo_first_name": "Keegan",
+      "yahoo_last_name": "Murray",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6694",
+      "row_number": 116
+    },
+    {
+      "yahoo_player_id": "6695",
+      "yahoo_name_full": "Jaden Ivey",
+      "yahoo_first_name": "Jaden",
+      "yahoo_last_name": "Ivey",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6695",
+      "row_number": 117
+    },
+    {
+      "yahoo_player_id": "4622",
+      "yahoo_name_full": "Jrue Holiday",
+      "yahoo_first_name": "Jrue",
+      "yahoo_last_name": "Holiday",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.4622",
+      "row_number": 118
+    },
+    {
+      "yahoo_player_id": "6572",
+      "yahoo_name_full": "Santi Aldama",
+      "yahoo_first_name": "Santi",
+      "yahoo_last_name": "Aldama",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6572",
+      "row_number": 119
+    },
+    {
+      "yahoo_player_id": "6693",
+      "yahoo_name_full": "Jabari Smith Jr.",
+      "yahoo_first_name": "Jabari",
+      "yahoo_last_name": "Smith Jr.",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6693",
+      "row_number": 120
+    },
+    {
+      "yahoo_player_id": "5482",
+      "yahoo_name_full": "Bobby Portis",
+      "yahoo_first_name": "Bobby",
+      "yahoo_last_name": "Portis",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5482",
+      "row_number": 121
+    },
+    {
+      "yahoo_player_id": "6707",
+      "yahoo_name_full": "Tari Eason",
+      "yahoo_first_name": "Tari",
+      "yahoo_last_name": "Eason",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6707",
+      "row_number": 122
+    },
+    {
+      "yahoo_player_id": "6699",
+      "yahoo_name_full": "Jeremy Sochan",
+      "yahoo_first_name": "Jeremy",
+      "yahoo_last_name": "Sochan",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6699",
+      "row_number": 123
+    },
+    {
+      "yahoo_player_id": "3930",
+      "yahoo_name_full": "Chris Paul",
+      "yahoo_first_name": "Chris",
+      "yahoo_last_name": "Paul",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.3930",
+      "row_number": 124
+    },
+    {
+      "yahoo_player_id": "6580",
+      "yahoo_name_full": "Ayo Dosunmu",
+      "yahoo_first_name": "Ayo",
+      "yahoo_last_name": "Dosunmu",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6580",
+      "row_number": 125
+    },
+    {
+      "yahoo_player_id": "6174",
+      "yahoo_name_full": "P.J. Washington",
+      "yahoo_first_name": "P.J.",
+      "yahoo_last_name": "Washington",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6174",
+      "row_number": 126
+    },
+    {
+      "yahoo_player_id": "10099",
+      "yahoo_name_full": "Bilal Coulibaly",
+      "yahoo_first_name": "Bilal",
+      "yahoo_last_name": "Coulibaly",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10099",
+      "row_number": 127
+    },
+    {
+      "yahoo_player_id": "6549",
+      "yahoo_name_full": "Jonathan Kuminga",
+      "yahoo_first_name": "Jonathan",
+      "yahoo_last_name": "Kuminga",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6549",
+      "row_number": 128
+    },
+    {
+      "yahoo_player_id": "6226",
+      "yahoo_name_full": "Daniel Gafford",
+      "yahoo_first_name": "Daniel",
+      "yahoo_last_name": "Gafford",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6226",
+      "row_number": 129
+    },
+    {
+      "yahoo_player_id": "4892",
+      "yahoo_name_full": "Klay Thompson",
+      "yahoo_first_name": "Klay",
+      "yahoo_last_name": "Thompson",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.4892",
+      "row_number": 130
+    },
+    {
+      "yahoo_player_id": "6205",
+      "yahoo_name_full": "Nickeil Alexander-Walker",
+      "yahoo_first_name": "Nickeil",
+      "yahoo_last_name": "Alexander-Walker",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6205",
+      "row_number": 131
+    },
+    {
+      "yahoo_player_id": "10296",
+      "yahoo_name_full": "Zaccharie Risacher",
+      "yahoo_first_name": "Zaccharie",
+      "yahoo_last_name": "Risacher",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10296",
+      "row_number": 132
+    },
+    {
+      "yahoo_player_id": "10467",
+      "yahoo_name_full": "Dylan Harper",
+      "yahoo_first_name": "Dylan",
+      "yahoo_last_name": "Harper",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10467",
+      "row_number": 133
+    },
+    {
+      "yahoo_player_id": "6019",
+      "yahoo_name_full": "Collin Sexton",
+      "yahoo_first_name": "Collin",
+      "yahoo_last_name": "Sexton",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6019",
+      "row_number": 134
+    },
+    {
+      "yahoo_player_id": "6577",
+      "yahoo_name_full": "Herbert Jones",
+      "yahoo_first_name": "Herbert",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6577",
+      "row_number": 135
+    },
+    {
+      "yahoo_player_id": "5350",
+      "yahoo_name_full": "Jerami Grant",
+      "yahoo_first_name": "Jerami",
+      "yahoo_last_name": "Grant",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5350",
+      "row_number": 136
+    },
+    {
+      "yahoo_player_id": "10454",
+      "yahoo_name_full": "VJ Edgecombe",
+      "yahoo_first_name": "VJ",
+      "yahoo_last_name": "Edgecombe",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10454",
+      "row_number": 137
+    },
+    {
+      "yahoo_player_id": "6028",
+      "yahoo_name_full": "Donte DiVincenzo",
+      "yahoo_first_name": "Donte",
+      "yahoo_last_name": "DiVincenzo",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6028",
+      "row_number": 138
+    },
+    {
+      "yahoo_player_id": "5651",
+      "yahoo_name_full": "Caris LeVert",
+      "yahoo_first_name": "Caris",
+      "yahoo_last_name": "LeVert",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5651",
+      "row_number": 139
+    },
+    {
+      "yahoo_player_id": "4472",
+      "yahoo_name_full": "Brook Lopez",
+      "yahoo_first_name": "Brook",
+      "yahoo_last_name": "Lopez",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.4472",
+      "row_number": 140
+    },
+    {
+      "yahoo_player_id": "4390",
+      "yahoo_name_full": "Russell Westbrook",
+      "yahoo_first_name": "Russell",
+      "yahoo_last_name": "Westbrook",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4390",
+      "row_number": 141
+    },
+    {
+      "yahoo_player_id": "5336",
+      "yahoo_name_full": "Clint Capela",
+      "yahoo_first_name": "Clint",
+      "yahoo_last_name": "Capela",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5336",
+      "row_number": 142
+    },
+    {
+      "yahoo_player_id": "6171",
+      "yahoo_name_full": "Rui Hachimura",
+      "yahoo_first_name": "Rui",
+      "yahoo_last_name": "Hachimura",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6171",
+      "row_number": 143
+    },
+    {
+      "yahoo_player_id": "10448",
+      "yahoo_name_full": "Tre Johnson",
+      "yahoo_first_name": "Tre",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10448",
+      "row_number": 144
+    },
+    {
+      "yahoo_player_id": "6032",
+      "yahoo_name_full": "Grayson Allen",
+      "yahoo_first_name": "Grayson",
+      "yahoo_last_name": "Allen",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6032",
+      "row_number": 145
+    },
+    {
+      "yahoo_player_id": "10048",
+      "yahoo_name_full": "Scoot Henderson",
+      "yahoo_first_name": "Scoot",
+      "yahoo_last_name": "Henderson",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10048",
+      "row_number": 146
+    },
+    {
+      "yahoo_player_id": "10462",
+      "yahoo_name_full": "Ace Bailey",
+      "yahoo_first_name": "Ace",
+      "yahoo_last_name": "Bailey",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10462",
+      "row_number": 147
+    },
+    {
+      "yahoo_player_id": "10288",
+      "yahoo_name_full": "Reed Sheppard",
+      "yahoo_first_name": "Reed",
+      "yahoo_last_name": "Sheppard",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10288",
+      "row_number": 148
+    },
+    {
+      "yahoo_player_id": "6166",
+      "yahoo_name_full": "De'Andre Hunter",
+      "yahoo_first_name": "De'Andre",
+      "yahoo_last_name": "Hunter",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6166",
+      "row_number": 149
+    },
+    {
+      "yahoo_player_id": "5840",
+      "yahoo_name_full": "Kyle Kuzma",
+      "yahoo_first_name": "Kyle",
+      "yahoo_last_name": "Kuzma",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5840",
+      "row_number": 150
+    },
+    {
+      "yahoo_player_id": "6404",
+      "yahoo_name_full": "Tyrese Haliburton",
+      "yahoo_first_name": "Tyrese",
+      "yahoo_last_name": "Haliburton",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6404",
+      "row_number": 151
+    },
+    {
+      "yahoo_player_id": "5765",
+      "yahoo_name_full": "Jayson Tatum",
+      "yahoo_first_name": "Jayson",
+      "yahoo_last_name": "Tatum",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5765",
+      "row_number": 152
+    },
+    {
+      "yahoo_player_id": "5012",
+      "yahoo_name_full": "Damian Lillard",
+      "yahoo_first_name": "Damian",
+      "yahoo_last_name": "Lillard",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5012",
+      "row_number": 153
+    },
+    {
+      "yahoo_player_id": "4840",
+      "yahoo_name_full": "Kyrie Irving",
+      "yahoo_first_name": "Kyrie",
+      "yahoo_last_name": "Irving",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4840",
+      "row_number": 154
+    },
+    {
+      "yahoo_player_id": "6753",
+      "yahoo_name_full": "Keon Ellis",
+      "yahoo_first_name": "Keon",
+      "yahoo_last_name": "Ellis",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6753",
+      "row_number": 155
+    },
+    {
+      "yahoo_player_id": "5484",
+      "yahoo_name_full": "Tyus Jones",
+      "yahoo_first_name": "Tyus",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5484",
+      "row_number": 156
+    },
+    {
+      "yahoo_player_id": "4886",
+      "yahoo_name_full": "Jonas Valančiūnas",
+      "yahoo_first_name": "Jonas",
+      "yahoo_last_name": "Valančiūnas",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.4886",
+      "row_number": 157
+    },
+    {
+      "yahoo_player_id": "10107",
+      "yahoo_name_full": "Cason Wallace",
+      "yahoo_first_name": "Cason",
+      "yahoo_last_name": "Wallace",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10107",
+      "row_number": 158
+    },
+    {
+      "yahoo_player_id": "6254",
+      "yahoo_name_full": "Luguentz Dort",
+      "yahoo_first_name": "Luguentz",
+      "yahoo_last_name": "Dort",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6254",
+      "row_number": 159
+    },
+    {
+      "yahoo_player_id": "5159",
+      "yahoo_name_full": "Kentavious Caldwell-Pope",
+      "yahoo_first_name": "Kentavious",
+      "yahoo_last_name": "Caldwell-Pope",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5159",
+      "row_number": 160
+    },
+    {
+      "yahoo_player_id": "5650",
+      "yahoo_name_full": "Malik Beasley",
+      "yahoo_first_name": "Malik",
+      "yahoo_last_name": "Beasley",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5650",
+      "row_number": 161
+    },
+    {
+      "yahoo_player_id": "4246",
+      "yahoo_name_full": "Mike Conley",
+      "yahoo_first_name": "Mike",
+      "yahoo_last_name": "Conley",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4246",
+      "row_number": 162
+    },
+    {
+      "yahoo_player_id": "5905",
+      "yahoo_name_full": "Royce O'Neale",
+      "yahoo_first_name": "Royce",
+      "yahoo_last_name": "O'Neale",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5905",
+      "row_number": 163
+    },
+    {
+      "yahoo_player_id": "5013",
+      "yahoo_name_full": "Harrison Barnes",
+      "yahoo_first_name": "Harrison",
+      "yahoo_last_name": "Barnes",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5013",
+      "row_number": 164
+    },
+    {
+      "yahoo_player_id": "5637",
+      "yahoo_name_full": "Buddy Hield",
+      "yahoo_first_name": "Buddy",
+      "yahoo_last_name": "Hield",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5637",
+      "row_number": 165
+    },
+    {
+      "yahoo_player_id": "6400",
+      "yahoo_name_full": "Obi Toppin",
+      "yahoo_first_name": "Obi",
+      "yahoo_last_name": "Toppin",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6400",
+      "row_number": 166
+    },
+    {
+      "yahoo_player_id": "5636",
+      "yahoo_name_full": "Kris Dunn",
+      "yahoo_first_name": "Kris",
+      "yahoo_last_name": "Dunn",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5636",
+      "row_number": 167
+    },
+    {
+      "yahoo_player_id": "6754",
+      "yahoo_name_full": "Julian Champagnie",
+      "yahoo_first_name": "Julian",
+      "yahoo_last_name": "Champagnie",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6754",
+      "row_number": 168
+    },
+    {
+      "yahoo_player_id": "5475",
+      "yahoo_name_full": "Kelly Oubre Jr.",
+      "yahoo_first_name": "Kelly",
+      "yahoo_last_name": "Oubre Jr.",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5475",
+      "row_number": 169
+    },
+    {
+      "yahoo_player_id": "6597",
+      "yahoo_name_full": "Aaron Wiggins",
+      "yahoo_first_name": "Aaron",
+      "yahoo_last_name": "Wiggins",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6597",
+      "row_number": 170
+    },
+    {
+      "yahoo_player_id": "4245",
+      "yahoo_name_full": "Al Horford",
+      "yahoo_first_name": "Al",
+      "yahoo_last_name": "Horford",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.4245",
+      "row_number": 171
+    },
+    {
+      "yahoo_player_id": "5858",
+      "yahoo_name_full": "Dillon Brooks",
+      "yahoo_first_name": "Dillon",
+      "yahoo_last_name": "Brooks",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5858",
+      "row_number": 172
+    },
+    {
+      "yahoo_player_id": "5754",
+      "yahoo_name_full": "Alex Caruso",
+      "yahoo_first_name": "Alex",
+      "yahoo_last_name": "Caruso",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5754",
+      "row_number": 173
+    },
+    {
+      "yahoo_player_id": "5643",
+      "yahoo_name_full": "Taurean Prince",
+      "yahoo_first_name": "Taurean",
+      "yahoo_last_name": "Prince",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.5643",
+      "row_number": 174
+    },
+    {
+      "yahoo_player_id": "6048",
+      "yahoo_name_full": "Gary Trent Jr.",
+      "yahoo_first_name": "Gary",
+      "yahoo_last_name": "Trent Jr.",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6048",
+      "row_number": 175
+    },
+    {
+      "yahoo_player_id": "5187",
+      "yahoo_name_full": "Dennis Schröder",
+      "yahoo_first_name": "Dennis",
+      "yahoo_last_name": "Schröder",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5187",
+      "row_number": 176
+    },
+    {
+      "yahoo_player_id": "5582",
+      "yahoo_name_full": "T.J. McConnell",
+      "yahoo_first_name": "T.J.",
+      "yahoo_last_name": "McConnell",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5582",
+      "row_number": 177
+    },
+    {
+      "yahoo_player_id": "6206",
+      "yahoo_name_full": "Goga Bitadze",
+      "yahoo_first_name": "Goga",
+      "yahoo_last_name": "Bitadze",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6206",
+      "row_number": 178
+    },
+    {
+      "yahoo_player_id": "6217",
+      "yahoo_name_full": "Keldon Johnson",
+      "yahoo_first_name": "Keldon",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6217",
+      "row_number": 179
+    },
+    {
+      "yahoo_player_id": "5349",
+      "yahoo_name_full": "Spencer Dinwiddie",
+      "yahoo_first_name": "Spencer",
+      "yahoo_last_name": "Dinwiddie",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5349",
+      "row_number": 180
+    },
+    {
+      "yahoo_player_id": "6567",
+      "yahoo_name_full": "Quentin Grimes",
+      "yahoo_first_name": "Quentin",
+      "yahoo_last_name": "Grimes",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6567",
+      "row_number": 181
+    },
+    {
+      "yahoo_player_id": "6499",
+      "yahoo_name_full": "Naji Marshall",
+      "yahoo_first_name": "Naji",
+      "yahoo_last_name": "Marshall",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6499",
+      "row_number": 182
+    },
+    {
+      "yahoo_player_id": "5903",
+      "yahoo_name_full": "Luke Kornet",
+      "yahoo_first_name": "Luke",
+      "yahoo_last_name": "Kornet",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5903",
+      "row_number": 183
+    },
+    {
+      "yahoo_player_id": "5747",
+      "yahoo_name_full": "Derrick Jones Jr.",
+      "yahoo_first_name": "Derrick",
+      "yahoo_last_name": "Jones Jr.",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5747",
+      "row_number": 184
+    },
+    {
+      "yahoo_player_id": "6441",
+      "yahoo_name_full": "Isaiah Joe",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Joe",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6441",
+      "row_number": 185
+    },
+    {
+      "yahoo_player_id": "6757",
+      "yahoo_name_full": "Scotty Pippen Jr.",
+      "yahoo_first_name": "Scotty",
+      "yahoo_last_name": "Pippen Jr.",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6757",
+      "row_number": 186
+    },
+    {
+      "yahoo_player_id": "6408",
+      "yahoo_name_full": "Isaiah Stewart",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Stewart",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6408",
+      "row_number": 187
+    },
+    {
+      "yahoo_player_id": "6619",
+      "yahoo_name_full": "Sam Hauser",
+      "yahoo_first_name": "Sam",
+      "yahoo_last_name": "Hauser",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6619",
+      "row_number": 188
+    },
+    {
+      "yahoo_player_id": "6212",
+      "yahoo_name_full": "Ty Jerome",
+      "yahoo_first_name": "Ty",
+      "yahoo_last_name": "Jerome",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6212",
+      "row_number": 189
+    },
+    {
+      "yahoo_player_id": "6073",
+      "yahoo_name_full": "Duncan Robinson",
+      "yahoo_first_name": "Duncan",
+      "yahoo_last_name": "Robinson",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6073",
+      "row_number": 190
+    },
+    {
+      "yahoo_player_id": "6030",
+      "yahoo_name_full": "Kevin Huerter",
+      "yahoo_first_name": "Kevin",
+      "yahoo_last_name": "Huerter",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6030",
+      "row_number": 191
+    },
+    {
+      "yahoo_player_id": "6155",
+      "yahoo_name_full": "Haywood Highsmith",
+      "yahoo_first_name": "Haywood",
+      "yahoo_last_name": "Highsmith",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6155",
+      "row_number": 192
+    },
+    {
+      "yahoo_player_id": "6704",
+      "yahoo_name_full": "Ochai Agbaji",
+      "yahoo_first_name": "Ochai",
+      "yahoo_last_name": "Agbaji",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6704",
+      "row_number": 193
+    },
+    {
+      "yahoo_player_id": "5194",
+      "yahoo_name_full": "Tim Hardaway Jr.",
+      "yahoo_first_name": "Tim",
+      "yahoo_last_name": "Hardaway Jr.",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5194",
+      "row_number": 194
+    },
+    {
+      "yahoo_player_id": "6725",
+      "yahoo_name_full": "Max Christie",
+      "yahoo_first_name": "Max",
+      "yahoo_last_name": "Christie",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6725",
+      "row_number": 195
+    },
+    {
+      "yahoo_player_id": "6720",
+      "yahoo_name_full": "Peyton Watson",
+      "yahoo_first_name": "Peyton",
+      "yahoo_last_name": "Watson",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6720",
+      "row_number": 196
+    },
+    {
+      "yahoo_player_id": "6578",
+      "yahoo_name_full": "Miles McBride",
+      "yahoo_first_name": "Miles",
+      "yahoo_last_name": "McBride",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6578",
+      "row_number": 197
+    },
+    {
+      "yahoo_player_id": "5338",
+      "yahoo_name_full": "Bogdan Bogdanović",
+      "yahoo_first_name": "Bogdan",
+      "yahoo_last_name": "Bogdanović",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5338",
+      "row_number": 198
+    },
+    {
+      "yahoo_player_id": "6406",
+      "yahoo_name_full": "Aaron Nesmith",
+      "yahoo_first_name": "Aaron",
+      "yahoo_last_name": "Nesmith",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6406",
+      "row_number": 199
+    },
+    {
+      "yahoo_player_id": "6556",
+      "yahoo_name_full": "Moses Moody",
+      "yahoo_first_name": "Moses",
+      "yahoo_last_name": "Moody",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6556",
+      "row_number": 200
+    },
+    {
+      "yahoo_player_id": "5693",
+      "yahoo_name_full": "Dorian Finney-Smith",
+      "yahoo_first_name": "Dorian",
+      "yahoo_last_name": "Finney-Smith",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5693",
+      "row_number": 201
+    },
+    {
+      "yahoo_player_id": "5660",
+      "yahoo_name_full": "Dejounte Murray",
+      "yahoo_first_name": "Dejounte",
+      "yahoo_last_name": "Murray",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5660",
+      "row_number": 202
+    },
+    {
+      "yahoo_player_id": "6018",
+      "yahoo_name_full": "Wendell Carter Jr.",
+      "yahoo_first_name": "Wendell",
+      "yahoo_last_name": "Carter Jr.",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6018",
+      "row_number": 203
+    },
+    {
+      "yahoo_player_id": "5768",
+      "yahoo_name_full": "Jonathan Isaac",
+      "yahoo_first_name": "Jonathan",
+      "yahoo_last_name": "Isaac",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5768",
+      "row_number": 204
+    },
+    {
+      "yahoo_player_id": "5681",
+      "yahoo_name_full": "Georges Niang",
+      "yahoo_first_name": "Georges",
+      "yahoo_last_name": "Niang",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.5681",
+      "row_number": 205
+    },
+    {
+      "yahoo_player_id": "4487",
+      "yahoo_name_full": "Nicolas Batum",
+      "yahoo_first_name": "Nicolas",
+      "yahoo_last_name": "Batum",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.4487",
+      "row_number": 206
+    },
+    {
+      "yahoo_player_id": "5647",
+      "yahoo_name_full": "Guerschon Yabusele",
+      "yahoo_first_name": "Guerschon",
+      "yahoo_last_name": "Yabusele",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5647",
+      "row_number": 207
+    },
+    {
+      "yahoo_player_id": "5825",
+      "yahoo_name_full": "Luke Kennard",
+      "yahoo_first_name": "Luke",
+      "yahoo_last_name": "Kennard",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5825",
+      "row_number": 208
+    },
+    {
+      "yahoo_player_id": "6632",
+      "yahoo_name_full": "Justin Champagnie",
+      "yahoo_first_name": "Justin",
+      "yahoo_last_name": "Champagnie",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6632",
+      "row_number": 209
+    },
+    {
+      "yahoo_player_id": "6402",
+      "yahoo_name_full": "Jalen Smith",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Smith",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6402",
+      "row_number": 210
+    },
+    {
+      "yahoo_player_id": "6613",
+      "yahoo_name_full": "Jose Alvarado",
+      "yahoo_first_name": "Jose",
+      "yahoo_last_name": "Alvarado",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6613",
+      "row_number": 211
+    },
+    {
+      "yahoo_player_id": "6552",
+      "yahoo_name_full": "Ziaire Williams",
+      "yahoo_first_name": "Ziaire",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6552",
+      "row_number": 212
+    },
+    {
+      "yahoo_player_id": "6315",
+      "yahoo_name_full": "Amir Coffey",
+      "yahoo_first_name": "Amir",
+      "yahoo_last_name": "Coffey",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6315",
+      "row_number": 213
+    },
+    {
+      "yahoo_player_id": "5476",
+      "yahoo_name_full": "Terry Rozier",
+      "yahoo_first_name": "Terry",
+      "yahoo_last_name": "Rozier",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5476",
+      "row_number": 214
+    },
+    {
+      "yahoo_player_id": "6452",
+      "yahoo_name_full": "Sam Merrill",
+      "yahoo_first_name": "Sam",
+      "yahoo_last_name": "Merrill",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6452",
+      "row_number": 215
+    },
+    {
+      "yahoo_player_id": "6407",
+      "yahoo_name_full": "Cole Anthony",
+      "yahoo_first_name": "Cole",
+      "yahoo_last_name": "Anthony",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6407",
+      "row_number": 216
+    },
+    {
+      "yahoo_player_id": "6267",
+      "yahoo_name_full": "Max Strus",
+      "yahoo_first_name": "Max",
+      "yahoo_last_name": "Strus",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6267",
+      "row_number": 217
+    },
+    {
+      "yahoo_player_id": "6434",
+      "yahoo_name_full": "Nick Richards",
+      "yahoo_first_name": "Nick",
+      "yahoo_last_name": "Richards",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6434",
+      "row_number": 218
+    },
+    {
+      "yahoo_player_id": "10273",
+      "yahoo_name_full": "Bub Carrington",
+      "yahoo_first_name": "Bub",
+      "yahoo_last_name": "Carrington",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10273",
+      "row_number": 219
+    },
+    {
+      "yahoo_player_id": "10095",
+      "yahoo_name_full": "Anthony Black",
+      "yahoo_first_name": "Anthony",
+      "yahoo_last_name": "Black",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10095",
+      "row_number": 220
+    },
+    {
+      "yahoo_player_id": "10289",
+      "yahoo_name_full": "Yves Missi",
+      "yahoo_first_name": "Yves",
+      "yahoo_last_name": "Missi",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10289",
+      "row_number": 221
+    },
+    {
+      "yahoo_player_id": "6557",
+      "yahoo_name_full": "Corey Kispert",
+      "yahoo_first_name": "Corey",
+      "yahoo_last_name": "Kispert",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6557",
+      "row_number": 222
+    },
+    {
+      "yahoo_player_id": "10092",
+      "yahoo_name_full": "Jaime Jaquez Jr.",
+      "yahoo_first_name": "Jaime",
+      "yahoo_last_name": "Jaquez Jr.",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10092",
+      "row_number": 223
+    },
+    {
+      "yahoo_player_id": "6551",
+      "yahoo_name_full": "Davion Mitchell",
+      "yahoo_first_name": "Davion",
+      "yahoo_last_name": "Mitchell",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6551",
+      "row_number": 224
+    },
+    {
+      "yahoo_player_id": "6433",
+      "yahoo_name_full": "Tre Jones",
+      "yahoo_first_name": "Tre",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6433",
+      "row_number": 225
+    },
+    {
+      "yahoo_player_id": "6563",
+      "yahoo_name_full": "Keon Johnson",
+      "yahoo_first_name": "Keon",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6563",
+      "row_number": 226
+    },
+    {
+      "yahoo_player_id": "5823",
+      "yahoo_name_full": "Zach Collins",
+      "yahoo_first_name": "Zach",
+      "yahoo_last_name": "Collins",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5823",
+      "row_number": 227
+    },
+    {
+      "yahoo_player_id": "6209",
+      "yahoo_name_full": "Brandon Clarke",
+      "yahoo_first_name": "Brandon",
+      "yahoo_last_name": "Clarke",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6209",
+      "row_number": 228
+    },
+    {
+      "yahoo_player_id": "6236",
+      "yahoo_name_full": "Terance Mann",
+      "yahoo_first_name": "Terance",
+      "yahoo_last_name": "Mann",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6236",
+      "row_number": 229
+    },
+    {
+      "yahoo_player_id": "10122",
+      "yahoo_name_full": "Brice Sensabaugh",
+      "yahoo_first_name": "Brice",
+      "yahoo_last_name": "Sensabaugh",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10122",
+      "row_number": 230
+    },
+    {
+      "yahoo_player_id": "10272",
+      "yahoo_name_full": "Kyshawn George",
+      "yahoo_first_name": "Kyshawn",
+      "yahoo_last_name": "George",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10272",
+      "row_number": 231
+    },
+    {
+      "yahoo_player_id": "5341",
+      "yahoo_name_full": "Kyle Anderson",
+      "yahoo_first_name": "Kyle",
+      "yahoo_last_name": "Anderson",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.5341",
+      "row_number": 232
+    },
+    {
+      "yahoo_player_id": "5327",
+      "yahoo_name_full": "Jusuf Nurkić",
+      "yahoo_first_name": "Jusuf",
+      "yahoo_last_name": "Nurkić",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5327",
+      "row_number": 233
+    },
+    {
+      "yahoo_player_id": "5474",
+      "yahoo_name_full": "Cameron Payne",
+      "yahoo_first_name": "Cameron",
+      "yahoo_last_name": "Payne",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5474",
+      "row_number": 234
+    },
+    {
+      "yahoo_player_id": "6410",
+      "yahoo_name_full": "Josh Green",
+      "yahoo_first_name": "Josh",
+      "yahoo_last_name": "Green",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6410",
+      "row_number": 235
+    },
+    {
+      "yahoo_player_id": "5490",
+      "yahoo_name_full": "Kevon Looney",
+      "yahoo_first_name": "Kevon",
+      "yahoo_last_name": "Looney",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5490",
+      "row_number": 236
+    },
+    {
+      "yahoo_player_id": "10340",
+      "yahoo_name_full": "Jaylen Wells",
+      "yahoo_first_name": "Jaylen",
+      "yahoo_last_name": "Wells",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10340",
+      "row_number": 237
+    },
+    {
+      "yahoo_player_id": "10101",
+      "yahoo_name_full": "Gradey Dick",
+      "yahoo_first_name": "Gradey",
+      "yahoo_last_name": "Dick",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10101",
+      "row_number": 238
+    },
+    {
+      "yahoo_player_id": "5855",
+      "yahoo_name_full": "Thomas Bryant",
+      "yahoo_first_name": "Thomas",
+      "yahoo_last_name": "Bryant",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5855",
+      "row_number": 239
+    },
+    {
+      "yahoo_player_id": "6571",
+      "yahoo_name_full": "Day'Ron Sharpe",
+      "yahoo_first_name": "Day'Ron",
+      "yahoo_last_name": "Sharpe",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6571",
+      "row_number": 240
+    },
+    {
+      "yahoo_player_id": "6412",
+      "yahoo_name_full": "Precious Achiuwa",
+      "yahoo_first_name": "Precious",
+      "yahoo_last_name": "Achiuwa",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6412",
+      "row_number": 241
+    },
+    {
+      "yahoo_player_id": "6755",
+      "yahoo_name_full": "AJ Green",
+      "yahoo_first_name": "AJ",
+      "yahoo_last_name": "Green",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6755",
+      "row_number": 242
+    },
+    {
+      "yahoo_player_id": "6218",
+      "yahoo_name_full": "Kevin Porter Jr.",
+      "yahoo_first_name": "Kevin",
+      "yahoo_last_name": "Porter Jr.",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6218",
+      "row_number": 243
+    },
+    {
+      "yahoo_player_id": "5164",
+      "yahoo_name_full": "Kelly Olynyk",
+      "yahoo_first_name": "Kelly",
+      "yahoo_last_name": "Olynyk",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5164",
+      "row_number": 244
+    },
+    {
+      "yahoo_player_id": "5073",
+      "yahoo_name_full": "Khris Middleton",
+      "yahoo_first_name": "Khris",
+      "yahoo_last_name": "Middleton",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5073",
+      "row_number": 245
+    },
+    {
+      "yahoo_player_id": "6076",
+      "yahoo_name_full": "Kenrich Williams",
+      "yahoo_first_name": "Kenrich",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6076",
+      "row_number": 246
+    },
+    {
+      "yahoo_player_id": "5739",
+      "yahoo_name_full": "Gary Payton II",
+      "yahoo_first_name": "Gary",
+      "yahoo_last_name": "Payton II",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.5739",
+      "row_number": 247
+    },
+    {
+      "yahoo_player_id": "5472",
+      "yahoo_name_full": "Trey Lyles",
+      "yahoo_first_name": "Trey",
+      "yahoo_last_name": "Lyles",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5472",
+      "row_number": 248
+    },
+    {
+      "yahoo_player_id": "6256",
+      "yahoo_name_full": "Dean Wade",
+      "yahoo_first_name": "Dean",
+      "yahoo_last_name": "Wade",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6256",
+      "row_number": 249
+    },
+    {
+      "yahoo_player_id": "5192",
+      "yahoo_name_full": "Mason Plumlee",
+      "yahoo_first_name": "Mason",
+      "yahoo_last_name": "Plumlee",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5192",
+      "row_number": 250
+    },
+    {
+      "yahoo_player_id": "6396",
+      "yahoo_name_full": "Patrick Williams",
+      "yahoo_first_name": "Patrick",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6396",
+      "row_number": 251
+    },
+    {
+      "yahoo_player_id": "6709",
+      "yahoo_name_full": "Jake LaRavia",
+      "yahoo_first_name": "Jake",
+      "yahoo_last_name": "LaRavia",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6709",
+      "row_number": 252
+    },
+    {
+      "yahoo_player_id": "6170",
+      "yahoo_name_full": "Jaxson Hayes",
+      "yahoo_first_name": "Jaxson",
+      "yahoo_last_name": "Hayes",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6170",
+      "row_number": 253
+    },
+    {
+      "yahoo_player_id": "6717",
+      "yahoo_name_full": "Nikola Jović",
+      "yahoo_first_name": "Nikola",
+      "yahoo_last_name": "Jović",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6717",
+      "row_number": 254
+    },
+    {
+      "yahoo_player_id": "10077",
+      "yahoo_name_full": "Jalen Wilson",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Wilson",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10077",
+      "row_number": 255
+    },
+    {
+      "yahoo_player_id": "10315",
+      "yahoo_name_full": "Kyle Filipowski",
+      "yahoo_first_name": "Kyle",
+      "yahoo_last_name": "Filipowski",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10315",
+      "row_number": 256
+    },
+    {
+      "yahoo_player_id": "6724",
+      "yahoo_name_full": "Jaylin Williams",
+      "yahoo_first_name": "Jaylin",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6724",
+      "row_number": 257
+    },
+    {
+      "yahoo_player_id": "6429",
+      "yahoo_name_full": "Vít Krejčí",
+      "yahoo_first_name": "Vít",
+      "yahoo_last_name": "Krejčí",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6429",
+      "row_number": 258
+    },
+    {
+      "yahoo_player_id": "5894",
+      "yahoo_name_full": "Chris Boucher",
+      "yahoo_first_name": "Chris",
+      "yahoo_last_name": "Boucher",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5894",
+      "row_number": 259
+    },
+    {
+      "yahoo_player_id": "6269",
+      "yahoo_name_full": "Javonte Green",
+      "yahoo_first_name": "Javonte",
+      "yahoo_last_name": "Green",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6269",
+      "row_number": 260
+    },
+    {
+      "yahoo_player_id": "6450",
+      "yahoo_name_full": "Paul Reed",
+      "yahoo_first_name": "Paul",
+      "yahoo_last_name": "Reed",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6450",
+      "row_number": 261
+    },
+    {
+      "yahoo_player_id": "6766",
+      "yahoo_name_full": "Simone Fontecchio",
+      "yahoo_first_name": "Simone",
+      "yahoo_last_name": "Fontecchio",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6766",
+      "row_number": 262
+    },
+    {
+      "yahoo_player_id": "6762",
+      "yahoo_name_full": "Johnny Juzang",
+      "yahoo_first_name": "Johnny",
+      "yahoo_last_name": "Juzang",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6762",
+      "row_number": 263
+    },
+    {
+      "yahoo_player_id": "10103",
+      "yahoo_name_full": "Jarace Walker",
+      "yahoo_first_name": "Jarace",
+      "yahoo_last_name": "Walker",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10103",
+      "row_number": 264
+    },
+    {
+      "yahoo_player_id": "6224",
+      "yahoo_name_full": "Cody Martin",
+      "yahoo_first_name": "Cody",
+      "yahoo_last_name": "Martin",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF,SF,SG",
+      "yahoo_player_key": "466.p.6224",
+      "row_number": 265
+    },
+    {
+      "yahoo_player_id": "6582",
+      "yahoo_name_full": "Jared Butler",
+      "yahoo_first_name": "Jared",
+      "yahoo_last_name": "Butler",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6582",
+      "row_number": 266
+    },
+    {
+      "yahoo_player_id": "10113",
+      "yahoo_name_full": "Ben Sheppard",
+      "yahoo_first_name": "Ben",
+      "yahoo_last_name": "Sheppard",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10113",
+      "row_number": 267
+    },
+    {
+      "yahoo_player_id": "10080",
+      "yahoo_name_full": "Trayce Jackson-Davis",
+      "yahoo_first_name": "Trayce",
+      "yahoo_last_name": "Jackson-Davis",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10080",
+      "row_number": 268
+    },
+    {
+      "yahoo_player_id": "6617",
+      "yahoo_name_full": "Jay Huff",
+      "yahoo_first_name": "Jay",
+      "yahoo_last_name": "Huff",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6617",
+      "row_number": 269
+    },
+    {
+      "yahoo_player_id": "6397",
+      "yahoo_name_full": "Isaac Okoro",
+      "yahoo_first_name": "Isaac",
+      "yahoo_last_name": "Okoro",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6397",
+      "row_number": 270
+    },
+    {
+      "yahoo_player_id": "10291",
+      "yahoo_name_full": "Dalton Knecht",
+      "yahoo_first_name": "Dalton",
+      "yahoo_last_name": "Knecht",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10291",
+      "row_number": 271
+    },
+    {
+      "yahoo_player_id": "6574",
+      "yahoo_name_full": "Jeremiah Robinson-Earl",
+      "yahoo_first_name": "Jeremiah",
+      "yahoo_last_name": "Robinson-Earl",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6574",
+      "row_number": 272
+    },
+    {
+      "yahoo_player_id": "10292",
+      "yahoo_name_full": "Ryan Dunn",
+      "yahoo_first_name": "Ryan",
+      "yahoo_last_name": "Dunn",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10292",
+      "row_number": 273
+    },
+    {
+      "yahoo_player_id": "10330",
+      "yahoo_name_full": "Jonathan Mogbo",
+      "yahoo_first_name": "Jonathan",
+      "yahoo_last_name": "Mogbo",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10330",
+      "row_number": 274
+    },
+    {
+      "yahoo_player_id": "10112",
+      "yahoo_name_full": "Julian Strawther",
+      "yahoo_first_name": "Julian",
+      "yahoo_last_name": "Strawther",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10112",
+      "row_number": 275
+    },
+    {
+      "yahoo_player_id": "6733",
+      "yahoo_name_full": "Moussa Diabaté",
+      "yahoo_first_name": "Moussa",
+      "yahoo_last_name": "Diabaté",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6733",
+      "row_number": 276
+    },
+    {
+      "yahoo_player_id": "10275",
+      "yahoo_name_full": "Tristan da Silva",
+      "yahoo_first_name": "Tristan",
+      "yahoo_last_name": "da Silva",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10275",
+      "row_number": 277
+    },
+    {
+      "yahoo_player_id": "6053",
+      "yahoo_name_full": "Bruce Brown",
+      "yahoo_first_name": "Bruce",
+      "yahoo_last_name": "Brown",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6053",
+      "row_number": 278
+    },
+    {
+      "yahoo_player_id": "10114",
+      "yahoo_name_full": "Marcus Sasser",
+      "yahoo_first_name": "Marcus",
+      "yahoo_last_name": "Sasser",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10114",
+      "row_number": 279
+    },
+    {
+      "yahoo_player_id": "6581",
+      "yahoo_name_full": "Neemias Queta",
+      "yahoo_first_name": "Neemias",
+      "yahoo_last_name": "Queta",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6581",
+      "row_number": 280
+    },
+    {
+      "yahoo_player_id": "10098",
+      "yahoo_name_full": "Jordan Hawkins",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "Hawkins",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10098",
+      "row_number": 281
+    },
+    {
+      "yahoo_player_id": "5600",
+      "yahoo_name_full": "Ben Simmons",
+      "yahoo_first_name": "Ben",
+      "yahoo_last_name": "Simmons",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "C,PG",
+      "yahoo_player_key": "466.p.5600",
+      "row_number": 282
+    },
+    {
+      "yahoo_player_id": "4893",
+      "yahoo_name_full": "Alec Burks",
+      "yahoo_first_name": "Alec",
+      "yahoo_last_name": "Burks",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.4893",
+      "row_number": 283
+    },
+    {
+      "yahoo_player_id": "6353",
+      "yahoo_name_full": "Gabe Vincent",
+      "yahoo_first_name": "Gabe",
+      "yahoo_last_name": "Vincent",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6353",
+      "row_number": 284
+    },
+    {
+      "yahoo_player_id": "6588",
+      "yahoo_name_full": "Dalano Banton",
+      "yahoo_first_name": "Dalano",
+      "yahoo_last_name": "Banton",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6588",
+      "row_number": 285
+    },
+    {
+      "yahoo_player_id": "10335",
+      "yahoo_name_full": "Adem Bona",
+      "yahoo_first_name": "Adem",
+      "yahoo_last_name": "Bona",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10335",
+      "row_number": 286
+    },
+    {
+      "yahoo_player_id": "5245",
+      "yahoo_name_full": "Seth Curry",
+      "yahoo_first_name": "Seth",
+      "yahoo_last_name": "Curry",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.5245",
+      "row_number": 287
+    },
+    {
+      "yahoo_player_id": "5357",
+      "yahoo_name_full": "Jordan Clarkson",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "Clarkson",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5357",
+      "row_number": 288
+    },
+    {
+      "yahoo_player_id": "10333",
+      "yahoo_name_full": "Jamal Shead",
+      "yahoo_first_name": "Jamal",
+      "yahoo_last_name": "Shead",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10333",
+      "row_number": 289
+    },
+    {
+      "yahoo_player_id": "6747",
+      "yahoo_name_full": "Jabari Walker",
+      "yahoo_first_name": "Jabari",
+      "yahoo_last_name": "Walker",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6747",
+      "row_number": 290
+    },
+    {
+      "yahoo_player_id": "6109",
+      "yahoo_name_full": "Drew Eubanks",
+      "yahoo_first_name": "Drew",
+      "yahoo_last_name": "Eubanks",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6109",
+      "row_number": 291
+    },
+    {
+      "yahoo_player_id": "6036",
+      "yahoo_name_full": "Moritz Wagner",
+      "yahoo_first_name": "Moritz",
+      "yahoo_last_name": "Wagner",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6036",
+      "row_number": 292
+    },
+    {
+      "yahoo_player_id": "6596",
+      "yahoo_name_full": "Sandro Mamukelashvili",
+      "yahoo_first_name": "Sandro",
+      "yahoo_last_name": "Mamukelashvili",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6596",
+      "row_number": 293
+    },
+    {
+      "yahoo_player_id": "5015",
+      "yahoo_name_full": "Andre Drummond",
+      "yahoo_first_name": "Andre",
+      "yahoo_last_name": "Drummond",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5015",
+      "row_number": 294
+    },
+    {
+      "yahoo_player_id": "6255",
+      "yahoo_name_full": "John Konchar",
+      "yahoo_first_name": "John",
+      "yahoo_last_name": "Konchar",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6255",
+      "row_number": 295
+    },
+    {
+      "yahoo_player_id": "6275",
+      "yahoo_name_full": "Caleb Martin",
+      "yahoo_first_name": "Caleb",
+      "yahoo_last_name": "Martin",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6275",
+      "row_number": 296
+    },
+    {
+      "yahoo_player_id": "6742",
+      "yahoo_name_full": "Karlo Matković",
+      "yahoo_first_name": "Karlo",
+      "yahoo_last_name": "Matković",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6742",
+      "row_number": 297
+    },
+    {
+      "yahoo_player_id": "4469",
+      "yahoo_name_full": "Eric Gordon",
+      "yahoo_first_name": "Eric",
+      "yahoo_last_name": "Gordon",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.4469",
+      "row_number": 298
+    },
+    {
+      "yahoo_player_id": "6034",
+      "yahoo_name_full": "Aaron Holiday",
+      "yahoo_first_name": "Aaron",
+      "yahoo_last_name": "Holiday",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6034",
+      "row_number": 299
+    },
+    {
+      "yahoo_player_id": "4152",
+      "yahoo_name_full": "Kyle Lowry",
+      "yahoo_first_name": "Kyle",
+      "yahoo_last_name": "Lowry",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4152",
+      "row_number": 300
+    },
+    {
+      "yahoo_player_id": "6259",
+      "yahoo_name_full": "Garrison Mathews",
+      "yahoo_first_name": "Garrison",
+      "yahoo_last_name": "Mathews",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6259",
+      "row_number": 301
+    },
+    {
+      "yahoo_player_id": "10118",
+      "yahoo_name_full": "Cam Whitmore",
+      "yahoo_first_name": "Cam",
+      "yahoo_last_name": "Whitmore",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10118",
+      "row_number": 302
+    },
+    {
+      "yahoo_player_id": "10083",
+      "yahoo_name_full": "Julian Phillips",
+      "yahoo_first_name": "Julian",
+      "yahoo_last_name": "Phillips",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10083",
+      "row_number": 303
+    },
+    {
+      "yahoo_player_id": "5487",
+      "yahoo_name_full": "Larry Nance Jr.",
+      "yahoo_first_name": "Larry",
+      "yahoo_last_name": "Nance Jr.",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5487",
+      "row_number": 304
+    },
+    {
+      "yahoo_player_id": "10263",
+      "yahoo_name_full": "Ronald Holland II",
+      "yahoo_first_name": "Ronald",
+      "yahoo_last_name": "Holland II",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10263",
+      "row_number": 305
+    },
+    {
+      "yahoo_player_id": "6734",
+      "yahoo_name_full": "Ryan Rollins",
+      "yahoo_first_name": "Ryan",
+      "yahoo_last_name": "Rollins",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6734",
+      "row_number": 306
+    },
+    {
+      "yahoo_player_id": "6031",
+      "yahoo_name_full": "Josh Okogie",
+      "yahoo_first_name": "Josh",
+      "yahoo_last_name": "Okogie",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6031",
+      "row_number": 307
+    },
+    {
+      "yahoo_player_id": "6593",
+      "yahoo_name_full": "Brandon Boston",
+      "yahoo_first_name": "Brandon",
+      "yahoo_last_name": "Boston",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6593",
+      "row_number": 308
+    },
+    {
+      "yahoo_player_id": "6741",
+      "yahoo_name_full": "Tyrese Martin",
+      "yahoo_first_name": "Tyrese",
+      "yahoo_last_name": "Martin",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG,SF,SG",
+      "yahoo_player_key": "466.p.6741",
+      "row_number": 309
+    },
+    {
+      "yahoo_player_id": "10310",
+      "yahoo_name_full": "Justin Edwards",
+      "yahoo_first_name": "Justin",
+      "yahoo_last_name": "Edwards",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10310",
+      "row_number": 310
+    },
+    {
+      "yahoo_player_id": "6208",
+      "yahoo_name_full": "Matisse Thybulle",
+      "yahoo_first_name": "Matisse",
+      "yahoo_last_name": "Thybulle",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6208",
+      "row_number": 311
+    },
+    {
+      "yahoo_player_id": "5764",
+      "yahoo_name_full": "Lonzo Ball",
+      "yahoo_first_name": "Lonzo",
+      "yahoo_last_name": "Ball",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5764",
+      "row_number": 312
+    },
+    {
+      "yahoo_player_id": "10391",
+      "yahoo_name_full": "Jamison Battle",
+      "yahoo_first_name": "Jamison",
+      "yahoo_last_name": "Battle",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10391",
+      "row_number": 313
+    },
+    {
+      "yahoo_player_id": "10282",
+      "yahoo_name_full": "Isaiah Collier",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Collier",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10282",
+      "row_number": 314
+    },
+    {
+      "yahoo_player_id": "10125",
+      "yahoo_name_full": "Ricky Council IV",
+      "yahoo_first_name": "Ricky",
+      "yahoo_last_name": "Council IV",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10125",
+      "row_number": 315
+    },
+    {
+      "yahoo_player_id": "10121",
+      "yahoo_name_full": "Noah Clowney",
+      "yahoo_first_name": "Noah",
+      "yahoo_last_name": "Clowney",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10121",
+      "row_number": 316
+    },
+    {
+      "yahoo_player_id": "10278",
+      "yahoo_name_full": "Ja'Kobe Walter",
+      "yahoo_first_name": "Ja'Kobe",
+      "yahoo_last_name": "Walter",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10278",
+      "row_number": 317
+    },
+    {
+      "yahoo_player_id": "6708",
+      "yahoo_name_full": "Dalen Terry",
+      "yahoo_first_name": "Dalen",
+      "yahoo_last_name": "Terry",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6708",
+      "row_number": 318
+    },
+    {
+      "yahoo_player_id": "5497",
+      "yahoo_name_full": "Richaun Holmes",
+      "yahoo_first_name": "Richaun",
+      "yahoo_last_name": "Holmes",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5497",
+      "row_number": 319
+    },
+    {
+      "yahoo_player_id": "6210",
+      "yahoo_name_full": "Grant Williams",
+      "yahoo_first_name": "Grant",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6210",
+      "row_number": 320
+    },
+    {
+      "yahoo_player_id": "10120",
+      "yahoo_name_full": "Nick Smith Jr.",
+      "yahoo_first_name": "Nick",
+      "yahoo_last_name": "Smith Jr.",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10120",
+      "row_number": 321
+    },
+    {
+      "yahoo_player_id": "6616",
+      "yahoo_name_full": "Jordan Goodwin",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "Goodwin",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6616",
+      "row_number": 322
+    },
+    {
+      "yahoo_player_id": "6604",
+      "yahoo_name_full": "Trendon Watford",
+      "yahoo_first_name": "Trendon",
+      "yahoo_last_name": "Watford",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6604",
+      "row_number": 323
+    },
+    {
+      "yahoo_player_id": "6444",
+      "yahoo_name_full": "KJ Martin",
+      "yahoo_first_name": "KJ",
+      "yahoo_last_name": "Martin",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6444",
+      "row_number": 324
+    },
+    {
+      "yahoo_player_id": "6234",
+      "yahoo_name_full": "Talen Horton-Tucker",
+      "yahoo_first_name": "Talen",
+      "yahoo_last_name": "Horton-Tucker",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6234",
+      "row_number": 325
+    },
+    {
+      "yahoo_player_id": "10164",
+      "yahoo_name_full": "Duop Reath",
+      "yahoo_first_name": "Duop",
+      "yahoo_last_name": "Reath",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10164",
+      "row_number": 326
+    },
+    {
+      "yahoo_player_id": "5667",
+      "yahoo_name_full": "Malcolm Brogdon",
+      "yahoo_first_name": "Malcolm",
+      "yahoo_last_name": "Brogdon",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5667",
+      "row_number": 327
+    },
+    {
+      "yahoo_player_id": "5501",
+      "yahoo_name_full": "Pat Connaughton",
+      "yahoo_first_name": "Pat",
+      "yahoo_last_name": "Connaughton",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5501",
+      "row_number": 328
+    },
+    {
+      "yahoo_player_id": "10313",
+      "yahoo_name_full": "Oso Ighodaro",
+      "yahoo_first_name": "Oso",
+      "yahoo_last_name": "Ighodaro",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10313",
+      "row_number": 329
+    },
+    {
+      "yahoo_player_id": "10308",
+      "yahoo_name_full": "Quinten Post",
+      "yahoo_first_name": "Quinten",
+      "yahoo_last_name": "Post",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10308",
+      "row_number": 330
+    },
+    {
+      "yahoo_player_id": "6232",
+      "yahoo_name_full": "Bol Bol",
+      "yahoo_first_name": "Bol",
+      "yahoo_last_name": "Bol",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6232",
+      "row_number": 331
+    },
+    {
+      "yahoo_player_id": "10069",
+      "yahoo_name_full": "Mouhamed Gueye",
+      "yahoo_first_name": "Mouhamed",
+      "yahoo_last_name": "Gueye",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10069",
+      "row_number": 332
+    },
+    {
+      "yahoo_player_id": "6722",
+      "yahoo_name_full": "Caleb Houstan",
+      "yahoo_first_name": "Caleb",
+      "yahoo_last_name": "Houstan",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6722",
+      "row_number": 333
+    },
+    {
+      "yahoo_player_id": "6276",
+      "yahoo_name_full": "DaQuan Jeffries",
+      "yahoo_first_name": "DaQuan",
+      "yahoo_last_name": "Jeffries",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6276",
+      "row_number": 334
+    },
+    {
+      "yahoo_player_id": "5317",
+      "yahoo_name_full": "Marcus Smart",
+      "yahoo_first_name": "Marcus",
+      "yahoo_last_name": "Smart",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5317",
+      "row_number": 335
+    },
+    {
+      "yahoo_player_id": "6414",
+      "yahoo_name_full": "Zeke Nnaji",
+      "yahoo_first_name": "Zeke",
+      "yahoo_last_name": "Nnaji",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6414",
+      "row_number": 336
+    },
+    {
+      "yahoo_player_id": "10082",
+      "yahoo_name_full": "Andre Jackson Jr.",
+      "yahoo_first_name": "Andre",
+      "yahoo_last_name": "Jackson Jr.",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10082",
+      "row_number": 337
+    },
+    {
+      "yahoo_player_id": "6687",
+      "yahoo_name_full": "Lindy Waters III",
+      "yahoo_first_name": "Lindy",
+      "yahoo_last_name": "Waters III",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6687",
+      "row_number": 338
+    },
+    {
+      "yahoo_player_id": "6065",
+      "yahoo_name_full": "Shake Milton",
+      "yahoo_first_name": "Shake",
+      "yahoo_last_name": "Milton",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6065",
+      "row_number": 339
+    },
+    {
+      "yahoo_player_id": "5330",
+      "yahoo_name_full": "Gary Harris",
+      "yahoo_first_name": "Gary",
+      "yahoo_last_name": "Harris",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5330",
+      "row_number": 340
+    },
+    {
+      "yahoo_player_id": "6586",
+      "yahoo_name_full": "Kessler Edwards",
+      "yahoo_first_name": "Kessler",
+      "yahoo_last_name": "Edwards",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6586",
+      "row_number": 341
+    },
+    {
+      "yahoo_player_id": "5480",
+      "yahoo_name_full": "Delon Wright",
+      "yahoo_first_name": "Delon",
+      "yahoo_last_name": "Wright",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5480",
+      "row_number": 342
+    },
+    {
+      "yahoo_player_id": "6037",
+      "yahoo_name_full": "Landry Shamet",
+      "yahoo_first_name": "Landry",
+      "yahoo_last_name": "Shamet",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6037",
+      "row_number": 343
+    },
+    {
+      "yahoo_player_id": "5356",
+      "yahoo_name_full": "Dwight Powell",
+      "yahoo_first_name": "Dwight",
+      "yahoo_last_name": "Powell",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5356",
+      "row_number": 344
+    },
+    {
+      "yahoo_player_id": "6636",
+      "yahoo_name_full": "Jeff Dowtin Jr.",
+      "yahoo_first_name": "Jeff",
+      "yahoo_last_name": "Dowtin Jr.",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6636",
+      "row_number": 345
+    },
+    {
+      "yahoo_player_id": "10119",
+      "yahoo_name_full": "Kris Murray",
+      "yahoo_first_name": "Kris",
+      "yahoo_last_name": "Murray",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10119",
+      "row_number": 346
+    },
+    {
+      "yahoo_player_id": "6737",
+      "yahoo_name_full": "Vince Williams Jr.",
+      "yahoo_first_name": "Vince",
+      "yahoo_last_name": "Williams Jr.",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6737",
+      "row_number": 347
+    },
+    {
+      "yahoo_player_id": "6463",
+      "yahoo_name_full": "Jae'Sean Tate",
+      "yahoo_first_name": "Jae'Sean",
+      "yahoo_last_name": "Tate",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6463",
+      "row_number": 348
+    },
+    {
+      "yahoo_player_id": "6052",
+      "yahoo_name_full": "Jarred Vanderbilt",
+      "yahoo_first_name": "Jarred",
+      "yahoo_last_name": "Vanderbilt",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6052",
+      "row_number": 349
+    },
+    {
+      "yahoo_player_id": "6802",
+      "yahoo_name_full": "Orlando Robinson",
+      "yahoo_first_name": "Orlando",
+      "yahoo_last_name": "Robinson",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6802",
+      "row_number": 350
+    },
+    {
+      "yahoo_player_id": "6561",
+      "yahoo_name_full": "Kai Jones",
+      "yahoo_first_name": "Kai",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6561",
+      "row_number": 351
+    },
+    {
+      "yahoo_player_id": "6745",
+      "yahoo_name_full": "Gui Santos",
+      "yahoo_first_name": "Gui",
+      "yahoo_last_name": "Santos",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6745",
+      "row_number": 352
+    },
+    {
+      "yahoo_player_id": "6038",
+      "yahoo_name_full": "Robert Williams III",
+      "yahoo_first_name": "Robert",
+      "yahoo_last_name": "Williams III",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6038",
+      "row_number": 353
+    },
+    {
+      "yahoo_player_id": "10078",
+      "yahoo_name_full": "Tristan Vukcevic",
+      "yahoo_first_name": "Tristan",
+      "yahoo_last_name": "Vukcevic",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10078",
+      "row_number": 354
+    },
+    {
+      "yahoo_player_id": "6614",
+      "yahoo_name_full": "Jock Landale",
+      "yahoo_first_name": "Jock",
+      "yahoo_last_name": "Landale",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6614",
+      "row_number": 355
+    },
+    {
+      "yahoo_player_id": "6727",
+      "yahoo_name_full": "Jaden Hardy",
+      "yahoo_first_name": "Jaden",
+      "yahoo_last_name": "Hardy",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6727",
+      "row_number": 356
+    },
+    {
+      "yahoo_player_id": "5864",
+      "yahoo_name_full": "Monté Morris",
+      "yahoo_first_name": "Monté",
+      "yahoo_last_name": "Morris",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.5864",
+      "row_number": 357
+    },
+    {
+      "yahoo_player_id": "6751",
+      "yahoo_name_full": "Collin Gillespie",
+      "yahoo_first_name": "Collin",
+      "yahoo_last_name": "Gillespie",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6751",
+      "row_number": 358
+    },
+    {
+      "yahoo_player_id": "6029",
+      "yahoo_name_full": "Lonnie Walker IV",
+      "yahoo_first_name": "Lonnie",
+      "yahoo_last_name": "Walker IV",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6029",
+      "row_number": 359
+    },
+    {
+      "yahoo_player_id": "6595",
+      "yahoo_name_full": "Charles Bassey",
+      "yahoo_first_name": "Charles",
+      "yahoo_last_name": "Bassey",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6595",
+      "row_number": 360
+    },
+    {
+      "yahoo_player_id": "10145",
+      "yahoo_name_full": "Craig Porter Jr.",
+      "yahoo_first_name": "Craig",
+      "yahoo_last_name": "Porter Jr.",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10145",
+      "row_number": 361
+    },
+    {
+      "yahoo_player_id": "6058",
+      "yahoo_name_full": "Svi Mykhailiuk",
+      "yahoo_first_name": "Svi",
+      "yahoo_last_name": "Mykhailiuk",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6058",
+      "row_number": 362
+    },
+    {
+      "yahoo_player_id": "6047",
+      "yahoo_name_full": "Mitchell Robinson",
+      "yahoo_first_name": "Mitchell",
+      "yahoo_last_name": "Robinson",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6047",
+      "row_number": 363
+    },
+    {
+      "yahoo_player_id": "10295",
+      "yahoo_name_full": "Tidjane Salaün",
+      "yahoo_first_name": "Tidjane",
+      "yahoo_last_name": "Salaün",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10295",
+      "row_number": 364
+    },
+    {
+      "yahoo_player_id": "4247",
+      "yahoo_name_full": "Jeff Green",
+      "yahoo_first_name": "Jeff",
+      "yahoo_last_name": "Green",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.4247",
+      "row_number": 365
+    },
+    {
+      "yahoo_player_id": "6679",
+      "yahoo_name_full": "Brandon Williams",
+      "yahoo_first_name": "Brandon",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6679",
+      "row_number": 366
+    },
+    {
+      "yahoo_player_id": "6600",
+      "yahoo_name_full": "Jericho Sims",
+      "yahoo_first_name": "Jericho",
+      "yahoo_last_name": "Sims",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6600",
+      "row_number": 367
+    },
+    {
+      "yahoo_player_id": "4911",
+      "yahoo_name_full": "Cory Joseph",
+      "yahoo_first_name": "Cory",
+      "yahoo_last_name": "Joseph",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4911",
+      "row_number": 368
+    },
+    {
+      "yahoo_player_id": "10074",
+      "yahoo_name_full": "Jalen Pickett",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Pickett",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10074",
+      "row_number": 369
+    },
+    {
+      "yahoo_player_id": "6655",
+      "yahoo_name_full": "Micah Potter",
+      "yahoo_first_name": "Micah",
+      "yahoo_last_name": "Potter",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6655",
+      "row_number": 370
+    },
+    {
+      "yahoo_player_id": "5893",
+      "yahoo_name_full": "Torrey Craig",
+      "yahoo_first_name": "Torrey",
+      "yahoo_last_name": "Craig",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5893",
+      "row_number": 371
+    },
+    {
+      "yahoo_player_id": "4391",
+      "yahoo_name_full": "Kevin Love",
+      "yahoo_first_name": "Kevin",
+      "yahoo_last_name": "Love",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.4391",
+      "row_number": 372
+    },
+    {
+      "yahoo_player_id": "4497",
+      "yahoo_name_full": "DeAndre Jordan",
+      "yahoo_first_name": "DeAndre",
+      "yahoo_last_name": "Jordan",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.4497",
+      "row_number": 373
+    },
+    {
+      "yahoo_player_id": "6710",
+      "yahoo_name_full": "Malaki Branham",
+      "yahoo_first_name": "Malaki",
+      "yahoo_last_name": "Branham",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6710",
+      "row_number": 374
+    },
+    {
+      "yahoo_player_id": "10304",
+      "yahoo_name_full": "Ajay Mitchell",
+      "yahoo_first_name": "Ajay",
+      "yahoo_last_name": "Mitchell",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10304",
+      "row_number": 375
+    },
+    {
+      "yahoo_player_id": "10086",
+      "yahoo_name_full": "Jaylen Clark",
+      "yahoo_first_name": "Jaylen",
+      "yahoo_last_name": "Clark",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10086",
+      "row_number": 376
+    },
+    {
+      "yahoo_player_id": "4888",
+      "yahoo_name_full": "Bismack Biyombo",
+      "yahoo_first_name": "Bismack",
+      "yahoo_last_name": "Biyombo",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.4888",
+      "row_number": 377
+    },
+    {
+      "yahoo_player_id": "10276",
+      "yahoo_name_full": "Jared McCain",
+      "yahoo_first_name": "Jared",
+      "yahoo_last_name": "McCain",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10276",
+      "row_number": 378
+    },
+    {
+      "yahoo_player_id": "10338",
+      "yahoo_name_full": "Antonio Reeves",
+      "yahoo_first_name": "Antonio",
+      "yahoo_last_name": "Reeves",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10338",
+      "row_number": 379
+    },
+    {
+      "yahoo_player_id": "5316",
+      "yahoo_name_full": "Danté Exum",
+      "yahoo_first_name": "Danté",
+      "yahoo_last_name": "Exum",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5316",
+      "row_number": 380
+    },
+    {
+      "yahoo_player_id": "10312",
+      "yahoo_name_full": "Pelle Larsson",
+      "yahoo_first_name": "Pelle",
+      "yahoo_last_name": "Larsson",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10312",
+      "row_number": 381
+    },
+    {
+      "yahoo_player_id": "10199",
+      "yahoo_name_full": "Tosan Evbuomwan",
+      "yahoo_first_name": "Tosan",
+      "yahoo_last_name": "Evbuomwan",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10199",
+      "row_number": 382
+    },
+    {
+      "yahoo_player_id": "6713",
+      "yahoo_name_full": "David Roddy",
+      "yahoo_first_name": "David",
+      "yahoo_last_name": "Roddy",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6713",
+      "row_number": 383
+    },
+    {
+      "yahoo_player_id": "6560",
+      "yahoo_name_full": "Tre Mann",
+      "yahoo_first_name": "Tre",
+      "yahoo_last_name": "Mann",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6560",
+      "row_number": 384
+    },
+    {
+      "yahoo_player_id": "5959",
+      "yahoo_name_full": "Marvin Bagley III",
+      "yahoo_first_name": "Marvin",
+      "yahoo_last_name": "Bagley III",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5959",
+      "row_number": 385
+    },
+    {
+      "yahoo_player_id": "10053",
+      "yahoo_name_full": "Keaton Wallace",
+      "yahoo_first_name": "Keaton",
+      "yahoo_last_name": "Wallace",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10053",
+      "row_number": 386
+    },
+    {
+      "yahoo_player_id": "6043",
+      "yahoo_name_full": "Jevon Carter",
+      "yahoo_first_name": "Jevon",
+      "yahoo_last_name": "Carter",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6043",
+      "row_number": 387
+    },
+    {
+      "yahoo_player_id": "6500",
+      "yahoo_name_full": "Trevelin Queen",
+      "yahoo_first_name": "Trevelin",
+      "yahoo_last_name": "Queen",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6500",
+      "row_number": 388
+    },
+    {
+      "yahoo_player_id": "6715",
+      "yahoo_name_full": "Blake Wesley",
+      "yahoo_first_name": "Blake",
+      "yahoo_last_name": "Wesley",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6715",
+      "row_number": 389
+    },
+    {
+      "yahoo_player_id": "10323",
+      "yahoo_name_full": "KJ Simpson",
+      "yahoo_first_name": "KJ",
+      "yahoo_last_name": "Simpson",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10323",
+      "row_number": 390
+    },
+    {
+      "yahoo_player_id": "5892",
+      "yahoo_name_full": "Maxi Kleber",
+      "yahoo_first_name": "Maxi",
+      "yahoo_last_name": "Kleber",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5892",
+      "row_number": 391
+    },
+    {
+      "yahoo_player_id": "6133",
+      "yahoo_name_full": "Jordan McLaughlin",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "McLaughlin",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6133",
+      "row_number": 392
+    },
+    {
+      "yahoo_player_id": "10087",
+      "yahoo_name_full": "Colby Jones",
+      "yahoo_first_name": "Colby",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10087",
+      "row_number": 393
+    },
+    {
+      "yahoo_player_id": "10070",
+      "yahoo_name_full": "GG Jackson",
+      "yahoo_first_name": "GG",
+      "yahoo_last_name": "Jackson",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10070",
+      "row_number": 394
+    },
+    {
+      "yahoo_player_id": "6791",
+      "yahoo_name_full": "Dominick Barlow",
+      "yahoo_first_name": "Dominick",
+      "yahoo_last_name": "Barlow",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6791",
+      "row_number": 395
+    },
+    {
+      "yahoo_player_id": "6568",
+      "yahoo_name_full": "Bones Hyland",
+      "yahoo_first_name": "Bones",
+      "yahoo_last_name": "Hyland",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6568",
+      "row_number": 396
+    },
+    {
+      "yahoo_player_id": "6735",
+      "yahoo_name_full": "Josh Minott",
+      "yahoo_first_name": "Josh",
+      "yahoo_last_name": "Minott",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6735",
+      "row_number": 397
+    },
+    {
+      "yahoo_player_id": "6701",
+      "yahoo_name_full": "Ousmane Dieng",
+      "yahoo_first_name": "Ousmane",
+      "yahoo_last_name": "Dieng",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6701",
+      "row_number": 398
+    },
+    {
+      "yahoo_player_id": "6570",
+      "yahoo_name_full": "Jaden Springer",
+      "yahoo_first_name": "Jaden",
+      "yahoo_last_name": "Springer",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6570",
+      "row_number": 399
+    },
+    {
+      "yahoo_player_id": "6801",
+      "yahoo_name_full": "Jamal Cain",
+      "yahoo_first_name": "Jamal",
+      "yahoo_last_name": "Cain",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6801",
+      "row_number": 400
+    },
+    {
+      "yahoo_player_id": "5363",
+      "yahoo_name_full": "Vasilije Micić",
+      "yahoo_first_name": "Vasilije",
+      "yahoo_last_name": "Micić",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5363",
+      "row_number": 401
+    },
+    {
+      "yahoo_player_id": "6716",
+      "yahoo_name_full": "Wendell Moore Jr.",
+      "yahoo_first_name": "Wendell",
+      "yahoo_last_name": "Moore Jr.",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6716",
+      "row_number": 402
+    },
+    {
+      "yahoo_player_id": "6057",
+      "yahoo_name_full": "De'Anthony Melton",
+      "yahoo_first_name": "De'Anthony",
+      "yahoo_last_name": "Melton",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6057",
+      "row_number": 403
+    },
+    {
+      "yahoo_player_id": "5163",
+      "yahoo_name_full": "Steven Adams",
+      "yahoo_first_name": "Steven",
+      "yahoo_last_name": "Adams",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5163",
+      "row_number": 404
+    },
+    {
+      "yahoo_player_id": "6411",
+      "yahoo_name_full": "Saddiq Bey",
+      "yahoo_first_name": "Saddiq",
+      "yahoo_last_name": "Bey",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6411",
+      "row_number": 405
+    },
+    {
+      "yahoo_player_id": "6776",
+      "yahoo_name_full": "Quenton Jackson",
+      "yahoo_first_name": "Quenton",
+      "yahoo_last_name": "Jackson",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6776",
+      "row_number": 406
+    },
+    {
+      "yahoo_player_id": "5156",
+      "yahoo_name_full": "Alex Len",
+      "yahoo_first_name": "Alex",
+      "yahoo_last_name": "Len",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5156",
+      "row_number": 407
+    },
+    {
+      "yahoo_player_id": "5323",
+      "yahoo_name_full": "Dario Šarić",
+      "yahoo_first_name": "Dario",
+      "yahoo_last_name": "Šarić",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5323",
+      "row_number": 408
+    },
+    {
+      "yahoo_player_id": "5322",
+      "yahoo_name_full": "Doug McDermott",
+      "yahoo_first_name": "Doug",
+      "yahoo_last_name": "McDermott",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5322",
+      "row_number": 409
+    },
+    {
+      "yahoo_player_id": "10116",
+      "yahoo_name_full": "Olivier-Maxence Prosper",
+      "yahoo_first_name": "Olivier-Maxence",
+      "yahoo_last_name": "Prosper",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10116",
+      "row_number": 410
+    },
+    {
+      "yahoo_player_id": "6652",
+      "yahoo_name_full": "Dru Smith",
+      "yahoo_first_name": "Dru",
+      "yahoo_last_name": "Smith",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6652",
+      "row_number": 411
+    },
+    {
+      "yahoo_player_id": "6564",
+      "yahoo_name_full": "Isaiah Jackson",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Jackson",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6564",
+      "row_number": 412
+    },
+    {
+      "yahoo_player_id": "10342",
+      "yahoo_name_full": "Branden Carlson",
+      "yahoo_first_name": "Branden",
+      "yahoo_last_name": "Carlson",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10342",
+      "row_number": 413
+    },
+    {
+      "yahoo_player_id": "6603",
+      "yahoo_name_full": "A.J. Lawson",
+      "yahoo_first_name": "A.J.",
+      "yahoo_last_name": "Lawson",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6603",
+      "row_number": 414
+    },
+    {
+      "yahoo_player_id": "10305",
+      "yahoo_name_full": "Johnny Furphy",
+      "yahoo_first_name": "Johnny",
+      "yahoo_last_name": "Furphy",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10305",
+      "row_number": 415
+    },
+    {
+      "yahoo_player_id": "10283",
+      "yahoo_name_full": "Cody Williams",
+      "yahoo_first_name": "Cody",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10283",
+      "row_number": 416
+    },
+    {
+      "yahoo_player_id": "10106",
+      "yahoo_name_full": "Jett Howard",
+      "yahoo_first_name": "Jett",
+      "yahoo_last_name": "Howard",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10106",
+      "row_number": 417
+    },
+    {
+      "yahoo_player_id": "6723",
+      "yahoo_name_full": "Christian Koloko",
+      "yahoo_first_name": "Christian",
+      "yahoo_last_name": "Koloko",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6723",
+      "row_number": 418
+    },
+    {
+      "yahoo_player_id": "10127",
+      "yahoo_name_full": "Oscar Tshiebwe",
+      "yahoo_first_name": "Oscar",
+      "yahoo_last_name": "Tshiebwe",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10127",
+      "row_number": 419
+    },
+    {
+      "yahoo_player_id": "4631",
+      "yahoo_name_full": "Taj Gibson",
+      "yahoo_first_name": "Taj",
+      "yahoo_last_name": "Gibson",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.4631",
+      "row_number": 420
+    },
+    {
+      "yahoo_player_id": "5321",
+      "yahoo_name_full": "Elfrid Payton",
+      "yahoo_first_name": "Elfrid",
+      "yahoo_last_name": "Payton",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5321",
+      "row_number": 421
+    },
+    {
+      "yahoo_player_id": "10279",
+      "yahoo_name_full": "Jaylon Tyson",
+      "yahoo_first_name": "Jaylon",
+      "yahoo_last_name": "Tyson",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10279",
+      "row_number": 422
+    },
+    {
+      "yahoo_player_id": "10332",
+      "yahoo_name_full": "Reece Beekman",
+      "yahoo_first_name": "Reece",
+      "yahoo_last_name": "Beekman",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10332",
+      "row_number": 423
+    },
+    {
+      "yahoo_player_id": "4660",
+      "yahoo_name_full": "Patty Mills",
+      "yahoo_first_name": "Patty",
+      "yahoo_last_name": "Mills",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.4660",
+      "row_number": 424
+    },
+    {
+      "yahoo_player_id": "6427",
+      "yahoo_name_full": "Xavier Tillman",
+      "yahoo_first_name": "Xavier",
+      "yahoo_last_name": "Tillman",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6427",
+      "row_number": 425
+    },
+    {
+      "yahoo_player_id": "6803",
+      "yahoo_name_full": "Jared Rhoden",
+      "yahoo_first_name": "Jared",
+      "yahoo_last_name": "Rhoden",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6803",
+      "row_number": 426
+    },
+    {
+      "yahoo_player_id": "5763",
+      "yahoo_name_full": "Markelle Fultz",
+      "yahoo_first_name": "Markelle",
+      "yahoo_last_name": "Fultz",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.5763",
+      "row_number": 427
+    },
+    {
+      "yahoo_player_id": "10147",
+      "yahoo_name_full": "Colin Castleton",
+      "yahoo_first_name": "Colin",
+      "yahoo_last_name": "Castleton",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10147",
+      "row_number": 428
+    },
+    {
+      "yahoo_player_id": "10277",
+      "yahoo_name_full": "Baylor Scheierman",
+      "yahoo_first_name": "Baylor",
+      "yahoo_last_name": "Scheierman",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10277",
+      "row_number": 429
+    },
+    {
+      "yahoo_player_id": "10064",
+      "yahoo_name_full": "Rayan Rupert",
+      "yahoo_first_name": "Rayan",
+      "yahoo_last_name": "Rupert",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10064",
+      "row_number": 430
+    },
+    {
+      "yahoo_player_id": "10300",
+      "yahoo_name_full": "AJ Johnson",
+      "yahoo_first_name": "AJ",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10300",
+      "row_number": 431
+    },
+    {
+      "yahoo_player_id": "10409",
+      "yahoo_name_full": "Keion Brooks Jr.",
+      "yahoo_first_name": "Keion",
+      "yahoo_last_name": "Brooks Jr.",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10409",
+      "row_number": 432
+    },
+    {
+      "yahoo_player_id": "10110",
+      "yahoo_name_full": "Taylor Hendricks",
+      "yahoo_first_name": "Taylor",
+      "yahoo_last_name": "Hendricks",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10110",
+      "row_number": 433
+    },
+    {
+      "yahoo_player_id": "6579",
+      "yahoo_name_full": "JT Thor",
+      "yahoo_first_name": "JT",
+      "yahoo_last_name": "Thor",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6579",
+      "row_number": 434
+    },
+    {
+      "yahoo_player_id": "10327",
+      "yahoo_name_full": "Cam Spencer",
+      "yahoo_first_name": "Cam",
+      "yahoo_last_name": "Spencer",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10327",
+      "row_number": 435
+    },
+    {
+      "yahoo_player_id": "10084",
+      "yahoo_name_full": "Jordan Miller",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "Miller",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10084",
+      "row_number": 436
+    },
+    {
+      "yahoo_player_id": "10413",
+      "yahoo_name_full": "Alex Reese",
+      "yahoo_first_name": "Alex",
+      "yahoo_last_name": "Reese",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10413",
+      "row_number": 437
+    },
+    {
+      "yahoo_player_id": "10281",
+      "yahoo_name_full": "Rob Dillingham",
+      "yahoo_first_name": "Rob",
+      "yahoo_last_name": "Dillingham",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10281",
+      "row_number": 438
+    },
+    {
+      "yahoo_player_id": "6459",
+      "yahoo_name_full": "Lamar Stevens",
+      "yahoo_first_name": "Lamar",
+      "yahoo_last_name": "Stevens",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6459",
+      "row_number": 439
+    },
+    {
+      "yahoo_player_id": "10284",
+      "yahoo_name_full": "Dillon Jones",
+      "yahoo_first_name": "Dillon",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10284",
+      "row_number": 440
+    },
+    {
+      "yahoo_player_id": "10117",
+      "yahoo_name_full": "Kobe Brown",
+      "yahoo_first_name": "Kobe",
+      "yahoo_last_name": "Brown",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10117",
+      "row_number": 441
+    },
+    {
+      "yahoo_player_id": "10067",
+      "yahoo_name_full": "Hunter Tyson",
+      "yahoo_first_name": "Hunter",
+      "yahoo_last_name": "Tyson",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10067",
+      "row_number": 442
+    },
+    {
+      "yahoo_player_id": "4682",
+      "yahoo_name_full": "Garrett Temple",
+      "yahoo_first_name": "Garrett",
+      "yahoo_last_name": "Temple",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.4682",
+      "row_number": 443
+    },
+    {
+      "yahoo_player_id": "5393",
+      "yahoo_name_full": "Joe Ingles",
+      "yahoo_first_name": "Joe",
+      "yahoo_last_name": "Ingles",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.5393",
+      "row_number": 444
+    },
+    {
+      "yahoo_player_id": "5068",
+      "yahoo_name_full": "Jae Crowder",
+      "yahoo_first_name": "Jae",
+      "yahoo_last_name": "Crowder",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.5068",
+      "row_number": 445
+    },
+    {
+      "yahoo_player_id": "6204",
+      "yahoo_name_full": "Chuma Okeke",
+      "yahoo_first_name": "Chuma",
+      "yahoo_last_name": "Okeke",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6204",
+      "row_number": 446
+    },
+    {
+      "yahoo_player_id": "10280",
+      "yahoo_name_full": "Terrence Shannon Jr.",
+      "yahoo_first_name": "Terrence",
+      "yahoo_last_name": "Shannon Jr.",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10280",
+      "row_number": 447
+    },
+    {
+      "yahoo_player_id": "6471",
+      "yahoo_name_full": "Anthony Gill",
+      "yahoo_first_name": "Anthony",
+      "yahoo_last_name": "Gill",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6471",
+      "row_number": 448
+    },
+    {
+      "yahoo_player_id": "10220",
+      "yahoo_name_full": "Trey Jemison III",
+      "yahoo_first_name": "Trey",
+      "yahoo_last_name": "Jemison III",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10220",
+      "row_number": 449
+    },
+    {
+      "yahoo_player_id": "10075",
+      "yahoo_name_full": "Jordan Walsh",
+      "yahoo_first_name": "Jordan",
+      "yahoo_last_name": "Walsh",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10075",
+      "row_number": 450
+    },
+    {
+      "yahoo_player_id": "10079",
+      "yahoo_name_full": "Maxwell Lewis",
+      "yahoo_first_name": "Maxwell",
+      "yahoo_last_name": "Lewis",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10079",
+      "row_number": 451
+    },
+    {
+      "yahoo_player_id": "6718",
+      "yahoo_name_full": "Patrick Baldwin Jr.",
+      "yahoo_first_name": "Patrick",
+      "yahoo_last_name": "Baldwin Jr.",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.6718",
+      "row_number": 452
+    },
+    {
+      "yahoo_player_id": "10293",
+      "yahoo_name_full": "Devin Carter",
+      "yahoo_first_name": "Devin",
+      "yahoo_last_name": "Carter",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10293",
+      "row_number": 453
+    },
+    {
+      "yahoo_player_id": "6772",
+      "yahoo_name_full": "Pat Spencer",
+      "yahoo_first_name": "Pat",
+      "yahoo_last_name": "Spencer",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6772",
+      "row_number": 454
+    },
+    {
+      "yahoo_player_id": "6356",
+      "yahoo_name_full": "James Wiseman",
+      "yahoo_first_name": "James",
+      "yahoo_last_name": "Wiseman",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6356",
+      "row_number": 455
+    },
+    {
+      "yahoo_player_id": "10314",
+      "yahoo_name_full": "Tyler Kolek",
+      "yahoo_first_name": "Tyler",
+      "yahoo_last_name": "Kolek",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10314",
+      "row_number": 456
+    },
+    {
+      "yahoo_player_id": "10341",
+      "yahoo_name_full": "Isaac Jones",
+      "yahoo_first_name": "Isaac",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10341",
+      "row_number": 457
+    },
+    {
+      "yahoo_player_id": "6020",
+      "yahoo_name_full": "Kevin Knox II",
+      "yahoo_first_name": "Kevin",
+      "yahoo_last_name": "Knox II",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6020",
+      "row_number": 458
+    },
+    {
+      "yahoo_player_id": "6594",
+      "yahoo_name_full": "Luka Garza",
+      "yahoo_first_name": "Luka",
+      "yahoo_last_name": "Garza",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.6594",
+      "row_number": 459
+    },
+    {
+      "yahoo_player_id": "6714",
+      "yahoo_name_full": "MarJon Beauchamp",
+      "yahoo_first_name": "MarJon",
+      "yahoo_last_name": "Beauchamp",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6714",
+      "row_number": 460
+    },
+    {
+      "yahoo_player_id": "10213",
+      "yahoo_name_full": "Damion Baugh",
+      "yahoo_first_name": "Damion",
+      "yahoo_last_name": "Baugh",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10213",
+      "row_number": 461
+    },
+    {
+      "yahoo_player_id": "10111",
+      "yahoo_name_full": "Dariq Whitehead",
+      "yahoo_first_name": "Dariq",
+      "yahoo_last_name": "Whitehead",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10111",
+      "row_number": 462
+    },
+    {
+      "yahoo_player_id": "10134",
+      "yahoo_name_full": "Jaylen Martin",
+      "yahoo_first_name": "Jaylen",
+      "yahoo_last_name": "Martin",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10134",
+      "row_number": 463
+    },
+    {
+      "yahoo_player_id": "10109",
+      "yahoo_name_full": "Jalen Hood-Schifino",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Hood-Schifino",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10109",
+      "row_number": 464
+    },
+    {
+      "yahoo_player_id": "6750",
+      "yahoo_name_full": "Lester Quinones",
+      "yahoo_first_name": "Lester",
+      "yahoo_last_name": "Quinones",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6750",
+      "row_number": 465
+    },
+    {
+      "yahoo_player_id": "10206",
+      "yahoo_name_full": "Drew Peterson",
+      "yahoo_first_name": "Drew",
+      "yahoo_last_name": "Peterson",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10206",
+      "row_number": 466
+    },
+    {
+      "yahoo_player_id": "5841",
+      "yahoo_name_full": "Tony Bradley",
+      "yahoo_first_name": "Tony",
+      "yahoo_last_name": "Bradley",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.5841",
+      "row_number": 467
+    },
+    {
+      "yahoo_player_id": "10262",
+      "yahoo_name_full": "Tyler Smith",
+      "yahoo_first_name": "Tyler",
+      "yahoo_last_name": "Smith",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.10262",
+      "row_number": 468
+    },
+    {
+      "yahoo_player_id": "5733",
+      "yahoo_name_full": "Damion Lee",
+      "yahoo_first_name": "Damion",
+      "yahoo_last_name": "Lee",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.5733",
+      "row_number": 469
+    },
+    {
+      "yahoo_player_id": "6730",
+      "yahoo_name_full": "Bryce McGowens",
+      "yahoo_first_name": "Bryce",
+      "yahoo_last_name": "McGowens",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6730",
+      "row_number": 470
+    },
+    {
+      "yahoo_player_id": "6782",
+      "yahoo_name_full": "Stanley Umude",
+      "yahoo_first_name": "Stanley",
+      "yahoo_last_name": "Umude",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6782",
+      "row_number": 471
+    },
+    {
+      "yahoo_player_id": "10141",
+      "yahoo_name_full": "Drew Timme",
+      "yahoo_first_name": "Drew",
+      "yahoo_last_name": "Timme",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10141",
+      "row_number": 472
+    },
+    {
+      "yahoo_player_id": "4163",
+      "yahoo_name_full": "P.J. Tucker",
+      "yahoo_first_name": "P.J.",
+      "yahoo_last_name": "Tucker",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.4163",
+      "row_number": 473
+    },
+    {
+      "yahoo_player_id": "10343",
+      "yahoo_name_full": "Alex Ducas",
+      "yahoo_first_name": "Alex",
+      "yahoo_last_name": "Ducas",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10343",
+      "row_number": 474
+    },
+    {
+      "yahoo_player_id": "10311",
+      "yahoo_name_full": "Keshad Johnson",
+      "yahoo_first_name": "Keshad",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10311",
+      "row_number": 475
+    },
+    {
+      "yahoo_player_id": "10317",
+      "yahoo_name_full": "Ariel Hukporti",
+      "yahoo_first_name": "Ariel",
+      "yahoo_last_name": "Hukporti",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10317",
+      "row_number": 476
+    },
+    {
+      "yahoo_player_id": "6806",
+      "yahoo_name_full": "Nate Williams",
+      "yahoo_first_name": "Nate",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6806",
+      "row_number": 477
+    },
+    {
+      "yahoo_player_id": "4894",
+      "yahoo_name_full": "Markieff Morris",
+      "yahoo_first_name": "Markieff",
+      "yahoo_last_name": "Morris",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.4894",
+      "row_number": 478
+    },
+    {
+      "yahoo_player_id": "10416",
+      "yahoo_name_full": "RayJ Dennis",
+      "yahoo_first_name": "RayJ",
+      "yahoo_last_name": "Dennis",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10416",
+      "row_number": 479
+    },
+    {
+      "yahoo_player_id": "10339",
+      "yahoo_name_full": "Bronny James",
+      "yahoo_first_name": "Bronny",
+      "yahoo_last_name": "James",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10339",
+      "row_number": 480
+    },
+    {
+      "yahoo_player_id": "10423",
+      "yahoo_name_full": "Elijah Harkless",
+      "yahoo_first_name": "Elijah",
+      "yahoo_last_name": "Harkless",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10423",
+      "row_number": 481
+    },
+    {
+      "yahoo_player_id": "10328",
+      "yahoo_name_full": "N'Faly Dante",
+      "yahoo_first_name": "N'Faly",
+      "yahoo_last_name": "Dante",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10328",
+      "row_number": 482
+    },
+    {
+      "yahoo_player_id": "10061",
+      "yahoo_name_full": "Justin Minaya",
+      "yahoo_first_name": "Justin",
+      "yahoo_last_name": "Minaya",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10061",
+      "row_number": 483
+    },
+    {
+      "yahoo_player_id": "10329",
+      "yahoo_name_full": "PJ Hall",
+      "yahoo_first_name": "PJ",
+      "yahoo_last_name": "Hall",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10329",
+      "row_number": 484
+    },
+    {
+      "yahoo_player_id": "10105",
+      "yahoo_name_full": "Kobe Bufkin",
+      "yahoo_first_name": "Kobe",
+      "yahoo_last_name": "Bufkin",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10105",
+      "row_number": 485
+    },
+    {
+      "yahoo_player_id": "10244",
+      "yahoo_name_full": "Adam Flagler",
+      "yahoo_first_name": "Adam",
+      "yahoo_last_name": "Flagler",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.10244",
+      "row_number": 486
+    },
+    {
+      "yahoo_player_id": "10168",
+      "yahoo_name_full": "Pete Nance",
+      "yahoo_first_name": "Pete",
+      "yahoo_last_name": "Nance",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10168",
+      "row_number": 487
+    },
+    {
+      "yahoo_player_id": "10393",
+      "yahoo_name_full": "Spencer Jones",
+      "yahoo_first_name": "Spencer",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10393",
+      "row_number": 488
+    },
+    {
+      "yahoo_player_id": "6786",
+      "yahoo_name_full": "Daeqwon Plowden",
+      "yahoo_first_name": "Daeqwon",
+      "yahoo_last_name": "Plowden",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6786",
+      "row_number": 489
+    },
+    {
+      "yahoo_player_id": "10050",
+      "yahoo_name_full": "Leonard Miller",
+      "yahoo_first_name": "Leonard",
+      "yahoo_last_name": "Miller",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10050",
+      "row_number": 490
+    },
+    {
+      "yahoo_player_id": "10088",
+      "yahoo_name_full": "Chris Livingston",
+      "yahoo_first_name": "Chris",
+      "yahoo_last_name": "Livingston",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10088",
+      "row_number": 491
+    },
+    {
+      "yahoo_player_id": "5862",
+      "yahoo_name_full": "Vlatko Čančar",
+      "yahoo_first_name": "Vlatko",
+      "yahoo_last_name": "Čančar",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5862",
+      "row_number": 492
+    },
+    {
+      "yahoo_player_id": "10415",
+      "yahoo_name_full": "Yuki Kawamura",
+      "yahoo_first_name": "Yuki",
+      "yahoo_last_name": "Kawamura",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10415",
+      "row_number": 493
+    },
+    {
+      "yahoo_player_id": "10129",
+      "yahoo_name_full": "Jacob Toppin",
+      "yahoo_first_name": "Jacob",
+      "yahoo_last_name": "Toppin",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10129",
+      "row_number": 494
+    },
+    {
+      "yahoo_player_id": "10324",
+      "yahoo_name_full": "Enrique Freeman",
+      "yahoo_first_name": "Enrique",
+      "yahoo_last_name": "Freeman",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10324",
+      "row_number": 495
+    },
+    {
+      "yahoo_player_id": "6731",
+      "yahoo_name_full": "E.J. Liddell",
+      "yahoo_first_name": "E.J.",
+      "yahoo_last_name": "Liddell",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.6731",
+      "row_number": 496
+    },
+    {
+      "yahoo_player_id": "6240",
+      "yahoo_name_full": "Jalen McDaniels",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "McDaniels",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6240",
+      "row_number": 497
+    },
+    {
+      "yahoo_player_id": "6785",
+      "yahoo_name_full": "Tyson Etienne",
+      "yahoo_first_name": "Tyson",
+      "yahoo_last_name": "Etienne",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6785",
+      "row_number": 498
+    },
+    {
+      "yahoo_player_id": "4884",
+      "yahoo_name_full": "Tristan Thompson",
+      "yahoo_first_name": "Tristan",
+      "yahoo_last_name": "Thompson",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.4884",
+      "row_number": 499
+    },
+    {
+      "yahoo_player_id": "10066",
+      "yahoo_name_full": "Emoni Bates",
+      "yahoo_first_name": "Emoni",
+      "yahoo_last_name": "Bates",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10066",
+      "row_number": 500
+    },
+    {
+      "yahoo_player_id": "6566",
+      "yahoo_name_full": "Josh Christopher",
+      "yahoo_first_name": "Josh",
+      "yahoo_last_name": "Christopher",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6566",
+      "row_number": 501
+    },
+    {
+      "yahoo_player_id": "10297",
+      "yahoo_name_full": "Pacôme Dadiet",
+      "yahoo_first_name": "Pacôme",
+      "yahoo_last_name": "Dadiet",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10297",
+      "row_number": 502
+    },
+    {
+      "yahoo_player_id": "10331",
+      "yahoo_name_full": "Bobi Klintman",
+      "yahoo_first_name": "Bobi",
+      "yahoo_last_name": "Klintman",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10331",
+      "row_number": 503
+    },
+    {
+      "yahoo_player_id": "6584",
+      "yahoo_name_full": "Isaiah Livers",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Livers",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6584",
+      "row_number": 504
+    },
+    {
+      "yahoo_player_id": "6453",
+      "yahoo_name_full": "Mason Jones",
+      "yahoo_first_name": "Mason",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6453",
+      "row_number": 505
+    },
+    {
+      "yahoo_player_id": "6743",
+      "yahoo_name_full": "JD Davison",
+      "yahoo_first_name": "JD",
+      "yahoo_last_name": "Davison",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6743",
+      "row_number": 506
+    },
+    {
+      "yahoo_player_id": "10358",
+      "yahoo_name_full": "Jackson Rowe",
+      "yahoo_first_name": "Jackson",
+      "yahoo_last_name": "Rowe",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10358",
+      "row_number": 507
+    },
+    {
+      "yahoo_player_id": "6800",
+      "yahoo_name_full": "Jamaree Bouyea",
+      "yahoo_first_name": "Jamaree",
+      "yahoo_last_name": "Bouyea",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6800",
+      "row_number": 508
+    },
+    {
+      "yahoo_player_id": "10337",
+      "yahoo_name_full": "Cam Christie",
+      "yahoo_first_name": "Cam",
+      "yahoo_last_name": "Christie",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.10337",
+      "row_number": 509
+    },
+    {
+      "yahoo_player_id": "10336",
+      "yahoo_name_full": "Harrison Ingram",
+      "yahoo_first_name": "Harrison",
+      "yahoo_last_name": "Ingram",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10336",
+      "row_number": 510
+    },
+    {
+      "yahoo_player_id": "6624",
+      "yahoo_name_full": "David Duke Jr.",
+      "yahoo_first_name": "David",
+      "yahoo_last_name": "Duke Jr.",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6624",
+      "row_number": 511
+    },
+    {
+      "yahoo_player_id": "10410",
+      "yahoo_name_full": "Emanuel Miller",
+      "yahoo_first_name": "Emanuel",
+      "yahoo_last_name": "Miller",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10410",
+      "row_number": 512
+    },
+    {
+      "yahoo_player_id": "10402",
+      "yahoo_name_full": "Jahmir Young",
+      "yahoo_first_name": "Jahmir",
+      "yahoo_last_name": "Young",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10402",
+      "row_number": 513
+    },
+    {
+      "yahoo_player_id": "10397",
+      "yahoo_name_full": "Nae'Qwan Tomlin",
+      "yahoo_first_name": "Nae'Qwan",
+      "yahoo_last_name": "Tomlin",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10397",
+      "row_number": 514
+    },
+    {
+      "yahoo_player_id": "10303",
+      "yahoo_name_full": "Kevin McCullar Jr.",
+      "yahoo_first_name": "Kevin",
+      "yahoo_last_name": "McCullar Jr.",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10303",
+      "row_number": 515
+    },
+    {
+      "yahoo_player_id": "6719",
+      "yahoo_name_full": "TyTy Washington Jr.",
+      "yahoo_first_name": "TyTy",
+      "yahoo_last_name": "Washington Jr.",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6719",
+      "row_number": 516
+    },
+    {
+      "yahoo_player_id": "10385",
+      "yahoo_name_full": "Trey Alexander",
+      "yahoo_first_name": "Trey",
+      "yahoo_last_name": "Alexander",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10385",
+      "row_number": 517
+    },
+    {
+      "yahoo_player_id": "10148",
+      "yahoo_name_full": "Miles Norris",
+      "yahoo_first_name": "Miles",
+      "yahoo_last_name": "Norris",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10148",
+      "row_number": 518
+    },
+    {
+      "yahoo_player_id": "10051",
+      "yahoo_name_full": "Sidy Cissoko",
+      "yahoo_first_name": "Sidy",
+      "yahoo_last_name": "Cissoko",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.10051",
+      "row_number": 519
+    },
+    {
+      "yahoo_player_id": "10320",
+      "yahoo_name_full": "Isaiah Crawford",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Crawford",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10320",
+      "row_number": 520
+    },
+    {
+      "yahoo_player_id": "10389",
+      "yahoo_name_full": "Jack McVeigh",
+      "yahoo_first_name": "Jack",
+      "yahoo_last_name": "McVeigh",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10389",
+      "row_number": 521
+    },
+    {
+      "yahoo_player_id": "10418",
+      "yahoo_name_full": "Tolu Smith",
+      "yahoo_first_name": "Tolu",
+      "yahoo_last_name": "Smith",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10418",
+      "row_number": 522
+    },
+    {
+      "yahoo_player_id": "4621",
+      "yahoo_name_full": "James Johnson",
+      "yahoo_first_name": "James",
+      "yahoo_last_name": "Johnson",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.4621",
+      "row_number": 523
+    },
+    {
+      "yahoo_player_id": "5659",
+      "yahoo_name_full": "Skal Labissière",
+      "yahoo_first_name": "Skal",
+      "yahoo_last_name": "Labissière",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "C,PF",
+      "yahoo_player_key": "466.p.5659",
+      "row_number": 524
+    },
+    {
+      "yahoo_player_id": "6749",
+      "yahoo_name_full": "Alondes Williams",
+      "yahoo_first_name": "Alondes",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6749",
+      "row_number": 525
+    },
+    {
+      "yahoo_player_id": "6746",
+      "yahoo_name_full": "Luke Travers",
+      "yahoo_first_name": "Luke",
+      "yahoo_last_name": "Travers",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6746",
+      "row_number": 526
+    },
+    {
+      "yahoo_player_id": "10321",
+      "yahoo_name_full": "Anton Watson",
+      "yahoo_first_name": "Anton",
+      "yahoo_last_name": "Watson",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10321",
+      "row_number": 527
+    },
+    {
+      "yahoo_player_id": "10395",
+      "yahoo_name_full": "Trentyn Flowers",
+      "yahoo_first_name": "Trentyn",
+      "yahoo_last_name": "Flowers",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10395",
+      "row_number": 528
+    },
+    {
+      "yahoo_player_id": "10383",
+      "yahoo_name_full": "Isaiah Stevens",
+      "yahoo_first_name": "Isaiah",
+      "yahoo_last_name": "Stevens",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10383",
+      "row_number": 529
+    },
+    {
+      "yahoo_player_id": "6761",
+      "yahoo_name_full": "Ron Harper Jr.",
+      "yahoo_first_name": "Ron",
+      "yahoo_last_name": "Harper Jr.",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.6761",
+      "row_number": 530
+    },
+    {
+      "yahoo_player_id": "10325",
+      "yahoo_name_full": "Ulrich Chomche",
+      "yahoo_first_name": "Ulrich",
+      "yahoo_last_name": "Chomche",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10325",
+      "row_number": 531
+    },
+    {
+      "yahoo_player_id": "10387",
+      "yahoo_name_full": "Jesse Edwards",
+      "yahoo_first_name": "Jesse",
+      "yahoo_last_name": "Edwards",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10387",
+      "row_number": 532
+    },
+    {
+      "yahoo_player_id": "6767",
+      "yahoo_name_full": "Kevon Harris",
+      "yahoo_first_name": "Kevon",
+      "yahoo_last_name": "Harris",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6767",
+      "row_number": 533
+    },
+    {
+      "yahoo_player_id": "6628",
+      "yahoo_name_full": "Mac McClung",
+      "yahoo_first_name": "Mac",
+      "yahoo_last_name": "McClung",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PG,SG",
+      "yahoo_player_key": "466.p.6628",
+      "row_number": 534
+    },
+    {
+      "yahoo_player_id": "10367",
+      "yahoo_name_full": "Riley Minix",
+      "yahoo_first_name": "Riley",
+      "yahoo_last_name": "Minix",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10367",
+      "row_number": 535
+    },
+    {
+      "yahoo_player_id": "10456",
+      "yahoo_name_full": "Danny Wolf",
+      "yahoo_first_name": "Danny",
+      "yahoo_last_name": "Wolf",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10456",
+      "row_number": 536
+    },
+    {
+      "yahoo_player_id": "10486",
+      "yahoo_name_full": "Chaz Lanier",
+      "yahoo_first_name": "Chaz",
+      "yahoo_last_name": "Lanier",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10486",
+      "row_number": 537
+    },
+    {
+      "yahoo_player_id": "10441",
+      "yahoo_name_full": "Yanic Konan Niederhäuser",
+      "yahoo_first_name": "Yanic",
+      "yahoo_last_name": "Konan Niederhäuser",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10441",
+      "row_number": 538
+    },
+    {
+      "yahoo_player_id": "10301",
+      "yahoo_name_full": "Nikola Topić",
+      "yahoo_first_name": "Nikola",
+      "yahoo_last_name": "Topić",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10301",
+      "row_number": 539
+    },
+    {
+      "yahoo_player_id": "10520",
+      "yahoo_name_full": "RJ Davis",
+      "yahoo_first_name": "RJ",
+      "yahoo_last_name": "Davis",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10520",
+      "row_number": 540
+    },
+    {
+      "yahoo_player_id": "10461",
+      "yahoo_name_full": "Walter Clayton Jr.",
+      "yahoo_first_name": "Walter",
+      "yahoo_last_name": "Clayton Jr.",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10461",
+      "row_number": 541
+    },
+    {
+      "yahoo_player_id": "10476",
+      "yahoo_name_full": "Ryan Kalkbrenner",
+      "yahoo_first_name": "Ryan",
+      "yahoo_last_name": "Kalkbrenner",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10476",
+      "row_number": 542
+    },
+    {
+      "yahoo_player_id": "10507",
+      "yahoo_name_full": "Eric Dixon",
+      "yahoo_first_name": "Eric",
+      "yahoo_last_name": "Dixon",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10507",
+      "row_number": 543
+    },
+    {
+      "yahoo_player_id": "10480",
+      "yahoo_name_full": "Rocco Zikarsky",
+      "yahoo_first_name": "Rocco",
+      "yahoo_last_name": "Zikarsky",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10480",
+      "row_number": 544
+    },
+    {
+      "yahoo_player_id": "10494",
+      "yahoo_name_full": "Javon Small",
+      "yahoo_first_name": "Javon",
+      "yahoo_last_name": "Small",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10494",
+      "row_number": 545
+    },
+    {
+      "yahoo_player_id": "10466",
+      "yahoo_name_full": "Carter Bryant",
+      "yahoo_first_name": "Carter",
+      "yahoo_last_name": "Bryant",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10466",
+      "row_number": 546
+    },
+    {
+      "yahoo_player_id": "10511",
+      "yahoo_name_full": "Ryan Nembhard",
+      "yahoo_first_name": "Ryan",
+      "yahoo_last_name": "Nembhard",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10511",
+      "row_number": 547
+    },
+    {
+      "yahoo_player_id": "10513",
+      "yahoo_name_full": "Cameron Matthews",
+      "yahoo_first_name": "Cameron",
+      "yahoo_last_name": "Matthews",
+      "yahoo_team_abbr": "HOU",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10513",
+      "row_number": 548
+    },
+    {
+      "yahoo_player_id": "10495",
+      "yahoo_name_full": "Rasheer Fleming",
+      "yahoo_first_name": "Rasheer",
+      "yahoo_last_name": "Fleming",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10495",
+      "row_number": 549
+    },
+    {
+      "yahoo_player_id": "10286",
+      "yahoo_name_full": "DaRon Holmes II",
+      "yahoo_first_name": "DaRon",
+      "yahoo_last_name": "Holmes II",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10286",
+      "row_number": 550
+    },
+    {
+      "yahoo_player_id": "10479",
+      "yahoo_name_full": "Noah Penda",
+      "yahoo_first_name": "Noah",
+      "yahoo_last_name": "Penda",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10479",
+      "row_number": 551
+    },
+    {
+      "yahoo_player_id": "6637",
+      "yahoo_name_full": "Ethan Thompson",
+      "yahoo_first_name": "Ethan",
+      "yahoo_last_name": "Thompson",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.6637",
+      "row_number": 552
+    },
+    {
+      "yahoo_player_id": "10509",
+      "yahoo_name_full": "Tamar Bates",
+      "yahoo_first_name": "Tamar",
+      "yahoo_last_name": "Bates",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10509",
+      "row_number": 553
+    },
+    {
+      "yahoo_player_id": "10442",
+      "yahoo_name_full": "Noa Essengue",
+      "yahoo_first_name": "Noa",
+      "yahoo_last_name": "Essengue",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10442",
+      "row_number": 554
+    },
+    {
+      "yahoo_player_id": "10474",
+      "yahoo_name_full": "Johni Broome",
+      "yahoo_first_name": "Johni",
+      "yahoo_last_name": "Broome",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10474",
+      "row_number": 555
+    },
+    {
+      "yahoo_player_id": "10455",
+      "yahoo_name_full": "Nolan Traoré",
+      "yahoo_first_name": "Nolan",
+      "yahoo_last_name": "Traoré",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10455",
+      "row_number": 556
+    },
+    {
+      "yahoo_player_id": "10491",
+      "yahoo_name_full": "Jahmai Mashack",
+      "yahoo_first_name": "Jahmai",
+      "yahoo_last_name": "Mashack",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10491",
+      "row_number": 557
+    },
+    {
+      "yahoo_player_id": "10475",
+      "yahoo_name_full": "Koby Brea",
+      "yahoo_first_name": "Koby",
+      "yahoo_last_name": "Brea",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10475",
+      "row_number": 558
+    },
+    {
+      "yahoo_player_id": "10447",
+      "yahoo_name_full": "Khaman Maluach",
+      "yahoo_first_name": "Khaman",
+      "yahoo_last_name": "Maluach",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10447",
+      "row_number": 559
+    },
+    {
+      "yahoo_player_id": "10444",
+      "yahoo_name_full": "Derik Queen",
+      "yahoo_first_name": "Derik",
+      "yahoo_last_name": "Queen",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10444",
+      "row_number": 560
+    },
+    {
+      "yahoo_player_id": "10449",
+      "yahoo_name_full": "Will Riley",
+      "yahoo_first_name": "Will",
+      "yahoo_last_name": "Riley",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10449",
+      "row_number": 561
+    },
+    {
+      "yahoo_player_id": "10510",
+      "yahoo_name_full": "Dylan Cardwell",
+      "yahoo_first_name": "Dylan",
+      "yahoo_last_name": "Cardwell",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10510",
+      "row_number": 562
+    },
+    {
+      "yahoo_player_id": "10460",
+      "yahoo_name_full": "Joan Beringer",
+      "yahoo_first_name": "Joan",
+      "yahoo_last_name": "Beringer",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10460",
+      "row_number": 563
+    },
+    {
+      "yahoo_player_id": "10485",
+      "yahoo_name_full": "Will Richard",
+      "yahoo_first_name": "Will",
+      "yahoo_last_name": "Richard",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10485",
+      "row_number": 564
+    },
+    {
+      "yahoo_player_id": "10505",
+      "yahoo_name_full": "Vladislav Goldin",
+      "yahoo_first_name": "Vladislav",
+      "yahoo_last_name": "Goldin",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10505",
+      "row_number": 565
+    },
+    {
+      "yahoo_player_id": "10503",
+      "yahoo_name_full": "RJ Luis Jr.",
+      "yahoo_first_name": "RJ",
+      "yahoo_last_name": "Luis Jr.",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10503",
+      "row_number": 566
+    },
+    {
+      "yahoo_player_id": "10478",
+      "yahoo_name_full": "Brooks Barnhizer",
+      "yahoo_first_name": "Brooks",
+      "yahoo_last_name": "Barnhizer",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10478",
+      "row_number": 567
+    },
+    {
+      "yahoo_player_id": "10458",
+      "yahoo_name_full": "Ben Saraf",
+      "yahoo_first_name": "Ben",
+      "yahoo_last_name": "Saraf",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10458",
+      "row_number": 568
+    },
+    {
+      "yahoo_player_id": "10515",
+      "yahoo_name_full": "Curtis Jones",
+      "yahoo_first_name": "Curtis",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "DEN",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10515",
+      "row_number": 569
+    },
+    {
+      "yahoo_player_id": "10492",
+      "yahoo_name_full": "Taelon Peter",
+      "yahoo_first_name": "Taelon",
+      "yahoo_last_name": "Peter",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10492",
+      "row_number": 570
+    },
+    {
+      "yahoo_player_id": "10471",
+      "yahoo_name_full": "Mohamed Diawara",
+      "yahoo_first_name": "Mohamed",
+      "yahoo_last_name": "Diawara",
+      "yahoo_team_abbr": "NYK",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10471",
+      "row_number": 571
+    },
+    {
+      "yahoo_player_id": "10493",
+      "yahoo_name_full": "John Tonje",
+      "yahoo_first_name": "John",
+      "yahoo_last_name": "Tonje",
+      "yahoo_team_abbr": "UTA",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10493",
+      "row_number": 572
+    },
+    {
+      "yahoo_player_id": "10450",
+      "yahoo_name_full": "Kon Knueppel",
+      "yahoo_first_name": "Kon",
+      "yahoo_last_name": "Knueppel",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10450",
+      "row_number": 573
+    },
+    {
+      "yahoo_player_id": "10440",
+      "yahoo_name_full": "Jeremiah Fears",
+      "yahoo_first_name": "Jeremiah",
+      "yahoo_last_name": "Fears",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10440",
+      "row_number": 574
+    },
+    {
+      "yahoo_player_id": "10463",
+      "yahoo_name_full": "Thomas Sorber",
+      "yahoo_first_name": "Thomas",
+      "yahoo_last_name": "Sorber",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10463",
+      "row_number": 575
+    },
+    {
+      "yahoo_player_id": "10508",
+      "yahoo_name_full": "Caleb Love",
+      "yahoo_first_name": "Caleb",
+      "yahoo_last_name": "Love",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10508",
+      "row_number": 576
+    },
+    {
+      "yahoo_player_id": "10516",
+      "yahoo_name_full": "Chris Mañon",
+      "yahoo_first_name": "Chris",
+      "yahoo_last_name": "Mañon",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10516",
+      "row_number": 577
+    },
+    {
+      "yahoo_player_id": "10457",
+      "yahoo_name_full": "Drake Powell",
+      "yahoo_first_name": "Drake",
+      "yahoo_last_name": "Powell",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10457",
+      "row_number": 578
+    },
+    {
+      "yahoo_player_id": "10518",
+      "yahoo_name_full": "Augustas Marciulionis",
+      "yahoo_first_name": "Augustas",
+      "yahoo_last_name": "Marciulionis",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10518",
+      "row_number": 579
+    },
+    {
+      "yahoo_player_id": "10504",
+      "yahoo_name_full": "Miles Kelly",
+      "yahoo_first_name": "Miles",
+      "yahoo_last_name": "Kelly",
+      "yahoo_team_abbr": "DAL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10504",
+      "row_number": 580
+    },
+    {
+      "yahoo_player_id": "10470",
+      "yahoo_name_full": "Kobe Sanders",
+      "yahoo_first_name": "Kobe",
+      "yahoo_last_name": "Sanders",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10470",
+      "row_number": 581
+    },
+    {
+      "yahoo_player_id": "10472",
+      "yahoo_name_full": "Tyrese Proctor",
+      "yahoo_first_name": "Tyrese",
+      "yahoo_last_name": "Proctor",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10472",
+      "row_number": 582
+    },
+    {
+      "yahoo_player_id": "10322",
+      "yahoo_name_full": "Nikola Đurišić",
+      "yahoo_first_name": "Nikola",
+      "yahoo_last_name": "Đurišić",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10322",
+      "row_number": 583
+    },
+    {
+      "yahoo_player_id": "10453",
+      "yahoo_name_full": "Jase Richardson",
+      "yahoo_first_name": "Jase",
+      "yahoo_last_name": "Richardson",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10453",
+      "row_number": 584
+    },
+    {
+      "yahoo_player_id": "10512",
+      "yahoo_name_full": "CJ Huntley",
+      "yahoo_first_name": "CJ",
+      "yahoo_last_name": "Huntley",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10512",
+      "row_number": 585
+    },
+    {
+      "yahoo_player_id": "10501",
+      "yahoo_name_full": "Hunter Dickinson",
+      "yahoo_first_name": "Hunter",
+      "yahoo_last_name": "Dickinson",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10501",
+      "row_number": 586
+    },
+    {
+      "yahoo_player_id": "10435",
+      "yahoo_name_full": "Taran Armstrong",
+      "yahoo_first_name": "Taran",
+      "yahoo_last_name": "Armstrong",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10435",
+      "row_number": 587
+    },
+    {
+      "yahoo_player_id": "10488",
+      "yahoo_name_full": "Adou Thiero",
+      "yahoo_first_name": "Adou",
+      "yahoo_last_name": "Thiero",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10488",
+      "row_number": 588
+    },
+    {
+      "yahoo_player_id": "10483",
+      "yahoo_name_full": "Max Shulga",
+      "yahoo_first_name": "Max",
+      "yahoo_last_name": "Shulga",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10483",
+      "row_number": 589
+    },
+    {
+      "yahoo_player_id": "5908",
+      "yahoo_name_full": "Nigel Hayes-Davis",
+      "yahoo_first_name": "Nigel",
+      "yahoo_last_name": "Hayes-Davis",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.5908",
+      "row_number": 590
+    },
+    {
+      "yahoo_player_id": "10452",
+      "yahoo_name_full": "Kasparas Jakučionis",
+      "yahoo_first_name": "Kasparas",
+      "yahoo_last_name": "Jakučionis",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10452",
+      "row_number": 591
+    },
+    {
+      "yahoo_player_id": "10484",
+      "yahoo_name_full": "Alex Toohey",
+      "yahoo_first_name": "Alex",
+      "yahoo_last_name": "Toohey",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10484",
+      "row_number": 592
+    },
+    {
+      "yahoo_player_id": "10473",
+      "yahoo_name_full": "Amari Williams",
+      "yahoo_first_name": "Amari",
+      "yahoo_last_name": "Williams",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10473",
+      "row_number": 593
+    },
+    {
+      "yahoo_player_id": "10506",
+      "yahoo_name_full": "Chucky Hepburn",
+      "yahoo_first_name": "Chucky",
+      "yahoo_last_name": "Hepburn",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10506",
+      "row_number": 594
+    },
+    {
+      "yahoo_player_id": "10459",
+      "yahoo_name_full": "Hugo González",
+      "yahoo_first_name": "Hugo",
+      "yahoo_last_name": "González",
+      "yahoo_team_abbr": "BOS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10459",
+      "row_number": 595
+    },
+    {
+      "yahoo_player_id": "10499",
+      "yahoo_name_full": "Hunter Sallis",
+      "yahoo_first_name": "Hunter",
+      "yahoo_last_name": "Sallis",
+      "yahoo_team_abbr": "PHI",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10499",
+      "row_number": 596
+    },
+    {
+      "yahoo_player_id": "10451",
+      "yahoo_name_full": "Asa Newell",
+      "yahoo_first_name": "Asa",
+      "yahoo_last_name": "Newell",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10451",
+      "row_number": 597
+    },
+    {
+      "yahoo_player_id": "10445",
+      "yahoo_name_full": "Egor Demin",
+      "yahoo_first_name": "Egor",
+      "yahoo_last_name": "Demin",
+      "yahoo_team_abbr": "BKN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10445",
+      "row_number": 598
+    },
+    {
+      "yahoo_player_id": "10465",
+      "yahoo_name_full": "Cedric Coward",
+      "yahoo_first_name": "Cedric",
+      "yahoo_last_name": "Coward",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10465",
+      "row_number": 599
+    },
+    {
+      "yahoo_player_id": "10489",
+      "yahoo_name_full": "Jamir Watkins",
+      "yahoo_first_name": "Jamir",
+      "yahoo_last_name": "Watkins",
+      "yahoo_team_abbr": "WAS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10489",
+      "row_number": 600
+    },
+    {
+      "yahoo_player_id": "10490",
+      "yahoo_name_full": "Alijah Martin",
+      "yahoo_first_name": "Alijah",
+      "yahoo_last_name": "Martin",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10490",
+      "row_number": 601
+    },
+    {
+      "yahoo_player_id": "10498",
+      "yahoo_name_full": "Sion James",
+      "yahoo_first_name": "Sion",
+      "yahoo_last_name": "James",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10498",
+      "row_number": 602
+    },
+    {
+      "yahoo_player_id": "10502",
+      "yahoo_name_full": "Eli John Ndiaye",
+      "yahoo_first_name": "Eli John",
+      "yahoo_last_name": "Ndiaye",
+      "yahoo_team_abbr": "ATL",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10502",
+      "row_number": 603
+    },
+    {
+      "yahoo_player_id": "10469",
+      "yahoo_name_full": "Nique Clifford",
+      "yahoo_first_name": "Nique",
+      "yahoo_last_name": "Clifford",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10469",
+      "row_number": 604
+    },
+    {
+      "yahoo_player_id": "10519",
+      "yahoo_name_full": "Arthur Kaluma",
+      "yahoo_first_name": "Arthur",
+      "yahoo_last_name": "Kaluma",
+      "yahoo_team_abbr": "LAL",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10519",
+      "row_number": 605
+    },
+    {
+      "yahoo_player_id": "10446",
+      "yahoo_name_full": "Liam McNeeley",
+      "yahoo_first_name": "Liam",
+      "yahoo_last_name": "McNeeley",
+      "yahoo_team_abbr": "CHA",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10446",
+      "row_number": 606
+    },
+    {
+      "yahoo_player_id": "10443",
+      "yahoo_name_full": "Collin Murray-Boyles",
+      "yahoo_first_name": "Collin",
+      "yahoo_last_name": "Murray-Boyles",
+      "yahoo_team_abbr": "TOR",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10443",
+      "row_number": 607
+    },
+    {
+      "yahoo_player_id": "10464",
+      "yahoo_name_full": "Yang Hansen",
+      "yahoo_first_name": "Yang",
+      "yahoo_last_name": "Hansen",
+      "yahoo_team_abbr": "POR",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10464",
+      "row_number": 608
+    },
+    {
+      "yahoo_player_id": "10497",
+      "yahoo_name_full": "Micah Peavy",
+      "yahoo_first_name": "Micah",
+      "yahoo_last_name": "Peavy",
+      "yahoo_team_abbr": "NOP",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10497",
+      "row_number": 609
+    },
+    {
+      "yahoo_player_id": "10487",
+      "yahoo_name_full": "Kam Jones",
+      "yahoo_first_name": "Kam",
+      "yahoo_last_name": "Jones",
+      "yahoo_team_abbr": "IND",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10487",
+      "row_number": 610
+    },
+    {
+      "yahoo_player_id": "10500",
+      "yahoo_name_full": "Mark Sears",
+      "yahoo_first_name": "Mark",
+      "yahoo_last_name": "Sears",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10500",
+      "row_number": 611
+    },
+    {
+      "yahoo_player_id": "10496",
+      "yahoo_name_full": "Maxime Raynaud",
+      "yahoo_first_name": "Maxime",
+      "yahoo_last_name": "Raynaud",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "C",
+      "yahoo_player_key": "466.p.10496",
+      "row_number": 612
+    },
+    {
+      "yahoo_player_id": "10517",
+      "yahoo_name_full": "Myron Gardner",
+      "yahoo_first_name": "Myron",
+      "yahoo_last_name": "Gardner",
+      "yahoo_team_abbr": "MIA",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10517",
+      "row_number": 613
+    },
+    {
+      "yahoo_player_id": "10477",
+      "yahoo_name_full": "Bogoljub Marković",
+      "yahoo_first_name": "Bogoljub",
+      "yahoo_last_name": "Marković",
+      "yahoo_team_abbr": "MIL",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10477",
+      "row_number": 614
+    },
+    {
+      "yahoo_player_id": "10372",
+      "yahoo_name_full": "David Jones-Garcia",
+      "yahoo_first_name": "David",
+      "yahoo_last_name": "Jones-Garcia",
+      "yahoo_team_abbr": "SAS",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10372",
+      "row_number": 615
+    },
+    {
+      "yahoo_player_id": "10482",
+      "yahoo_name_full": "Lachlan Olbrich",
+      "yahoo_first_name": "Lachlan",
+      "yahoo_last_name": "Olbrich",
+      "yahoo_team_abbr": "CHI",
+      "yahoo_positions": "PF",
+      "yahoo_player_key": "466.p.10482",
+      "row_number": 616
+    },
+    {
+      "yahoo_player_id": "10481",
+      "yahoo_name_full": "Saliou Niang",
+      "yahoo_first_name": "Saliou",
+      "yahoo_last_name": "Niang",
+      "yahoo_team_abbr": "CLE",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10481",
+      "row_number": 617
+    },
+    {
+      "yahoo_player_id": "6661",
+      "yahoo_name_full": "Jalen Crutcher",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Crutcher",
+      "yahoo_team_abbr": "ORL",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.6661",
+      "row_number": 618
+    },
+    {
+      "yahoo_player_id": "10073",
+      "yahoo_name_full": "Seth Lundy",
+      "yahoo_first_name": "Seth",
+      "yahoo_last_name": "Lundy",
+      "yahoo_team_abbr": "LAC",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10073",
+      "row_number": 619
+    },
+    {
+      "yahoo_player_id": "10318",
+      "yahoo_name_full": "Tristen Newton",
+      "yahoo_first_name": "Tristen",
+      "yahoo_last_name": "Newton",
+      "yahoo_team_abbr": "MIN",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10318",
+      "row_number": 620
+    },
+    {
+      "yahoo_player_id": "6280",
+      "yahoo_name_full": "Terence Davis",
+      "yahoo_first_name": "Terence",
+      "yahoo_last_name": "Davis",
+      "yahoo_team_abbr": "SAC",
+      "yahoo_positions": "SF,SG",
+      "yahoo_player_key": "466.p.6280",
+      "row_number": 621
+    },
+    {
+      "yahoo_player_id": "10344",
+      "yahoo_name_full": "Zyon Pullin",
+      "yahoo_first_name": "Zyon",
+      "yahoo_last_name": "Pullin",
+      "yahoo_team_abbr": "MEM",
+      "yahoo_positions": "SG",
+      "yahoo_player_key": "466.p.10344",
+      "row_number": 622
+    },
+    {
+      "yahoo_player_id": "6686",
+      "yahoo_name_full": "Braxton Key",
+      "yahoo_first_name": "Braxton",
+      "yahoo_last_name": "Key",
+      "yahoo_team_abbr": "GSW",
+      "yahoo_positions": "PF,SF",
+      "yahoo_player_key": "466.p.6686",
+      "row_number": 623
+    },
+    {
+      "yahoo_player_id": "10309",
+      "yahoo_name_full": "Jalen Bridges",
+      "yahoo_first_name": "Jalen",
+      "yahoo_last_name": "Bridges",
+      "yahoo_team_abbr": "PHX",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10309",
+      "row_number": 624
+    },
+    {
+      "yahoo_player_id": "10411",
+      "yahoo_name_full": "Malevy Leons",
+      "yahoo_first_name": "Malevy",
+      "yahoo_last_name": "Leons",
+      "yahoo_team_abbr": "OKC",
+      "yahoo_positions": "SF",
+      "yahoo_player_key": "466.p.10411",
+      "row_number": 625
+    },
+    {
+      "yahoo_player_id": "10316",
+      "yahoo_name_full": "Daniss Jenkins",
+      "yahoo_first_name": "Daniss",
+      "yahoo_last_name": "Jenkins",
+      "yahoo_team_abbr": "DET",
+      "yahoo_positions": "PG",
+      "yahoo_player_key": "466.p.10316",
+      "row_number": 626
+    }
+  ]
+}

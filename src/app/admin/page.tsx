@@ -497,38 +497,39 @@ export default function Admin() {
 
             </div>
 
-            {/* Yahoo Player Mappings */}
-            <div className="bg-white shadow rounded-lg p-6 border-2 border-yellow-200">
+            {/* Player ID Mappings */}
+            <div className="bg-white shadow rounded-lg p-6 border-2 border-purple-200">
               <div className="flex items-center mb-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-yellow-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
                   4
                 </div>
-                <h3 className="ml-3 text-lg font-semibold text-gray-900">Yahoo Player Mappings</h3>
+                <h3 className="ml-3 text-lg font-semibold text-gray-900">Player ID Mappings</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                <strong>Map Yahoo Fantasy players to UAFBL players</strong> for roster sync integration. This allows the system to match players between Yahoo's API and your internal database.
+                <strong>Manage Basketball Monster (BBM) and Yahoo Fantasy player ID mappings</strong> for enhanced cross-platform player identification and data integration.
               </p>
 
               <div className="flex items-center space-x-4 mb-4">
                 <a
-                  href="/admin/yahoo-mappings"
-                  className="px-4 py-2 bg-yellow-600 text-white text-sm font-medium rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                  href="/admin/bbm-mappings"
+                  className="px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                 >
-                  Manage Yahoo Mappings
+                  Manage Player Mappings
                 </a>
               </div>
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
-                <div className="text-sm text-yellow-700">
-                  <strong>Yahoo Integration Features:</strong>
+              <div className="bg-purple-50 border border-purple-200 rounded-md p-4">
+                <div className="text-sm text-purple-700">
+                  <strong>Unified Player ID System:</strong>
                   <ul className="list-disc list-inside mt-2 space-y-1">
-                    <li>Map top fantasy players to UAFBL database</li>
-                    <li>Enable daily roster sync from Yahoo during season</li>
-                    <li>Support for trade processing and roster updates</li>
-                    <li>Handle player name variations and character encoding</li>
+                    <li><strong>BBM IDs:</strong> Basketball Monster player identification</li>
+                    <li><strong>Yahoo IDs:</strong> Yahoo Fantasy player identification</li>
+                    <li><strong>UAFBL IDs:</strong> Your internal player database (primary keys)</li>
+                    <li>Track verification status and mapping history for all systems</li>
+                    <li>Search and filter by any player ID or team</li>
                   </ul>
-                  <div className="mt-2 font-medium text-yellow-800">
-                    💡 Start by mapping the top 25-50 most relevant players for your league.
+                  <div className="mt-2 font-medium text-purple-800">
+                    ✅ All player mappings now consolidated in one unified system
                   </div>
                 </div>
               </div>

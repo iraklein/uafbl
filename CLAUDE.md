@@ -4,7 +4,7 @@
 
 ### Problem
 Supabase queries have a **default limit of 1000 rows** even when you don't specify a limit. This causes issues when:
-- Analyzing large datasets (like the players table with 1,130+ rows)
+- Analyzing large datasets (like the players table with 1,087 rows)
 - APIs return incomplete data
 - Duplicate analysis misses records
 - Data exports are truncated
@@ -103,7 +103,7 @@ When working with large datasets:
 - [ ] Document table sizes in this file
 
 ### Table Size Reference
-- **players**: ~1,130 records (use limit: 2000)
+- **players**: 1,087 records (use pagination in API routes - see BBM mappings API example)
 - **draft_results**: ~500-1000 per season (use limit: 2000)
 - **rosters**: ~200-300 per season (use limit: 1000)
 - **trades**: ~50-100 per season (use limit: 500)
