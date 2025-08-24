@@ -17,6 +17,7 @@ interface PlayerSearchProps {
   searchButtonLoading?: boolean
   value?: string
   onChange?: (value: string) => void
+  excludePlayerIds?: number[]
 }
 
 export default function PlayerSearch({
@@ -32,7 +33,8 @@ export default function PlayerSearch({
   onSearchButtonClick,
   searchButtonLoading = false,
   value,
-  onChange
+  onChange,
+  excludePlayerIds = []
 }: PlayerSearchProps) {
   const {
     query,
@@ -55,7 +57,8 @@ export default function PlayerSearch({
     onExactMatch,
     allowCreateNew,
     externalQuery: value,
-    onChange
+    onChange,
+    excludePlayerIds
   })
 
   // Use controlled value if provided, but ensure autocomplete still works
@@ -69,13 +72,18 @@ export default function PlayerSearch({
         setQuery(e.target.value)
         
         // Only trigger search if we're not in the middle of selecting a player
+        // and the input change is from user typing (not programmatic)
         if (!isSelectingPlayer) {
           const newQuery = e.target.value
           if (newQuery.trim().length >= minQueryLength) {
+            // Use the hook's handleInputChange to maintain consistency
             handleInputChange(e)
           } else {
             setShowSuggestions(false)
           }
+        } else {
+          // If we're selecting a player, force hide suggestions
+          setShowSuggestions(false)
         }
       }
     : handleInputChange

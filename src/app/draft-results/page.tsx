@@ -14,6 +14,7 @@ import { useSeasons } from "../../hooks/useSeasons"
 interface Player {
   id?: number
   name: string
+  yahoo_image_url?: string | null
 }
 
 interface Manager {
@@ -60,9 +61,9 @@ interface LSLResult {
 
 interface PlayerHistory {
   player: Player | null
-  draft_history: DraftResult[]
-  topper_history: TopperResult[]
-  lsl_history: LSLResult[]
+  draftHistory: DraftResult[]
+  topperHistory: TopperResult[]
+  lslHistory: LSLResult[]
 }
 
 export default function DraftResults() {
@@ -282,10 +283,28 @@ export default function DraftResults() {
                           key: 'players.name',
                           header: 'Player',
                           render: (_, result) => (
-                            <div className="truncate">
-                              {result.players.name}
-                              {result.is_keeper && <span className="ml-1 px-1 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
-                              {result.is_topper && <span className="ml-1">🎩</span>}
+                            <div className="flex items-center space-x-2 min-w-0">
+                              {result.players.yahoo_image_url ? (
+                                <img
+                                  src={result.players.yahoo_image_url}
+                                  alt={result.players.name}
+                                  className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none'
+                                  }}
+                                />
+                              ) : (
+                                <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                  </svg>
+                                </div>
+                              )}
+                              <div className="truncate">
+                                {result.players.name}
+                                {result.is_keeper && <span className="ml-1 px-1 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
+                                {result.is_topper && <span className="ml-1">🎩</span>}
+                              </div>
                             </div>
                           ),
                           className: 'font-medium max-w-0'
@@ -330,29 +349,47 @@ export default function DraftResults() {
                 {playerHistory.player ? (
                   <>
                     <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
-                      <h2 className="text-xl font-bold text-gray-900 mb-4 sm:text-2xl">{playerHistory.player.name}</h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                      <div className="flex items-center space-x-4 mb-4">
+                        {playerHistory.player.yahoo_image_url ? (
+                          <img
+                            src={playerHistory.player.yahoo_image_url}
+                            alt={playerHistory.player.name}
+                            className="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none'
+                            }}
+                          />
+                        ) : (
+                          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          </div>
+                        )}
+                        <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">{playerHistory.player.name}</h2>
+                      </div>
+                      <div className="grid grid-cols-4 gap-2 sm:gap-4">
                         <StatsCard
                           title="Draft Records"
-                          value={playerHistory.draft_history.length}
+                          value={playerHistory.draftHistory.length}
                           variant="blue"
                           size="sm"
                         />
                         <StatsCard
                           title="Total Draft Dollars"
-                          value={`$${playerHistory.draft_history.reduce((total, record) => total + (record.draft_price || 0), 0)}`}
+                          value={`$${playerHistory.draftHistory.reduce((total, record) => total + (record.draft_price || 0), 0)}`}
                           variant="orange"
                           size="sm"
                         />
                         <StatsCard
                           title="Topper Records"
-                          value={playerHistory.topper_history.length}
+                          value={playerHistory.topperHistory.length}
                           variant="green"
                           size="sm"
                         />
                         <StatsCard
                           title="LSL Records"
-                          value={playerHistory.lsl_history.length}
+                          value={playerHistory.lslHistory.length}
                           variant="purple"
                           size="sm"
                         />
@@ -360,7 +397,7 @@ export default function DraftResults() {
                     </div>
 
                     {/* Draft History */}
-                    {playerHistory.draft_history.length > 0 && (
+                    {playerHistory.draftHistory.length > 0 && (
                       <div className="bg-white shadow rounded-lg overflow-hidden">
                         <div className="bg-blue-600 text-white px-4 py-3 sm:px-6 sm:py-4">
                           <h3 className="text-base font-semibold sm:text-lg">Draft History</h3>
@@ -370,7 +407,7 @@ export default function DraftResults() {
                             {
                               key: 'seasons.name',
                               header: 'Season',
-                              render: (_, result) => `${result.seasons.name} (${result.seasons.year})`,
+                              render: (_, result) => result.seasons.name,
                               className: 'font-medium'
                             },
                             {
@@ -402,21 +439,21 @@ export default function DraftResults() {
                               )
                             }
                           ]}
-                          data={playerHistory.draft_history}
+                          data={playerHistory.draftHistory}
                           className="shadow-none"
                         />
                       </div>
                     )}
 
                     {/* Topper History */}
-                    {playerHistory.topper_history.length > 0 && (
+                    {playerHistory.topperHistory.length > 0 && (
                       <div className="bg-white shadow rounded-lg overflow-hidden">
                         <div className="bg-green-600 text-white px-4 py-3 sm:px-6 sm:py-4">
                           <h3 className="text-base font-semibold sm:text-lg">Topper History</h3>
                         </div>
                         <div className="px-4 py-4 sm:px-6">
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                            {playerHistory.topper_history.map((result) => (
+                            {playerHistory.topperHistory.map((result) => (
                               <div key={result.id} className="p-3 rounded border bg-green-50 border-green-200">
                                 <div className="font-medium text-gray-900">{result.seasons.name} ({result.seasons.year})</div>
                                 <div className="text-sm text-gray-600">Manager: {result.managers.manager_name}</div>
@@ -428,14 +465,14 @@ export default function DraftResults() {
                     )}
 
                     {/* LSL History */}
-                    {playerHistory.lsl_history.length > 0 && (
+                    {playerHistory.lslHistory.length > 0 && (
                       <div className="bg-white shadow rounded-lg overflow-hidden">
                         <div className="bg-purple-600 text-white px-4 py-3 sm:px-6 sm:py-4">
                           <h3 className="text-base font-semibold sm:text-lg">LSL History</h3>
                         </div>
                         <div className="px-4 py-4 sm:px-6">
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                            {playerHistory.lsl_history.map((result) => (
+                            {playerHistory.lslHistory.map((result) => (
                               <div key={result.id} className="p-3 rounded border bg-purple-50 border-purple-200">
                                 <div className="font-medium text-gray-900">Year: {result.year}</div>
                                 <div className="text-sm text-gray-600">Original: {result.original_managers.manager_name}</div>

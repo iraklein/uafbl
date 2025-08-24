@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   try {
     const { data, error } = await supabase
       .from('players')
-      .select('id, name')
+      .select('id, name, yahoo_image_url, yahoo_name_full, yahoo_team_abbr, yahoo_positions')
       .ilike('name', `%${query}%`)
       .order('name', { ascending: true })
       .limit(20) // Limit to 20 suggestions

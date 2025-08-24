@@ -336,6 +336,9 @@ export default function DraftPage() {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
   }
 
+  // Get list of already drafted player IDs to exclude from search
+  const draftedPlayerIds = draftPicks.map(pick => pick.player_id)
+
   // Sort draft picks by pick number (latest picks have highest index)
   const sortedDraftPicks = [...draftPicks].sort((a, b) => {
     const pickA = draftPicks.length - draftPicks.indexOf(a) // Convert index to pick number
@@ -470,6 +473,7 @@ export default function DraftPage() {
                 onExactMatch={handlePlayerExactMatch}
                 placeholder="Search for player..."
                 allowCreateNew={true}
+                excludePlayerIds={draftedPlayerIds}
               />
             </div>
 
@@ -664,6 +668,7 @@ export default function DraftPage() {
                             placeholder="Search player..."
                             className="text-sm"
                             allowCreateNew={true}
+                            excludePlayerIds={draftedPlayerIds.filter(id => id !== pick.player_id)}
                           />
                         ) : (
                           <>

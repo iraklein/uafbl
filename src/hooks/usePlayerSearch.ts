@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { Player } from '../types'
 
 interface UsePlayerSearchOptions {
@@ -9,6 +9,7 @@ interface UsePlayerSearchOptions {
   allowCreateNew?: boolean
   externalQuery?: string
   onChange?: (value: string) => void
+  excludePlayerIds?: number[]
 }
 
 interface UsePlayerSearchReturn {
@@ -41,7 +42,8 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     onExactMatch,
     allowCreateNew = false,
     externalQuery,
-    onChange
+    onChange,
+    excludePlayerIds = []
   } = options
 
   const [query, setQuery] = useState(externalQuery || '')
@@ -52,11 +54,21 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [isSelectingPlayer, setIsSelectingPlayer] = useState(false)
+  const lastSelectedPlayerNameRef = useRef<string>('')
+  const lastExternalQueryRef = useRef<string>('')
 
   const searchPlayers = useCallback(async (searchQuery: string) => {
     if (searchQuery.length < minQueryLength) {
       setFilteredPlayers([])
       setHighlightedIndex(0)
+      return
+    }
+
+    // Don't search if this is exactly the same as the last selected player name
+    if (searchQuery.trim() === lastSelectedPlayerNameRef.current.trim()) {
+      setFilteredPlayers([])
+      setHighlightedIndex(0)
+      setShowSuggestions(false)
       return
     }
 
@@ -68,7 +80,9 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       if (!response.ok) throw new Error('Failed to search players')
       
       const data = await response.json()
-      setFilteredPlayers(data)
+      // Filter out excluded player IDs
+      const filteredData = data.filter((player: Player) => !excludePlayerIds.includes(player.id))
+      setFilteredPlayers(filteredData)
       setHighlightedIndex(0) // Auto-highlight first result
     } catch (error) {
       console.error('Error searching players:', error)
@@ -78,11 +92,21 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     } finally {
       setLoading(false)
     }
-  }, [minQueryLength])
+  }, [minQueryLength, excludePlayerIds])
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value
     setQuery(newQuery)
+    
+    // If the user is typing something different from the last selected player, clear the ref
+    if (newQuery.trim() !== lastSelectedPlayerNameRef.current.trim()) {
+      lastSelectedPlayerNameRef.current = ''
+    }
+    
+    // Don't search if we're currently selecting a player
+    if (isSelectingPlayer) {
+      return
+    }
     
     if (newQuery.trim().length >= minQueryLength) {
       searchPlayers(newQuery.trim())
@@ -91,7 +115,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       setShowSuggestions(false)
       setFilteredPlayers([])
     }
-  }, [minQueryLength, searchPlayers])
+  }, [minQueryLength, searchPlayers, isSelectingPlayer])
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -107,11 +131,19 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
         setIsSelectingPlayer(true)
         setSelectedPlayer(selectedPlayer)
         setShowSuggestions(false)
+        setFilteredPlayers([]) // Clear suggestions to prevent re-showing
+        setHighlightedIndex(0) // Reset highlighted index
         setQuery(selectedPlayer.name)
+        lastSelectedPlayerNameRef.current = selectedPlayer.name // Track the selected player name
         onChange?.(selectedPlayer.name) // Update external controlled state
         onPlayerSelect?.(selectedPlayer)
-        // Reset the flag after a brief delay
-        setTimeout(() => setIsSelectingPlayer(false), 100)
+        // Reset the flag after a longer delay to ensure everything settles
+        setTimeout(() => {
+          setIsSelectingPlayer(false)
+          // Force clear suggestions one more time to be absolutely sure
+          setShowSuggestions(false)
+          setFilteredPlayers([])
+        }, 500)
         return
       }
       
@@ -123,6 +155,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
       if (exactMatch) {
         setSelectedPlayer(exactMatch)
         setShowSuggestions(false)
+        lastSelectedPlayerNameRef.current = exactMatch.name // Track the selected player name
         onChange?.(exactMatch.name) // Update external controlled state
         onExactMatch?.(exactMatch)
         onPlayerSelect?.(exactMatch)
@@ -134,6 +167,7 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
         }
         setSelectedPlayer(newPlayer)
         setShowSuggestions(false)
+        lastSelectedPlayerNameRef.current = newPlayer.name // Track the selected player name
         onExactMatch?.(newPlayer)
       }
     } else if (e.key === 'ArrowDown') {
@@ -161,10 +195,18 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
         setQuery(topResult.name)
         setSelectedPlayer(topResult)
         setShowSuggestions(false)
+        setFilteredPlayers([]) // Clear suggestions to prevent re-showing
+        setHighlightedIndex(0) // Reset highlighted index
+        lastSelectedPlayerNameRef.current = topResult.name // Track the selected player name
         onChange?.(topResult.name) // Update external controlled state
         onPlayerSelect?.(topResult)
-        // Reset the flag after a brief delay
-        setTimeout(() => setIsSelectingPlayer(false), 100)
+        // Reset the flag after a longer delay to ensure everything settles
+        setTimeout(() => {
+          setIsSelectingPlayer(false)
+          // Force clear suggestions one more time to be absolutely sure
+          setShowSuggestions(false)
+          setFilteredPlayers([])
+        }, 500)
         // Don't prevent default - let Tab continue to next field
       }
     }
@@ -175,10 +217,18 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     setQuery(player.name)
     setSelectedPlayer(player)
     setShowSuggestions(false)
+    setFilteredPlayers([]) // Clear suggestions to prevent re-showing
+    setHighlightedIndex(0) // Reset highlighted index
+    lastSelectedPlayerNameRef.current = player.name // Track the selected player name
     onChange?.(player.name) // Update external controlled state
     onPlayerSelect?.(player)
-    // Reset the flag after a brief delay
-    setTimeout(() => setIsSelectingPlayer(false), 100)
+    // Reset the flag after a longer delay to ensure everything settles
+    setTimeout(() => {
+      setIsSelectingPlayer(false)
+      // Force clear suggestions one more time to be absolutely sure
+      setShowSuggestions(false)
+      setFilteredPlayers([])
+    }, 500)
   }, [onPlayerSelect, onChange])
 
   const handleInputBlur = useCallback(() => {
@@ -189,10 +239,15 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
   }, [])
 
   const handleInputFocus = useCallback(() => {
-    if (query.trim().length >= minQueryLength && filteredPlayers.length > 0) {
+    // Don't show suggestions if we just selected a player or if there's no meaningful query
+    if (isSelectingPlayer || query.trim().length < minQueryLength) {
+      return
+    }
+    // Only show suggestions if we have results and haven't just selected a player
+    if (filteredPlayers.length > 0) {
       setShowSuggestions(true)
     }
-  }, [query, minQueryLength, filteredPlayers.length])
+  }, [query, minQueryLength, filteredPlayers.length, isSelectingPlayer])
 
   const clearSearch = useCallback(() => {
     setQuery('')
@@ -200,21 +255,52 @@ export function usePlayerSearch(options: UsePlayerSearchOptions = {}): UsePlayer
     setFilteredPlayers([])
     setShowSuggestions(false)
     setError('')
+    lastSelectedPlayerNameRef.current = '' // Clear the tracking ref
   }, [])
 
   // Sync with external query
   useEffect(() => {
-    if (externalQuery !== undefined) {
+    if (externalQuery !== undefined && !isSelectingPlayer && externalQuery !== lastExternalQueryRef.current) {
+      lastExternalQueryRef.current = externalQuery
       setQuery(externalQuery)
-      if (externalQuery.trim().length >= minQueryLength) {
-        searchPlayers(externalQuery.trim())
-        setShowSuggestions(true)
+      
+      const trimmedQuery = externalQuery.trim()
+      
+      if (trimmedQuery.length >= minQueryLength) {
+        // Don't search if this is exactly the same as the last selected player name
+        if (trimmedQuery !== lastSelectedPlayerNameRef.current.trim()) {
+          // Inline search logic to avoid dependency issues
+          setLoading(true)
+          setError('')
+          
+          fetch(`/api/players/search?q=${encodeURIComponent(trimmedQuery)}`)
+            .then(response => {
+              if (!response.ok) throw new Error('Failed to search players')
+              return response.json()
+            })
+            .then(data => {
+              // Filter out excluded player IDs
+              const filteredData = data.filter((player: Player) => !excludePlayerIds.includes(player.id))
+              setFilteredPlayers(filteredData)
+              setHighlightedIndex(0)
+              setShowSuggestions(true)
+            })
+            .catch(error => {
+              console.error('Error searching players:', error)
+              setError('Failed to search players')
+              setFilteredPlayers([])
+              setHighlightedIndex(0)
+            })
+            .finally(() => {
+              setLoading(false)
+            })
+        }
       } else {
         setShowSuggestions(false)
         setFilteredPlayers([])
       }
     }
-  }, [externalQuery, minQueryLength, searchPlayers])
+  }, [externalQuery, minQueryLength, isSelectingPlayer, excludePlayerIds])
 
   return {
     query,

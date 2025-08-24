@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
         draft_price,
         is_keeper,
         player_id,
-        players(name),
+        players(name, yahoo_image_url),
         managers(manager_name, team_name),
         seasons(year, name)
       `)
