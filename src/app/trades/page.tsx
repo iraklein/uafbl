@@ -796,7 +796,7 @@ export default function Trades() {
     },
     {
       key: 'proposer.manager_name',
-      header: 'Manager 1',
+      header: 'Manager',
       className: 'font-bold text-sm bg-blue-50',
       headerClassName: 'w-24 bg-blue-100 font-bold text-blue-900'
     },
@@ -836,7 +836,7 @@ export default function Trades() {
     },
     {
       key: 'receiver.manager_name',
-      header: 'Manager 2',
+      header: 'Manager',
       className: 'font-bold text-sm bg-green-50',
       headerClassName: 'w-24 bg-green-100 font-bold text-green-900'
     },
@@ -875,7 +875,7 @@ export default function Trades() {
       }
     },
     {
-      key: 'id',
+      key: 'actions',
       header: '',
       className: 'text-center',
       headerClassName: 'w-8',

@@ -633,19 +633,20 @@ function TeamLogoDropdown({ managerName, currentManagerId, onSignOut }: TeamLogo
       1: '/Amish.png',
       2: '/Bier.png', 
       3: '/Buchs.png',
-      4: '/Gabe.png',
-      5: '/Haight.png',
-      6: '/Haight.png', // Duplicate of 5 for now
+      4: '/Emmer.png',
+      5: '/Gabe.png',
+      6: '/Haight.png',
       7: '/Horn.png',
       8: '/Jones.png',
-      9: '/Leonine Facies.png',
-      10: '/Luskey.png',
-      11: '/MikeMac.png',
-      12: '/Mitch.png',
-      13: '/Peskin.png',
-      14: '/Phil.png',
-      15: '/Tmac.png',
-      16: '/Weeg.png'
+      9: '/Luskey.png',
+      10: '/MikeMac.png',
+      11: '/Mitch.png',
+      12: '/Peskin.png',
+      13: '/Phil.png',
+      14: '/Tmac.png',
+      15: '/Weeg.png',
+      16: '/Kenny.png',
+      17: '/Glaspie.png'
     }
     
     return logoMap[managerId] || '/uafbl-logo.png'

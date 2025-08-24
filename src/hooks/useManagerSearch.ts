@@ -199,13 +199,22 @@ export function useManagerSearch(options: UseManagerSearchOptions = {}): UseMana
       setQuery(externalQuery)
       if (externalQuery.trim().length >= minQueryLength) {
         searchManagers(externalQuery.trim())
-        setShowSuggestions(true)
+        // Only show suggestions if the query doesn't exactly match a manager name
+        // This prevents showing suggestions after selection
+        const exactMatch = allManagers.find(manager => 
+          manager.manager_name.toLowerCase() === externalQuery.trim().toLowerCase()
+        )
+        if (!exactMatch) {
+          setShowSuggestions(true)
+        } else {
+          setShowSuggestions(false)
+        }
       } else {
         setShowSuggestions(false)
         setFilteredManagers([])
       }
     }
-  }, [externalQuery, minQueryLength, searchManagers])
+  }, [externalQuery, minQueryLength, searchManagers, allManagers])
 
   return {
     query,

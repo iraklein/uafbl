@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 interface ManagerHeaderProps {
   managerName: string
   teamName?: string
@@ -8,6 +7,7 @@ interface ManagerHeaderProps {
   textSize?: 'xs' | 'sm' | 'base' | 'lg'
   className?: string
 }
+
 
 // Utility function to get team logo for a manager
 const getTeamLogo = (managerName: string): string => {
@@ -18,16 +18,18 @@ const getTeamLogo = (managerName: string): string => {
     'Amish': '/Amish.png',
     'Bier': '/Bier.png',
     'Buchs': '/Buchs.png',
+    'Emmer': '/Emmer.png',
     'Gabe': '/Gabe.png',
     'Jones': '/Jones.png',
-    'Leonine Facies': '/Leonine Facies.png',
     'Luskey': '/Luskey.png',
     'MikeMac': '/MikeMac.png',
     'Mitch': '/Mitch.png',
     'Peskin': '/Peskin.png',
     'Phil': '/Phil.png',
     'Tmac': '/Tmac.png',
-    'Weeg': '/Weeg.png'
+    'Weeg': '/Weeg.png',
+    'Kenny': '/Kenny.png',
+    'Glaspie': '/Glaspie.png'
   }
   
   return logoMap[managerName] || '/uafbl-logo.png' // Fallback to UAFBL logo
