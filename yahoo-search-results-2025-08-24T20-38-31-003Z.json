@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "searchedAt": "2025-08-24T20:38:31.009Z",
+    "totalSearched": 20,
+    "totalWithoutYahoo": 688,
+    "searchLimit": 20
+  },
+  "results": {
+    "found": [],
+    "notFound": [
+      {
+        "uafblPlayer": {
+          "id": 599,
+          "name": "A.J. Griffin",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 210,
+          "name": "Aaron Brooks",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 564,
+          "name": "Abdel Nader",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 348,
+          "name": "Acie Law",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 364,
+          "name": "Adam Morrison",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 410,
+          "name": "Adreian Payne",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 6674,
+          "name": "Akoldah Gak",
+          "yahoo_player_id": null,
+          "data_source": "bbm"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 274,
+          "name": "Al Harrington",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 4,
+          "name": "Al Jefferson",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 327,
+          "name": "Al Thornton",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 177,
+          "name": "Al-Farouq Aminu",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 471,
+          "name": "Alan Williams",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 353,
+          "name": "Aleksandar Pavlovic",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 569,
+          "name": "Aleksej Pokusevski",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 463,
+          "name": "Alex Poythress",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 391,
+          "name": "Alexis Ajinca",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 439,
+          "name": "Allen Crabbe",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 375,
+          "name": "Allen Iverson",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 240,
+          "name": "Alonzo Gee",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      },
+      {
+        "uafblPlayer": {
+          "id": 109,
+          "name": "Amare Stoudemire",
+          "yahoo_player_id": null,
+          "data_source": "uafbl"
+        },
+        "error": "HTTP 401"
+      }
+    ],
+    "errors": [],
+    "multipleMatches": []
+  }
+}

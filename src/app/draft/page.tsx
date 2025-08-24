@@ -8,10 +8,15 @@ import FormInput from '../../components/FormInput'
 import PlayerSearch from '../../components/PlayerSearch'
 import ManagerSearch from '../../components/ManagerSearch'
 import ManagerHeader from '../../components/ManagerHeader'
+import PlayerPreview from '../../components/PlayerPreview'
 
 interface Player {
   id: number
   name: string
+  yahoo_image_url?: string | null
+  yahoo_name_full?: string | null
+  yahoo_team_abbr?: string | null
+  yahoo_positions?: string | null
 }
 
 interface Manager {
@@ -588,6 +593,13 @@ export default function DraftPage() {
             )}
           </div>
         </div>
+
+        {/* Player Preview */}
+        {selectedPlayer && (
+          <div className="mb-8">
+            <PlayerPreview player={selectedPlayer} />
+          </div>
+        )}
 
         {/* Draft Picks Table */}
         <div className="bg-white shadow rounded-lg overflow-hidden">

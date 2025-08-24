@@ -1046,7 +1046,7 @@ export default function Trades() {
         {/* Propose Trade Modal */}
         {showProposeModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-2 sm:p-4 z-50 overflow-y-auto">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl my-2 sm:my-8 flex flex-col min-h-0" style={{ maxHeight: 'calc(100vh - 16px)' }}>
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl my-2 sm:my-8 flex flex-col" style={{ maxHeight: 'calc(100vh - 16px)', minHeight: 'calc(100vh - 16px)' }}>
               {/* Header - Fixed */}
               <div className="p-4 sm:p-6 border-b border-gray-200 flex-shrink-0">
                 <div className="flex justify-between items-center">
@@ -1086,7 +1086,7 @@ export default function Trades() {
               </div>
 
               {/* Scrollable Content Area */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-20" style={{ minHeight: 0 }}>
                 {/* Trade Form Content */}
                 {tradeFormLoading ? (
                   <div className="text-center pb-8">
@@ -1337,7 +1337,7 @@ export default function Trades() {
               </div>
 
               {/* Sticky Footer */}
-              <div className="border-t border-gray-200 p-4 sm:p-6 flex-shrink-0">
+              <div className="border-t border-gray-200 p-4 sm:p-6 flex-shrink-0 bg-white" style={{ position: 'sticky', bottom: 0, zIndex: 10 }}>
                 <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
                   <button
                     onClick={() => {
