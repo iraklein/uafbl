@@ -7,9 +7,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Yahoo client ID not configured' }, { status: 500 })
   }
 
-  // Yahoo OAuth 2.0 authorization URL
-  // Use ngrok URL since request.nextUrl.origin returns localhost
-  const redirectUri = `https://5477ee214f90.ngrok-free.app/api/auth/yahoo/callback`
+  // Yahoo OAuth 2.0 authorization URL  
+  // Use localhost for development
+  const redirectUri = `http://localhost:3006/api/auth/yahoo/callback`
   
   // Debug: Log what we're sending
   console.log('OAuth Debug Info:', {

@@ -1,0 +1,75 @@
+{
+  "fantasy_content": {
+    "xml:lang": "en-US",
+    "yahoo:uri": "/fantasy/v2/users;use_login=1/games;game_keys=466/leagues",
+    "users": {
+      "0": {
+        "user": [
+          {
+            "guid": "6P54MQHAC3XCHBZ6WUSXFIYHGI"
+          },
+          {
+            "games": {
+              "0": {
+                "game": [
+                  {
+                    "game_key": "466",
+                    "game_id": "466",
+                    "name": "Basketball",
+                    "code": "nba",
+                    "type": "full",
+                    "url": "https://basketball.fantasysports.yahoo.com/nba",
+                    "season": "2025",
+                    "is_registration_over": 0,
+                    "is_game_over": 0,
+                    "is_offseason": 0
+                  },
+                  {
+                    "leagues": {
+                      "0": {
+                        "league": [
+                          {
+                            "league_key": "466.l.5701",
+                            "league_id": "5701",
+                            "name": "Urban Achievers",
+                            "url": "https://basketball.fantasysports.yahoo.com/nba/5701",
+                            "logo_url": "https://s.yimg.com/ep/cx/blendr/v2/image-y-png_1721252122724.png",
+                            "draft_status": "predraft",
+                            "num_teams": 15,
+                            "edit_key": "2025-08-24",
+                            "weekly_deadline": "intraday",
+                            "league_update_timestamp": null,
+                            "scoring_type": "roto",
+                            "league_type": "private",
+                            "renew": "454_3674",
+                            "renewed": "",
+                            "felo_tier": null,
+                            "iris_group_chat_id": "",
+                            "allow_add_to_dl_extra_pos": 0,
+                            "is_pro_league": "0",
+                            "is_cash_league": "0",
+                            "start_date": "2025-10-21",
+                            "end_date": "2026-04-12",
+                            "is_plus_league": "0",
+                            "game_code": "nba",
+                            "season": "2025"
+                          }
+                        ]
+                      },
+                      "count": 1
+                    }
+                  }
+                ]
+              },
+              "count": 1
+            }
+          }
+        ]
+      },
+      "count": 1
+    },
+    "time": "38.097858428955ms",
+    "copyright": "Certain Data by Sportradar, Stats Perform and Rotowire",
+    "refresh_rate": "60"
+  }
+}

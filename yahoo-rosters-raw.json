@@ -1,0 +1,1425 @@
+{
+  "fantasy_content": {
+    "xml:lang": "en-US",
+    "yahoo:uri": "/fantasy/v2/league/466.l.5701/teams/roster",
+    "league": [
+      {
+        "league_key": "466.l.5701",
+        "league_id": "5701",
+        "name": "Urban Achievers",
+        "url": "https://basketball.fantasysports.yahoo.com/nba/5701",
+        "logo_url": "https://s.yimg.com/ep/cx/blendr/v2/image-y-png_1721252122724.png",
+        "draft_status": "predraft",
+        "num_teams": 15,
+        "edit_key": "2025-08-24",
+        "weekly_deadline": "intraday",
+        "league_update_timestamp": null,
+        "scoring_type": "roto",
+        "league_type": "private",
+        "renew": "454_3674",
+        "renewed": "",
+        "felo_tier": null,
+        "iris_group_chat_id": "",
+        "allow_add_to_dl_extra_pos": 0,
+        "is_pro_league": "0",
+        "is_cash_league": "0",
+        "start_date": "2025-10-21",
+        "end_date": "2026-04-12",
+        "is_plus_league": "0",
+        "game_code": "nba",
+        "season": "2025"
+      },
+      {
+        "teams": {
+          "0": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.1"
+                },
+                {
+                  "team_id": "1"
+                },
+                {
+                  "name": "Scotty B for 3"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/1"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/22792010148_f08fcaa777.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 4
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "1",
+                        "nickname": "Scott",
+                        "guid": "KHKTINFSIXHYWBXCG23FROM2BQ",
+                        "is_commissioner": "1",
+                        "email": "sbuchbinder@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                        "felo_score": "702",
+                        "felo_tier": "gold"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "1": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.2"
+                },
+                {
+                  "team_id": "2"
+                },
+                {
+                  "name": "Chupacabras"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/2"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/29913066584_dbbe74f7aa.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 5
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "2",
+                        "nickname": "GG",
+                        "guid": "XK2IONQNLGVIWCDHHHQORJ24YE",
+                        "email": "gabrielgold@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                        "felo_score": "594",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "2": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.3"
+                },
+                {
+                  "team_id": "3"
+                },
+                {
+                  "name": "Dirty Dawg Nation"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/3"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/22942100047_3eca6c6b20.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 10
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "3",
+                        "nickname": "Dawgs HQ",
+                        "guid": "ZC5S5YLCTE7QHXYNVZQPK6MYLI",
+                        "email": "big_dawg_luskey@yahoo.com",
+                        "image_url": "https://s.yimg.com/ag/images/4599/38981773536_492ad9_64sq.jpg",
+                        "felo_score": "597",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "3": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.4"
+                },
+                {
+                  "team_id": "4"
+                },
+                {
+                  "name": "Hack-a-Macs"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/4"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/56483975601_6355e2.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 1
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "4",
+                        "nickname": "Michael",
+                        "guid": "XHH4ZAIOJK3M2M7QSDWAUCFE3U",
+                        "email": "michael.allen.mcintosh@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                        "felo_score": "594",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "4": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.5"
+                },
+                {
+                  "team_id": "5"
+                },
+                {
+                  "name": "John St. Keep Show"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/5"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/30563389270_7cf904c95e.png"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 3
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "5",
+                        "nickname": "PhillyWins",
+                        "guid": "KHFHVRVX3AUC7OYNRMS7O33RXY",
+                        "email": "phillip_s_huynh@yahoo.com",
+                        "image_url": "https://s.yimg.com/ag/images/4562/38038981634_c17fc9_64sq.jpg",
+                        "felo_score": "719",
+                        "felo_tier": "gold"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "5": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.6"
+                },
+                {
+                  "team_id": "6"
+                },
+                {
+                  "name": "Leonine Facies"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/6"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/29939810984_2fd35422b4.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 7
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "6",
+                        "nickname": "Brian",
+                        "guid": "CODQJ5DTLEABCDUKCQXJX5FNCI",
+                        "image_url": "https://s.yimg.com/ag/images/0334f7c0-61da-489e-988d-2cbbf274d1354w_64sq.jpg",
+                        "felo_score": "594",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "6": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.7"
+                },
+                {
+                  "team_id": "7"
+                },
+                {
+                  "name": "Low Country Rats"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/7"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/30787765086_2f5c111971.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 9
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "7",
+                        "nickname": "Tim McIntosh",
+                        "guid": "RBXT5JGNFL6JVJETNW7PPHECQ4",
+                        "email": "tpmcinto@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/4544/37755182683_d71365_64sq.jpg",
+                        "felo_score": "594",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "7": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.8"
+                },
+                {
+                  "team_id": "8"
+                },
+                {
+                  "name": "Port City Jabberwocks"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/8"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/30426928622_a5869cb249.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 6
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "8",
+                        "nickname": "David",
+                        "guid": "6FDYZZ45RYAFM6ZTDON2E2UJRU",
+                        "email": "lorax14@yahoo.com",
+                        "image_url": "https://s.yimg.com/ag/images/4642/37642423723_f438fd_64sq.jpg",
+                        "felo_score": "586",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "8": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.9"
+                },
+                {
+                  "team_id": "9"
+                },
+                {
+                  "name": "rumspringa"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/9"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/29909615074_335087b1f1.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 8
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "9",
+                        "nickname": "Amish",
+                        "guid": "5NRLGFHRZQOV5AQB6CMYR3ZQDU",
+                        "email": "amishjs@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/4734/24277287037_c37186_64sq.jpg",
+                        "felo_score": "596",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "9": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.10"
+                },
+                {
+                  "team_id": "10"
+                },
+                {
+                  "name": "Scorpion Balls"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/10"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/29910667513_0e34b3058b.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 11
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "10",
+                        "nickname": "Chris J",
+                        "guid": "ETW3IAAQV7QJ4JGFWKVK6P5UU4",
+                        "email": "jonezy53@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                        "felo_score": "594",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "10": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.11"
+                },
+                {
+                  "team_id": "11"
+                },
+                {
+                  "name": "Silicon Splicers"
+                },
+                {
+                  "is_owned_by_current_login": 1
+                },
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/11"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/30112176279_9cb30b.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 13
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "11",
+                        "nickname": "Daniel Haight",
+                        "guid": "6P54MQHAC3XCHBZ6WUSXFIYHGI",
+                        "is_current_login": "1",
+                        "email": "dhaight@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/1973/56327193255_8dbb07_64sq.jpg",
+                        "felo_score": "722",
+                        "felo_tier": "gold"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "11": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.12"
+                },
+                {
+                  "team_id": "12"
+                },
+                {
+                  "name": "Smoked Hops"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/12"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/42938247650_256dc9.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 15
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "12",
+                        "nickname": "Mitch",
+                        "guid": "7VJZIVFAOLH6DEI5KTM5RAIE47",
+                        "email": "mitch.mclachlan@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/1738/38028865803_d54692_64sq.jpg",
+                        "felo_score": "594",
+                        "felo_tier": "bronze"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "12": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.13"
+                },
+                {
+                  "team_id": "13"
+                },
+                {
+                  "name": "Sorry For Partying"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/13"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/30456106051_97cac0018c.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 2
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "13",
+                        "nickname": "Bier",
+                        "guid": "PHATK66HKG6HVAA5BT6ICL25OE",
+                        "email": "joshua.bier@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/1891/44001978092_99127b_64sq.jpg",
+                        "felo_score": "662",
+                        "felo_tier": "silver"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "13": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.14"
+                },
+                {
+                  "team_id": "14"
+                },
+                {
+                  "name": "Spliff Fiddles"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/14"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/22794238198_448e1580db.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 11
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "14",
+                        "nickname": "Adam",
+                        "guid": "N6ZPG4GO6QJ2FPKWYGAX4K4NBU",
+                        "email": "atweeg@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/4517/37767652843_c49204_64sq.jpg",
+                        "felo_score": "815",
+                        "felo_tier": "platinum"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "14": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.5701.t.15"
+                },
+                {
+                  "team_id": "15"
+                },
+                {
+                  "name": "The Youngstown Pride"
+                },
+                [],
+                {
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/5701/15"
+                },
+                {
+                  "team_logos": [
+                    {
+                      "team_logo": {
+                        "size": "large",
+                        "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/56475926671_d3445e.jpg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "previous_season_team_rank": 14
+                },
+                [],
+                {
+                  "waiver_priority": ""
+                },
+                {
+                  "faab_balance": "100"
+                },
+                {
+                  "number_of_moves": 0
+                },
+                {
+                  "number_of_trades": 0
+                },
+                {
+                  "roster_adds": {
+                    "coverage_type": "week",
+                    "coverage_value": 1,
+                    "value": "0"
+                  }
+                },
+                [],
+                {
+                  "league_scoring_type": "roto"
+                },
+                [],
+                [],
+                {
+                  "has_draft_grade": 0
+                },
+                [],
+                [],
+                [],
+                [],
+                [],
+                {
+                  "managers": [
+                    {
+                      "manager": {
+                        "manager_id": "15",
+                        "nickname": "Duder",
+                        "guid": "YDYPTF6TO7ERDXGN5NJE6MCKRQ",
+                        "email": "benpeskin@gmail.com",
+                        "image_url": "https://s.yimg.com/ag/images/4727/37734848213_27fc92_64sq.jpg",
+                        "felo_score": "831",
+                        "felo_tier": "platinum"
+                      }
+                    }
+                  ]
+                }
+              ],
+              {
+                "roster": {
+                  "0": {
+                    "players": []
+                  },
+                  "coverage_type": "date",
+                  "date": "2025-08-24",
+                  "is_prescoring": 0,
+                  "is_editable": 0
+                }
+              }
+            ]
+          },
+          "count": 15
+        }
+      }
+    ],
+    "time": "56.718111038208ms",
+    "copyright": "Certain Data by Sportradar, Stats Perform and Rotowire",
+    "refresh_rate": "60"
+  }
+}

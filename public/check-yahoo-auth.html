@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yahoo Auth Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .step { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button { padding: 10px 20px; margin: 10px 5px; cursor: pointer; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🏀 Yahoo Fantasy API Test</h1>
+    
+    <div class="step info">
+        <h3>Step 1: Check Authentication Status</h3>
+        <p>This will check if you have valid Yahoo OAuth tokens stored in cookies.</p>
+        <button onclick="checkAuth()">Check Yahoo Auth Status</button>
+        <div id="authStatus"></div>
+    </div>
+    
+    <div class="step info">
+        <h3>Step 2: Yahoo OAuth Issue</h3>
+        <p><strong>Note:</strong> The Yahoo OAuth is not configured properly. Let's use a simpler approach with your existing data instead.</p>
+        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; border: 1px solid #ffeaa7;">
+            <p><strong>OAuth Error:</strong> Yahoo client credentials need to be properly configured for live API access.</p>
+            <p><strong>Solution:</strong> Use the simplified import below that works with your existing Yahoo player mappings.</p>
+        </div>
+    </div>
+    
+    <div class="step info">
+        <h3>Step 3: Test Simplified Roster Import</h3>
+        <p>This creates roster assignments using your existing Yahoo player mappings (no OAuth required).</p>
+        <button onclick="testSimpleRosterImport()">Create Demo Roster Assignments</button>
+        <div id="importStatus"></div>
+    </div>
+    
+    <div class="step info">
+        <h3>Step 4: View Results</h3>
+        <button onclick="checkImportStatus()">Check Import Status</button>
+        <div id="resultsStatus"></div>
+    </div>
+
+    <script>
+        async function checkAuth() {
+            const statusDiv = document.getElementById('authStatus');
+            statusDiv.innerHTML = '<p>🔍 Checking authentication...</p>';
+            
+            try {
+                const response = await fetch('/api/yahoo/import-rosters');
+                const data = await response.json();
+                
+                statusDiv.innerHTML = `
+                    <h4>Authentication Status:</h4>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+                
+                if (data.roster_entries_imported > 0) {
+                    statusDiv.className = 'success';
+                    statusDiv.innerHTML = '<h4>✅ Previous import data found!</h4>' + statusDiv.innerHTML;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<p>❌ Error checking auth: ${error.message}</p>`;
+                statusDiv.className = 'error';
+            }
+        }
+        
+        function startYahooAuth() {
+            const statusDiv = document.getElementById('oauthStatus');
+            statusDiv.innerHTML = '<p>🔄 Redirecting to Yahoo OAuth...</p>';
+            
+            // Open Yahoo OAuth in new window
+            window.open('/api/auth/yahoo', 'yahoo_auth', 'width=600,height=600');
+            
+            // Check for completion every 2 seconds
+            const checkInterval = setInterval(() => {
+                fetch('/api/yahoo/import-rosters')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.managers_mapped > 0 || confirm('OAuth completed? Click OK if you completed Yahoo login.')) {
+                            clearInterval(checkInterval);
+                            statusDiv.innerHTML = '<p>✅ Yahoo OAuth completed! You can now test roster import.</p>';
+                            statusDiv.className = 'success';
+                        }
+                    })
+                    .catch(console.error);
+            }, 2000);
+        }
+        
+        async function testSimpleRosterImport() {
+            const statusDiv = document.getElementById('importStatus');
+            statusDiv.innerHTML = '<p>🚀 Creating demo roster assignments...</p>';
+            
+            try {
+                const response = await fetch('/api/yahoo/import-rosters-simple', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = `
+                        <h4>✅ Demo Roster Assignments Created!</h4>
+                        <p><strong>Teams Mapped:</strong> ${data.summary?.teams_mapped || 0}</p>
+                        <p><strong>Players Used:</strong> ${data.summary?.players_used || 0}</p>
+                        <p><strong>Roster Entries:</strong> ${data.summary?.roster_entries_created || 0}</p>
+                        <details>
+                            <summary>View Full Response</summary>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </details>
+                    `;
+                    statusDiv.className = 'success';
+                } else {
+                    statusDiv.innerHTML = `
+                        <h4>❌ Demo Creation Failed</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                    statusDiv.className = 'error';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<p>❌ Network error: ${error.message}</p>`;
+                statusDiv.className = 'error';
+            }
+        }
+        
+        async function testRosterImport() {
+            // Redirect to simple version
+            testSimpleRosterImport();
+        }
+        
+        async function checkImportStatus() {
+            const statusDiv = document.getElementById('resultsStatus');
+            statusDiv.innerHTML = '<p>🔍 Checking import results...</p>';
+            
+            try {
+                const response = await fetch('/api/yahoo/import-rosters');
+                const data = await response.json();
+                
+                statusDiv.innerHTML = `
+                    <h4>📊 Import Status:</h4>
+                    <ul>
+                        <li><strong>Roster Entries:</strong> ${data.roster_entries_imported}</li>
+                        <li><strong>Managers Mapped:</strong> ${data.managers_mapped}</li>
+                        <li><strong>Status:</strong> ${data.status}</li>
+                    </ul>
+                    <details>
+                        <summary>View Details</summary>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </details>
+                `;
+                
+                if (data.roster_entries_imported > 0) {
+                    statusDiv.className = 'success';
+                } else {
+                    statusDiv.className = 'info';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<p>❌ Error: ${error.message}</p>`;
+                statusDiv.className = 'error';
+            }
+        }
+        
+        // Auto-check auth status on page load
+        window.onload = () => checkAuth();
+    </script>
+</body>
+</html>

@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
       body: new URLSearchParams({
         grant_type: 'authorization_code',
         code,
-        redirect_uri: `https://5477ee214f90.ngrok-free.app/api/auth/yahoo/callback`
+        redirect_uri: `http://localhost:3006/api/auth/yahoo/callback`
       })
     })
 
@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
     console.log('Yahoo OAuth success:', tokens)
 
     // Store tokens in session/cookies (for now just redirect with success)
-    const response = NextResponse.redirect(`https://5477ee214f90.ngrok-free.app/yahoo-success`)
+    const response = NextResponse.redirect(`http://localhost:3006/yahoo-success`)
     
     // Set tokens in httpOnly cookies for security
     response.cookies.set('yahoo_access_token', tokens.access_token, {

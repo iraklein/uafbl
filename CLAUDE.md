@@ -470,4 +470,210 @@ Error: "Target player not found" or "Some source players not found"
 
 ---
 
-*Last Updated: 2025-08-20*
+## 🛠️ TypeScript Build Error Patterns & Solutions
+
+### Overview
+During development, certain TypeScript patterns cause repeated compilation errors. This section documents common errors and their fixes to prevent future issues.
+
+### Common Build Error Patterns
+
+#### 1. **Array Type Inference Issues**
+**Error Pattern:**
+```
+Type error: Argument of type '{ ... }' is not assignable to parameter of type 'never'.
+```
+
+**Root Cause:** Empty arrays (`[]`) are inferred as `never[]` type, preventing any objects from being pushed.
+
+**Solution:** Always explicitly type arrays when building objects for database insertion:
+```typescript
+// ❌ Bad - TypeScript infers never[]
+const rosterEntries = []
+
+// ✅ Good - Explicit type annotation
+const rosterEntries: Array<{
+  team_key: string
+  yahoo_player_id: string
+  status: string
+  raw_data: any
+}> = []
+```
+
+#### 2. **Unknown Type in Object Index Access**
+**Error Pattern:**
+```
+Type error: Type 'unknown' cannot be used as an index type.
+```
+
+**Root Cause:** Supabase queries return `unknown` types for dynamic properties, which cannot be used as object keys.
+
+**Solution:** Convert to string before using as object index:
+```typescript
+// ❌ Bad - unknown type as index
+teamSummary[entry.team_key] = 0
+
+// ✅ Good - Convert to string
+const teamKey = String(entry.team_key || '')
+teamSummary[teamKey] = 0
+```
+
+#### 3. **Object Literal Type Issues**
+**Root Cause:** TypeScript cannot infer complex object structures, especially with optional/unknown properties.
+
+**Solution:** Type the containing object explicitly:
+```typescript
+// ❌ Bad - Inferred as {}
+const teamSummary = {}
+
+// ✅ Good - Explicit typing
+const teamSummary: Record<string, number> = {}
+```
+
+#### 4. **Error Object Type in Catch Blocks**
+**Error Pattern:**
+```
+Type error: 'error' is of type 'unknown'.
+```
+
+**Root Cause:** TypeScript 5+ treats catch block errors as `unknown` instead of `Error`.
+
+**Solution:** Type guard before accessing error properties:
+```typescript
+// ❌ Bad - Direct property access
+catch (error) {
+  console.error('Error:', error.message)
+}
+
+// ✅ Good - Type guard
+catch (error) {
+  console.error('Error:', error instanceof Error ? error.message : 'Unknown error')
+}
+```
+
+#### 5. **Supabase Query Result Types**
+**Root Cause:** Complex Supabase joins/selects return deeply nested unknown types.
+
+**Solution:** Extract and type data defensively:
+```typescript
+// ❌ Bad - Direct access to nested unknown
+managers?.forEach(m => managerMap[m.yahoo_team_key] = m.manager_name)
+
+// ✅ Good - Type guard and conversion
+managers?.forEach(m => {
+  if (m.yahoo_team_key) {
+    managerMap[String(m.yahoo_team_key)] = String(m.manager_name)
+  }
+})
+```
+
+### Pre-Build Checklist
+
+Before running `npm run build`, check for these patterns:
+
+- [ ] **Empty Arrays**: All `[]` declarations have explicit types when objects will be pushed
+- [ ] **Object Indexing**: All dynamic property access uses `String()` conversion
+- [ ] **Object Literals**: Complex objects have explicit `Record<string, type>` annotations  
+- [ ] **Error Handling**: All catch blocks use `error instanceof Error` checks
+- [ ] **Supabase Results**: All query results are typed defensively with null checks
+
+### Quick Fix Commands
+
+**Find potential array issues:**
+```bash
+grep -r "const.*= \[\]" src/ --include="*.ts" --include="*.tsx"
+```
+
+**Find potential object indexing issues:**
+```bash
+grep -r "\[.*\.\w\+\]" src/ --include="*.ts" --include="*.tsx"
+```
+
+**Find catch blocks without type guards:**
+```bash
+grep -A 1 "catch.*error" src/ --include="*.ts" --include="*.tsx" | grep -v "instanceof"
+```
+
+### Build Testing Strategy
+
+1. **Run build early and often** - Don't wait until the end
+2. **Fix TypeScript errors immediately** - They compound quickly  
+3. **Use explicit typing proactively** - Don't rely on inference for complex data
+4. **Test with real data structures** - Mock data often hides type issues
+
+### Yahoo API Integration Specific Issues
+
+**Yahoo API Response Structures:** 
+- Deeply nested arrays and objects from Yahoo's XML-to-JSON conversion
+- Dynamic property names (team keys, player IDs as object keys)  
+- Mixed data types in the same response structure
+
+**Common Patterns:**
+```typescript
+// Yahoo team data structure
+const teams: Array<{
+  team_key: any      // Can be string or number
+  team_id: any       // Can be string or number  
+  name: any          // Can be string or null
+  manager_nickname: any // Can be string or undefined
+}> = []
+
+// Yahoo roster entries
+const allRosterEntries: Array<{
+  team_key: any
+  yahoo_player_id: any
+  status: any
+  raw_data: any
+}> = []
+```
+
+**Note:** Using `any` for Yahoo API data is intentional due to inconsistent response formats from their XML-to-JSON conversion.
+
+---
+
+## 🔐 Security & Credentials Management
+
+### Yahoo OAuth Credentials Protection
+
+**Problem:** Yahoo OAuth credentials were previously exposed in git history, creating security vulnerabilities.
+
+**Current Protection Measures:**
+
+#### 1. **Environment Variables Only**
+```bash
+# .env.local (never committed)
+YAHOO_CLIENT_ID=your_actual_client_id_here
+YAHOO_CLIENT_SECRET=your_actual_client_secret_here
+```
+
+#### 2. **Git Ignore Patterns**
+```gitignore
+# Environment files
+.env*
+
+# Yahoo OAuth tokens (contain sensitive access tokens)  
+yahoo-tokens.json
+```
+
+#### 3. **Runtime Token Management**
+- Access tokens expire every 1 hour
+- Refresh tokens used to get new access tokens
+- Token files excluded from git tracking via `.gitignore`
+
+#### 4. **Code Review Checklist**
+Before committing Yahoo-related code:
+- [ ] No hardcoded credentials in any files
+- [ ] All credentials use `process.env.VARIABLE_NAME`
+- [ ] Token files are in `.gitignore`  
+- [ ] No credentials in console.log statements
+- [ ] Test files use placeholder/mock credentials
+
+#### 5. **Security Incident Response**
+If credentials are accidentally committed:
+1. **Immediately revoke** the exposed credentials at https://developer.yahoo.com/apps/
+2. **Generate new credentials** and update `.env.local`
+3. **Rewrite git history** if necessary to remove the commit
+4. **Update this documentation** with lessons learned
+
+---
+
+*Last Updated: 2025-08-25*
