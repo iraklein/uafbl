@@ -33,6 +33,8 @@ interface DraftResult {
   draft_price: number | null
   is_keeper: boolean
   is_topper: boolean
+  is_bottom: boolean
+  bottom_manager_id: number | null
   consecutive_keeps: number | null
   players: Player
   managers: Manager
@@ -304,6 +306,7 @@ export default function DraftResults() {
                                 {result.players.name}
                                 {result.is_keeper && <span className="ml-1 px-1 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
                                 {result.is_topper && <span className="ml-1">🎩</span>}
+                                {result.is_bottom && <span className="ml-1">🍑</span>}
                               </div>
                             </div>
                           ),
@@ -417,6 +420,7 @@ export default function DraftResults() {
                                 <>
                                   {result.managers.manager_name}
                                   {result.is_topper && <span className="ml-1">🎩</span>}
+                                  {result.is_bottom && <span className="ml-1">🍑</span>}
                                 </>
                               )
                             },

@@ -35,6 +35,8 @@ interface DraftPick {
   draft_price: number
   is_keeper: boolean
   is_topper: boolean
+  is_bottom: boolean
+  bottom_manager_id?: number | null
   topper_managers?: string[]
   season_id: number
   created_at?: string
@@ -640,9 +642,6 @@ export default function DraftPage() {
                     Type
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Topper
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -675,6 +674,7 @@ export default function DraftPage() {
                             {pick.player_name}
                             {pick.is_keeper && <span className="ml-2 px-1.5 py-0.5 bg-green-100 text-green-800 rounded text-xs font-bold">K</span>}
                             {pick.is_topper && <span className="ml-1">🎩</span>}
+                            {pick.is_bottom && <span className="ml-1">🍑</span>}
                           </>
                         )}
                       </td>
@@ -728,61 +728,59 @@ export default function DraftPage() {
                       {/* Type Column */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {isEditing ? (
-                          <input
-                            type="checkbox"
-                            checked={editingPick?.is_keeper || false}
-                            onChange={async (e) => {
-                              const isKeeperChecked = e.target.checked
-                              setEditingPick(prev => ({
-                                ...prev!,
-                                is_keeper: isKeeperChecked
-                              }))
-                              
-                              // If keeper is checked and we have a player, fetch the keeper price
-                              if (isKeeperChecked && editingPick?.player_id) {
-                                try {
-                                  const response = await fetch(`/api/keeper-price?player_id=${editingPick.player_id}&season_id=${CURRENT_SEASON_ID}`)
-                                  if (response.ok) {
-                                    const data = await response.json()
+                          <div className="space-y-2">
+                            <label className="flex items-center">
+                              <input
+                                type="checkbox"
+                                checked={editingPick?.is_keeper || false}
+                                onChange={async (e) => {
+                                  const isKeeperChecked = e.target.checked
+                                  setEditingPick(prev => ({
+                                    ...prev!,
+                                    is_keeper: isKeeperChecked
+                                  }))
+                                  
+                                  // If keeper is checked and we have a player, fetch the keeper price
+                                  if (isKeeperChecked && editingPick?.player_id) {
+                                    try {
+                                      const response = await fetch(`/api/keeper-price?player_id=${editingPick.player_id}&season_id=${CURRENT_SEASON_ID}`)
+                                      if (response.ok) {
+                                        const data = await response.json()
+                                        setEditingPick(prev => ({
+                                          ...prev!,
+                                          draft_price: data.keeper_price || 0
+                                        }))
+                                      }
+                                    } catch (error) {
+                                      console.error('Error fetching keeper price for edit:', error)
+                                    }
+                                  } else if (!isKeeperChecked) {
+                                    // Reset price to 0 when unchecking keeper
                                     setEditingPick(prev => ({
                                       ...prev!,
-                                      draft_price: data.keeper_price || 0
+                                      draft_price: 0
                                     }))
                                   }
-                                } catch (error) {
-                                  console.error('Error fetching keeper price for edit:', error)
-                                }
-                              } else if (!isKeeperChecked) {
-                                // Reset price to 0 when unchecking keeper
-                                setEditingPick(prev => ({
+                                }}
+                                className="h-4 w-4 text-indigo-600 border-gray-300 rounded mr-1"
+                              />
+                              <span className="text-xs">Keeper</span>
+                            </label>
+                            <label className="flex items-center">
+                              <input
+                                type="checkbox"
+                                checked={editingPick?.is_topper || false}
+                                onChange={(e) => setEditingPick(prev => ({
                                   ...prev!,
-                                  draft_price: 0
-                                }))
-                              }
-                            }}
-                            className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                          />
-                        ) : (
-                          pick.is_keeper ? 'Keeper' : 'Draft'
-                        )}
-                      </td>
-                      
-                      {/* Topper Column */}
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {isEditing ? (
-                          <div className="space-y-1">
-                            <input
-                              type="checkbox"
-                              checked={editingPick?.is_topper || false}
-                              onChange={(e) => setEditingPick(prev => ({
-                                ...prev!,
-                                is_topper: e.target.checked,
-                                topper_managers: e.target.checked ? prev?.topper_managers || [] : []
-                              }))}
-                              className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            />
+                                  is_topper: e.target.checked,
+                                  topper_managers: e.target.checked ? prev?.topper_managers || [] : []
+                                }))}
+                                className="h-4 w-4 text-indigo-600 border-gray-300 rounded mr-1"
+                              />
+                              <span className="text-xs">Topper 🎩</span>
+                            </label>
                             {editingPick?.is_topper && (
-                              <div className="space-y-1">
+                              <div className="ml-4 space-y-1 max-h-20 overflow-y-auto">
                                 {managers.map(manager => (
                                   <label key={manager.id} className="flex items-center text-xs">
                                     <input
@@ -811,7 +809,7 @@ export default function DraftPage() {
                             )}
                           </div>
                         ) : (
-                          pick.is_topper ? (pick.topper_managers?.join(', ') || 'Yes') : 'No'
+                          pick.is_keeper ? 'Keeper' : 'Draft'
                         )}
                       </td>
                       
