@@ -311,14 +311,14 @@ export default function DraftResults() {
                               </div>
                             </div>
                           ),
-                          className: 'font-medium max-w-0'
+                          className: 'font-medium min-w-0 flex-1'
                         },
                         {
                           key: 'draft_price',
                           header: 'Price',
                           render: (price) => price ? `$${price}` : 'Free',
-                          className: 'text-center',
-                          headerClassName: 'text-center'
+                          className: 'text-center w-20',
+                          headerClassName: 'text-center w-20'
                         },
                         {
                           key: 'consecutive_keeps',
