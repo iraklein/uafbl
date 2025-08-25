@@ -235,7 +235,9 @@ export async function POST(request: NextRequest) {
       }
     })
     
-    const draftPrice = draftResult?.draft_price || null
+    const draftPrice: number | null = (draftResult?.draft_price && typeof draftResult.draft_price === 'number') 
+      ? draftResult.draft_price 
+      : null
     const keeperCost = calculateKeeperCost(draftPrice, consecutive_keeps, tradeCount)
     
     console.log(`Keeper cost calculation: draft=$${draftPrice}, keeps=${consecutive_keeps}, trades=${tradeCount}, result=$${keeperCost}`)
