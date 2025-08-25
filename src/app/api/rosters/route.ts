@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '../../../../lib/supabase'
+import { calculateKeeperCost } from '../../../../lib/keeper-utils'
 
 interface Player {
   id: number
@@ -152,6 +153,116 @@ export async function GET(request: NextRequest) {
     })
 
     return NextResponse.json(rostersWithPrices)
+  } catch (error) {
+    console.error('API error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = createServerSupabaseClient()
+    const body = await request.json()
+    const { player_id, manager_id, season_id, consecutive_keeps = 0 } = body
+
+    if (!player_id || !manager_id || !season_id) {
+      return NextResponse.json({ 
+        error: 'Player ID, Manager ID, and Season ID are required' 
+      }, { status: 400 })
+    }
+
+    // Check if roster entry already exists
+    const { data: existing, error: existingError } = await supabase
+      .from('rosters')
+      .select('id')
+      .eq('player_id', player_id)
+      .eq('manager_id', manager_id)
+      .eq('season_id', season_id)
+      .single()
+
+    if (existing) {
+      return NextResponse.json({ 
+        error: 'Player is already on this manager\'s roster for this season' 
+      }, { status: 409 })
+    }
+
+    if (existingError && existingError.code !== 'PGRST116') { // PGRST116 = no rows found
+      console.error('Error checking existing roster:', existingError)
+      return NextResponse.json({ error: 'Failed to check existing roster' }, { status: 500 })
+    }
+
+    // Calculate keeper cost automatically
+    console.log(`Calculating keeper cost for player ${player_id} in season ${season_id}`)
+    
+    // Get player's draft price for this season
+    const { data: draftResult, error: draftError } = await supabase
+      .from('draft_results')
+      .select('draft_price')
+      .eq('player_id', player_id)
+      .eq('season_id', season_id)
+      .single()
+    
+    if (draftError && draftError.code !== 'PGRST116') {
+      console.error('Error fetching draft price:', draftError)
+      return NextResponse.json({ error: 'Failed to fetch draft price' }, { status: 500 })
+    }
+    
+    // Get trade count for this player this season
+    const { data: trades, error: tradesError } = await supabase
+      .from('trades')
+      .select('proposer_players, receiver_players')
+      .eq('season_id', season_id)
+      .eq('status', 'accepted')
+      .eq('was_offseason', false)
+    
+    if (tradesError) {
+      console.error('Error fetching trades:', tradesError)
+      return NextResponse.json({ error: 'Failed to fetch trades' }, { status: 500 })
+    }
+    
+    // Count trades for this player
+    let tradeCount = 0
+    trades?.forEach(trade => {
+      if (trade.proposer_players && Array.isArray(trade.proposer_players)) {
+        if (trade.proposer_players.some((id: string) => parseInt(id) === player_id)) {
+          tradeCount++
+        }
+      }
+      if (trade.receiver_players && Array.isArray(trade.receiver_players)) {
+        if (trade.receiver_players.some((id: string) => parseInt(id) === player_id)) {
+          tradeCount++
+        }
+      }
+    })
+    
+    const draftPrice = draftResult?.draft_price || null
+    const keeperCost = calculateKeeperCost(draftPrice, consecutive_keeps, tradeCount)
+    
+    console.log(`Keeper cost calculation: draft=$${draftPrice}, keeps=${consecutive_keeps}, trades=${tradeCount}, result=$${keeperCost}`)
+
+    // Insert roster entry with calculated keeper cost
+    const { data, error } = await supabase
+      .from('rosters')
+      .insert({
+        player_id,
+        manager_id,
+        season_id,
+        keeper_cost: keeperCost,
+        consecutive_keeps: consecutive_keeps
+      })
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Database error:', error)
+      return NextResponse.json({ error: 'Failed to add player to roster' }, { status: 500 })
+    }
+
+    return NextResponse.json({ 
+      message: 'Player added to roster successfully',
+      roster: data,
+      keeper_cost: keeperCost
+    })
   } catch (error) {
     console.error('API error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

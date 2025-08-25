@@ -141,12 +141,12 @@ async function extractAndInsertRosters() {
             continue;
           }
 
-          // Add to rosters
+          // Add to rosters (keeper_cost will be calculated automatically)
           rosters.push({
             season_id: season2024_25.id,
             player_id: playerId,
             manager_id: managerId,
-            keeper_cost: null // Will be populated later with formula
+            keeper_cost: null // Will be calculated automatically before insertion
           });
         }
       }
@@ -169,6 +169,19 @@ async function extractAndInsertRosters() {
       console.log('No rosters to insert');
       return;
     }
+
+    // Calculate keeper costs for all players before insertion
+    console.log('\nCalculating keeper costs for all players...');
+    const { calculateKeeperCostsForRosters } = require('./lib/calculate-keeper-cost-for-roster.js');
+    const playerIds = [...new Set(rosters.map(r => r.player_id))]; // Get unique player IDs
+    const keeperCostMap = await calculateKeeperCostsForRosters(supabase, playerIds, season2024_25.id);
+    
+    // Apply calculated keeper costs to roster entries
+    rosters.forEach(roster => {
+      roster.keeper_cost = keeperCostMap[roster.player_id] || null;
+    });
+    
+    console.log(`Applied keeper costs to ${rosters.length} roster entries`);
 
     // Insert rosters in batches
     console.log('\nInserting rosters into database...');
