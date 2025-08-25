@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
         is_keeper,
         created_at,
         players(id, name),
-        managers(id, manager_name, team_name)
+        managers!draft_results_manager_id_fkey(id, manager_name, team_name)
       `)
       .eq('season_id', seasonId)
       .order('created_at', { ascending: false }) // Most recent first

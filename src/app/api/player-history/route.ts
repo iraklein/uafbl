@@ -58,7 +58,8 @@ export async function GET(request: NextRequest) {
     const [
       { data: draftHistory, error: draftError },
       { data: topperHistory, error: topperError },
-      { data: lslHistory, error: lslError }
+      { data: lslHistory, error: lslError },
+      { data: managers, error: managersError }
     ] = await Promise.all([
       // Get draft history
       supabase
@@ -67,7 +68,10 @@ export async function GET(request: NextRequest) {
           id,
           draft_price,
           is_keeper,
-          managers(manager_name),
+          is_bottom,
+          bottom_manager_id,
+          manager_id,
+          season_id,
           seasons(id, year, name)
         `)
         .eq('player_id', finalPlayerId)
@@ -80,9 +84,9 @@ export async function GET(request: NextRequest) {
         .select(`
           id,
           season_id,
+          manager_id,
           is_winner,
           is_unused,
-          managers(manager_name),
           seasons(year, name)
         `)
         .eq('player_id', finalPlayerId)
@@ -97,59 +101,110 @@ export async function GET(request: NextRequest) {
           year,
           draft_price,
           status,
-          original_managers:managers!original_manager_id(manager_name),
-          draft_managers:managers!draft_manager_id(manager_name)
+          original_manager_id,
+          draft_manager_id
         `)
         .eq('player_id', finalPlayerId)
         .order('year', { ascending: false })
-        .limit(5) // Each player can only have one LSL, but limit just in case
+        .limit(5), // Each player can only have one LSL, but limit just in case
+
+      // Get managers data
+      supabase.from('managers').select('id, manager_name, team_name')
     ])
 
-    if (draftError || topperError || lslError) {
-      console.error('Error fetching player history:', { draftError, topperError, lslError })
+    if (draftError || topperError || lslError || managersError) {
+      console.error('Error fetching player history:', { draftError, topperError, lslError, managersError })
       return NextResponse.json({ error: 'Failed to fetch player history' }, { status: 500 })
     }
 
+    // Create managers lookup map
+    const managersMap: Record<number, any> = {}
+    if (managers) {
+      managers.forEach((manager: any) => {
+        managersMap[manager.id] = manager
+      })
+    }
+
+    // Check for topper history to mark draft entries
+    const topperSeasonIds = new Set((topperHistory || []).map((t: any) => t.season_id))
+
     // Format the data to match the DraftResult interface expected by draft-results page
-    const formattedDraftHistory = (draftHistory || []).map((entry: any) => ({
-      id: entry.id,
-      draft_price: entry.draft_price,
-      is_keeper: entry.is_keeper,
-      is_topper: false, // This comes from toppers table
-      consecutive_keeps: null, // Not available in this query
-      players: {
-        id: finalPlayerId,
-        name: player?.name || '',
-        yahoo_image_url: player?.yahoo_image_url || null
-      },
-      managers: {
-        manager_name: entry.managers?.manager_name,
-        team_name: null // We don't have team_name in this query
-      },
-      seasons: {
-        id: entry.seasons?.id,
-        year: entry.seasons?.year,
-        name: entry.seasons?.name
+    const formattedDraftHistory = (draftHistory || []).map((entry: any) => {
+      const manager = managersMap[entry.manager_id]
+      return {
+        id: entry.id,
+        draft_price: entry.draft_price,
+        is_keeper: entry.is_keeper,
+        is_topper: topperSeasonIds.has(entry.seasons?.id),
+        is_bottom: entry.is_bottom || false,
+        bottom_manager_id: entry.bottom_manager_id,
+        consecutive_keeps: null, // Not available in this query
+        players: {
+          id: finalPlayerId,
+          name: player?.name || '',
+          yahoo_image_url: player?.yahoo_image_url || null
+        },
+        managers: {
+          manager_name: manager?.manager_name || 'Unknown',
+          team_name: manager?.team_name || null
+        },
+        seasons: {
+          id: entry.seasons?.id,
+          year: entry.seasons?.year,
+          name: entry.seasons?.name
+        }
       }
-    }))
+    })
 
     // Also format data for PlayerPreview component (flattened structure)
-    const playerPreviewDraftHistory = (draftHistory || []).map((entry: any) => ({
-      season_id: entry.seasons?.id,
-      season_name: entry.seasons?.name || `${entry.seasons?.year}`,
-      manager_name: entry.managers?.manager_name,
-      team_name: null, // We don't have team_name in this query
-      draft_price: entry.draft_price,
-      is_keeper: entry.is_keeper,
-      is_topper: false // This comes from toppers table
-    }))
+    const playerPreviewDraftHistory = (draftHistory || []).map((entry: any) => {
+      const manager = managersMap[entry.manager_id]
+      return {
+        season_id: entry.seasons?.id,
+        season_name: entry.seasons?.name || `${entry.seasons?.year}`,
+        manager_name: manager?.manager_name || 'Unknown',
+        team_name: manager?.team_name || null,
+        draft_price: entry.draft_price,
+        is_keeper: entry.is_keeper,
+        is_topper: topperSeasonIds.has(entry.seasons?.id),
+        is_bottom: entry.is_bottom || false,
+        bottom_manager_id: entry.bottom_manager_id
+      }
+    })
+
+    // Format topper history with manager info
+    const formattedTopperHistory = (topperHistory || []).map((entry: any) => {
+      const manager = managersMap[entry.manager_id]
+      return {
+        ...entry,
+        managers: {
+          manager_name: manager?.manager_name || 'Unknown'
+        }
+      }
+    })
+
+    // Format LSL history with manager info
+    const formattedLslHistory = (lslHistory || []).map((entry: any) => {
+      const originalManager = managersMap[entry.original_manager_id]
+      const draftManager = managersMap[entry.draft_manager_id]
+      return {
+        ...entry,
+        original_managers: {
+          manager_name: originalManager?.manager_name || 'Unknown'
+        },
+        draft_managers: {
+          manager_name: draftManager?.manager_name || 'Unknown'
+        }
+      }
+    })
 
     return NextResponse.json({
       player,
       draftHistory: formattedDraftHistory, // For draft-results page (nested structure)
       draft_history: playerPreviewDraftHistory, // For PlayerPreview component (flattened structure) 
-      topperHistory: topperHistory || [],
-      lslHistory: lslHistory || []
+      topperHistory: formattedTopperHistory,
+      lslHistory: formattedLslHistory,
+      managersMap: managersMap // Include managers data for bottom manager lookup
     })
   } catch (error) {
     console.error('Player history API Exception:', error)

@@ -66,6 +66,7 @@ interface PlayerHistory {
   draftHistory: DraftResult[]
   topperHistory: TopperResult[]
   lslHistory: LSLResult[]
+  managersMap?: Record<number, { manager_name: string; team_name?: string }>
 }
 
 export default function DraftResults() {
@@ -371,7 +372,7 @@ export default function DraftResults() {
                         )}
                         <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">{playerHistory.player.name}</h2>
                       </div>
-                      <div className="grid grid-cols-4 gap-2 sm:gap-4">
+                      <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
                         <StatsCard
                           title="Draft Records"
                           value={playerHistory.draftHistory.length}
@@ -381,6 +382,12 @@ export default function DraftResults() {
                         <StatsCard
                           title="Total Draft Dollars"
                           value={`$${playerHistory.draftHistory.reduce((total, record) => total + (record.draft_price || 0), 0)}`}
+                          variant="default"
+                          size="sm"
+                        />
+                        <StatsCard
+                          title="AADP"
+                          value={`$${playerHistory.draftHistory.length > 0 ? (playerHistory.draftHistory.reduce((total, record) => total + (record.draft_price || 0), 0) / playerHistory.draftHistory.length).toFixed(1) : '0.0'}`}
                           variant="orange"
                           size="sm"
                         />
@@ -388,6 +395,12 @@ export default function DraftResults() {
                           title="Topper Records"
                           value={playerHistory.topperHistory.length}
                           variant="green"
+                          size="sm"
+                        />
+                        <StatsCard
+                          title="Bottom Records"
+                          value={playerHistory.draftHistory.filter(record => record.is_bottom).length}
+                          variant="red"
                           size="sm"
                         />
                         <StatsCard
@@ -420,7 +433,6 @@ export default function DraftResults() {
                                 <>
                                   {result.managers.manager_name}
                                   {result.is_topper && <span className="ml-1">🎩</span>}
-                                  {result.is_bottom && <span className="ml-1">🍑</span>}
                                 </>
                               )
                             },
@@ -432,14 +444,25 @@ export default function DraftResults() {
                             {
                               key: 'is_keeper',
                               header: 'Type',
-                              render: (_, result) => result.is_keeper ? (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                  Keeper
-                                </span>
-                              ) : (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                  Draft
-                                </span>
+                              render: (_, result) => (
+                                <div className="flex items-center space-x-2">
+                                  {result.is_keeper ? (
+                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                      Keeper
+                                    </span>
+                                  ) : (
+                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                      Draft
+                                    </span>
+                                  )}
+                                  {result.is_bottom && (
+                                    <span>
+                                      🍑 <span className="text-gray-900">({playerHistory.managersMap && result.bottom_manager_id && playerHistory.managersMap[result.bottom_manager_id] 
+                                        ? playerHistory.managersMap[result.bottom_manager_id].manager_name 
+                                        : 'Unknown'})</span>
+                                    </span>
+                                  )}
+                                </div>
                               )
                             }
                           ]}
@@ -449,24 +472,6 @@ export default function DraftResults() {
                       </div>
                     )}
 
-                    {/* Topper History */}
-                    {playerHistory.topperHistory.length > 0 && (
-                      <div className="bg-white shadow rounded-lg overflow-hidden">
-                        <div className="bg-green-600 text-white px-4 py-3 sm:px-6 sm:py-4">
-                          <h3 className="text-base font-semibold sm:text-lg">Topper History</h3>
-                        </div>
-                        <div className="px-4 py-4 sm:px-6">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                            {playerHistory.topperHistory.map((result) => (
-                              <div key={result.id} className="p-3 rounded border bg-green-50 border-green-200">
-                                <div className="font-medium text-gray-900">{result.seasons.name} ({result.seasons.year})</div>
-                                <div className="text-sm text-gray-600">Manager: {result.managers.manager_name}</div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
 
                     {/* LSL History */}
                     {playerHistory.lslHistory.length > 0 && (

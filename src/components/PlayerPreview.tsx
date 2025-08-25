@@ -20,6 +20,8 @@ interface DraftHistoryEntry {
   draft_price: number
   is_keeper: boolean
   is_topper: boolean
+  is_bottom?: boolean
+  bottom_manager_id?: number | null
   topper_managers?: string[]
 }
 
@@ -59,6 +61,7 @@ export default function PlayerPreview({ player, className = '' }: PlayerPreviewP
   const [draftHistory, setDraftHistory] = useState<DraftHistoryEntry[]>([])
   const [topperHistory, setTopperHistory] = useState<TopperHistoryEntry[]>([])
   const [lslHistory, setLslHistory] = useState<LSLHistoryEntry[]>([])
+  const [managersMap, setManagersMap] = useState<Record<number, any>>({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const lastPlayerIdRef = useRef<number | null>(null)
@@ -77,6 +80,7 @@ export default function PlayerPreview({ player, className = '' }: PlayerPreviewP
         setDraftHistory(cachedData.draft_history || [])
         setTopperHistory(cachedData.topperHistory || [])
         setLslHistory(cachedData.lslHistory || [])
+        setManagersMap(cachedData.managersMap || {})
         setLoading(false)
         setError('')
         return
@@ -100,6 +104,7 @@ export default function PlayerPreview({ player, className = '' }: PlayerPreviewP
         setDraftHistory(data.draft_history || [])
         setTopperHistory(data.topperHistory || [])
         setLslHistory(data.lslHistory || [])
+        setManagersMap(data.managersMap || {})
       } catch (error) {
         console.error('Error fetching draft history:', error)
         setError('Failed to load draft history')
@@ -116,8 +121,12 @@ export default function PlayerPreview({ player, className = '' }: PlayerPreviewP
   // Filter toppers to only include used toppers (regardless of winner status)
   const validToppers = topperHistory.filter(topper => !topper.is_unused)
   
-  // Calculate total draft dollars spent
+  // Calculate total draft dollars spent and AADP
   const totalDraftDollars = draftHistory.reduce((total, entry) => total + (entry.draft_price || 0), 0)
+  const aadp = draftHistory.length > 0 ? (totalDraftDollars / draftHistory.length).toFixed(1) : '0.0'
+  
+  // Calculate bottom count
+  const bottomCount = draftHistory.filter(entry => entry.is_bottom).length
 
   // Helper function to check if player was topped in a specific season (using valid toppers only)
   const wasPlayerTopped = (seasonId: number): boolean => {
@@ -169,12 +178,20 @@ export default function PlayerPreview({ player, className = '' }: PlayerPreviewP
               <span className="font-medium bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                 {draftHistory.length} draft{draftHistory.length !== 1 ? 's' : ''}
               </span>
-              <span className="font-medium bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
+              <span className="font-medium bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
                 ${totalDraftDollars} total
+              </span>
+              <span className="font-medium bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
+                ${aadp} AADP
               </span>
               <span className="font-medium bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
                 {validToppers.length} topper{validToppers.length !== 1 ? 's' : ''}
               </span>
+              {bottomCount > 0 && (
+                <span className="font-medium bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
+                  {bottomCount} bottom{bottomCount !== 1 ? 's' : ''}
+                </span>
+              )}
               {lslHistory.length > 0 && (
                 <span className="font-medium bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
                   LSL - {lslHistory[0].year}
@@ -232,6 +249,13 @@ export default function PlayerPreview({ player, className = '' }: PlayerPreviewP
                           )}
                           {wasPlayerTopped(entry.season_id) && (
                             <span className="text-sm">🎩</span>
+                          )}
+                          {entry.is_bottom && (
+                            <span className="text-sm">
+                              🍑 <span className="text-gray-900">({entry.bottom_manager_id && managersMap[entry.bottom_manager_id] 
+                                ? managersMap[entry.bottom_manager_id].manager_name 
+                                : 'Unknown'})</span>
+                            </span>
                           )}
                         </div>
                       </td>
